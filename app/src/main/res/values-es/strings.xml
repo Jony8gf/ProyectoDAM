@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ProyectoDAM</string>
+    <string name="app_name">DrinkGames</string>
+    <string name="not_drink">Si bebes, No conduzcas</string>
+    <string name="no_juego">Controla la cantidad de alchol que tomas.</string>
+    <string name="sabermas">Saber más</string>
+
+    <string name="correo">Correo Electrónico</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="acpetar">Aceptar</string>
+
 </resources>
