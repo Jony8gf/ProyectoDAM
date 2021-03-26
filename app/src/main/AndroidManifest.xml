@@ -12,9 +12,11 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoDAM">
-        <activity android:name=".MainActivityLogin"></activity>
+        <activity android:name=".MainActivitySignIn"/>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivityLogin" />
         <activity android:name=".MainActivityRecuperarContrasena" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

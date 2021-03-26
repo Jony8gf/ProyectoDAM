@@ -34,8 +34,8 @@
 
     <EditText
         android:id="@+id/editTextEmailRecuperar"
-        android:layout_width="265dp"
-        android:layout_height="62dp"
+        android:layout_width="243dp"
+        android:layout_height="66dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="313dp"
@@ -43,6 +43,7 @@
         android:ems="10"
         android:inputType="textEmailAddress"
         android:text="@string/correo"
+        android:textAlignment="center"
         android:textColor="#fdde44"
         android:textColorHint="#FDDE44"
         tools:ignore="LabelFor" />
