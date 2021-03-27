@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "667699426687",
+    "project_id": "drinkgames-6ab48",
+    "storage_bucket": "drinkgames-6ab48.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:667699426687:android:8c385328150d39ddd4564a",
+        "android_client_info": {
+          "package_name": "com.app.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "667699426687-bu2olv5o61ljcf466seh72uhju6527m6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBWh47FIouj7WnEzKS-bz2fJPAXolXRGc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "667699426687-bu2olv5o61ljcf466seh72uhju6527m6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
