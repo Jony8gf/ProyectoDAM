@@ -70,6 +70,7 @@
         android:layout_marginStart="96dp"
         android:layout_marginEnd="96dp"
         android:layout_marginBottom="134dp"
+        android:onClick="pasarRecuperarContrasena"
         android:text="@string/olvido_contraseña"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
@@ -83,6 +84,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="227dp"
         android:background="@drawable/button_rounded"
+        android:onClick="login"
         android:text="@string/login" />
 
     <Button

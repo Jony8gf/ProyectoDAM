@@ -19,5 +19,6 @@
     <string name="contraseña">Password</string>
     <string name="email">e-mail</string>
     <string name="nombre">Name</string>
+    <string name="correo_no">The email address or password is not correct</string>
 
 </resources>
