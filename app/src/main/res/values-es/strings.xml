@@ -10,6 +10,7 @@
     <string name="acpetar">Aceptar</string>
 
     <string name="version">Versión Beta 1.0.0</string>
+    <string name="requerido">Requered</string>
 
     <string name="registrarse">Registrarse</string>
     <string name="registro"> Crear cuenta en DrinkGames</string>
@@ -20,5 +21,13 @@
     <string name="email">Correo Electrónico</string>
     <string name="nombre">Nombre</string>
     <string name="correo_no">La dirección de correo electrónico o la contraseña no es correcta</string>
+    <string name="registrado">Registrado</string>
+    <string name="contrasenas_no_coinciden">Las contraseñas no coinciden</string>
+    <string name="contrasenas_caracteres">La contraseña debe tener mínimo 6 caracteres</string>
+    <string name="aceptar_usos">Debes aceptar las políticas de uso</string>
+
+    <string name="esperar">Espere un momento...</string>
+    <string name="email_ingresar">Debes ingresar un email</string>
+    <string name="error">Ha ocurrido un error.</string>
 
 </resources>

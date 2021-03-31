@@ -46,7 +46,7 @@ public class MainActivityLogin extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         //Instancia numRand (Dialog)
-        numRand = (int)(Math.random()*3);
+        numRand = (int)(Math.random()*4);
 
         //Instancia de MediaPlayer
         mpMusica = MediaPlayer.create(this, R.raw.musica_inicio_george);
@@ -60,6 +60,8 @@ public class MainActivityLogin extends AppCompatActivity {
 
         dialogTips();
 
+        Toast.makeText(this, String.valueOf(numRand), Toast.LENGTH_SHORT).show();
+
     }
 
     public void pasarRecuperarContrasena(View view){
@@ -68,6 +70,17 @@ public class MainActivityLogin extends AppCompatActivity {
         mpMusica.release();
 
         Intent intent = new Intent(this, MainActivityRecuperarContrasena.class);
+        startActivity(intent);
+        //Finalizar Activity
+        finish();
+    }
+
+    public void pasarSigIn(View view){
+
+        mpMusica.stop();
+        mpMusica.release();
+
+        Intent intent = new Intent(this, MainActivitySignIn.class);
         startActivity(intent);
         //Finalizar Activity
         finish();
@@ -111,7 +124,7 @@ public class MainActivityLogin extends AppCompatActivity {
     public void dialogTips(){
 
         Dialog dialog= new Dialog(this);
-        if (numRand == 1) {
+        if (numRand == 0 || numRand == 1) {
             dialog.setContentView(R.layout.dialog_notcar);
             Button btnSaberMas = findViewById(R.id.btnSaberCar);
         }else{
