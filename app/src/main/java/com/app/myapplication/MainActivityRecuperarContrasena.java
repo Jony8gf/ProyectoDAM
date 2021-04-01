@@ -29,6 +29,7 @@ public class MainActivityRecuperarContrasena extends AppCompatActivity {
     private View viewActivity;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +60,7 @@ public class MainActivityRecuperarContrasena extends AppCompatActivity {
         if(!email.isEmpty()){
 
             //String msg = String.valueOf(R.string.esperar);
-            mDialog.setMessage("Wait...");
+            mDialog.setMessage(getString(R.string.esperar));
             mDialog.setCanceledOnTouchOutside(false);
             mDialog.show();
             reiniciarPassword();

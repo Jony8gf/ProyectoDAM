@@ -26,8 +26,21 @@
     <string name="contrasenas_caracteres">La contraseña debe tener mínimo 6 caracteres</string>
     <string name="aceptar_usos">Debes aceptar las políticas de uso</string>
 
-    <string name="esperar">Espere un momento...</string>
+    <string name="esperar">Espere un momento…</string>
     <string name="email_ingresar">Debes ingresar un email</string>
     <string name="error">Ha ocurrido un error.</string>
+
+    <string name="minijuegos">Minijuegos</string>
+    <string name="yo_nunca">Yo Nunca</string>
+    <string name="masprobable">¿Quien es mas probable que…?</string>
+    <string name="cinco_cosas">5 cosas en </string>
+    <string name="patata_caliente">Patata Caliente</string>
+    <string name="cara_cruz">Cara o Cruz</string>
+    <string name="mimica">Mímica</string>
+    <string name="ruleta_rusa">Ruleta Rusa</string>
+    <string name="ruleta_suerte">Ruleta de la Suerte</string>
+    <string name="slotmachine">SlotMachine</string>
+    <string name="mayor_menor">Mayor o Menor</string>
+    <string name="setas_venenosas">Setas Venenosas</string>
 
 </resources>

@@ -26,8 +26,21 @@
     <string name="contrasenas_caracteres">The password must have a minimum of 6 characters</string>
     <string name="aceptar_usos">You must accept the use policies</string>
 
-    <string name="esperar">Wait...</string>
+    <string name="esperar">Wait…</string>
     <string name="email_ingresar">You must enter an email</string>
     <string name="error">An error has occurred.</string>
+
+    <string name="minijuegos">Minigames</string>
+    <string name="yo_nunca">I Never</string>
+    <string name="masprobable">Who is most likely …?</string>
+    <string name="cinco_cosas">5 things in 15 seconds</string>
+    <string name="patata_caliente">Hot potato</string>
+    <string name="cara_cruz">Heads or tails</string>
+    <string name="mimica">Mime</string>
+    <string name="ruleta_rusa">Russian Roulette</string>
+    <string name="ruleta_suerte">Wheel of Fortune</string>
+    <string name="slotmachine">SlotMachine</string>
+    <string name="mayor_menor">Higher or Less</string>
+    <string name="setas_venenosas">Poisonous Mushrooms</string>
 
 </resources>

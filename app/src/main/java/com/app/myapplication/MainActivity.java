@@ -37,13 +37,20 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
-
         elements = new ArrayList<ListElement>();
-        elements.add(new ListElement(R.drawable.ic_launcher_background, "Yo nunca", "+2 Jugadores"));
-        elements.add(new ListElement(R.drawable.ic_launcher_background, "Mímica", "+2 Jugadores"));
-        elements.add(new ListElement(R.drawable.ic_launcher_background, "Cara-Cruz", "+2 Jugadores"));
-        elements.add(new ListElement(R.drawable.ic_launcher_background, "Las Setas Venenosas", "+2 Jugadores"));
+        elements.add(new ListElement(R.drawable.menu_mimica, getString(R.string.mimica), "+2 Jugadores"));
+        elements.add(new ListElement(R.drawable.menu_patata_caliente, getString(R.string.patata_caliente), "+2 Jugadores"));
+        elements.add(new ListElement(R.drawable.menu_yonunca, getString(R.string.yo_nunca), "+2 Jugadores"));
+        elements.add(new ListElement(R.drawable.menu_caracruz, getString(R.string.cara_cruz), "+2 Jugadores"));
+        elements.add(new ListElement(R.drawable.menu_setasvenenosas, getString(R.string.setas_venenosas), "+2 Jugadores"));
+        elements.add(new ListElement(R.drawable.menu_ruletarusa, getString(R.string.ruleta_rusa), "+2 Jugadores"));
+        elements.add(new ListElement(R.drawable.menu_ruleta, getString(R.string.ruleta_suerte), "+2 Jugadores"));
+        elements.add(new ListElement(R.drawable.menu_mayormenor, getString(R.string.mayor_menor), "+2 Jugadores"));
+        elements.add(new ListElement(R.drawable.menu_cincocosas, getString(R.string.cinco_cosas), "+2 Jugadores"));
+        elements.add(new ListElement(R.drawable.menu_slotmachine, getString(R.string.slotmachine), "+2 Jugadores"));
+        elements.add(new ListElement(R.drawable.menu_masprobable, getString(R.string.masprobable), "+2 Jugadores"));
+        //Los Palillos
+        //Botella
 
         ListAdapter listAdapter = new ListAdapter(elements,
                 this, this);
