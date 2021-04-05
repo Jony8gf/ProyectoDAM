@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">DrinkGames</string>
+    <string name="idioma">Español</string>
+    <string name="vacio"> </string>
+
     <string name="not_car">Si bebes, No conduzcas</string>
     <string name="not_drink">Controla la cantidad de alchol que tomas.</string>
     <string name="sabermas">Saber más</string>
@@ -42,5 +45,13 @@
     <string name="slotmachine">SlotMachine</string>
     <string name="mayor_menor">Mayor o Menor</string>
     <string name="setas_venenosas">Setas Venenosas</string>
+
+    <string name="bebes">Bebes</string>
+    <string name="mandas_bebes">Mandas Bebes</string>
+
+    <string name="moneda">Moneda</string>
+    <string name="cara">Cara</string>
+    <string name="cruz">Cruz</string>
+    <string name="lanzar_moneda">Lanzar Moneda</string>
 
 </resources>

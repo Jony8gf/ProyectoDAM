@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_foreground"
@@ -14,14 +13,12 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoDAM">
+        <activity android:name=".MainActivityCaraCruz"></activity>
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-8043381776244583~1004200499"
-            />
-        <!-- ca-app-pub-8043381776244583/9930395917 -->
-
-        <activity android:name=".MainActivitySignIn"/>
+            android:value="ca-app-pub-8043381776244583~1004200499" /> <!-- ca-app-pub-8043381776244583/9930395917 -->
+        <activity android:name=".MainActivitySignIn" />
         <activity android:name=".MainActivity" />
         <activity android:name=".MainActivityLogin" />
         <activity android:name=".MainActivityRecuperarContrasena" />

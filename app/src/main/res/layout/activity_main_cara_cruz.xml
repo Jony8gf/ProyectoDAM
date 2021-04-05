@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".MainActivityCaraCruz">
+
+    <TextView
+        android:id="@+id/textViewCaraCruzFrase"
+        android:layout_width="match_parent"
+        android:layout_height="89dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="@color/azul"
+        android:gravity="center"
+        android:text="@string/moneda"
+        android:textColor="#FFFDFD" />
+
+    <TextView
+        android:id="@+id/textViewCaraCruzTragos"
+        android:layout_width="413dp"
+        android:layout_height="59dp"
+        android:layout_below="@+id/textViewCaraCruzFrase"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="-4dp"
+        android:layout_marginEnd="-2dp"
+        android:background="@color/rosa"
+        android:gravity="center"
+        android:text="@string/vacio"
+        android:textColor="@color/black" />
+
+    <ImageView
+        android:id="@+id/imageViewCaraCruzMoneda"
+        android:layout_width="195dp"
+        android:layout_height="229dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="115dp"
+        android:layout_marginEnd="101dp"
+        android:layout_marginBottom="242dp"
+        android:contentDescription="@string/cara_cruz"
+        app:srcCompat="@drawable/moneda_tirar" />
+
+    <Button
+        android:id="@+id/buttonLanzarMoneda"
+        android:layout_width="wrap_content"
+        android:layout_height="66dp"
+        android:layout_alignBottom="@+id/imageViewCaraCruzMoneda"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="134dp"
+        android:layout_marginEnd="126dp"
+        android:layout_marginBottom="-151dp"
+        android:backgroundTint="#FFEB3B"
+        android:text="@string/lanzar_moneda" />
+
+
+</RelativeLayout>

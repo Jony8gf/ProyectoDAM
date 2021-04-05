@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">DrinkGames</string>
+    <string name="idioma">English</string>
+    <string name="vacio"> </string>
 
     <string name="not_car">Si bebes, No conduzcas</string>
     <string name="not_drink">Controla la cantidad de alcohol que tomas.</string>
@@ -42,5 +44,13 @@
     <string name="slotmachine">SlotMachine</string>
     <string name="mayor_menor">Higher or Less</string>
     <string name="setas_venenosas">Poisonous Mushrooms</string>
+
+    <string name="bebes">Bebes</string>
+    <string name="mandas_bebes">Mandas Bebes</string>
+
+    <string name="moneda">Coin</string>
+    <string name="cara">Cara</string>
+    <string name="cruz">Cruz</string>
+    <string name="lanzar_moneda">Flip a coin</string>
 
 </resources>

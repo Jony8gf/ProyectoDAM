@@ -8,24 +8,65 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements ItemListener{
 
     List<ListElement> elements;
-    String posicionElemento;
-    int posiciomiento;
+    private String posicionElemento;
+    private int posiciomiento;
+    private TextToSpeech mTTS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Toast.makeText(this, R.string.idioma, Toast.LENGTH_SHORT).show();
+        switch (getString(R.string.idioma)){
 
+            case "Español": Toast.makeText(this, "Español", Toast.LENGTH_SHORT).show();
+                            mTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+                                @Override
+                                public void onInit(int status) {
+                                    Locale spanish = new Locale("es", "ES");
+                                    if (status == TextToSpeech.SUCCESS) {
+                                        int result = mTTS.setLanguage(spanish);
+                                        if (result == TextToSpeech.LANG_MISSING_DATA
+                                                || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                                            Log.e("TTS", "Language not supported");
+                                        }
+                                    } else {
+                                        Log.e("TTS", "Initialization failed");
+                                    }
+                                }
+                            });
+                break;
+            case "English": Toast.makeText(this, "English", Toast.LENGTH_SHORT).show();
+                            mTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+                                @Override
+                                public void onInit(int status) {
+                                    if (status == TextToSpeech.SUCCESS) {
+                                        int result = mTTS.setLanguage(Locale.ENGLISH);
+                                        if (result == TextToSpeech.LANG_MISSING_DATA
+                                                || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                                            Log.e("TTS", "Language not supported");
+                                        }
+                                    } else {
+                                        Log.e("TTS", "Initialization failed");
+                                    }
+                                }
+                            });
+                break;
+            default: Toast.makeText(this, "English", Toast.LENGTH_SHORT).show();
+        }
 
         init();
     }
@@ -65,10 +106,32 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
         posicionElemento = elements.get(position).getNombre();
         Toast.makeText(this, posicionElemento, Toast.LENGTH_SHORT).show();
 
-        /*
-        if (posicionElemento.equals("Yo nunca")) {
-            Intent intent = new Intent(this, MainActivity2_YoNunca.class);
-            startActivity(intent);
-        }*/
+        switch (position){
+            case 0: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                break;
+            case 1: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                break;
+            case 2: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                break;
+            case 3: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                break;
+            case 4: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                break;
+            case 5: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                break;
+            case 6: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                break;
+            case 7: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                break;
+            case 8: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                break;
+            case 9: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                break;
+            case 10: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                break;
+            case 11: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                break;
+            default: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+        }
     }
 }
