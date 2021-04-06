@@ -113,7 +113,12 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
                 break;
             case 2: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 break;
-            case 3: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+            case 3:
+                //Cara o Cruz
+                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                Intent intent = new Intent(this, MainActivityCaraCruz.class);
+                startActivity(intent);
+                finish();
                 break;
             case 4: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 break;

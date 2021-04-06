@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.Random;
 
 public class MainActivityCaraCruz extends AppCompatActivity {
 
@@ -18,6 +21,9 @@ public class MainActivityCaraCruz extends AppCompatActivity {
     private int suerte = 0;
     private int tragos = 0;
     private String auxiliar;
+    private WheelCoin wc;
+    private boolean isStarted;
+    public static final Random random = new Random();
 
     //Creacion de MediaPlayer
     MediaPlayer mpMoneda;
@@ -34,6 +40,8 @@ public class MainActivityCaraCruz extends AppCompatActivity {
 
         //Asignacion de Sonido
         mpMoneda = MediaPlayer.create(this, R.raw.moneda);
+
+
     }
 
     public void lanzarMoneda(View view){
@@ -41,25 +49,72 @@ public class MainActivityCaraCruz extends AppCompatActivity {
         //Sonido Lanzar Moneda
         mpMoneda.start();
 
-        suerte = (int)(Math.random()*10);
         tragos = (int)(Math.random()*4);
 
         if(tragos == 0){
             tragos=2;
         }
 
-        if(suerte>5){
-            moneda.setImageResource(R.drawable.moneda_cruz);
-            tvMoneda.setText(R.string.cruz);
-            auxiliar = (String) getText(R.string.bebes);
-            tvTragos.setText(auxiliar +" "+tragos);
+        runWheel();
+        auxiliar = (String) getText(R.string.bebes);
+        tvTragos.setText(auxiliar +" "+tragos);
 
-        }else{
-            moneda.setImageResource(R.drawable.moneda_cara);
-            tvMoneda.setText(R.string.cara);
-            auxiliar = (String) getText(R.string.bebes);
-            tvTragos.setText(auxiliar +" "+tragos);
+        if (isStarted) {
+
+            CountDownTimer ct1 = new CountDownTimer(7000, 1000) {
+
+                public void onTick(long millisUntilFinished) {
+
+                }
+
+                public void onFinish() {
+
+                    stopWheells();
+
+                }
+
+            }.start();
         }
+    }
+
+    public void runWheel(){
+
+        wc = new WheelCoin(new WheelCoin.WheelListener() {
+            @Override
+            public void newImage(final int img) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        moneda.setImageResource(img);
+                    }
+                });
+            }
+        }, 200, randomLong(0, 200));
+
+        wc.start();
+        isStarted = true;
+    }
+
+    public void stopWheells(){
+        wc.stopWheel();
+
+        switch (wc.currentIndex){
+
+            case  0:
+                tvMoneda.setText(R.string.cruz);
+                break;
+            case  1:
+                tvMoneda.setText(R.string.cara);
+                break;
+            default:
+                break;
+            }
+
+        isStarted = false;
+    }
+
+    public static long randomLong(long lower, long upper){
+        return lower + (long) (random.nextDouble() * (upper - lower));
     }
 
     @Override
