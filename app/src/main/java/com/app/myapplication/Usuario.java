@@ -7,16 +7,18 @@ public class Usuario {
     private String nombre;
     private boolean ads;
     private int cervezas;
+    private int avatar;
 
     public Usuario() {
     }
 
-    public Usuario(String uid, String correo, String nombre, boolean ads, int cervezas) {
+    public Usuario(String uid, String correo, String nombre, boolean ads, int cervezas, int avatar) {
         this.uid = uid;
         this.correo = correo;
         this.nombre = nombre;
         this.ads = ads;
         this.cervezas = cervezas;
+        this.avatar = avatar;
     }
 
     public String getUid() {
@@ -59,6 +61,14 @@ public class Usuario {
         this.cervezas = cervezas;
     }
 
+    public int getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(int avatar) {
+        this.avatar = avatar;
+    }
+
     @Override
     public String toString() {
         return "Usuario{" +
@@ -67,6 +77,7 @@ public class Usuario {
                 ", nombre='" + nombre + '\'' +
                 ", ads=" + ads +
                 ", cervezas=" + cervezas +
+                ", avatar=" + avatar +
                 '}';
     }
 }

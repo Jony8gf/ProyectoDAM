@@ -56,8 +56,8 @@ public class MainActivityCaraCruz extends AppCompatActivity {
         }
 
         runWheel();
-        auxiliar = (String) getText(R.string.bebes);
-        tvTragos.setText(auxiliar +" "+tragos);
+        tvTragos.setText("");
+        tvMoneda.setText("");
 
         if (isStarted) {
 
@@ -70,7 +70,8 @@ public class MainActivityCaraCruz extends AppCompatActivity {
                 public void onFinish() {
 
                     stopWheells();
-
+                    auxiliar = (String) getText(R.string.bebes);
+                    tvTragos.setText(auxiliar +" "+tragos);
                 }
 
             }.start();

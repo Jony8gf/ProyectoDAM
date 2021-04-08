@@ -59,9 +59,6 @@ public class MainActivityLogin extends AppCompatActivity {
         etPasswd = findViewById(R.id.editTextPasswordLogin);
 
         dialogTips();
-
-        Toast.makeText(this, String.valueOf(numRand), Toast.LENGTH_SHORT).show();
-
     }
 
     public void pasarRecuperarContrasena(View view){
@@ -70,6 +67,7 @@ public class MainActivityLogin extends AppCompatActivity {
         mpMusica.release();
 
         Intent intent = new Intent(this, MainActivityRecuperarContrasena.class);
+        //Intent intent = new Intent(this, MainActivityYoNunca.class);
         startActivity(intent);
         //Finalizar Activity
         finish();

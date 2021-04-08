@@ -53,4 +53,9 @@
     <string name="cruz">Cruz</string>
     <string name="lanzar_moneda">Flip a coin</string>
 
+    <string name="comenzar">Comenzar</string>
+    <string name="siguiente_frase">Siguiente Frase</string>
+
+    <string name="tirar">Tirar</string>
+
 </resources>

@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
     public void onClick(int position) {
         posicionElemento = elements.get(position).getNombre();
         Toast.makeText(this, posicionElemento, Toast.LENGTH_SHORT).show();
+        Intent intent;
 
         switch (position){
             case 0: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
@@ -116,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
             case 3:
                 //Cara o Cruz
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
-                Intent intent = new Intent(this, MainActivityCaraCruz.class);
+                 intent = new Intent(this, MainActivityCaraCruz.class);
                 startActivity(intent);
                 finish();
                 break;
@@ -130,11 +131,14 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
                 break;
             case 8: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 break;
-            case 9: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+            case 9:
+                //SlotMachine
+                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                intent = new Intent(this, MainActivitySlotMachine.class);
+                startActivity(intent);
+                finish();
                 break;
             case 10: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
-                break;
-            case 11: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 break;
             default: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
         }

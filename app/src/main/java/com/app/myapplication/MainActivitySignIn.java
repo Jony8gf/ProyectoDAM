@@ -92,6 +92,7 @@ public class MainActivitySignIn extends AppCompatActivity {
                 usuario.setCorreo(email);
                 usuario.setAds(true);
                 usuario.setCervezas(3);
+                usuario.setAvatar(1);
                 usuario.setUid(UUID.randomUUID().toString());
 
 
@@ -209,7 +210,4 @@ public class MainActivitySignIn extends AppCompatActivity {
         super.onDestroy();
         // La actividad está a punto de ser destruida.
     }
-
-
-
 }

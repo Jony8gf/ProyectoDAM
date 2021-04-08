@@ -1,12 +1,18 @@
 package com.app.myapplication;
 
-public class WheelCoin extends Thread {
+public class WheelSlot extends Thread {
 
     interface WheelListener {
         void newImage(int img);
     }
 
-    private static final int[] imgs = {R.drawable.moneda_cara, R.drawable.moneda_cruz};
+    private static int[] imgs = {
+            R.drawable.slot_fresa,
+            R.drawable.slot_limon,
+            R.drawable.slot_berengena,
+            R.drawable.slot_coco,
+            R.drawable.slot_seven
+    };
 
     public int currentIndex;
     private WheelListener wheelListener;
@@ -14,7 +20,7 @@ public class WheelCoin extends Thread {
     private long startIn;
     private boolean isStarted;
 
-    public WheelCoin(WheelListener wheelListener, long frameDuration, long startIn) {
+    public WheelSlot(WheelListener wheelListener, long frameDuration, long startIn) {
         this.wheelListener = wheelListener;
         this.frameDuration = frameDuration;
         this.startIn = startIn;
@@ -33,16 +39,14 @@ public class WheelCoin extends Thread {
     @Override
     public void run() {
         try {
-            sleep(startIn);
+            Thread.sleep(startIn);
         } catch (InterruptedException e) {
-            e.printStackTrace();
         }
 
         while(isStarted) {
             try {
-                sleep(frameDuration);
+                Thread.sleep(frameDuration);
             } catch (InterruptedException e) {
-                e.printStackTrace();
             }
 
             nextImg();
@@ -57,3 +61,4 @@ public class WheelCoin extends Thread {
         isStarted = false;
     }
 }
+
