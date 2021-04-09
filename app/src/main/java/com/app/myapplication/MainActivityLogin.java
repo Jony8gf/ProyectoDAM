@@ -66,7 +66,8 @@ public class MainActivityLogin extends AppCompatActivity {
         mpMusica.stop();
         mpMusica.release();
 
-        Intent intent = new Intent(this, MainActivityRecuperarContrasena.class);
+        //Intent intent = new Intent(this, MainActivityRecuperarContrasena.class);
+        Intent intent = new Intent(this, MainActivitySetasVenenosas.class);
         //Intent intent = new Intent(this, MainActivityYoNunca.class);
         startActivity(intent);
         //Finalizar Activity

@@ -2,9 +2,11 @@ package com.app.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,6 +17,7 @@ public class MainActivitySlotMachine extends AppCompatActivity {
     private ImageView slot1, slot2, slot3;
     private TextView tvTragos;
     private WheelSlot wheel1, wheel2, wheel3;
+    private Button btnTirar;
 
     private String auxiliar;
     private int tragos;
@@ -26,6 +29,9 @@ public class MainActivitySlotMachine extends AppCompatActivity {
     public static long randomLong(long lower, long upper) {
         return lower + (long) (RANDOM.nextDouble() * (upper - lower));
     }
+
+    //Creacion de MediaPlayer
+    MediaPlayer mpSlotMachine;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,17 +45,32 @@ public class MainActivitySlotMachine extends AppCompatActivity {
 
         //Asignacion de TextView
         tvTragos = findViewById(R.id.textViewSlotTragos);
+
+        //Asignacion de Sonido
+        mpSlotMachine = MediaPlayer.create(this, R.raw.sonido_slotmachine);
+
+        //Asignación de Button
+        btnTirar = findViewById(R.id.btnSlotTirar);
     }
 
     public void tiradaSlot(View v){
+
+        //Activar Button
+        btnTirar.setEnabled(false);
+
+        //Iniciar musica/sonidos
+        mpSlotMachine.start();
+        mpSlotMachine.isLooping();
 
         runWheells();
 
         tvTragos.setText("");
 
+
+
         if (isStarted) {
 
-            CountDownTimer ct1 = new CountDownTimer(7000, 1000) {
+            CountDownTimer ct1 = new CountDownTimer(8000, 1000) {
 
                 public void onTick(long millisUntilFinished) {
 
@@ -58,6 +79,9 @@ public class MainActivitySlotMachine extends AppCompatActivity {
                 public void onFinish() {
 
                     stopWheells();
+                    mpSlotMachine.pause();
+                    //Activar Button
+                    btnTirar.setEnabled(true);
 
                 }
 

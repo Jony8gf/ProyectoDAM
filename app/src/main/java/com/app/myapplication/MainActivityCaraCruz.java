@@ -18,6 +18,8 @@ public class MainActivityCaraCruz extends AppCompatActivity {
     private TextView tvMoneda;
     private TextView tvTragos;
     private ImageView moneda;
+    private Button btnLanzarMoneda;
+
     private int suerte = 0;
     private int tragos = 0;
     private String auxiliar;
@@ -41,12 +43,17 @@ public class MainActivityCaraCruz extends AppCompatActivity {
         //Asignacion de Sonido
         mpMoneda = MediaPlayer.create(this, R.raw.moneda);
 
-
+        //Asignacion de Button
+        btnLanzarMoneda = findViewById(R.id.buttonLanzarMoneda);
     }
 
     public void lanzarMoneda(View view){
 
+        //Desactivar Button
+        btnLanzarMoneda.setEnabled(false);
+
         //Sonido Lanzar Moneda
+        //Iniciar musica/sonidos
         mpMoneda.start();
 
         tragos = (int)(Math.random()*4);
@@ -72,6 +79,8 @@ public class MainActivityCaraCruz extends AppCompatActivity {
                     stopWheells();
                     auxiliar = (String) getText(R.string.bebes);
                     tvTragos.setText(auxiliar +" "+tragos);
+                    //Activar Button
+                    btnLanzarMoneda.setEnabled(false);
                 }
 
             }.start();

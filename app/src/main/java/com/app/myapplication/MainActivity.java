@@ -121,7 +121,12 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
                 startActivity(intent);
                 finish();
                 break;
-            case 4: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+            case 4:
+                //Setas Venenosas
+                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                intent = new Intent(this, MainActivitySetasVenenosas.class);
+                startActivity(intent);
+                finish();
                 break;
             case 5: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 break;
