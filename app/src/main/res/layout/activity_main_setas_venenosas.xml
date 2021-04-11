@@ -17,9 +17,9 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="0dp"
-        android:background="@color/azul"
+        android:background="@color/rosa"
         android:gravity="center"
-        android:text="@string/setas_venenosas"
+        android:text="@string/pulsar_casilla"
         android:textColor="#040404"
         android:textSize="18sp" />
 
@@ -47,8 +47,8 @@
                 android:layout_height="90dp"
                 android:layout_weight="90"
                 android:background="@drawable/seta_cero"
-                android:onClick="cogerSeta"
-                android:contentDescription="@string/setas_venenosas"/>
+                android:contentDescription="@string/setas_venenosas"
+                android:onClick="cogerSeta" />
 
             <ImageButton
                 android:id="@+id/seta_1x2"
@@ -56,8 +56,8 @@
                 android:layout_height="90dp"
                 android:layout_weight="90"
                 android:background="@drawable/seta_cero"
-                android:onClick="cogerSeta"
-                android:contentDescription="@string/setas_venenosas"/>
+                android:contentDescription="@string/setas_venenosas"
+                android:onClick="cogerSeta" />
 
             <ImageButton
                 android:id="@+id/seta_1x3"
@@ -65,8 +65,8 @@
                 android:layout_height="90dp"
                 android:layout_weight="90"
                 android:background="@drawable/seta_cero"
-                android:onClick="cogerSeta"
-                android:contentDescription="@string/setas_venenosas"/>
+                android:contentDescription="@string/setas_venenosas"
+                android:onClick="cogerSeta" />
 
             <ImageButton
                 android:id="@+id/seta_1x4"
@@ -74,8 +74,8 @@
                 android:layout_height="90dp"
                 android:layout_weight="90"
                 android:background="@drawable/seta_cero"
-                android:onClick="cogerSeta"
-                android:contentDescription="@string/setas_venenosas"/>
+                android:contentDescription="@string/setas_venenosas"
+                android:onClick="cogerSeta" />
         </TableRow>
 
         <TableRow
@@ -90,8 +90,8 @@
                 android:layout_height="90dp"
                 android:layout_weight="90"
                 android:background="@drawable/seta_cero"
-                android:onClick="cogerSeta"
-                android:contentDescription="@string/setas_venenosas"/>
+                android:contentDescription="@string/setas_venenosas"
+                android:onClick="cogerSeta" />
 
             <ImageButton
                 android:id="@+id/seta_2x2"
@@ -99,8 +99,8 @@
                 android:layout_height="90dp"
                 android:layout_weight="90"
                 android:background="@drawable/seta_cero"
-                android:onClick="cogerSeta"
-                android:contentDescription="@string/setas_venenosas"/>
+                android:contentDescription="@string/setas_venenosas"
+                android:onClick="cogerSeta" />
 
             <ImageButton
                 android:id="@+id/seta_2x3"
@@ -108,8 +108,8 @@
                 android:layout_height="90dp"
                 android:layout_weight="90"
                 android:background="@drawable/seta_cero"
-                android:onClick="cogerSeta"
-                android:contentDescription="@string/setas_venenosas"/>
+                android:contentDescription="@string/setas_venenosas"
+                android:onClick="cogerSeta" />
 
             <ImageButton
                 android:id="@+id/seta_2x4"
@@ -117,8 +117,8 @@
                 android:layout_height="90dp"
                 android:layout_weight="90"
                 android:background="@drawable/seta_cero"
-                android:onClick="cogerSeta"
-                android:contentDescription="@string/setas_venenosas"/>
+                android:contentDescription="@string/setas_venenosas"
+                android:onClick="cogerSeta" />
         </TableRow>
 
         <TableRow
@@ -133,8 +133,8 @@
                 android:layout_height="90dp"
                 android:layout_weight="90"
                 android:background="@drawable/seta_cero"
-                android:onClick="cogerSeta"
-                android:contentDescription="@string/setas_venenosas"/>
+                android:contentDescription="@string/setas_venenosas"
+                android:onClick="cogerSeta" />
 
             <ImageButton
                 android:id="@+id/seta_3x2"
@@ -142,8 +142,8 @@
                 android:layout_height="90dp"
                 android:layout_weight="90"
                 android:background="@drawable/seta_cero"
-                android:onClick="cogerSeta"
-                android:contentDescription="@string/setas_venenosas"/>
+                android:contentDescription="@string/setas_venenosas"
+                android:onClick="cogerSeta" />
 
             <ImageButton
                 android:id="@+id/seta_3x3"
@@ -151,8 +151,8 @@
                 android:layout_height="90dp"
                 android:layout_weight="90"
                 android:background="@drawable/seta_cero"
-                android:onClick="cogerSeta"
-                android:contentDescription="@string/setas_venenosas"/>
+                android:contentDescription="@string/setas_venenosas"
+                android:onClick="cogerSeta" />
 
             <ImageButton
                 android:id="@+id/seta_3x4"
@@ -160,8 +160,8 @@
                 android:layout_height="90dp"
                 android:layout_weight="90"
                 android:background="@drawable/seta_cero"
-                android:onClick="cogerSeta"
-                android:contentDescription="@string/setas_venenosas"/>
+                android:contentDescription="@string/setas_venenosas"
+                android:onClick="cogerSeta" />
         </TableRow>
 
         <TableRow
@@ -176,8 +176,8 @@
                 android:layout_height="90dp"
                 android:layout_weight="90"
                 android:background="@drawable/seta_cero"
-                android:onClick="cogerSeta"
-                android:contentDescription="@string/setas_venenosas"/>
+                android:contentDescription="@string/setas_venenosas"
+                android:onClick="cogerSeta" />
 
             <ImageButton
                 android:id="@+id/seta_4x2"
@@ -185,8 +185,8 @@
                 android:layout_height="90dp"
                 android:layout_weight="90"
                 android:background="@drawable/seta_cero"
-                android:onClick="cogerSeta"
-                android:contentDescription="@string/setas_venenosas"/>
+                android:contentDescription="@string/setas_venenosas"
+                android:onClick="cogerSeta" />
 
             <ImageButton
                 android:id="@+id/seta_4x3"
@@ -194,8 +194,8 @@
                 android:layout_height="90dp"
                 android:layout_weight="90"
                 android:background="@drawable/seta_cero"
-                android:onClick="cogerSeta"
-                android:contentDescription="@string/setas_venenosas"/>
+                android:contentDescription="@string/setas_venenosas"
+                android:onClick="cogerSeta" />
 
             <ImageButton
                 android:id="@+id/seta_4x4"
@@ -203,8 +203,8 @@
                 android:layout_height="90dp"
                 android:layout_weight="90"
                 android:background="@drawable/seta_cero"
-                android:onClick="cogerSeta"
-                android:contentDescription="@string/setas_venenosas"/>
+                android:contentDescription="@string/setas_venenosas"
+                android:onClick="cogerSeta" />
         </TableRow>
 
         <TableRow
@@ -219,8 +219,8 @@
                 android:layout_height="90dp"
                 android:layout_weight="90"
                 android:background="@drawable/seta_cero"
-                android:onClick="cogerSeta"
-                android:contentDescription="@string/setas_venenosas"/>
+                android:contentDescription="@string/setas_venenosas"
+                android:onClick="cogerSeta" />
 
             <ImageButton
                 android:id="@+id/seta_5x2"
@@ -228,8 +228,8 @@
                 android:layout_height="90dp"
                 android:layout_weight="90"
                 android:background="@drawable/seta_cero"
-                android:onClick="cogerSeta"
-                android:contentDescription="@string/setas_venenosas"/>
+                android:contentDescription="@string/setas_venenosas"
+                android:onClick="cogerSeta" />
 
             <ImageButton
                 android:id="@+id/seta_5x3"
@@ -237,8 +237,8 @@
                 android:layout_height="90dp"
                 android:layout_weight="90"
                 android:background="@drawable/seta_cero"
-                android:onClick="cogerSeta"
-                android:contentDescription="@string/setas_venenosas"/>
+                android:contentDescription="@string/setas_venenosas"
+                android:onClick="cogerSeta" />
 
             <ImageButton
                 android:id="@+id/seta_5x4"
@@ -246,8 +246,8 @@
                 android:layout_height="90dp"
                 android:layout_weight="90"
                 android:background="@drawable/seta_cero"
-                android:onClick="cogerSeta"
-                android:contentDescription="@string/setas_venenosas" />
+                android:contentDescription="@string/setas_venenosas"
+                android:onClick="cogerSeta" />
         </TableRow>
 
     </TableLayout>

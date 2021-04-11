@@ -3,6 +3,7 @@
     <string name="app_name">DrinkGames</string>
     <string name="idioma">Español</string>
     <string name="vacio"> </string>
+    <string name="yes">Si</string>
 
     <string name="not_car">Si bebes, No conduzcas</string>
     <string name="not_drink">Controla la cantidad de alchol que tomas.</string>
@@ -48,6 +49,7 @@
 
     <string name="bebes">Bebes</string>
     <string name="mandas_bebes">Mandas Bebes</string>
+    <string name="tragos">Tragos</string>
 
     <string name="moneda">Moneda</string>
     <string name="cara">Cara</string>
@@ -58,5 +60,7 @@
     <string name="siguiente_frase">Siguiente Frase</string>
 
     <string name="tirar">Tirar</string>
+    <string name="pulsar_casilla">Pulsa una casilla para comenzar.</string>
+    <string name="play_gamme">¿Jugar de nuevo?</string>
 
 </resources>
