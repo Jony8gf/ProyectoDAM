@@ -109,10 +109,25 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
 
         switch (position){
             case 0: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                //Mimica
+                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                intent = new Intent(this, MainActivityMimica.class);
+                startActivity(intent);
+                finish();
                 break;
             case 1: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                //Patata Caliente
+                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                intent = new Intent(this, MainActivityPatataCaliente.class);
+                startActivity(intent);
+                finish();
                 break;
             case 2: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                //Yo Nunca
+                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                intent = new Intent(this, MainActivityYoNunca.class);
+                startActivity(intent);
+                finish();
                 break;
             case 3:
                 //Cara o Cruz
@@ -129,12 +144,32 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
                 finish();
                 break;
             case 5: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                //Ruleta Rusa
+                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                intent = new Intent(this, MainActivityRuletaRusa.class);
+                startActivity(intent);
+                finish();
                 break;
             case 6: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                //Ruleta de la suerte
+                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                intent = new Intent(this, MainActivityRuletaSuerte.class);
+                startActivity(intent);
+                finish();
                 break;
             case 7: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                //Mayor o menor
+                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                intent = new Intent(this, MainActivityMayorMenor.class);
+                startActivity(intent);
+                finish();
                 break;
             case 8: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                //5 cosas
+                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                intent = new Intent(this, MainActivityCincoCosas.class);
+                startActivity(intent);
+                finish();
                 break;
             case 9:
                 //SlotMachine
@@ -144,6 +179,11 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
                 finish();
                 break;
             case 10: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                //Mas probable
+                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                intent = new Intent(this, MainActivityMasProbable.class);
+                startActivity(intent);
+                finish();
                 break;
             default: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
         }

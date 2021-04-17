@@ -31,7 +31,9 @@ public class ComponenteADFrase {
 
     public void conectarBD() throws ExcepcionFrase {
         try {
-            conexion = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/rbEmS40PZ9", "rbEmS40PZ9", "sOKoEWyHIQ");
+            String url = "https://remotemysql.com/phpmyadmin/index.php";
+            String puertoTrue = "3306";
+            conexion = DriverManager.getConnection("jdbc:mysql://"+url+":443/rbEmS40PZ9", "rbEmS40PZ9", "sOKoEWyHIQ");
 
         } catch (SQLException ex) {
             ExcepcionFrase exc = new ExcepcionFrase();
