@@ -14,6 +14,8 @@
 
     <string name="version">Versión Beta 1.0.0</string>
     <string name="requerido">Requered</string>
+    <string name="volver">Back</string>
+    <string name="info">Help</string>
 
     <string name="registrarse">Sign Up</string>
     <string name="registro"> Create Account in DrinkGames</string>
