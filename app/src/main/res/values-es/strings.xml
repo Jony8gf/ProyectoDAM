@@ -48,6 +48,7 @@
     <string name="slotmachine">SlotMachine</string>
     <string name="mayor_menor">Mayor o Menor</string>
     <string name="setas_venenosas">Setas Venenosas</string>
+    <string name="botella">Botella</string>
 
     <string name="bebes">Bebes</string>
     <string name="mandas_bebes">Mandas Bebes</string>
@@ -57,6 +58,13 @@
     <string name="cara">Cara</string>
     <string name="cruz">Cruz</string>
     <string name="lanzar_moneda">Lanzar Moneda</string>
+    <string name="cartainicial">Carta Inicial</string>
+    <string name="siete">7</string>
+    <string name="mayor">Mayor</string>
+    <string name="menor">Menor</string>
+    <string name="igual">Igual</string>
+    <string name="girar_botella">Girar botella</string>
+    <string name="disparar">Disparar</string>
 
     <string name="comenzar">Comenzar</string>
     <string name="siguiente_frase">Siguiente Frase</string>
@@ -64,5 +72,7 @@
     <string name="tirar">Tirar</string>
     <string name="pulsar_casilla">Pulsa una casilla para comenzar.</string>
     <string name="play_gamme">¿Jugar de nuevo?</string>
+
+
 
 </resources>
