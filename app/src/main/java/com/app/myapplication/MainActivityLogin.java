@@ -74,6 +74,17 @@ public class MainActivityLogin extends AppCompatActivity {
         finish();
     }
 
+    public void pasarInvitado(View view){
+
+        mpMusica.stop();
+        mpMusica.release();
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        //Finalizar Activity
+        finish();
+    }
+
     public void pasarSigIn(View view){
 
         mpMusica.stop();

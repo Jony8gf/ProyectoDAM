@@ -4,19 +4,20 @@
     <string name="vacio"> </string>
     <string name="yes">Yes</string>
 
-    <string name="not_car">Si bebes, No conduzcas</string>
-    <string name="not_drink">Controla la cantidad de alcohol que tomas.</string>
-    <string name="sabermas">Saber más</string>
+    <string name="not_car">Do not drink and drive</string>
+    <string name="not_drink">Control the amount of alcohol you drink.</string>
+    <string name="sabermas">Know more</string>
 
-    <string name="correo">Correo Electrónico</string>
-    <string name="contrasena">Contraseña</string>
-    <string name="acpetar">Aceptar</string>
+    <string name="correo">Email</string>
+    <string name="contrasena">Password</string>
+    <string name="acpetar">Acept</string>
 
-    <string name="version">Versión Beta 1.0.0</string>
+    <string name="version">Version Beta 1.0.0</string>
     <string name="requerido">Requered</string>
     <string name="volver">Back</string>
     <string name="info">Help</string>
 
+    <string name="invitado">Entrar como Invitado</string>
     <string name="registrarse">Sign Up</string>
     <string name="registro"> Create Account in DrinkGames</string>
     <string name="condiciones">Acept <u>Terms of use and Privacy</u></string>
@@ -49,27 +50,105 @@
     <string name="setas_venenosas">Poisonous Mushrooms</string>
     <string name="botella">Botella</string>
 
-    <string name="bebes">Bebes</string>
-    <string name="mandas_bebes">Mandas Bebes</string>
+    <string name="bebes">Drink</string>
+    <string name="mandas_bebes">send drink</string>
     <string name="tragos">Shots</string>
 
     <string name="moneda">Coin</string>
-    <string name="cara">Cara</string>
-    <string name="cruz">Cruz</string>
+    <string name="cara">Face</string>
+    <string name="cruz">Cross</string>
     <string name="lanzar_moneda">Flip a coin</string>
-    <string name="cartainicial">Carta Inicial</string>
+    <string name="cartainicial">Initial Letter</string>
     <string name="siete">7</string>
-    <string name="mayor">Mayor</string>
-    <string name="menor">Menor</string>
-    <string name="igual">Igual</string>
-    <string name="girar_botella">Girar botella</string>
-    <string name="disparar">Disparar</string>
+    <string name="quince">15</string>
+    <string name="mayor">Higher</string>
+    <string name="menor">Less</string>
+    <string name="igual">Equal</string>
+    <string name="girar_botella">Rotate bottle</string>
+    <string name="disparar">Shoot</string>
 
-    <string name="comenzar">Comenzar</string>
-    <string name="siguiente_frase">Siguiente Frase</string>
+    <string name="comenzar">Start</string>
+    <string name="siguiente_frase">Next Phrase</string>
 
-    <string name="tirar">Tirar</string>
-    <string name="pulsar_casilla">Pulsa una casilla para comenzar.</string>
-    <string name="play_gamme">¿Jugar de nuevo?</string>
+    <string name="tirar">Pull</string>
+    <string name="pulsar_casilla">Press a box to begin.</string>
+    <string name="play_gamme">Play again?</string>
+
+    <string name="entendido">Agreed</string>
+    <string name="ayuda_masprobable">USER HELP: WHO IS MORE LIKELY THAN…
+
+                    To start the game, you have to press the <u> START </u> button,
+                    this will display a phrase on the screen,
+                    the group members will read said sentence, and will point out the individual who is most likely to carry out said action, the most indicated
+                    He will drink the drinks that appear on the screen.
+                    To change the phrase, press the button <u> NEXT PHRESE</u>
+    </string>
+    <string name="ayuda_yonunca">HELP THE USER: I NEVER…
+
+                    To start the game, you have to press the <u> START </u> button
+                    this will display a phrase on the screen,
+                    whether group members have performed the action shown in that sentence
+                    they will drink the drinks that appear on the screen, otherwise you get rid of drinking.
+
+                    To change the phrase, press the button <u> NEXT PHRESE</u>
+    </string>
+    <string name="ayuda_mimica">USER HELP: MIME
+
+                    To start the game, you have to press the START button,
+                    this will show a word that the user must gesture for the group members to guess,
+                    if the users have not guessed the word the user who made the word drink the drinks ordered on the screen,
+                    otherwise, users who have not got the word right will drink those drinks.
+                    For another user to execute another word, they must click the NEXT WORD button to repeat the process with a different word.
+    </string>
+    <string name="ayuda_caracruz">USER HELP: FACE OR CROSS
+
+                    To start the game, users must say out loud that they are going to choose, if heads or tails, on the contrary,
+                    then you have to press the THROW COIN button,
+                    this will cause a coin to be tossed with the possibility of a FACE or CROSS coming out,
+                    If the option you chose comes out, you get rid of drinking for this time,
+                    in case you lose you will have to drink the drinks indicated.
+                    To flip the coin again, press the THROW COIN button.
+    </string>
+    <string name="ayuda_botella">USER HELP: BOTTLE
+
+                    To start the game, the players must get in a circle with the device in the middle of them,
+                    then you have to press the button ROTATE TANK,
+                    This will make the bottle launch and rotate until it stops,
+                    the player who is indicated with the tuto of the bottle will have to drink the drinks that are indicated.
+                    To turn the bottle again, press the ROTATE BOTTLE button.
+    </string>
+    <string name="ayuda_patatacaliente">USER HELP: HOT POTATO
+
+                    To start the game, you have to press the START button
+                    Taking turns, he will say a word related to the theme displayed on the screen and passing through the players of the game until the time is up.
+                    The player who has the turn when the time is up must drink.
+                    To choose another word, NEW WORD will be given
+    </string>
+    <string name="ayuda_ruletarusa">USER HELP: RUSSIAN ROULETTE
+
+                    To start the game, you have to press the LOAD REVOLVER button,
+                    this will cause you to store a cartridge in the gun,
+                    once this is done, each user who plays must hit the FIRE button,
+                    but at any moment when the pistol SHOOTING has the cartridge loaded and it is your turn to drink.
+    </string>
+    <string name="ayuda_setas">USER HELP: POISONOUS MUSHROOMS
+
+                    Each player will press a square in turn.
+                    Every time a box is uncovered, the drinks will be added to the top counter.
+                    When the player picks up a poisonous mushroom, he must perform the action indicated, as many times as the top counter marks it.
+    </string>
+    <string name="ayuda_mayormenor">HELP TO THE USER: MAJOR OR MINOR
+
+                    To begin, a main card will come out, the players will press one of the HIGHER, LESS or EQUAL buttons in turns.
+                    If they hit the next card, a drink will be added to the accumulator but if you fail, you will drink all the accumulated drinks.
+                    Be careful that the JOKER can come out at any moment.
+    </string>
+    <string name="ayuda_cincocosas">USER HELP: FIVE THINGS
+
+                    To start the game press the START button,
+                    A topic will then appear on the screen and players in rounds on each topic will have to say 5 things related to the topic in question in 15 seconds.
+                    If the player completes the challenge, he commands the drinks on the screen to be drunk. Otherwise, you must drink those drinks on the screen when you do not meet the objective.
+    </string>
+
 
 </resources>

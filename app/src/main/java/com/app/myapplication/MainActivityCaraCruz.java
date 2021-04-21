@@ -1,11 +1,15 @@
 package com.app.myapplication;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -45,6 +49,43 @@ public class MainActivityCaraCruz extends AppCompatActivity {
 
         //Asignacion de Button
         btnLanzarMoneda = findViewById(R.id.buttonLanzarMoneda);
+    }
+
+
+    //Metodo mostrar boton volver
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_ayuda, menu);
+        return true;
+    }
+
+    //Metodo agregar acciones a nuestros botones
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id =item.getItemId();
+
+        if(id == R.id.volver){
+            //Pasar de una Activity a otra
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            //Finalizar Activity
+            finish();
+        }
+        if(id == R.id.infoboton){
+            //se prepara la alerta creando nueva instancia
+            AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+            //seleccionamos la cadena a mostrar
+            alertbox.setMessage(getString(R.string.ayuda_caracruz));
+            //elegimos un positivo SI y creamos un Listener
+            alertbox.setPositiveButton(getString(R.string.entendido), new DialogInterface.OnClickListener() {
+                //Funcion llamada cuando se pulsa el boton Si
+                public void onClick(DialogInterface arg0, int arg1) {
+
+                }
+            });
+            //mostramos el alertbox
+            alertbox.show();
+        }
+
+        return true;
     }
 
     public void lanzarMoneda(View view){

@@ -18,6 +18,7 @@
     <string name="volver">Volver</string>
     <string name="info">Info</string>
 
+    <string name="invitado">Entrar como Invitado</string>
     <string name="registrarse">Registrarse</string>
     <string name="registro"> Crear cuenta en DrinkGames</string>
     <string name="condiciones">Aceptar <u>Condiciones de uso y Privacidad</u></string>
@@ -60,6 +61,7 @@
     <string name="lanzar_moneda">Lanzar Moneda</string>
     <string name="cartainicial">Carta Inicial</string>
     <string name="siete">7</string>
+    <string name="quince">15</string>
     <string name="mayor">Mayor</string>
     <string name="menor">Menor</string>
     <string name="igual">Igual</string>
@@ -72,6 +74,85 @@
     <string name="tirar">Tirar</string>
     <string name="pulsar_casilla">Pulsa una casilla para comenzar.</string>
     <string name="play_gamme">¿Jugar de nuevo?</string>
+
+    <string name="entendido">Entendido</string>
+    <string name="ayuda_masprobable">AYUDA AL USUARIO: QUIÉN ES MÁS PROBABLE QUE …
+
+                    Para comenzar el juego, hay que darle al botón <u>Comenzar</u>,
+                    esto hará que se muestre una frase en pantalla,
+                    los miembros del grupo leerán dicha frase, y señalarán al individuo que sea más probable de realizar dicha acción, el más señalado
+                    bebera los tragos que aparecen en pantalla.
+
+                    Para cambiar de frase se presionara el botón <u>Siguiente Frase</u>
+    </string>
+    <string name="ayuda_yonunca">AYUDA AL USUARIO: YO NUNCA …
+
+                    Para comenzar el juego, hay que darle al botón <u>Comenzar</u>
+                    esto hará que se muestre una frase en pantalla,
+                    si los miembros del grupo han realizado la acción que se muestra en dicha frase
+                    beberán los tragos que aparecen en pantalla, en caso contrario te libras de beber.
+
+                    Para cambiar de frase se presionara el botón <u>Siguiente Frase</u>
+    </string>
+    <string name="ayuda_mimica">AYUDA AL USUARIO: MÍMICA
+
+                    Para comenzar el juego, hay que darle al botón COMENZAR,
+                    esto hará que se muestre un palabra que el usuario debe gestualizar para que los miembros del grupo la adivinen,
+                    si los usuarios no han acertado la palabra el usuario que hizo la palabra beber los tragos ordenados en pantalla,
+                    en caso contrario, los usuarios que no hayan acertado la palabra beberán dichos tragos. \n
+                    Para que otro usuario ejecute otra palabra le deberá dar al botón SIGUIENTE PALABRA para repetir el proceso con una palabra diferente.
+    </string>
+    <string name="ayuda_caracruz">AYUDA AL USUARIO: CARA O CRUZ
+
+                    Para comenzar el juego, los usuarios deben de decir en alto que van a elegir, si cara o por el contrario cruz,
+                    a continuación hay que darle al botón LANZAR MONEDA ,
+                    esto hará que se lanze una moneda con la posibilidad de que salga CARA o CRUZ,
+                    si sale la opción que elegiste te libras por está vez de beber,
+                    en caso de que pierdas tendrás que beber los tragos que se indican.
+                    Para tirar otra vez la moneda se presionará el botón LANZAR MONEDA.
+    </string>
+    <string name="ayuda_botella">AYUDA AL USUARIO: BOTELLA
+
+                    Para comenzar el juego, los jugadores deben de ponerse en corro con el dispisitivo en medio de estos,
+                    a continuación hay que darle al botón GIRAR BOTEELA,
+                    esto hará que se lanze la botella y gira hasta llegar un momento en el que se pare,
+                    el jugador que sea señalado con el tuto de la botella tendra que beber los tragos que se indican.
+                    Para girar otra vez la boteela se presionará el botón GIRAR BOTEELA.
+    </string>
+    <string name="ayuda_patatacaliente">AYUDA AL USUARIO: PATATA CALIENTE
+
+                    Para comenzar el juego, hay que darle al botón COMENZAR
+                    Por turnos, dirá una palabra relacionada con el tema expuesto en pantalla y pasando por los jugadores de la partidas hasta que se acabe el tiempo.
+                    El jugador que tenga el turno cuando acabe el tiempo debe beber.
+                    Para elegir otra palabra se dará a NUEVA PALABRA
+    </string>
+    <string name="ayuda_ruletarusa">AYUDA AL USUARIO: RULETA RUSA
+
+                    Para comenzar el juego, hay que darle al botón CARGAR REVOLVER,
+                    esto hará que almacene un cartucho en la pistola,
+                    una vez hecho esto, cada usuario que juege debe darle al botón DISPARAR,
+                    pero en cualquier momento la pistola al DISPARAR tenga el cartucho cargado y te toque beber.
+    </string>
+    <string name="ayuda_setas">AYUDA AL USUARIO: SETAS VENENOSAS
+
+                    Cada jugador pulsará una casilla por turnos.
+                    Cada vez que se destape una casilla, los tragos se sumarán al contador superior.
+                    Cuando el jugador recoge una seta venenosa debe realizar la acción que se indica, tantas veces como se lo marque el contador superior.
+    </string>
+    <string name="ayuda_mayormenor">AYUDA AL USUARIO: MAYOR O MENOR
+
+                    Para comenzar saldrá una carta principal, los jugadores pulsarán una  de los botones MAYOR, MENOR o IGUAL por turnos.
+                    Si aciertan la carta siguiente se sumará un trago al acumulador pero si fallas beberas todos los tragos acumulados.
+                    Ten cuidado que en cualquir momento puede salir el JOKER.
+    </string>
+    <string name="ayuda_cincocosas">AYUDA AL USUARIO: CINCO COSAS
+
+                    Para empezar el juego dar al botón COMENZAR,
+                    A continuación saldrá un tema en pantalla y los jugadores por rondas en cada tema tendrán que decir 5 cosas relacionadas con el tema en cuestión en 15 segundos.
+                    Si el jugador completa el desafio manda beber los  tragos en pantalla. En caso contrario debe beber dichos tragos en pantalla al no cumplir el objetivo.
+    </string>
+
+
 
 
 
