@@ -65,6 +65,7 @@
     <string name="menor">Less</string>
     <string name="igual">Equal</string>
     <string name="girar_botella">Rotate bottle</string>
+    <string name="rodando_botella">Botella Rodando</string>
     <string name="disparar">Shoot</string>
 
     <string name="comenzar">Start</string>

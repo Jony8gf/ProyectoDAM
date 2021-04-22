@@ -5,17 +5,96 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.RotateAnimation;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivityBotella extends AppCompatActivity {
+
+    private TextView tvTragos, tvBebes;
+    private ImageView ivBotella;
+    private Button btnGirarBotella;
+    private String auxiliar;
+    private MediaPlayer mpGirarbotella;
+    private int tragos, angulo, angulorandom, opcBebes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_botella);
 
+        //Asignacion de TextView
+        tvBebes = (TextView)findViewById(R.id.textViewBotella);
+        tvTragos = (TextView)findViewById(R.id.textViewTragosBotella);
+
+        //Asignacion de Button
+        btnGirarBotella = (Button) findViewById(R.id.buttonGirarbotella);
+
+        //Asignacion de ImageView
+        ivBotella = (ImageView) findViewById(R.id.imageViewBotella);
+
+        //Asignacion de Sonidos/Musica
+        mpGirarbotella = MediaPlayer.create(this, R.raw.botellagirando);
+
+    }
+
+    public void girarBotella (View view){
+
+        //Denegar boton
+        auxiliar = (String) getText(R.string.rodando_botella);
+        btnGirarBotella.setText(auxiliar);
+        btnGirarBotella.setEnabled(false);
+
+        //Introducir Sonido
+        mpGirarbotella.start();
+        mpGirarbotella.setLooping(true);
+
+        //Generador de Tragos NumeroTragos
+        tragos = (int)(Math.random()*4);
+        if(tragos == 0){
+            tragos=2;
+        }
+
+        //Generador Bebebs-Mandas beber
+        opcBebes = (int)(Math.random()*1);
+
+        //Generar AnguloRandom;
+        angulorandom = (int)(Math.random()*360);
+
+
+        //Animación patata rotar 360 Grados
+        angulorandom = angulorandom + 720;
+        angulo = angulo % angulorandom;
+        RotateAnimation rotar = new RotateAnimation(angulo, angulorandom, RotateAnimation.RELATIVE_TO_SELF, 0.5f, RotateAnimation.RELATIVE_TO_SELF, 0.5f);
+        rotar.setFillAfter(true);
+        rotar.setDuration(5000);
+        rotar.setInterpolator(new AccelerateDecelerateInterpolator());
+        ivBotella.startAnimation(rotar);
+        auxiliar = (String)getText(R.string.tragos);
+        tvTragos.setText(tragos + " "+ auxiliar);
+
+        if(opcBebes == 0){
+            auxiliar = (String)getText(R.string.bebes);
+            tvBebes.setText(auxiliar);
+        }else{
+            auxiliar = (String)getText(R.string.mandas_bebes);
+            tvBebes.setText(auxiliar);
+        }
+
+        //Finalizar botella + sonido bocina
+        mpGirarbotella.stop();
+        btnGirarBotella.setEnabled(true);
+
+        //Boton volver a lanzar botella
+        auxiliar = (String) getText(R.string.girar_botella);
+        btnGirarBotella.setText(auxiliar);
     }
 
     //Metodo mostrar boton volver

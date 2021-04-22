@@ -90,8 +90,8 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
         elements.add(new ListElement(R.drawable.menu_cincocosas, getString(R.string.cinco_cosas), "+2 Jugadores"));
         elements.add(new ListElement(R.drawable.menu_slotmachine, getString(R.string.slotmachine), "+2 Jugadores"));
         elements.add(new ListElement(R.drawable.menu_masprobable, getString(R.string.masprobable), "+2 Jugadores"));
+        elements.add(new ListElement(R.drawable.menu_botella, getString(R.string.botella), "+2 Jugadores"));
         //Los Palillos
-        //Botella
 
         ListAdapter listAdapter = new ListAdapter(elements,
                 this, this);
@@ -182,6 +182,13 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
                 //Mas probable
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityMasProbable.class);
+                startActivity(intent);
+                finish();
+                break;
+            case 11: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                //Mas probable
+                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                intent = new Intent(this, MainActivityBotella.class);
                 startActivity(intent);
                 finish();
                 break;

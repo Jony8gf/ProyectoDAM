@@ -66,6 +66,7 @@
     <string name="menor">Menor</string>
     <string name="igual">Igual</string>
     <string name="girar_botella">Girar botella</string>
+    <string name="rodando_botella">Botella Rodando</string>
     <string name="disparar">Disparar</string>
 
     <string name="comenzar">Comenzar</string>

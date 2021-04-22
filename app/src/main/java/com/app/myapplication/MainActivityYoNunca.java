@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,11 +14,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 public class MainActivityYoNunca extends AppCompatActivity {
@@ -39,6 +36,7 @@ public class MainActivityYoNunca extends AppCompatActivity {
 
         tvFrase = findViewById(R.id.textViewYoNuncaFrase);
 
+        /*
 
         try{
             cdf = new ComponenteADFrase();
@@ -47,21 +45,31 @@ public class MainActivityYoNunca extends AppCompatActivity {
             Toast.makeText(this, "ERROR CONEXIÓN", Toast.LENGTH_LONG).show();
             excepcionFrase.printStackTrace();
         }
+         */
+
+
 
 
     }
 
 
-    public void ff (View v){
+    //Método para consultar un artículo o producto
+    public void Buscar(View view){
+        ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this, "administracion", null, 1);
+        SQLiteDatabase BaseDeDatabase = admin.getWritableDatabase();
 
-        ArrayList<UsuarioFrase> reg;
 
-        try{
-            reg = cdf.leerEmpleados();
-        }catch (ExcepcionFrase excepcionFrase) {
-            Toast.makeText(this, "ERROR QUERY", Toast.LENGTH_LONG).show();
-            excepcionFrase.printStackTrace();
-        }
+            Cursor fila = BaseDeDatabase.rawQuery
+                    ("select nombre from frase where tipo = 'YN';", null);
+
+            if(fila.moveToFirst()){
+                tvFrase.setText(fila.getString(0));
+                BaseDeDatabase.close();
+            } else {
+                Toast.makeText(this,"No existe el artículo", Toast.LENGTH_SHORT).show();
+                BaseDeDatabase.close();
+            }
+
     }
 
 

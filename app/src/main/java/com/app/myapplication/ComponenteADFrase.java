@@ -61,8 +61,8 @@ public class ComponenteADFrase {
 
 
     //Selecionar todos los Usuarios
-    public ArrayList<UsuarioFrase> leerEmpleados() throws ExcepcionFrase {
-        ArrayList<UsuarioFrase> listaEmpleado = new ArrayList();
+    public ArrayList<Frase> leerEmpleados() throws ExcepcionFrase {
+        ArrayList<Frase> listaEmpleado = new ArrayList();
         String dql = "select * from Usuario";
 
         try {
@@ -71,10 +71,10 @@ public class ComponenteADFrase {
             Statement sentencia = conexion.createStatement();
             ResultSet resultado = sentencia.executeQuery(dql);
             while (resultado.next()) {
-                UsuarioFrase usuario = new UsuarioFrase();
-                usuario.setUsuarioId(resultado.getInt("usuario_id"));
+                Frase usuario = new Frase();
+                //usuario.setUsuarioId(resultado.getInt("usuario_id"));
                 usuario.setNombre(resultado.getString("nombre"));
-                usuario.setCorreo(resultado.getString("correo"));
+                //usuario.setCorreo(resultado.getString("correo"));
                 listaEmpleado.add(usuario);
             }
 
