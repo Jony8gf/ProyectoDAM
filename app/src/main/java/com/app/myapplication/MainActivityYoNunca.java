@@ -18,60 +18,99 @@ import java.util.ArrayList;
 
 public class MainActivityYoNunca extends AppCompatActivity {
 
-    String records = "",error="";
+    int numero = 0;
+    boolean carga = false;
+    String idioma = "";
+    ArrayList<String> frases = new ArrayList<>();
 
-    private final String ipServidor = "remotemysql.com";
-    private final String puerto = "3306";
-    private final String userName = "rbEmS40PZ9";
-    private final String userPassword = "sOKoEWyHIQ";
-    private final String nombreBaseDatos = "rbEmS40PZ9";
-
-    private TextView tvFrase;
-    ComponenteADFrase cdf;
+    private TextView tvFrase, tvTragos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_yo_nunca);
 
+        //Asignacion de TextView
         tvFrase = findViewById(R.id.textViewYoNuncaFrase);
+        tvTragos = findViewById(R.id.textViewYoNuncaTragps);
 
-        /*
-
-        try{
-            cdf = new ComponenteADFrase();
-            cdf.conectarBD();
-        }catch (ExcepcionFrase excepcionFrase) {
-            Toast.makeText(this, "ERROR CONEXIÓN", Toast.LENGTH_LONG).show();
-            excepcionFrase.printStackTrace();
-        }
-         */
-
-
-
-
+        // Cargar IDIOMA
+        idioma = getString(R.string.idioma);
     }
 
 
     //Método para consultar un artículo o producto
     public void Buscar(View view){
+
+        if(!carga){
+            contadorFrases();
+
+            //cargarFrases(idioma);
+            cargarFrases();
+
+            fraseAletoria();
+
+            tragosAletorios();
+        }else{
+            fraseAletoria();
+
+            tragosAletorios();
+        }
+    }
+
+    private void  cargarFrases(){
+
         ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this, "administracion", null, 1);
-        SQLiteDatabase BaseDeDatabase = admin.getWritableDatabase();
+        SQLiteDatabase basedatos = admin.getWritableDatabase();
 
+        //Consultamos los datos
+        //Cursor fila = basedatos.rawQuery ("select nombre from frase where tipo = 'YN' ;and idioma = " +idoma+ ";", null);
+        Cursor fila = basedatos.rawQuery ("select nombre from frase where tipo = 'YN' ;", null);
 
-            Cursor fila = BaseDeDatabase.rawQuery
-                    ("select nombre from frase where tipo = 'YN';", null);
+        if (fila != null) {
+            fila.moveToFirst();
+            do {
+                //Asignamos el arraylist los elementos
+                String frase = fila.getString(0);
+                frases.add(frase);
+                carga = true;
+                Toast.makeText(this, frase, Toast.LENGTH_SHORT).show();
+            } while (fila.moveToNext());
 
-            if(fila.moveToFirst()){
-                tvFrase.setText(fila.getString(0));
-                BaseDeDatabase.close();
-            } else {
-                Toast.makeText(this,"No existe el artículo", Toast.LENGTH_SHORT).show();
-                BaseDeDatabase.close();
-            }
+        }
+
+        //Cerramos el cursor y la conexion con la base de datos
+        fila.close();
+        basedatos.close();
 
     }
 
+    private void contadorFrases(){
+
+        ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this, "administracion", null, 1);
+        SQLiteDatabase basedatos = admin.getWritableDatabase();
+
+        Cursor num = basedatos.rawQuery ("select count() from frase where tipo = 'YN';", null);
+        if(num.moveToFirst()){
+            String count = num.getString(0);
+            numero = Integer.parseInt(count);
+            basedatos.close();
+        }
+    }
+
+    private void fraseAletoria(){
+
+        int fraseRandom = (int)(Math.random()*numero);
+        String tt = frases.get(fraseRandom);
+        tvFrase.setText(tt);
+
+    }
+
+    private  void tragosAletorios(){
+        int tragos = (int)(Math.random()*3+1);
+        String tragosAux = ""+tragos;
+        tvTragos.setText(tragosAux);
+    }
 
 
     //Metodo mostrar boton volver
