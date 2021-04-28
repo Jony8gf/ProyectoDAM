@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class MainActivityYoNunca extends AppCompatActivity {
 
@@ -22,6 +25,7 @@ public class MainActivityYoNunca extends AppCompatActivity {
     boolean carga = false;
     String idioma = "";
     ArrayList<String> frases = new ArrayList<>();
+    private TextToSpeech mTTS;
 
     private TextView tvFrase, tvTragos;
 
@@ -36,6 +40,44 @@ public class MainActivityYoNunca extends AppCompatActivity {
 
         // Cargar IDIOMA
         idioma = getString(R.string.idioma);
+
+        switch (getString(R.string.idioma)){
+
+            case "Español": Toast.makeText(this, "Español", Toast.LENGTH_SHORT).show();
+                mTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+                    @Override
+                    public void onInit(int status) {
+                        Locale spanish = new Locale("es", "ES");
+                        if (status == TextToSpeech.SUCCESS) {
+                            int result = mTTS.setLanguage(spanish);
+                            if (result == TextToSpeech.LANG_MISSING_DATA
+                                    || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                                Log.e("TTS", "Language not supported");
+                            }
+                        } else {
+                            Log.e("TTS", "Initialization failed");
+                        }
+                    }
+                });
+                break;
+            case "English": Toast.makeText(this, "English", Toast.LENGTH_SHORT).show();
+                mTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+                    @Override
+                    public void onInit(int status) {
+                        if (status == TextToSpeech.SUCCESS) {
+                            int result = mTTS.setLanguage(Locale.ENGLISH);
+                            if (result == TextToSpeech.LANG_MISSING_DATA
+                                    || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                                Log.e("TTS", "Language not supported");
+                            }
+                        } else {
+                            Log.e("TTS", "Initialization failed");
+                        }
+                    }
+                });
+                break;
+            default: Toast.makeText(this, "English", Toast.LENGTH_SHORT).show();
+        }
     }
 
 
@@ -64,8 +106,16 @@ public class MainActivityYoNunca extends AppCompatActivity {
         SQLiteDatabase basedatos = admin.getWritableDatabase();
 
         //Consultamos los datos
-        //Cursor fila = basedatos.rawQuery ("select nombre from frase where tipo = 'YN' ;and idioma = " +idoma+ ";", null);
-        Cursor fila = basedatos.rawQuery ("select nombre from frase where tipo = 'YN' ;", null);
+        Cursor fila = null;
+
+        switch (getString(R.string.idioma)){
+
+            case "Español": fila = basedatos.rawQuery ("select nombre from frase where tipo = 'YN' and idioma = 'Español' ;", null);
+                break;
+            case "English": fila = basedatos.rawQuery ("select nombre from frase where tipo = 'YN' and idioma = 'English' ;", null);
+                break;
+            default: fila = basedatos.rawQuery ("select nombre from frase where tipo = 'YN' and idioma = 'English' ;", null);
+        }
 
         if (fila != null) {
             fila.moveToFirst();
@@ -101,8 +151,8 @@ public class MainActivityYoNunca extends AppCompatActivity {
     private void fraseAletoria(){
 
         int fraseRandom = (int)(Math.random()*numero);
-        String tt = frases.get(fraseRandom);
-        tvFrase.setText(tt);
+        mTTS.speak(frases.get(fraseRandom), TextToSpeech.QUEUE_FLUSH, null);
+        tvFrase.setText(frases.get(fraseRandom));
 
     }
 

@@ -17,26 +17,31 @@ public class MainActivityMasProbable extends AppCompatActivity {
         setContentView(R.layout.activity_main_mas_probable);
 
 
+        Thread cliente;
+        cliente = new SocketCliente("Ana");
+        cliente.start();
+
     }
 
+
     //Metodo mostrar boton volver
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_ayuda, menu);
         return true;
     }
 
     //Metodo agregar acciones a nuestros botones
-    public boolean onOptionsItemSelected(MenuItem item){
-        int id =item.getItemId();
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
 
-        if(id == R.id.volver){
+        if (id == R.id.volver) {
             //Pasar de una Activity a otra
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             //Finalizar Activity
             finish();
         }
-        if(id == R.id.infoboton){
+        if (id == R.id.infoboton) {
             //se prepara la alerta creando nueva instancia
             AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
             //seleccionamos la cadena a mostrar
@@ -56,8 +61,6 @@ public class MainActivityMasProbable extends AppCompatActivity {
     }
 
 
-
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -71,24 +74,30 @@ public class MainActivityMasProbable extends AppCompatActivity {
         super.onStart();
         // La actividad está a punto de hacerse visible.
     }
+
     @Override
     protected void onResume() {
         super.onResume();
         // La actividad se ha vuelto visible (ahora se "reanuda").
     }
+
     @Override
     protected void onPause() {
         super.onPause();
         // Enfocarse en otra actividad  (esta actividad está a punto de ser "detenida").
     }
+
     @Override
     protected void onStop() {
         super.onStop();
         // La actividad ya no es visible (ahora está "detenida")
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         // La actividad está a punto de ser destruida.
     }
+
+
 }

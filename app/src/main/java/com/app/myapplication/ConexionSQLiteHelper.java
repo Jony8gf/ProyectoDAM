@@ -168,10 +168,144 @@ public class ConexionSQLiteHelper  extends SQLiteOpenHelper {
         basedatos.execSQL("Insert into frase values (146,'I have never watched a reality show', 'YN', 'English')");
         basedatos.execSQL("Insert into frase values (147,'I have never been attracted to my best friends girlfriend', 'YN', 'English')");
         basedatos.execSQL("Insert into frase values (148,'I have never read a book', 'YN', 'English')");
-        basedatos.execSQL("Insert into frase values (149,'I have never played a Drink Games', 'YN', 'English')");
+        basedatos.execSQL("Insert into frase values (149,'I have never playing futbol', 'YN', 'English')");
+        basedatos.execSQL("Insert into frase values (150,'I have never played a Drink Games', 'YN', 'English')");
+        //Reservado hasta 199
 
         //Insertar Frasse Yo Nunca en Español
-        basedatos.execSQL("Insert into frase values (150,'Yo nunca he consumido más de 4 tipos de drogas en una noche', 'YN', 'Español')");
+        basedatos.execSQL("Insert into frase values (200,'Yo nunca he consumido más de 4 tipos de drogas en una noche', 'YN', 'Español')");
+        //349
+        basedatos.execSQL("Insert into frase values (349,'Yo nunca he consumido más de 4 tipos de drogas en una noche', 'YN', 'Español')");
+        //Reservado hastas 399
+
+
+        //Insertar Frases Patata Caliente en English
+        basedatos.execSQL("Insert into frase values (400,'Soft drink brands', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (401,'Car brands', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (402,'The Simpsons Characters', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (403,'Cartoon', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (404,'Fast Food Brands', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (405,'Verbs', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (406,'Colors', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (407,'Footballers', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (408,'European Contries', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (409,'World capitals', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (410,'Mobile brands', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (411,'Books', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (412,'Sports', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (413,'Olympic medalists', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (414,'Racing Drivers', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (415,'Superheroes', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (416,'Foods', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (417,'Social networks', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (418,'Cities', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (419,'Numbers', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (420,'Football Teams', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (421,'Singer', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (422,'Aquatic animals', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (423,'Animals', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (424,'Series', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (425,'Netflix Series', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (426,'Films', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (427,'Actors/Actresses', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (428,'Famous', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (429,'Videogames', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (430,'Fruts', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (431,'Vegetables', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (432,'Historical figures', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (433,'Clothing brands', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (434,'Newspapers', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (435,'Clothing stores', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (436,'Construction tools', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (437,'Clothing', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (438,'Types of makeup', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (439,'TV Programs', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (440,'Movie categories', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (441,'Lenguages', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (442,'Trees', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (443,'Mountains', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (444,'Real estate', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (445,'TV Channels', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (446,'Medicines', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (447,'Elements of the periodic table', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (448,'Insects', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (449,'Ball sports', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (450,'Sauces', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (451,'Politicians', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (452,'Relative to tourism', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (453,'Table games', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (454,'Things to put in a suitcase', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (455,'Fish', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (456,'Apps', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (457,'Companies', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (458,'Supermarkets', 'PC', 'English')");
+        basedatos.execSQL("Insert into frase values (459,'Countries', 'PC', 'English')");
+        //Reservado hasta 499
+
+        //Insertar Frases Patata Caliente en Español - 500
+        basedatos.execSQL("Insert into frase values (500,'Marcas de Refrescos', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (501,'Marcas de Coche', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (502,'Personajes de Los Simpsons', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (503,'Dibujos Animados', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (504,'Marcas de Comida Rápida', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (505,'Verbos', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (506,'Colores', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (507,'Futbolistas', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (508,'Países Europeos', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (509,'Capitales del Mundo', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (510,'Marcas de Móviles', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (511,'Libros', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (512,'Deportes', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (513,'Medallistas Olímpicos', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (514,'Pilotos de Carreras', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (515,'Superheroes', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (516,'Comidas', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (517,'Redes Sociales', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (518,'Ciudades', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (519,'Números', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (520,'Equipos de Fútbol', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (521,'Cantantes', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (522,'Animales Acuaticos', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (523,'Animales', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (524,'Series', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (525,'Series de Netflix', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (526,'Películas', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (527,'Actores/Actrices', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (528,'Famosos', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (529,'Videojuegos', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (530,'Frutas', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (531,'Verduras', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (532,'Personajes Históricos', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (533,'Marcas de Ropa', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (534,'Periódicos', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (535,'Tiendas de ropa', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (536,'Herramientas de construcción', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (537,'Prendas de vestir', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (538,'Tipos de Maquillaje', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (539,'Programas de TV', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (540,'Categorías de Películas', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (541,'Idiomas', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (542,'Árboles', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (543,'Montañas', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (544,'Inmobiliario', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (545,'Canales de TV', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (546,'Medicamentos', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (547,'Elementos de la tabla periódica', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (548,'Insectos', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (549,'Deportes con pelota', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (550,'Salsas', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (551,'Políticos', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (552,'Relativo al turismo', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (553,'Juegos de mesa', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (554,'Cosas que meter en una maleta', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (555,'Pescados', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (556,'Apps', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (557,'Empresas', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (558,'Supermercados', 'PC', 'Español')");
+        basedatos.execSQL("Insert into frase values (559,'Países', 'PC', 'Español')");
+        //Reservado hasta 599
+
+        //Insertar Frases Mimica en Español - 600
 
     }
 
