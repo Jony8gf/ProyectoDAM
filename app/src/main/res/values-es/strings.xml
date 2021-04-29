@@ -55,6 +55,7 @@
     <string name="bebes">Bebes</string>
     <string name="mandas_bebes">Mandas Bebes</string>
     <string name="tragos">Tragos</string>
+    <string name="tragos_acumulados">Tragos Acumulados</string>
 
     <string name="moneda">Moneda</string>
     <string name="cara">Cara</string>
@@ -72,6 +73,11 @@
 
     <string name="comenzar">Comenzar</string>
     <string name="siguiente_frase">Siguiente Frase</string>
+    <string name="siguiente_carta">Siguiente Carta</string>
+
+    <string name="fallaste">Fallaste</string>
+    <string name="acertaste">Acertaste</string>
+    <string name="joker">Joker</string>
 
     <string name="tirar">Tirar</string>
     <string name="pulsar_casilla">Pulsa una casilla para comenzar.</string>

@@ -54,6 +54,7 @@
     <string name="bebes">Drink</string>
     <string name="mandas_bebes">send drink</string>
     <string name="tragos">Shots</string>
+    <string name="tragos_acumulados">Tragos Acumulados</string>
 
     <string name="moneda">Coin</string>
     <string name="cara">Face</string>
@@ -71,6 +72,11 @@
 
     <string name="comenzar">Start</string>
     <string name="siguiente_frase">Next Phrase</string>
+    <string name="siguiente_carta">Next Card</string>
+
+    <string name="fallaste">Fallaste</string>
+    <string name="acertaste">Acertaste</string>
+    <string name="joker">Joker</string>
 
     <string name="tirar">Pull</string>
     <string name="pulsar_casilla">Press a box to begin.</string>
