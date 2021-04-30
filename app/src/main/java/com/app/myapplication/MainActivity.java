@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
     private int posiciomiento;
     private TextToSpeech mTTS;
 
+    String nombre;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +69,8 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
                 break;
             default: Toast.makeText(this, "English", Toast.LENGTH_SHORT).show();
         }
+
+        nombre =  getIntent().getStringExtra("nombre");
 
         init();
     }
@@ -126,6 +130,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
                 //Yo Nunca
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityYoNunca.class);
+                intent.putExtra("nombre", nombre);
                 startActivity(intent);
                 finish();
                 break;
@@ -182,6 +187,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
                 //Mas probable
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityMasProbable.class);
+                intent.putExtra("nombre", nombre);
                 startActivity(intent);
                 finish();
                 break;
@@ -189,6 +195,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
                 //Mas probable
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityBotella.class);
+
                 startActivity(intent);
                 finish();
                 break;

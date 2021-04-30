@@ -79,7 +79,11 @@ public class MainActivityLogin extends AppCompatActivity {
         mpMusica.stop();
         mpMusica.release();
 
+        int invitadoNumero = (int) (Math.random() *700);
+        String invitado = "Invitado "+ invitadoNumero;
+
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("nombre", invitado);
         startActivity(intent);
         //Finalizar Activity
         finish();

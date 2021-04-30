@@ -18,7 +18,7 @@ public class MainActivityMasProbable extends AppCompatActivity {
 
 
         Thread cliente;
-        cliente = new SocketCliente("Ana");
+        cliente = new SocketCliente(  getIntent().getStringExtra("nombre"));
         cliente.start();
 
     }
