@@ -81,7 +81,7 @@ public class MainActivityYoNunca extends AppCompatActivity {
     }
 
 
-    //Método para consultar un artículo o producto
+    //Método para sacar una frase en pantalla
     public void Buscar(View view){
 
         if(!carga){

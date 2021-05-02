@@ -5,16 +5,157 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class MainActivityMimica extends AppCompatActivity {
+
+    private MediaPlayer mpSiguiente, mpMimica;
+    private TextView tvFrase;
+    private TextView tvTragos;
+    private Button btnOcultar;
+    private Button btComenzar;
+    private boolean ocultar  = true;
+    private String guardarPalabara;
+    private String idioma;
+    private String auxiliar;
+    ArrayList<String> frases = new ArrayList<>();
+    int numero = 0;
+    boolean carga = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_mimica);
+
+        //Musica Siguiente && Mimica
+        mpSiguiente = MediaPlayer.create(this, R.raw.siguiente);
+        mpMimica = MediaPlayer.create(this, R.raw.mimica);
+        mpMimica.start();
+        mpMimica.setLooping(true);
+
+
+        //Asignacion a TextViews
+        tvFrase = findViewById(R.id.textViewMimicaFrase);
+        tvTragos = findViewById(R.id.textViewMimicaTragps);
+
+        //Asignacion de Buttons
+        btnOcultar = findViewById(R.id.buttonOcultarPalabraMimica);
+        btComenzar = findViewById(R.id.buttonMimica);
+
+        // Cargar IDIOMA
+        idioma = getString(R.string.idioma);
+
+    }
+
+    //Método para sacar una palabra por pantalla
+    public void siguientePalabra(View view){
+
+        if(!carga){
+            contadorFrases();
+
+            //cargarFrases(idioma);
+            cargarFrases();
+
+            fraseAletoria();
+
+            tragosAletorios();
+        }else{
+            fraseAletoria();
+
+            tragosAletorios();
+        }
+    }
+
+
+    private void  cargarFrases(){
+
+        ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this, "administracion", null, 1);
+        SQLiteDatabase basedatos = admin.getWritableDatabase();
+
+        //Consultamos los datos
+        Cursor fila = null;
+
+        switch (getString(R.string.idioma)){
+
+            case "Español": fila = basedatos.rawQuery ("select nombre from frase where tipo = 'MM' and idioma = 'Español' ;", null);
+                break;
+            case "English": fila = basedatos.rawQuery ("select nombre from frase where tipo = 'MM' and idioma = 'English' ;", null);
+                break;
+            default: fila = basedatos.rawQuery ("select nombre from frase where tipo = 'MM' and idioma = 'English' ;", null);
+        }
+
+        if (fila != null) {
+            fila.moveToFirst();
+            do {
+                //Asignamos el arraylist los elementos
+                String frase = fila.getString(0);
+                frases.add(frase);
+                carga = true;
+                //Toast.makeText(this, frase, Toast.LENGTH_SHORT).show();
+            } while (fila.moveToNext());
+
+        }
+
+        //Cerramos el cursor y la conexion con la base de datos
+        fila.close();
+        basedatos.close();
+
+    }
+
+    private void contadorFrases(){
+
+        ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this, "administracion", null, 1);
+        SQLiteDatabase basedatos = admin.getWritableDatabase();
+
+        Cursor num = basedatos.rawQuery ("select count() from frase where tipo = 'YN';", null);
+        if(num.moveToFirst()){
+            String count = num.getString(0);
+            numero = Integer.parseInt(count);
+            basedatos.close();
+        }
+    }
+
+    private void fraseAletoria(){
+
+        int fraseRandom = (int)(Math.random()*numero);
+        tvFrase.setText(frases.get(fraseRandom));
+
+    }
+
+    private  void tragosAletorios(){
+        int tragos = (int)(Math.random()*3+1);
+        String tragosAux = ""+tragos;
+        tvTragos.setText(tragosAux);
+    }
+
+    //ocultar Palabra
+    public void ocultarPalabra(View view){
+
+        if(ocultar) {
+            guardarPalabara = tvFrase.getText().toString();
+            tvFrase.setText("");
+            auxiliar = (String) getText(R.string.desocultar);
+            btnOcultar.setText(auxiliar);
+            ocultar = false;
+        }
+        else{
+            tvFrase.setText(guardarPalabara);
+            auxiliar = (String) getText(R.string.ocultar);
+            btnOcultar.setText(auxiliar);
+            ocultar = true;
+        }
     }
 
 

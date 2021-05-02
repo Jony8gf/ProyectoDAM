@@ -12,7 +12,6 @@
     <string name="correo">Correo Electrónico</string>
     <string name="contrasena">Contraseña</string>
     <string name="acpetar">Aceptar</string>
-    <string name="ocultar">Ocultar Palabra</string>
 
     <string name="version">Versión Beta 1.0.0</string>
     <string name="requerido">Requered</string>
@@ -75,6 +74,8 @@
     <string name="probar_suerte">¡Probar suerte!</string>
     <string name="alcance">¡Te dio de lleno!</string>
     <string name="tiro">Tiro</string>
+    <string name="ocultar">Ocultar palabra</string>
+    <string name="desocultar">Desocultar palabra</string>
 
     <string name="comenzar">Comenzar</string>
     <string name="siguiente_frase">Siguiente Frase</string>
