@@ -44,19 +44,21 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginStart="1dp"
         android:layout_marginBottom="130dp"
         android:adjustViewBounds="true"
         android:contentDescription="@string/ruleta_suerte"
         android:src="@drawable/roulette_8" />
 
     <Button
-        android:id="@+id/buttonStartRuletaSuerte"
+        android:id="@+id/buttonGirarRuletaSuerte"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
-        android:background="@drawable/start"/>
+        android:background="@drawable/start"
+        android:onClick="girarRuleta" />
 
     <ImageView android:id="@+id/imageViewRuletaSuerteSelected"
         android:layout_width="wrap_content"

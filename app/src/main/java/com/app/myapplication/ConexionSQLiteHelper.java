@@ -717,22 +717,22 @@ public class ConexionSQLiteHelper  extends SQLiteOpenHelper {
         basedatos.execSQL("Insert into frase values (1004,'Beben todos', 'RS', 'Español')");
         basedatos.execSQL("Insert into frase values (1005,'Bebe el último en levantarse', 'RS', 'Español')");
         basedatos.execSQL("Insert into frase values (1006,'Beben los que tengan coche', 'RS', 'Español')");
-        basedatos.execSQL("Insert into frase values (1007,'Mandas beber 3', 'RS', 'Español')");
+        basedatos.execSQL("Insert into frase values (1007,'Mandas beber', 'RS', 'Español')");
         basedatos.execSQL("Insert into frase values (1008,'Bebe el primero en hablar', 'RS', 'Español')");
         basedatos.execSQL("Insert into frase values (1009,'Beben los que tengan trabajo', 'RS', 'Español')");
 
 
         //Insertar Ruleta de la Suerte en Ingles - 1010
-        basedatos.execSQL("Insert into frase values (1010,'The boys drink', 'RS', 'Español')");
-        basedatos.execSQL("Insert into frase values (1011,'Girls drink', 'RS', 'Español')");
-        basedatos.execSQL("Insert into frase values (1012,'Drink the one on your left', 'RS', 'Español')");
-        basedatos.execSQL("Insert into frase values (1013,'Drink the one on your right', 'RS', 'Español')");
-        basedatos.execSQL("Insert into frase values (1014,'They all drink', 'RS', 'Español')");
-        basedatos.execSQL("Insert into frase values (1015,'Drink the last to rise', 'RS', 'Español')");
-        basedatos.execSQL("Insert into frase values (1016,'Those who have a car drink', 'RS', 'Español')");
-        basedatos.execSQL("Insert into frase values (1017,'You order drink 3', 'RS', 'Español')");
-        basedatos.execSQL("Insert into frase values (1018,'Drink the first to speak', 'RS', 'Español')");
-        basedatos.execSQL("Insert into frase values (1019,'Those who have work drink', 'RS', 'Español')");
+        basedatos.execSQL("Insert into frase values (1010,'The boys drink', 'RS', 'English')");
+        basedatos.execSQL("Insert into frase values (1011,'Girls drink', 'RS', 'English')");
+        basedatos.execSQL("Insert into frase values (1012,'Drink the one on your left', 'RS', 'English')");
+        basedatos.execSQL("Insert into frase values (1013,'Drink the one on your right', 'RS', 'English')");
+        basedatos.execSQL("Insert into frase values (1014,'They all drink', 'RS', 'English')");
+        basedatos.execSQL("Insert into frase values (1015,'Drink the last to rise', 'RS', 'English')");
+        basedatos.execSQL("Insert into frase values (1016,'Those who have a car drink', 'RS', 'English')");
+        basedatos.execSQL("Insert into frase values (1017,'You order drink', 'RS', 'English')");
+        basedatos.execSQL("Insert into frase values (1018,'Drink the first to speak', 'RS', 'English')");
+        basedatos.execSQL("Insert into frase values (1019,'Those who have work drink', 'RS', 'English')");
 
     }
 

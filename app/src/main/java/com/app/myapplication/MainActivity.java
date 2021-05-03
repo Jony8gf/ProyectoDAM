@@ -1,16 +1,13 @@
 package com.app.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -158,7 +155,8 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
             case 6: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 //Ruleta de la suerte
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
-                intent = new Intent(this, MainActivityRuletaSuerte.class);
+                //intent = new Intent(this, MainActivityRuletaSuerte.class);
+                intent = new Intent(this, MainActivityLobbyRuletaSuerte.class);
                 startActivity(intent);
                 finish();
                 break;

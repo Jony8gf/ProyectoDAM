@@ -13,6 +13,7 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoDAM">
+        <activity android:name=".MainActivityLobbyRuletaSuerte"></activity>
         <activity android:name=".MainActivityMimica" />
         <activity android:name=".MainActivityPatataCaliente" />
         <activity android:name=".MainActivityPalillos" />
@@ -31,7 +32,6 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-8043381776244583~1004200499" /> <!-- ca-app-pub-8043381776244583/9930395917 -->
-        
         <activity android:name=".MainActivitySignIn" />
         <activity android:name=".MainActivity" />
         <activity android:name=".MainActivityLogin" />

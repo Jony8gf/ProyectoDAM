@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivityLobbyRuletaSuerte"
+    android:background="@color/black">
+
+    <TextView
+        android:id="@+id/textViewRuletaSuerteLobby"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="@color/azul"
+        android:gravity="center"
+        android:text="@string/ruleta_suerte"
+        android:textColor="#FFFDFD"
+        android:textSize="24sp" />
+
+
+    <ScrollView
+        android:layout_width="393dp"
+        android:layout_height="518dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="71dp"
+        android:layout_marginEnd="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/editTextRS1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/ruleta_rusa"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/editTextRS2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/ruleta_rusa"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/editTextRS3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/ruleta_rusa"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/editTextRS4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/ruleta_rusa"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/editTextRS5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/ruleta_rusa"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/editTextRS6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/ruleta_rusa"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/editTextRS7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/ruleta_rusa"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/editTextRS8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/ruleta_rusa"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/editTextRS9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/ruleta_rusa"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/editTextRS10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/ruleta_rusa"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <ImageButton
+        android:id="@+id/buttonRuletaSuerteUp"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="59dp"
+        android:layout_height="58dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="116dp"
+        android:layout_marginBottom="135dp"
+        android:background="@color/rosa"
+        android:contentDescription="@string/ruleta_rusa"
+        android:onClick="up"
+        android:src="@drawable/up" />
+
+    <ImageButton
+        android:id="@+id/buttonRuletaSuerteDown"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="61dp"
+        android:layout_height="56dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="115dp"
+        android:layout_marginEnd="90dp"
+        android:layout_marginBottom="138dp"
+        android:background="@color/rosa"
+        android:contentDescription="@string/ruleta_rusa"
+        android:onClick="down"
+        android:src="@drawable/down" />
+
+    <Button
+        android:id="@+id/buttonRuletaSuerteAceptar"
+        android:layout_width="181dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="663dp"
+        android:onClick="irRuletaSuerte"
+        android:text="@string/acpetar"
+        android:textSize="24sp" />
+</RelativeLayout>
