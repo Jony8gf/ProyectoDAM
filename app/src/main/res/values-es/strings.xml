@@ -12,6 +12,8 @@
     <string name="correo">Correo Electrónico</string>
     <string name="contrasena">Contraseña</string>
     <string name="acpetar">Aceptar</string>
+    <string name="ejecucion">En ejecución…</string>
+    <string name="nueva_palabra">Nueva Palabra</string>
 
     <string name="version">Versión Beta 1.0.0</string>
     <string name="requerido">Requered</string>

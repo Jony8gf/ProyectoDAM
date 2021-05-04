@@ -2,6 +2,7 @@ package com.app.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -19,6 +20,7 @@ public class MainActivityLobbyRuletaSuerte extends AppCompatActivity {
     private ImageButton imgDown, imgUp;
     private int contador = 2;
     ArrayList<String> frases = new ArrayList<>();
+    ArrayList<String> frasesNuevas = new ArrayList<>();
     private boolean carga = false;
 
     @Override
@@ -166,25 +168,50 @@ public class MainActivityLobbyRuletaSuerte extends AppCompatActivity {
 
     public void irRuletaSuerte(View view){
 
+        //Asingar EditText a Frases
+        //for (int i = 0; i<= 10; i++) frases.remove(i);
+
+        frasesNuevas.add(String.valueOf(edt1.getText()));
+        frasesNuevas.add(String.valueOf(edt2.getText()));
+        frasesNuevas.add(String.valueOf(edt3.getText()));
+        frasesNuevas.add(String.valueOf(edt4.getText()));
+        frasesNuevas.add(String.valueOf(edt5.getText()));
+        frasesNuevas.add(String.valueOf(edt6.getText()));
+        frasesNuevas.add(String.valueOf(edt7.getText()));
+        frasesNuevas.add(String.valueOf(edt8.getText()));
+        frasesNuevas.add(String.valueOf(edt9.getText()));
+        frasesNuevas.add(String.valueOf(edt10.getText()));
+
         //Conexion con bd
         ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this, "administracion", null, 1);
         SQLiteDatabase basedatos = admin.getWritableDatabase();
 
 
-
-        /*
         for (int i = 0; i<10 ; i++){
+
+            ContentValues registro = new ContentValues();
+            registro.put("nombre", frasesNuevas.get(i));
+            registro.put("tipo", "RS");
+
+
             switch (getString(R.string.idioma)){
 
-                case "Español": basedatos.rawQuery ("update frase set nombre = "+frases.get(i)+" where tipo = 'RS' and idioma = 'Español' and id = 100"+i+" ;", null);
+                case "Español": registro.put("idioma", "Español");
+                    //basedatos.rawQuery ("update frase set nombre = "+frases.get(i)+" where tipo = 'RS' and idioma = 'Español' and id = 100"+i+" ;", null);
+                    basedatos.update("frase", registro, "id=" + 1000+i , null);
+
                     break;
-                case "English": basedatos.rawQuery ("update frase set nombre = "+frases.get(i)+" where tipo = 'RS' and idioma = 'English' and id = 101"+i+" ;", null);
+                case "English": registro.put("idioma", "English");
+                    //basedatos.rawQuery ("update frase set nombre = "+frases.get(i)+" where tipo = 'RS' and idioma = 'Español' and id = 100"+i+" ;", null);
+                    basedatos.update("frase", registro, "id=" + 1010+i , null);
                     break;
-                default: basedatos.rawQuery("update frase set nombre = "+frases.get(i)+" where tipo = 'RS' and idioma = 'English' and id = 101"+i+" ;", null);
+                default: registro.put("idioma", "English");
+                    //basedatos.rawQuery ("update frase set nombre = "+frases.get(i)+" where tipo = 'RS' and idioma = 'Español' and id = 100"+i+" ;", null);
+                    basedatos.update("frase", registro, "id=" + 1010+i , null);
             }
         }
 
-         */
+
 
         basedatos.close();
 

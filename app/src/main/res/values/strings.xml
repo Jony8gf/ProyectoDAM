@@ -11,6 +11,8 @@
     <string name="correo">Email</string>
     <string name="contrasena">Password</string>
     <string name="acpetar">Acept</string>
+    <string name="ejecucion">En ejecución…</string>
+    <string name="nueva_palabra">Nueva Palabra</string>
 
 
     <string name="version">Version Beta 1.0.0</string>

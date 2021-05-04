@@ -462,6 +462,7 @@ public class ConexionSQLiteHelper  extends SQLiteOpenHelper {
         basedatos.execSQL("Insert into frase values (753,'Agujero', 'MM', 'Español')");
         basedatos.execSQL("Insert into frase values (754,'Leche', 'MM', 'Español')");
         basedatos.execSQL("Insert into frase values (755,'Queso', 'MM', 'Español')");
+        basedatos.execSQL("Insert into frase values (756,'Ney York', 'MM', 'Español')");
         basedatos.execSQL("Insert into frase values (757,'Cuadrado', 'MM', 'Español')");
         basedatos.execSQL("Insert into frase values (758,'Peluquería', 'MM', 'Español')");
         basedatos.execSQL("Insert into frase values (759,'Impresora', 'MM', 'Español')");
@@ -664,6 +665,7 @@ public class ConexionSQLiteHelper  extends SQLiteOpenHelper {
         basedatos.execSQL("Insert into frase values (953,'Hole', 'MM', 'English')");
         basedatos.execSQL("Insert into frase values (954,'Milk', 'MM', 'English')");
         basedatos.execSQL("Insert into frase values (955,'Cheese', 'MM', 'English')");
+        basedatos.execSQL("Insert into frase values (956,'New york', 'MM', 'English')");
         basedatos.execSQL("Insert into frase values (957,'Square', 'MM', 'English')");
         basedatos.execSQL("Insert into frase values (958,'Barber s', 'MM', 'English')");
         basedatos.execSQL("Insert into frase values (959,'Printer', 'MM', 'English')");

@@ -3,6 +3,8 @@ package com.app.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -13,11 +15,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivityRuletaSuerte extends AppCompatActivity  implements Animation.AnimationListener{
 
-    private String auxContador;
+    private String auxContador, auxiliar;
     private String calculo;
     private TextView tvFrase, tvTragos;
     private ImageView imgRuleta;
@@ -25,6 +28,9 @@ public class MainActivityRuletaSuerte extends AppCompatActivity  implements Anim
     int number = 0;
     long lngDegrees = 0;
     private  boolean blnButtonRotation = true;
+    private boolean carga = false;
+    private int tragos;
+    ArrayList<String> frases = new ArrayList<>();
 
 
 
@@ -71,8 +77,32 @@ public class MainActivityRuletaSuerte extends AppCompatActivity  implements Anim
         }
 
 
+        //Conexion con bd
+        ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this, "administracion", null, 1);
+        SQLiteDatabase basedatos = admin.getWritableDatabase();
 
+        //Consultamos los datos
+        Cursor fila = null;
 
+        switch (getString(R.string.idioma)){
+
+            case "Español": fila = basedatos.rawQuery ("select nombre from frase where tipo = 'RS' and idioma = 'Español' ;", null);
+                break;
+            case "English": fila = basedatos.rawQuery ("select nombre from frase where tipo = 'RS' and idioma = 'English' ;", null);
+                break;
+            default: fila = basedatos.rawQuery ("select nombre from frase where tipo = 'RS' and idioma = 'English' ;", null);
+        }
+
+        if (fila != null) {
+            fila.moveToFirst();
+            do {
+                //Asignamos el arraylist los elementos
+                String frase = fila.getString(0);
+                frases.add(frase);
+                carga = true;
+                Toast.makeText(this, frase, Toast.LENGTH_SHORT).show();
+            } while (fila.moveToNext());
+        }
 
     }
 
@@ -88,11 +118,22 @@ public class MainActivityRuletaSuerte extends AppCompatActivity  implements Anim
 
     @Override
     public void onAnimationEnd(Animation animation) {
-        calculo = String.valueOf((int)(((double)this.number) - Math.floor(((double)this.lngDegrees) / (360.0d / ((double)this.number)))));
+        calculo = String.valueOf((int)(((double)this.number) - Math.floor(((double)this.lngDegrees) / (360.0d / ((double)this.number)))) - 1);
         Toast toast = Toast.makeText(this, " " + calculo + " ", Toast.LENGTH_LONG);
         tvFrase.setText(calculo);
         //toast.setGravity(149,0,0);
         toast.show();
+        tvFrase.setText(frases.get(Integer.parseInt(String.valueOf(calculo))));
+
+        //Generador de Tragos NumeroTragos
+        tragos = (int)(Math.random()*4);
+        if(tragos == 0){
+            tragos=2;
+        }
+
+        auxiliar = (String)getText(R.string.tragos);
+        tvTragos.setText(tragos + " "+ auxiliar);
+
         this.blnButtonRotation = true;
         btnGirar.setVisibility(View.VISIBLE);
 
@@ -123,9 +164,7 @@ public class MainActivityRuletaSuerte extends AppCompatActivity  implements Anim
         }
 
         tvFrase.setText("");
-
-
-
+        tvTragos.setText("");
     }
 
     
