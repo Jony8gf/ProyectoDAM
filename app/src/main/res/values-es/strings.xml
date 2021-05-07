@@ -167,6 +167,13 @@
                     A continuación saldrá un tema en pantalla y los jugadores por rondas en cada tema tendrán que decir 5 cosas relacionadas con el tema en cuestión en 15 segundos.
                     Si el jugador completa el desafio manda beber los  tragos en pantalla. En caso contrario debe beber dichos tragos en pantalla al no cumplir el objetivo.
     </string>
+    <string name="ayuda_ruletasuerte">USER HELP: RUSSIAN ROULETTE
+
+                    To start the game, you have to press the LOAD REVOLVER button,
+                    this will cause you to store a cartridge in the gun,
+                    once this is done, each user who plays must hit the FIRE button,
+                    but at any moment when the pistol SHOOTING has the cartridge loaded and it is your turn to drink.
+    </string>
 
 
 

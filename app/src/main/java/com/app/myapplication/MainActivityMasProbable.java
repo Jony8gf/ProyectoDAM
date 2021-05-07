@@ -16,9 +16,11 @@ public class MainActivityMasProbable extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_mas_probable);
 
+        //Usuario usuario = new Usuario(1,"Pepe", "Pepe@hotmail.com", 3, "S", 1);
+        Usuario usuario;
 
         Thread cliente;
-        cliente = new SocketCliente(  getIntent().getStringExtra("nombre"));
+        cliente = new SocketCliente(usuario = new Usuario(1,"Pepe", "Pepe@hotmail.com", 3, "S", 1));
         cliente.start();
 
     }

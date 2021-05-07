@@ -4,15 +4,17 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
 public class SocketCliente extends Thread {
 
-        String nombre;
+        Usuario usuario;
 
-        public SocketCliente(String nombre) {
-            this.nombre = nombre;
+        public SocketCliente(Usuario usuario) {
+            this.usuario = usuario;
         }
 
         /**
@@ -21,7 +23,7 @@ public class SocketCliente extends Thread {
         @Override
         public void run() {
             try {
-                System.out.println("\t Cliente.Consola " + nombre + " - Se abre un socket en el cliente, y dicho socket establece "
+                System.out.println("\t Cliente.Consola " + usuario + " - Se abre un socket en el cliente, y dicho socket establece "
                         + "una conexión con el socket del servidor situado en el puerto 30500 de la 127.0.0.1");
                 String equipoServidor = "192.168.1.135";
                 int puertoServidor = 30500;
@@ -40,23 +42,23 @@ public class SocketCliente extends Thread {
          * @param socketCliente Socket que se usa para realizar la comunicación con el servidor
          */
         public void gestionarComunicacion (Socket socketCliente) {
+
             try {
-                System.out.println("\t Cliente.Consola " + nombre + " - El cliente construye el mensaje y lo envía al servidor");
-                OutputStream os = socketCliente.getOutputStream();
-                DataOutputStream dos = new DataOutputStream(os);
-                dos.writeUTF("SOY " + nombre + " ... HOLA SERVIDOR");
-                System.out.println("\t Cliente.Consola " + nombre + " - El cliente ha recibido un mensaje del servidor y procede a mostrarlo por consola");
-                InputStream is = socketCliente.getInputStream();
-                DataInputStream dis = new DataInputStream(is);
-                System.out.println("\t Cliente.Consola " + nombre + " - Mensaje recibido del Servidor: " + dis.readUTF());
-                is.close();
-                dis.close();
-                os.close();
-                dos.close();
-            } catch (IOException ex) {
+
+                ObjectOutputStream oos = new ObjectOutputStream(socketCliente.getOutputStream());
+                oos.writeObject(usuario);
+
+                /*
+                System.out.println("\t Cliente.Consola " + usuario + " - El cliente ha recibido un objeto del servidor");
+                ObjectInputStream ois = new ObjectInputStream(socketCliente.getInputStream());
+                usuario = (Usuario) ois.readObject();
+                System.out.println("\t Cliente.Consola " + usuario + " - Objeto recibido del Servidor: " + usuario.toString());
+                ois.close();
+
+                 */
+                oos.close();
+            } catch (IOException  ex) {
                 System.out.println(ex.getMessage());
             }
         }
-
-
 }

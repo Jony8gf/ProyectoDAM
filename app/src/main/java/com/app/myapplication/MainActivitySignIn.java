@@ -90,54 +90,20 @@ public class MainActivitySignIn extends AppCompatActivity {
                 Usuario usuario = new Usuario();
                 usuario.setNombre(nombre);
                 usuario.setCorreo(email);
-                usuario.setAds(true);
+                usuario.setAds("S");
                 usuario.setCervezas(3);
                 usuario.setAvatar(1);
-                usuario.setUid(UUID.randomUUID().toString());
+                //usuario.setUid(UUID.randomUUID().toString());
 
+                //Pasar al Soket Objeto para cree el Usuario
+                Thread cliente;
+                cliente = new SocketCliente(usuario);
+                cliente.start();
 
-
-
-                /*
-                //Bucle buscando UID
-                int comprobarUID = 0;
-
-                while (comprobarUID != 0){
-
-                    databaseReference = FirebaseDatabase.getInstance().getReference();
-
-                    databaseReference.child("Persona").addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for (DataSnapshot datasnapshot: snapshot.getChildren()){
-
-                                Usuario user = datasnapshot.getValue(Usuario.class);
-                                assert user != null;
-                                if(usuario.getUid().equals(user.getUid())){
-
-                                    usuario.setUid(UUID.randomUUID().toString());
-
-                                }else{
-
-                                    break;
-
-                                }
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                            Toast.makeText(MainActivitySignIn.this, R.string.error, Toast.LENGTH_SHORT).show();
-
-                        }
-                    });
-                }
-
-                 */
 
                 //Incorporamos datos a la base de datos
-                databaseReference.child("Persona").child(usuario.getUid()).setValue(usuario);
+                //databaseReference.child("Persona").child(usuario.getUid()).setValue(usuario);
+
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, passwd1);
 
                 Intent intent = new Intent(this, MainActivity.class);
