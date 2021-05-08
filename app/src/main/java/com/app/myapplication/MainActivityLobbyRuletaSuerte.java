@@ -109,8 +109,6 @@ public class MainActivityLobbyRuletaSuerte extends AppCompatActivity {
         fila.close();
         basedatos.close();
 
-
-
     }
 
     public void up(View view){

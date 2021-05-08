@@ -55,6 +55,7 @@
 
     <string name="bebes">Drink</string>
     <string name="mandas_bebes">send drink</string>
+    <string name="bebes_or_mandas">Bebes o mandas beber</string>
     <string name="tragos">Shots</string>
     <string name="tragos_acumulados">Tragos Acumulados</string>
 

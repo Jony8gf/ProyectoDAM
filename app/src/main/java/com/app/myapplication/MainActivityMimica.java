@@ -62,6 +62,8 @@ public class MainActivityMimica extends AppCompatActivity {
     //Método para sacar una palabra por pantalla
     public void siguientePalabra(View view){
 
+        mpSiguiente.start();
+
         if(!carga){
             contadorFrases();
 
@@ -219,6 +221,13 @@ public class MainActivityMimica extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        try {
+            mpSiguiente.pause();
+            mpMimica.setLooping(false);
+            mpMimica.pause();
+        }catch (IllegalStateException e){
+            e.printStackTrace();
+        }
         // Enfocarse en otra actividad  (esta actividad está a punto de ser "detenida").
     }
     @Override

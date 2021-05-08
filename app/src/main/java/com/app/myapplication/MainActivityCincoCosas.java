@@ -5,20 +5,175 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.RotateAnimation;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 
 public class MainActivityCincoCosas extends AppCompatActivity {
+
+    private MediaPlayer mpSiguiente, mpTicTac, mpBocina;
+    private TextView tvFrase;
+    private TextView tvTragos;
+    private TextView tvTiempo;
+    private Button btComenzar;
+    private boolean ocultar  = true;
+    private String contadorAux;
+    private String idioma;
+    private String auxiliar;
+    ArrayList<String> frases = new ArrayList<>();
+    int numero = 0;
+    boolean carga = false;
+    int tragos;
+    int contador = 15;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_cinco_cosas);
 
+        //Musica Siguiente && TicTac
+        mpSiguiente = MediaPlayer.create(this, R.raw.siguiente);
+        mpTicTac = MediaPlayer.create(this, R.raw.tictak);
+        mpBocina = MediaPlayer.create(this, R.raw.bocina);
+
+        //Asignacion a TextViews
+        tvFrase = findViewById(R.id.textViewCincoCosasFrase);
+        tvTragos = findViewById(R.id.textViewCincoCosasTragos);
+        tvTiempo = findViewById(R.id.textViewCincoCosasTiempo);
+
+        btComenzar = findViewById(R.id.buttonCincoCosas);
+
+        // Cargar IDIOMA
+        idioma = getString(R.string.idioma);
 
     }
+
+    //Método para sacar una frase en pantalla
+    public void siguienteFrase(View view){
+
+        if(!carga){
+            contadorFrases();
+
+            cargarFrases();
+
+            fraseAletoria();
+
+            tragosAletorios();
+        }else{
+            fraseAletoria();
+
+            tragosAletorios();
+        }
+    }
+
+    private void  cargarFrases(){
+
+        ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this, "administracion", null, 1);
+        SQLiteDatabase basedatos = admin.getWritableDatabase();
+
+        //Consultamos los datos
+        Cursor fila = null;
+
+        switch (getString(R.string.idioma)){
+
+            case "Español": fila = basedatos.rawQuery ("select nombre from frase where tipo = 'CC' and idioma = 'Español' ;", null);
+                break;
+            case "English": fila = basedatos.rawQuery ("select nombre from frase where tipo = 'CC' and idioma = 'English' ;", null);
+                break;
+            default: fila = basedatos.rawQuery ("select nombre from frase where tipo = 'CC' and idioma = 'English' ;", null);
+        }
+
+        if (fila != null) {
+            fila.moveToFirst();
+            do {
+                //Asignamos el arraylist los elementos
+                String frase = fila.getString(0);
+                frases.add(frase);
+                carga = true;
+                //Toast.makeText(this, frase, Toast.LENGTH_SHORT).show();
+            } while (fila.moveToNext());
+
+        }
+
+        //Cerramos el cursor y la conexion con la base de datos
+        fila.close();
+        basedatos.close();
+
+    }
+
+    private void contadorFrases(){
+
+        ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this, "administracion", null, 1);
+        SQLiteDatabase basedatos = admin.getWritableDatabase();
+
+        Cursor num = basedatos.rawQuery ("select count() from frase where tipo = 'CC';", null);
+        if(num.moveToFirst()){
+            String count = num.getString(0);
+            numero = Integer.parseInt(count);
+            basedatos.close();
+        }
+    }
+
+    private void fraseAletoria(){
+
+
+        int fraseRandom = (int)(Math.random()*frases.size());
+        tvFrase.setText(frases.get(fraseRandom));
+        auxiliar = (String) getText(R.string.ejecucion);
+        btComenzar.setText(auxiliar);
+        btComenzar.setEnabled(false);
+
+        //Introducir Sonido
+        mpTicTac.start();
+        mpTicTac.setLooping(true);
+
+        CountDownTimer ct1 = new CountDownTimer(15000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                contador--;
+                contadorAux = contador+"";
+                tvTiempo.setText(contadorAux);
+            }
+
+            public void onFinish() {
+
+
+                        auxiliar = (String) getText(R.string.tragos);
+                        tvFrase.setText(auxiliar);
+                        auxiliar = (String) getText(R.string.bebes_or_mandas);
+                        tvTragos.setText(auxiliar+" "+tragos);
+                        auxiliar = (String) getText(R.string.nueva_palabra);
+                        btComenzar.setText(auxiliar);
+                        btComenzar.setEnabled(true);
+                        mpTicTac.pause();
+                        mpBocina.start();
+                        contador = 15;
+            }
+        }.start();
+    }
+
+
+    private  void tragosAletorios(){
+        tragos = (int)(Math.random()*3+1);
+        String tragosAux = ""+tragos;
+        //tvTragos.setText(tragosAux);
+    }
+
+
+
 
     //Metodo mostrar boton volver
     public boolean onCreateOptionsMenu(Menu menu){
@@ -77,6 +232,14 @@ public class MainActivityCincoCosas extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        try {
+            mpSiguiente.pause();
+            mpTicTac.setLooping(false);
+            mpTicTac.pause();
+            mpBocina.pause();
+        }catch (IllegalStateException e){
+            e.printStackTrace();
+        }
         // Enfocarse en otra actividad  (esta actividad está a punto de ser "detenida").
     }
     @Override
