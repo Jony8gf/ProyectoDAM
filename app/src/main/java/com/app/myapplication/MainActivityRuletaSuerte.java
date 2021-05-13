@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -31,6 +32,7 @@ public class MainActivityRuletaSuerte extends AppCompatActivity  implements Anim
     private boolean carga = false;
     private int tragos;
     ArrayList<String> frases = new ArrayList<>();
+    private MediaPlayer mpRuletaGirando;
 
 
 
@@ -41,6 +43,9 @@ public class MainActivityRuletaSuerte extends AppCompatActivity  implements Anim
 
         auxContador = getIntent().getStringExtra("numero");
         Toast.makeText(this, auxContador, Toast.LENGTH_LONG).show();
+
+        //Mediaplayer
+        mpRuletaGirando = MediaPlayer.create(this, R.raw.ruleta);
 
         //TextViews
         tvFrase = findViewById(R.id.textViewRuletaSuerteFrase);
@@ -160,6 +165,8 @@ public class MainActivityRuletaSuerte extends AppCompatActivity  implements Anim
             rotateAnimation.setAnimationListener(this);
             imgRuleta.setAnimation(rotateAnimation);
             imgRuleta.startAnimation(rotateAnimation);
+            mpRuletaGirando.start();
+            btnGirar.setVisibility(View.INVISIBLE);
 
         }
 
@@ -190,6 +197,12 @@ public class MainActivityRuletaSuerte extends AppCompatActivity  implements Anim
     @Override
     protected void onPause() {
         super.onPause();
+        try {
+            mpRuletaGirando.pause();
+            mpRuletaGirando.setLooping(false);
+        }catch (IllegalStateException e){
+            e.printStackTrace();
+        }
         // Enfocarse en otra actividad  (esta actividad está a punto de ser "detenida").
     }
     @Override

@@ -154,6 +154,12 @@ public class MainActivityBotella extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        try {
+            mpGirarbotella.pause();
+            mpGirarbotella.setLooping(false);
+        }catch (IllegalStateException e){
+            e.printStackTrace();
+        }
         // Enfocarse en otra actividad  (esta actividad está a punto de ser "detenida").
     }
     @Override

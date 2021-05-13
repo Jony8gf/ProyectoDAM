@@ -1,16 +1,16 @@
 package com.app.myapplication;
 
-public class Frase {
+public class FFFFrase {
 
     public Integer id;
     public String nombre;
     public String tipo;
     public String idioma;
 
-    public Frase() {
+    public FFFFrase() {
     }
 
-    public Frase(Integer id, String nombre, String tipo, String idioma) {
+    public FFFFrase(Integer id, String nombre, String tipo, String idioma) {
         this.id = id;
         this.nombre = nombre;
         this.tipo = tipo;

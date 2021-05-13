@@ -11,8 +11,8 @@
     <string name="correo">Email</string>
     <string name="contrasena">Password</string>
     <string name="acpetar">Acept</string>
-    <string name="ejecucion">En ejecución…</string>
-    <string name="nueva_palabra">Nueva Palabra</string>
+    <string name="ejecucion">In action…</string>
+    <string name="nueva_palabra">New word</string>
 
 
     <string name="version">Version Beta 1.0.0</string>
@@ -20,7 +20,7 @@
     <string name="volver">Back</string>
     <string name="info">Help</string>
 
-    <string name="invitado">Entrar como Invitado</string>
+    <string name="invitado">Login as Guest</string>
     <string name="registrarse">Sign Up</string>
     <string name="registro"> Create Account in DrinkGames</string>
     <string name="condiciones">Acept <u>Terms of use and Privacy</u></string>
@@ -55,9 +55,9 @@
 
     <string name="bebes">Drink</string>
     <string name="mandas_bebes">send drink</string>
-    <string name="bebes_or_mandas">Bebes o mandas beber</string>
+    <string name="bebes_or_mandas">You drink or order a drink</string>
     <string name="tragos">Shots</string>
-    <string name="tragos_acumulados">Tragos Acumulados</string>
+    <string name="tragos_acumulados">Accumulated Drinks</string>
 
     <string name="moneda">Coin</string>
     <string name="cara">Face</string>
@@ -70,23 +70,23 @@
     <string name="menor">Less</string>
     <string name="igual">Equal</string>
     <string name="girar_botella">Rotate bottle</string>
-    <string name="rodando_botella">Botella Rodando</string>
+    <string name="rodando_botella">Rolling Bottle</string>
     <string name="disparar">Shoot</string>
-    <string name="recargado">¡REVOLVER CARGADO!</string>
-    <string name="recargar">Recargar Revolver</string>
-    <string name="probar_suerte">¡Probar suerte!</string>
-    <string name="alcance">¡Te dio de lleno!</string>
-    <string name="tiro">Tiro</string>
-    <string name="ocultar">Ocultar palabra</string>
-    <string name="desocultar">Desocultar palabra</string>
+    <string name="recargado">REVOLVER LOADED!</string>
+    <string name="recargar">Reload Revolver</string>
+    <string name="probar_suerte">Try your luck!</string>
+    <string name="alcance">It hit you squarely!</string>
+    <string name="tiro">Shot</string>
+    <string name="ocultar">Hide word</string>
+    <string name="desocultar">Unhide word</string>
 
 
     <string name="comenzar">Start</string>
     <string name="siguiente_frase">Next Phrase</string>
     <string name="siguiente_carta">Next Card</string>
 
-    <string name="fallaste">Fallaste</string>
-    <string name="acertaste">Acertaste</string>
+    <string name="fallaste">You failed</string>
+    <string name="acertaste">You got it</string>
     <string name="joker">Joker</string>
 
     <string name="tirar">Pull</string>
@@ -169,6 +169,13 @@
                     If the player completes the challenge, he commands the drinks on the screen to be drunk. Otherwise, you must drink those drinks on the screen when you do not meet the objective.
     </string>
     <string name="ayuda_ruletasuerte">USER HELP: RUSSIAN ROULETTE
+
+                    To start the game, you have to press the LOAD REVOLVER button,
+                    this will cause you to store a cartridge in the gun,
+                    once this is done, each user who plays must hit the FIRE button,
+                    but at any moment when the pistol SHOOTING has the cartridge loaded and it is your turn to drink.
+    </string>
+    <string name="ayuda_slotmachine">USER HELP: SLOT MACHINE
 
                     To start the game, you have to press the LOAD REVOLVER button,
                     this will cause you to store a cartridge in the gun,

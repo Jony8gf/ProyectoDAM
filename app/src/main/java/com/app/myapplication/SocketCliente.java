@@ -1,17 +1,14 @@
 package com.app.myapplication;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.OutputStream;
 import java.net.Socket;
+
+import herramientas.Usuario;
 
 public class SocketCliente extends Thread {
 
-        Usuario usuario;
+        public Usuario usuario;
 
         public SocketCliente(Usuario usuario) {
             this.usuario = usuario;
@@ -45,18 +42,15 @@ public class SocketCliente extends Thread {
 
             try {
 
+                //ObjectOutputStream ods = new ObjectOutputStream(socketCliente.getOutputStream());
+                //ods.writeObject(num);
+
                 ObjectOutputStream oos = new ObjectOutputStream(socketCliente.getOutputStream());
                 oos.writeObject(usuario);
 
-                /*
-                System.out.println("\t Cliente.Consola " + usuario + " - El cliente ha recibido un objeto del servidor");
-                ObjectInputStream ois = new ObjectInputStream(socketCliente.getInputStream());
-                usuario = (Usuario) ois.readObject();
-                System.out.println("\t Cliente.Consola " + usuario + " - Objeto recibido del Servidor: " + usuario.toString());
-                ois.close();
-
-                 */
+                //ods.close();
                 oos.close();
+
             } catch (IOException  ex) {
                 System.out.println(ex.getMessage());
             }

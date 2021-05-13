@@ -1,6 +1,5 @@
 package com.app.myapplication;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,13 +11,11 @@ import android.widget.Toast;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import java.util.UUID;
+import herramientas.Usuario;
+import herramientas.Frase;
 
 public class MainActivitySignIn extends AppCompatActivity {
 
@@ -49,8 +46,6 @@ public class MainActivitySignIn extends AppCompatActivity {
 
         //Asignacion de CheckBox
         ckbPoliticas = findViewById(R.id.checkBoxPrivacidadSigIn);
-
-
     }
 
     public void registroUsuario(View view){
@@ -93,7 +88,26 @@ public class MainActivitySignIn extends AppCompatActivity {
                 usuario.setAds("S");
                 usuario.setCervezas(3);
                 usuario.setAvatar(1);
+                usuario.setAuxSeleccion(1);
                 //usuario.setUid(UUID.randomUUID().toString());
+
+                /*
+                //Pasar al Socket Eleccion
+                Thread eleccion;
+                eleccion = new SocketEleccion("1");
+                eleccion.start();
+
+                try {
+
+                    Thread.sleep(2000);
+
+                } catch (InterruptedException e) {
+
+                    e.printStackTrace();
+
+                }
+                */
+
 
                 //Pasar al Soket Objeto para cree el Usuario
                 Thread cliente;

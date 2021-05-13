@@ -168,16 +168,19 @@
                     A continuación saldrá un tema en pantalla y los jugadores por rondas en cada tema tendrán que decir 5 cosas relacionadas con el tema en cuestión en 15 segundos.
                     Si el jugador completa el desafio manda beber los  tragos en pantalla. En caso contrario debe beber dichos tragos en pantalla al no cumplir el objetivo.
     </string>
-    <string name="ayuda_ruletasuerte">USER HELP: RUSSIAN ROULETTE
+    <string name="ayuda_ruletasuerte">AYUDA AL USUARIO: RULETA RUSA
+
+                    Para iniciar el juego, debes presionar el botón LOAD REVOLVER,
+                    esto hará que guardes un cartucho en la pistola,
+                    Una vez hecho esto, cada usuario que juegue debe presionar el botón FUEGO,
+                    pero en cualquier momento cuando la pistola DISPARO tenga el cartucho cargado y sea tu turno de beber.
+    </string>
+    <string name="ayuda_slotmachine">AYUDA AL USUARIO: SLOT MACHINE
 
                     To start the game, you have to press the LOAD REVOLVER button,
                     this will cause you to store a cartridge in the gun,
                     once this is done, each user who plays must hit the FIRE button,
                     but at any moment when the pistol SHOOTING has the cartridge loaded and it is your turn to drink.
     </string>
-
-
-
-
 
 </resources>

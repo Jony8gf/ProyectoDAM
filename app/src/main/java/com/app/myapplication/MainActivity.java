@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
     private String posicionElemento;
     private int posiciomiento;
     private TextToSpeech mTTS;
+    private MediaPlayer mpMusic;
 
     String nombre;
 
@@ -27,6 +29,10 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mpMusic =  MediaPlayer.create(this, R.raw.musica_inicio_george);
+        mpMusic.start();
+        mpMusic.setLooping(true);
 
         //Toast.makeText(this, R.string.idioma, Toast.LENGTH_SHORT).show();
         switch (getString(R.string.idioma)){
@@ -109,21 +115,24 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
         Intent intent;
 
         switch (position){
-            case 0: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+            case 0: mpMusic.pause();
+                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 //Mimica
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityMimica.class);
                 startActivity(intent);
                 finish();
                 break;
-            case 1: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+            case 1: mpMusic.pause();
+                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 //Patata Caliente
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityPatataCaliente.class);
                 startActivity(intent);
                 finish();
                 break;
-            case 2: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+            case 2: mpMusic.pause();
+                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 //Yo Nunca
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityYoNunca.class);
@@ -131,28 +140,30 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
                 startActivity(intent);
                 finish();
                 break;
-            case 3:
+            case 3: mpMusic.pause();
                 //Cara o Cruz
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                  intent = new Intent(this, MainActivityCaraCruz.class);
                 startActivity(intent);
                 finish();
                 break;
-            case 4:
+            case 4: mpMusic.pause();
                 //Setas Venenosas
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivitySetasVenenosas.class);
                 startActivity(intent);
                 finish();
                 break;
-            case 5: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+            case 5: mpMusic.pause();
+                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 //Ruleta Rusa
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityRuletaRusa.class);
                 startActivity(intent);
                 finish();
                 break;
-            case 6: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+            case 6: mpMusic.pause();
+                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 //Ruleta de la suerte
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 //intent = new Intent(this, MainActivityRuletaSuerte.class);
@@ -160,28 +171,31 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
                 startActivity(intent);
                 finish();
                 break;
-            case 7: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+            case 7: mpMusic.pause();
+                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 //Mayor o menor
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityMayorMenor.class);
                 startActivity(intent);
                 finish();
                 break;
-            case 8: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+            case 8: mpMusic.pause();
+                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 //5 cosas
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityCincoCosas.class);
                 startActivity(intent);
                 finish();
                 break;
-            case 9:
+            case 9: mpMusic.pause();
                 //SlotMachine
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivitySlotMachine.class);
                 startActivity(intent);
                 finish();
                 break;
-            case 10: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+            case 10: mpMusic.pause();
+                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 //Mas probable
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityMasProbable.class);
@@ -189,15 +203,49 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
                 startActivity(intent);
                 finish();
                 break;
-            case 11: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+            case 11: mpMusic.pause();
+                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 //Mas probable
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityBotella.class);
-
                 startActivity(intent);
                 finish();
                 break;
+
             default: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
         }
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // La actividad está a punto de hacerse visible.
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // La actividad se ha vuelto visible (ahora se "reanuda").
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        try {
+            mpMusic.pause();
+            mpMusic.setLooping(false);
+        }catch (IllegalStateException e){
+            e.printStackTrace();
+        }
+        // Enfocarse en otra actividad  (esta actividad está a punto de ser "detenida").
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // La actividad ya no es visible (ahora está "detenida")
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // La actividad está a punto de ser destruida.
     }
 }

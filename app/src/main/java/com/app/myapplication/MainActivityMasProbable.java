@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import herramientas.Usuario;
+
 public class MainActivityMasProbable extends AppCompatActivity {
 
     @Override
@@ -16,15 +18,20 @@ public class MainActivityMasProbable extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_mas_probable);
 
-        //Usuario usuario = new Usuario(1,"Pepe", "Pepe@hotmail.com", 3, "S", 1);
-        Usuario usuario;
+        Integer eleccion = 3;
+
+        Usuario usuario = new Usuario(1,"Lucy", "luciaviber@yopmail.com", 10, "S", 5, eleccion);
+        //Usuario usuario;
+        /*Thread ele;
+        ele = new SocketEleccion(eleccion);
+        ele.start();*/
 
         Thread cliente;
-        cliente = new SocketCliente(usuario = new Usuario(1,"Pepe", "Pepe@hotmail.com", 3, "S", 1));
+        cliente = new SocketCliente(usuario);
+        //cliente = new SocketCliente("Pepe");
         cliente.start();
 
     }
-
 
     //Metodo mostrar boton volver
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -92,7 +92,7 @@ public class MainActivityLobbyRuletaSuerte extends AppCompatActivity {
 
         }
 
-        //Asingar Frase a editTexts
+        //Asingar FFFFrase a editTexts
         edt1.setText(frases.get(0));
         edt2.setText(frases.get(1));
         edt3.setText(frases.get(2));
