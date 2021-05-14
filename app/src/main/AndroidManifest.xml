@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
@@ -15,7 +14,7 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoDAM">
-        <activity android:name=".MainActivityLobbyRuletaSuerte"></activity>
+        <activity android:name=".MainActivityLobbyRuletaSuerte" />
         <activity android:name=".MainActivityMimica" />
         <activity android:name=".MainActivityPatataCaliente" />
         <activity android:name=".MainActivityPalillos" />

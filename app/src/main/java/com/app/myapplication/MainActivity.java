@@ -9,6 +9,8 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -24,11 +26,16 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
     private MediaPlayer mpMusic;
 
     String nombre;
+    String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        email = getIntent().getStringExtra("correo");
+        Toast.makeText(this, email, Toast.LENGTH_LONG).show();
+        nombre =  getIntent().getStringExtra("nombre");
 
         mpMusic =  MediaPlayer.create(this, R.raw.musica_inicio_george);
         mpMusic.start();
@@ -73,9 +80,29 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
             default: Toast.makeText(this, "English", Toast.LENGTH_SHORT).show();
         }
 
-        nombre =  getIntent().getStringExtra("nombre");
-
         init();
+    }
+
+    //Metodo mostrar boton volver
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_principal, menu);
+        return true;
+    }
+
+    //Metodo agregar acciones a nuestros botones
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.mnPerfil) {
+            //Pasar de una Activity a otra
+            Intent intent = new Intent(this, MainActivityPerfil.class);
+            intent.putExtra("correo", email);
+            startActivity(intent);
+            //Finalizar Activity
+            finish();
+        }
+
+        return true;
     }
 
 

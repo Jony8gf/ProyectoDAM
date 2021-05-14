@@ -18,18 +18,33 @@ public class MainActivityMasProbable extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_mas_probable);
 
-        Integer eleccion = 3;
+        Integer eleccion = 4;
 
-        Usuario usuario = new Usuario(1,"Lucy", "luciaviber@yopmail.com", 10, "S", 5, eleccion);
+        Usuario usuario = new Usuario(1,"Lucy", "Sara@yopmail.com", 10, "S", 5, eleccion);
         //Usuario usuario;
         /*Thread ele;
         ele = new SocketEleccion(eleccion);
         ele.start();*/
 
+        /* EJERMPLO 100 REAL ONE LINK
+
         Thread cliente;
         cliente = new SocketCliente(usuario);
         //cliente = new SocketCliente("Pepe");
         cliente.start();
+
+         */
+
+        Thread cliente;
+        cliente = new SocketCliente(usuario);
+        cliente.start();
+
+
+        Thread select;
+        select = new SocketEleccion(usuario);
+        select.start();
+
+
 
     }
 
