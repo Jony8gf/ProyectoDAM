@@ -168,7 +168,7 @@
                     A continuación saldrá un tema en pantalla y los jugadores por rondas en cada tema tendrán que decir 5 cosas relacionadas con el tema en cuestión en 15 segundos.
                     Si el jugador completa el desafio manda beber los  tragos en pantalla. En caso contrario debe beber dichos tragos en pantalla al no cumplir el objetivo.
     </string>
-    <string name="ayuda_ruletasuerte">AYUDA AL USUARIO: RULETA RUSA
+    <string name="ayuda_ruletasuerte">AYUDA AL USUARIO: RULETA SUERTE
 
                     Para iniciar el juego, debes presionar el botón LOAD REVOLVER,
                     esto hará que guardes un cartucho en la pistola,
@@ -183,6 +183,7 @@
                     but at any moment when the pistol SHOOTING has the cartridge loaded and it is your turn to drink.
     </string>
     <string name="cervezas">Cervezas</string>
+    <string name="ganado_cervezas">Cervezas ganadas: </string>
     <string name="avatar">Avatar</string>
     <string name="premium">Premium</string>
     <string name="ver_video">Ver Video</string>

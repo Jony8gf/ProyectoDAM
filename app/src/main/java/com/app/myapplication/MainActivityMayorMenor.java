@@ -14,6 +14,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
+import herramientas.Usuario;
+
 public class MainActivityMayorMenor extends AppCompatActivity {
 
     private TextView tvTragos, tvGuia;
@@ -22,8 +32,9 @@ public class MainActivityMayorMenor extends AppCompatActivity {
     private int tragos, random, auxRandom, id;
     private boolean checkMenor, checkMayor, checkIgual;
     private MediaPlayer mpCorrecto, mpIncorrecto, mpJoker;
-    private String auxiliar;
-
+    private String auxiliar, correo;
+    //Creacion de Objeto Adview
+    private AdView mAdView;
     private String cartas[] =  new String[]{
             "carta_joker","carta_as", "carta_dos", "carta_tres", "carta_cuatro", "carta_cinco", "carta_seis", "carta_siete", "carta_ocho", "carta_nueve", "carta_diez", "carta_j","carta_q","carta_k"
     };
@@ -32,6 +43,54 @@ public class MainActivityMayorMenor extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_mayor_menor);
+
+        correo = getIntent().getStringExtra("correo");
+
+        //Recoger Objeto Usuario
+        Usuario usuario = new Usuario(1,"Lucy", "lucy69@yopmail.com", 0, "S", 0, 4);
+        String aux = "S";
+
+        if (usuario.getAds().equals(aux)){
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                @Override
+                public void onInitializationComplete(InitializationStatus initializationStatus) {
+                }
+            });
+
+            mAdView = findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+
+
+            mAdView.setAdListener(new AdListener() {
+                @Override
+                public void onAdLoaded() {
+                    // Code to be executed when an ad finishes loading.
+                }
+
+                @Override
+                public void onAdFailedToLoad(LoadAdError adError) {
+                    // Code to be executed when an ad request fails.
+                }
+
+                @Override
+                public void onAdOpened() {
+                    // Code to be executed when an ad opens an overlay that
+                    // covers the screen.
+                }
+
+                @Override
+                public void onAdClicked() {
+                    // Code to be executed when the user clicks on an ad.
+                }
+
+                @Override
+                public void onAdClosed() {
+                    // Code to be executed when the user is about to return
+                    // to the app after tapping on an ad.
+                }
+            });
+        }
 
         //Inicializacion de variables y asignacion con parte grafica
         tragos = 1;
@@ -248,8 +307,11 @@ public class MainActivityMayorMenor extends AppCompatActivity {
         if(id == R.id.volver){
             //Pasar de una Activity a otra
             Intent intent = new Intent(this, MainActivity.class);
+            int dado = (int)(Math.random()*6+1);
+            String dadoAux  = ""+dado;
+            intent.putExtra("correo", correo);
+            intent.putExtra("dado", dadoAux);
             startActivity(intent);
-            //Finalizar Activity
             finish();
         }
         if(id == R.id.infoboton){
@@ -275,6 +337,10 @@ public class MainActivityMayorMenor extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(this, MainActivity.class);
+        int dado = (int)(Math.random()*6+1);
+        String dadoAux  = ""+dado;
+        intent.putExtra("correo", correo);
+        intent.putExtra("dado", dadoAux);
         startActivity(intent);
         finish();
     }

@@ -16,9 +16,11 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
@@ -36,7 +38,7 @@ public class MainActivityMasProbable extends AppCompatActivity {
     ArrayList<String> frases = new ArrayList<>();
     private TextToSpeech mTTS;
     private TextView tvFrase, tvTragos;
-
+    String correo;
     //Creacion de Objeto Adview
     private AdView mAdView;
 
@@ -46,8 +48,55 @@ public class MainActivityMasProbable extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_mas_probable);
 
+        correo = getIntent().getStringExtra("correo");
+
         //Recoger Objeto Usuario
-        Usuario usuario = new Usuario(1,"Lucy", "luu69@yopmail.com", 0, "S", 0, 4);
+        Usuario usuario = new Usuario(1,"Lucy", "lucy69@yopmail.com", 0, "S", 0, 4);
+        String aux = "S";
+
+        if (usuario.getAds().equals(aux)){
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                @Override
+                public void onInitializationComplete(InitializationStatus initializationStatus) {
+                }
+            });
+
+            mAdView = findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+
+
+            mAdView.setAdListener(new AdListener() {
+                @Override
+                public void onAdLoaded() {
+                    // Code to be executed when an ad finishes loading.
+                }
+
+                @Override
+                public void onAdFailedToLoad(LoadAdError adError) {
+                    // Code to be executed when an ad request fails.
+                }
+
+                @Override
+                public void onAdOpened() {
+                    // Code to be executed when an ad opens an overlay that
+                    // covers the screen.
+                }
+
+                @Override
+                public void onAdClicked() {
+                    // Code to be executed when the user clicks on an ad.
+                }
+
+                @Override
+                public void onAdClosed() {
+                    // Code to be executed when the user is about to return
+                    // to the app after tapping on an ad.
+                }
+            });
+        }
+
+
 
         //Asignacion de TextView
         tvFrase = findViewById(R.id.textViewMasProbableFrase);
@@ -58,7 +107,7 @@ public class MainActivityMasProbable extends AppCompatActivity {
 
         switch (getString(R.string.idioma)){
 
-            case "Español": Toast.makeText(this, "Español", Toast.LENGTH_SHORT).show();
+            case "Español": //Toast.makeText(this, "Español", Toast.LENGTH_SHORT).show();
                 mTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
                     @Override
                     public void onInit(int status) {
@@ -75,7 +124,7 @@ public class MainActivityMasProbable extends AppCompatActivity {
                     }
                 });
                 break;
-            case "English": Toast.makeText(this, "English", Toast.LENGTH_SHORT).show();
+            case "English": //Toast.makeText(this, "English", Toast.LENGTH_SHORT).show();
                 mTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
                     @Override
                     public void onInit(int status) {
@@ -91,36 +140,7 @@ public class MainActivityMasProbable extends AppCompatActivity {
                     }
                 });
                 break;
-            default: Toast.makeText(this, "English", Toast.LENGTH_SHORT).show();
-        }
-
-        //Preparacion de y asignacion de id
-        //Asignacion de Id a Ads y Asignacion a InterstitialAd
-        MobileAds.initialize(this,
-                "ca-app-pub-8043381776244583~1959966580");
-
-        //Preparacion Adview y asignacion de id
-        mAdView = findViewById(R.id.adViewMP);
-        AdView adView = new AdView(this);
-
-        adView.setAdSize(AdSize.BANNER);
-        adView.setAdUnitId("ca-app-pub-8043381776244583/9362786215");
-
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
-
-
-
-
-
-        if (usuario.getAds().equals("S")){
-
+            default: //Toast.makeText(this, "English", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -226,8 +246,11 @@ public class MainActivityMasProbable extends AppCompatActivity {
         if (id == R.id.volver) {
             //Pasar de una Activity a otra
             Intent intent = new Intent(this, MainActivity.class);
+            int dado = (int)(Math.random()*6+1);
+            String dadoAux  = ""+dado;
+            intent.putExtra("correo", correo);
+            intent.putExtra("dado", dadoAux);
             startActivity(intent);
-            //Finalizar Activity
             finish();
         }
         if (id == R.id.infoboton) {
@@ -254,6 +277,10 @@ public class MainActivityMasProbable extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(this, MainActivity.class);
+        int dado = (int)(Math.random()*6+1);
+        String dadoAux  = ""+dado;
+        intent.putExtra("correo", correo);
+        intent.putExtra("dado", dadoAux);
         startActivity(intent);
         finish();
     }

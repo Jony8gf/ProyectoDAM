@@ -22,7 +22,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
 import java.util.ArrayList;
+
+import herramientas.Usuario;
 
 public class MainActivityPatataCaliente extends AppCompatActivity {
 
@@ -36,15 +46,65 @@ public class MainActivityPatataCaliente extends AppCompatActivity {
     private MediaPlayer mpTictak, mpBocina;
     private long animationDuracion =  48000 ;//Milisegundos
     private int angulo;
-    private String auxiliar;
+    private String auxiliar, correo;
     private  boolean carga = false;
     int numero = 0;
     ArrayList<String> frases = new ArrayList<>();
+    //Creacion de Objeto Adview
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_patata_caliente);
+
+        correo = getIntent().getStringExtra("correo");
+
+        //Recoger Objeto Usuario
+        Usuario usuario = new Usuario(1,"Lucy", "lucy69@yopmail.com", 0, "S", 0, 4);
+        String aux = "S";
+
+        if (usuario.getAds().equals(aux)){
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                @Override
+                public void onInitializationComplete(InitializationStatus initializationStatus) {
+                }
+            });
+
+            mAdView = findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+
+
+            mAdView.setAdListener(new AdListener() {
+                @Override
+                public void onAdLoaded() {
+                    // Code to be executed when an ad finishes loading.
+                }
+
+                @Override
+                public void onAdFailedToLoad(LoadAdError adError) {
+                    // Code to be executed when an ad request fails.
+                }
+
+                @Override
+                public void onAdOpened() {
+                    // Code to be executed when an ad opens an overlay that
+                    // covers the screen.
+                }
+
+                @Override
+                public void onAdClicked() {
+                    // Code to be executed when the user clicks on an ad.
+                }
+
+                @Override
+                public void onAdClosed() {
+                    // Code to be executed when the user is about to return
+                    // to the app after tapping on an ad.
+                }
+            });
+        }
 
         //Asignacion a TextViews
         tvPalabraCaliente = findViewById(R.id.textViewPatataCaliente);
@@ -75,8 +135,11 @@ public class MainActivityPatataCaliente extends AppCompatActivity {
         if(id == R.id.volver){
             //Pasar de una Activity a otra
             Intent intent = new Intent(this, MainActivity.class);
+            int dado = (int)(Math.random()*6+1);
+            String dadoAux  = ""+dado;
+            intent.putExtra("correo", correo);
+            intent.putExtra("dado", dadoAux);
             startActivity(intent);
-            //Finalizar Activity
             finish();
         }
         if(id == R.id.infoboton){
@@ -229,6 +292,10 @@ public class MainActivityPatataCaliente extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(this, MainActivity.class);
+        int dado = (int)(Math.random()*6+1);
+        String dadoAux  = ""+dado;
+        intent.putExtra("correo", correo);
+        intent.putExtra("dado", dadoAux);
         startActivity(intent);
         finish();
     }

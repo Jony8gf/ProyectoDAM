@@ -15,7 +15,17 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
 import java.util.Random;
+
+import herramientas.Usuario;
 
 public class MainActivityCaraCruz extends AppCompatActivity {
 
@@ -23,13 +33,15 @@ public class MainActivityCaraCruz extends AppCompatActivity {
     private TextView tvTragos;
     private ImageView moneda;
     private Button btnLanzarMoneda;
-
     private int suerte = 0;
     private int tragos = 0;
     private String auxiliar;
     private WheelCoin wc;
     private boolean isStarted;
     public static final Random random = new Random();
+    //Creacion de Objeto Adview
+    private AdView mAdView;
+    String correo;
 
     //Creacion de MediaPlayer
     MediaPlayer mpMoneda;
@@ -38,6 +50,53 @@ public class MainActivityCaraCruz extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_cara_cruz);
+
+        correo = getIntent().getStringExtra("correo");
+
+        //Recoger Objeto Usuario
+        Usuario usuario = new Usuario(1,"Lucy", "lucy69@yopmail.com", 0, "S", 0, 4);
+        String aux = "S";
+
+        if (usuario.getAds().equals(aux)){
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                @Override
+                public void onInitializationComplete(InitializationStatus initializationStatus) {
+                }
+            });
+
+            mAdView = findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+
+            mAdView.setAdListener(new AdListener() {
+                @Override
+                public void onAdLoaded() {
+                    // Code to be executed when an ad finishes loading.
+                }
+
+                @Override
+                public void onAdFailedToLoad(LoadAdError adError) {
+                    // Code to be executed when an ad request fails.
+                }
+
+                @Override
+                public void onAdOpened() {
+                    // Code to be executed when an ad opens an overlay that
+                    // covers the screen.
+                }
+
+                @Override
+                public void onAdClicked() {
+                    // Code to be executed when the user clicks on an ad.
+                }
+
+                @Override
+                public void onAdClosed() {
+                    // Code to be executed when the user is about to return
+                    // to the app after tapping on an ad.
+                }
+            });
+        }
 
         //Asignacion a TextViews
         tvMoneda = findViewById(R.id.textViewCaraCruzFrase);
@@ -65,8 +124,11 @@ public class MainActivityCaraCruz extends AppCompatActivity {
         if(id == R.id.volver){
             //Pasar de una Activity a otra
             Intent intent = new Intent(this, MainActivity.class);
+            int dado = (int)(Math.random()*6+1);
+            String dadoAux  = ""+dado;
+            intent.putExtra("correo", correo);
+            intent.putExtra("dado", dadoAux);
             startActivity(intent);
-            //Finalizar Activity
             finish();
         }
         if(id == R.id.infoboton){
@@ -172,6 +234,10 @@ public class MainActivityCaraCruz extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(this, MainActivity.class);
+        int dado = (int)(Math.random()*6+1);
+        String dadoAux  = ""+dado;
+        intent.putExtra("correo", correo);
+        intent.putExtra("dado", dadoAux);
         startActivity(intent);
         finish();
     }

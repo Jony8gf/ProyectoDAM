@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -11,31 +12,100 @@ import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity implements ItemListener{
+import herramientas.Usuario;
+
+public class MainActivity extends AppCompatActivity implements ItemListener, CervezaBonus{
 
     List<ListElement> elements;
     private String posicionElemento;
     private int posiciomiento;
     private TextToSpeech mTTS;
     private MediaPlayer mpMusic;
-
+    //Creacion de Objeto Adview
+    private AdView mAdView;
     String nombre;
     String email;
+    int dadoMinijuego = 0;
+    String dadoAux = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        dadoAux =  getIntent().getStringExtra("dado");
+
+        if (dadoAux.isEmpty()) dadoAux = "99";
+
+        dadoMinijuego = Integer.parseInt(dadoAux);
+        //dadoMinijuego = (int)(Math.random()*6+1);
+        bonus(dadoMinijuego);
+
         email = getIntent().getStringExtra("correo");
         Toast.makeText(this, email, Toast.LENGTH_LONG).show();
         nombre =  getIntent().getStringExtra("nombre");
+
+
+        //Recoger Objeto Usuario
+        Usuario usuario = new Usuario(1,"Lucy", "lucy69@yopmail.com", 0, "S", 0, 4);
+        String aux = "S";
+
+        if (usuario.getAds().equals(aux)){
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                @Override
+                public void onInitializationComplete(InitializationStatus initializationStatus) {
+                }
+            });
+
+            mAdView = findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+
+
+            mAdView.setAdListener(new AdListener() {
+                @Override
+                public void onAdLoaded() {
+                    // Code to be executed when an ad finishes loading.
+                }
+
+                @Override
+                public void onAdFailedToLoad(LoadAdError adError) {
+                    // Code to be executed when an ad request fails.
+                }
+
+                @Override
+                public void onAdOpened() {
+                    // Code to be executed when an ad opens an overlay that
+                    // covers the screen.
+                }
+
+                @Override
+                public void onAdClicked() {
+                    // Code to be executed when the user clicks on an ad.
+                }
+
+                @Override
+                public void onAdClosed() {
+                    // Code to be executed when the user is about to return
+                    // to the app after tapping on an ad.
+                }
+            });
+        }
 
         mpMusic =  MediaPlayer.create(this, R.raw.musica_inicio_george);
         mpMusic.start();
@@ -44,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
         //Toast.makeText(this, R.string.idioma, Toast.LENGTH_SHORT).show();
         switch (getString(R.string.idioma)){
 
-            case "Español": Toast.makeText(this, "Español", Toast.LENGTH_SHORT).show();
+            case "Español": //Toast.makeText(this, "Español", Toast.LENGTH_SHORT).show();
                             mTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
                                 @Override
                                 public void onInit(int status) {
@@ -61,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
                                 }
                             });
                 break;
-            case "English": Toast.makeText(this, "English", Toast.LENGTH_SHORT).show();
+            case "English": //Toast.makeText(this, "English", Toast.LENGTH_SHORT).show();
                             mTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
                                 @Override
                                 public void onInit(int status) {
@@ -77,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
                                 }
                             });
                 break;
-            default: Toast.makeText(this, "English", Toast.LENGTH_SHORT).show();
+            default: //Toast.makeText(this, "English", Toast.LENGTH_SHORT).show();
         }
 
         init();
@@ -240,6 +310,28 @@ public class MainActivity extends AppCompatActivity implements ItemListener{
                 break;
 
             default: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+        }
+    }
+
+    @Override
+    public void bonus(int dadoMinijuego) {
+
+        int dadoMenu = (int)(Math.random()*6+1);
+        //dadoMinijuego = dadoMenu;
+
+        if (dadoMenu == dadoMinijuego){
+            Dialog dialog= new Dialog(this);
+            dialog.setContentView(R.layout.dialog_winbeer);
+            dialog.setTitle("Win Beers");
+            TextView beerBonus = (TextView) dialog.findViewById(R.id.textViewBeerBonus);
+
+            String auxiliarTexto = (String) getText(R.string.ganado_cervezas);
+            beerBonus.setText(auxiliarTexto + " "+ dadoMenu);
+
+
+            //HILO MODIFICAR.....
+
+            dialog.show();
         }
     }
 

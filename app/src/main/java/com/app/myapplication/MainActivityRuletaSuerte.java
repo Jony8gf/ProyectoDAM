@@ -1,12 +1,16 @@
 package com.app.myapplication;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
@@ -16,8 +20,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
 import java.util.ArrayList;
 import java.util.Random;
+
+import herramientas.Usuario;
 
 public class MainActivityRuletaSuerte extends AppCompatActivity  implements Animation.AnimationListener{
 
@@ -28,11 +42,14 @@ public class MainActivityRuletaSuerte extends AppCompatActivity  implements Anim
     private Button btnGirar;
     int number = 0;
     long lngDegrees = 0;
+    private String correo;
     private  boolean blnButtonRotation = true;
     private boolean carga = false;
     private int tragos;
     ArrayList<String> frases = new ArrayList<>();
     private MediaPlayer mpRuletaGirando;
+    //Creacion de Objeto Adview
+    private AdView mAdView;
 
 
 
@@ -40,6 +57,54 @@ public class MainActivityRuletaSuerte extends AppCompatActivity  implements Anim
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_ruleta_suerte);
+
+        correo = getIntent().getStringExtra("correo");
+
+        //Recoger Objeto Usuario
+        Usuario usuario = new Usuario(1,"Lucy", "lucy69@yopmail.com", 0, "S", 0, 4);
+        String aux = "S";
+
+        if (usuario.getAds().equals(aux)){
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                @Override
+                public void onInitializationComplete(InitializationStatus initializationStatus) {
+                }
+            });
+
+            mAdView = findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+
+
+            mAdView.setAdListener(new AdListener() {
+                @Override
+                public void onAdLoaded() {
+                    // Code to be executed when an ad finishes loading.
+                }
+
+                @Override
+                public void onAdFailedToLoad(LoadAdError adError) {
+                    // Code to be executed when an ad request fails.
+                }
+
+                @Override
+                public void onAdOpened() {
+                    // Code to be executed when an ad opens an overlay that
+                    // covers the screen.
+                }
+
+                @Override
+                public void onAdClicked() {
+                    // Code to be executed when the user clicks on an ad.
+                }
+
+                @Override
+                public void onAdClosed() {
+                    // Code to be executed when the user is about to return
+                    // to the app after tapping on an ad.
+                }
+            });
+        }
 
         auxContador = getIntent().getStringExtra("numero");
         Toast.makeText(this, auxContador, Toast.LENGTH_LONG).show();
@@ -174,12 +239,56 @@ public class MainActivityRuletaSuerte extends AppCompatActivity  implements Anim
         tvTragos.setText("");
     }
 
+
+    //Metodo mostrar boton volver
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_ayuda, menu);
+        return true;
+    }
+
+    //Metodo agregar acciones a nuestros botones
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id =item.getItemId();
+
+        if(id == R.id.volver){
+            //Pasar de una Activity a otra
+            Intent intent = new Intent(this, MainActivity.class);
+            int dado = (int)(Math.random()*6+1);
+            String dadoAux  = ""+dado;
+            intent.putExtra("correo", correo);
+            intent.putExtra("dado", dadoAux);
+            startActivity(intent);
+            finish();
+        }
+        if(id == R.id.infoboton){
+            //se prepara la alerta creando nueva instancia
+            AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+            //seleccionamos la cadena a mostrar
+            alertbox.setMessage(getString(R.string.ayuda_ruletasuerte));
+            //elegimos un positivo SI y creamos un Listener
+            alertbox.setPositiveButton(getString(R.string.entendido), new DialogInterface.OnClickListener() {
+                //Funcion llamada cuando se pulsa el boton Si
+                public void onClick(DialogInterface arg0, int arg1) {
+
+                }
+            });
+            //mostramos el alertbox
+            alertbox.show();
+        }
+
+        return true;
+    }
+
     
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(this, MainActivity.class);
+        int dado = (int)(Math.random()*6+1);
+        String dadoAux  = ""+dado;
+        intent.putExtra("correo", correo);
+        intent.putExtra("dado", dadoAux);
         startActivity(intent);
         finish();
     }

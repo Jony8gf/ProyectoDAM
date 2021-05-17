@@ -16,11 +16,21 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
+import herramientas.Usuario;
+
 public class MainActivitySetasVenenosas extends AppCompatActivity {
 
     private int buttonID;
     private ImageButton boton;
-    private String auxiliar;
+    private String auxiliar, correo;
     private TextView tvContadorTragos;
     private ImageButton btnSeta1x1, btnSeta1x2, btnSeta1x3, btnSeta1x4;
     private ImageButton btnSeta2x1, btnSeta2x2, btnSeta2x3, btnSeta2x4;
@@ -40,7 +50,8 @@ public class MainActivitySetasVenenosas extends AppCompatActivity {
     private int aleatorio = 0;
     private int contador = 0;
     private int tragos = 0;
-
+    //Creacion de Objeto Adview
+    private AdView mAdView;
     private MediaPlayer mpSetaMusica;
 
     @Override
@@ -48,6 +59,53 @@ public class MainActivitySetasVenenosas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_setas_venenosas);
 
+        correo = getIntent().getStringExtra("correo");
+
+        //Recoger Objeto Usuario
+        Usuario usuario = new Usuario(1,"Lucy", "lucy69@yopmail.com", 0, "S", 0, 4);
+        String aux = "S";
+
+        if (usuario.getAds().equals(aux)){
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                @Override
+                public void onInitializationComplete(InitializationStatus initializationStatus) {
+                }
+            });
+
+            mAdView = findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+
+
+            mAdView.setAdListener(new AdListener() {
+                @Override
+                public void onAdLoaded() {
+                    // Code to be executed when an ad finishes loading.
+                }
+
+                @Override
+                public void onAdFailedToLoad(LoadAdError adError) {
+                    // Code to be executed when an ad request fails.
+                }
+
+                @Override
+                public void onAdOpened() {
+                    // Code to be executed when an ad opens an overlay that
+                    // covers the screen.
+                }
+
+                @Override
+                public void onAdClicked() {
+                    // Code to be executed when the user clicks on an ad.
+                }
+
+                @Override
+                public void onAdClosed() {
+                    // Code to be executed when the user is about to return
+                    // to the app after tapping on an ad.
+                }
+            });
+        }
 
         //Asignacion a TextViews
         tvContadorTragos = findViewById(R.id.textViewContadorTragosSetas);
@@ -304,8 +362,11 @@ public class MainActivitySetasVenenosas extends AppCompatActivity {
         if(id == R.id.volver){
             //Pasar de una Activity a otra
             Intent intent = new Intent(this, MainActivity.class);
+            int dado = (int)(Math.random()*6+1);
+            String dadoAux  = ""+dado;
+            intent.putExtra("correo", correo);
+            intent.putExtra("dado", dadoAux);
             startActivity(intent);
-            //Finalizar Activity
             finish();
         }
         if(id == R.id.infoboton){
@@ -332,6 +393,10 @@ public class MainActivitySetasVenenosas extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(this, MainActivity.class);
+        int dado = (int)(Math.random()*6+1);
+        String dadoAux  = ""+dado;
+        intent.putExtra("correo", correo);
+        intent.putExtra("dado", dadoAux);
         startActivity(intent);
         finish();
     }

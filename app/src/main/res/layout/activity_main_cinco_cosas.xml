@@ -54,18 +54,29 @@
 
     <Button
         android:id="@+id/buttonCincoCosas"
-        android:layout_width="wrap_content"
-        android:layout_height="66dp"
+        android:layout_width="189dp"
+        android:layout_height="67dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="128dp"
-        android:layout_marginEnd="131dp"
-        android:layout_marginBottom="73dp"
+        android:layout_marginStart="113dp"
+        android:layout_marginEnd="109dp"
+        android:layout_marginBottom="99dp"
         android:backgroundTint="#FFEB3B"
-        android:text="@string/comenzar"
-        android:onClick="siguienteFrase"/>
+        android:onClick="siguienteFrase"
+        android:text="@string/comenzar" />
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+    </com.google.android.gms.ads.AdView>
 
 
 </RelativeLayout>

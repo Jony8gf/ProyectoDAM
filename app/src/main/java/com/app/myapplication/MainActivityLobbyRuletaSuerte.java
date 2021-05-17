@@ -27,11 +27,14 @@ public class MainActivityLobbyRuletaSuerte extends AppCompatActivity {
     ArrayList<String> frasesNuevas = new ArrayList<>();
     private boolean carga = false;
     private String idioma = "";
+    private String correo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_lobby_ruleta_suerte);
+
+        correo = getIntent().getStringExtra("correo");
 
         //EditTexts
         edt1 = findViewById(R.id.editTextRS1);
@@ -212,6 +215,7 @@ public class MainActivityLobbyRuletaSuerte extends AppCompatActivity {
                 "numero",
                 auxContador
         );
+        intent.putExtra("correo", correo);
         startActivity(intent);
         finish();
 
@@ -241,8 +245,11 @@ public class MainActivityLobbyRuletaSuerte extends AppCompatActivity {
         if (id == R.id.volver) {
             //Pasar de una Activity a otra
             Intent intent = new Intent(this, MainActivity.class);
+            int dado = (int)(Math.random()*6+1);
+            String dadoAux  = ""+dado;
+            intent.putExtra("correo", correo);
+            intent.putExtra("dado", dadoAux);
             startActivity(intent);
-            //Finalizar Activity
             finish();
         }
         if (id == R.id.infoboton) {
@@ -270,6 +277,10 @@ public class MainActivityLobbyRuletaSuerte extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(this, MainActivity.class);
+        int dado = (int)(Math.random()*6+1);
+        String dadoAux  = ""+dado;
+        intent.putExtra("correo", correo);
+        intent.putExtra("dado", dadoAux);
         startActivity(intent);
         finish();
     }

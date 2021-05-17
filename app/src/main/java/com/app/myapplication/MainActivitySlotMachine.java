@@ -1,17 +1,32 @@
 package com.app.myapplication;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
 import java.util.Random;
+
+import herramientas.Usuario;
 
 public class MainActivitySlotMachine extends AppCompatActivity {
 
@@ -19,11 +34,12 @@ public class MainActivitySlotMachine extends AppCompatActivity {
     private TextView tvTragos;
     private WheelSlot wheel1, wheel2, wheel3;
     private Button btnTirar;
-
+    private String correo;
     private String auxiliar;
     private int tragos;
 
     private boolean isStarted;
+    Usuario usuario;
 
     public static final Random RANDOM = new Random();
 
@@ -34,10 +50,61 @@ public class MainActivitySlotMachine extends AppCompatActivity {
     //Creacion de MediaPlayer
     MediaPlayer mpSlotMachine;
 
+    //Creacion de Objeto Adview
+    private AdView mAdView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_slot_machine);
+
+        correo = getIntent().getStringExtra("correo");
+
+        //Recoger Objeto Usuario
+         usuario = new Usuario(1,"Lucy", "lucy69@yopmail.com", 0, "S", 0, 4);
+        String aux = "S";
+
+        if (usuario.getAds().equals(aux)){
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                @Override
+                public void onInitializationComplete(InitializationStatus initializationStatus) {
+                }
+            });
+
+            mAdView = findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+
+
+            mAdView.setAdListener(new AdListener() {
+                @Override
+                public void onAdLoaded() {
+                    // Code to be executed when an ad finishes loading.
+                }
+
+                @Override
+                public void onAdFailedToLoad(LoadAdError adError) {
+                    // Code to be executed when an ad request fails.
+                }
+
+                @Override
+                public void onAdOpened() {
+                    // Code to be executed when an ad opens an overlay that
+                    // covers the screen.
+                }
+
+                @Override
+                public void onAdClicked() {
+                    // Code to be executed when the user clicks on an ad.
+                }
+
+                @Override
+                public void onAdClosed() {
+                    // Code to be executed when the user is about to return
+                    // to the app after tapping on an ad.
+                }
+            });
+        }
 
         //Asignacion de ImageViews
         slot1 = findViewById(R.id.slot1);
@@ -183,10 +250,55 @@ public class MainActivitySlotMachine extends AppCompatActivity {
 
     }
 
+
+    //Metodo mostrar boton volver
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_ayuda, menu);
+        return true;
+    }
+
+    //Metodo agregar acciones a nuestros botones
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id =item.getItemId();
+
+        if(id == R.id.volver){
+            //Pasar de una Activity a otra
+            Intent intent = new Intent(this, MainActivity.class);
+            int dado = (int)(Math.random()*6+1);
+            String dadoAux  = ""+dado;
+            intent.putExtra("correo", correo);
+            intent.putExtra("dado", dadoAux);
+            startActivity(intent);
+            finish();
+        }
+        if(id == R.id.infoboton){
+            //se prepara la alerta creando nueva instancia
+            AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+            //seleccionamos la cadena a mostrar
+            alertbox.setMessage(getString(R.string.ayuda_slotmachine));
+            //elegimos un positivo SI y creamos un Listener
+            alertbox.setPositiveButton(getString(R.string.entendido), new DialogInterface.OnClickListener() {
+                //Funcion llamada cuando se pulsa el boton Si
+                public void onClick(DialogInterface arg0, int arg1) {
+
+                }
+            });
+            //mostramos el alertbox
+            alertbox.show();
+        }
+
+        return true;
+    }
+
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(this, MainActivity.class);
+        int dado = (int)(Math.random()*6+1);
+        String dadoAux  = ""+dado;
+        intent.putExtra("correo", correo);
+        intent.putExtra("dado", dadoAux);
         startActivity(intent);
         finish();
     }
@@ -216,5 +328,6 @@ public class MainActivitySlotMachine extends AppCompatActivity {
         super.onDestroy();
         // La actividad está a punto de ser destruida.
     }
+
 
 }

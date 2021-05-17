@@ -68,17 +68,15 @@
         app:srcCompat="@drawable/icono" />
 
     <com.google.android.gms.ads.AdView
-        android:id="@+id/adViewMP"
-        android:layout_width="369dp"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="542dp"
-        app:adSize="BANNER"
-        app:adUnitId="ca-app-pub-8043381776244583/9362786215"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+    </com.google.android.gms.ads.AdView>
 
 
 </RelativeLayout>

@@ -182,7 +182,9 @@
                     once this is done, each user who plays must hit the FIRE button,
                     but at any moment when the pistol SHOOTING has the cartridge loaded and it is your turn to drink.
     </string>
+
     <string name="cervezas">Cervezas</string>
+    <string name="ganado_cervezas">Cervezas ganadas: </string>
     <string name="avatar">Avatar</string>
     <string name="premium">Premium</string>
     <string name="ver_video">Ver Video</string>
