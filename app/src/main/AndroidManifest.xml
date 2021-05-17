@@ -29,14 +29,16 @@
         <activity android:name=".MainActivitySlotMachine" />
         <activity android:name=".MainActivityYoNunca" />
         <activity android:name=".MainActivityCaraCruz" />
-
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-8043381776244583~1004200499" /> <!-- ca-app-pub-8043381776244583/9930395917 -->
         <activity android:name=".MainActivitySignIn" />
         <activity android:name=".MainActivity" />
         <activity android:name=".MainActivityLogin" />
         <activity android:name=".MainActivityRecuperarContrasena" />
+
+        <!-- ca-app-pub-8043381776244583/9930395917   ca-app-pub-8043381776244583/9362786215       ca-app-pub-8043381776244583~1004200499-->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-8043381776244583~1959966580" />
+
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

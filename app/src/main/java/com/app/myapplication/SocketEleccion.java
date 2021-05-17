@@ -1,19 +1,17 @@
 package com.app.myapplication;
 
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.OutputStream;
 import java.net.Socket;
 
 import herramientas.Usuario;
 
-public class SocketEleccion  extends Thread {
+public class SocketEleccion extends Thread {
 
     public Usuario usuario;
 
-    public SocketEleccion (Usuario usuario) {
+    public SocketEleccion(Usuario usuario) {
         this.usuario = usuario;
     }
 
@@ -31,7 +29,7 @@ public class SocketEleccion  extends Thread {
     @Override
     public void run() {
         try {
-            System.out.println("\t Cliente.Consola " + usuario.toString() + " - Se abre un socket en el cliente, y dicho socket establece "
+            System.out.println("\t Cliente.Consola " + usuario + " - Se abre un socket en el cliente, y dicho socket establece "
                     + "una conexión con el socket del servidor situado en el puerto 30500 de la 127.0.0.1");
             String equipoServidor = "192.168.1.135";
             int puertoServidor = 30500;
@@ -53,31 +51,12 @@ public class SocketEleccion  extends Thread {
 
         try {
 
-            /*
-            //ObjectOutputStream ods = new ObjectOutputStream(socketCliente.getOutputStream());
-            //ods.writeObject(num);
-
-            //ObjectOutputStream oos = new ObjectOutputStream(socketCliente.getOutputStream());
-            //oos.writeObject(eleccion);
-
-            OutputStream os = socketCliente.getOutputStream();
-            DataOutputStream dos = new DataOutputStream(os);
-            dos.writeUTF(eleccion);
-
-            //ods.close();
-            //oos.close();
-            os.close();
-            dos.close();
-            */
-
             ObjectInputStream ois = new ObjectInputStream(socketCliente.getInputStream());
-            Usuario userAux = (Usuario) ois.readObject();
-            this.usuario = userAux;
+            usuario = (Usuario) ois.readObject();
+            ois.close();
 
         } catch (IOException | ClassNotFoundException ex) {
             System.out.println(ex.getMessage());
         }
-
-
     }
 }

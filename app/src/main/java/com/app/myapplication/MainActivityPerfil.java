@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import herramientas.Usuario;
+
 public class MainActivityPerfil extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
@@ -24,18 +26,38 @@ public class MainActivityPerfil extends AppCompatActivity {
     private ImageView ivEditAvatar,ivEditNombre;
     private String correo;
     private Dialog dialog;
+    private Usuario usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_perfil);
 
-        //Instancia Firebase Auth
-        firebaseAuth = FirebaseAuth.getInstance();
-
         //Coger datos del Intent anterior
         correo = getIntent().getStringExtra("correo");
         Toast.makeText(this, correo, Toast.LENGTH_LONG).show();
+
+        //Instancia Usuario
+        usuario = new Usuario(1,"Lucy", "Sara@yopmail.com", 0, "S", 0, 4);
+
+
+        //Recibir Objeto Usuario
+        //Asignar Valores
+        Thread cliente;
+        cliente = new SocketCliente(usuario);
+        cliente.start();
+
+
+
+        SocketEleccion clienteTT;
+        clienteTT = new SocketEleccion(usuario);
+        clienteTT.start();
+        usuario = clienteTT.getUsuario();
+
+        Toast.makeText(this, usuario.toString(), Toast.LENGTH_LONG).show();
+
+        //Instancia Firebase Auth
+        firebaseAuth = FirebaseAuth.getInstance();
 
         //ImageView
         ivEditAvatar = findViewById(R.id.imageViewEditAvatar);
@@ -46,12 +68,8 @@ public class MainActivityPerfil extends AppCompatActivity {
         etNombre.setFocusable(false);
         etNombre.setEnabled(false);
 
-        //Recibir Objeto Usuario
-        //Asignar Valores
-
 
     }
-
 
 
     //Metodo mostrar boton volver
@@ -65,11 +83,12 @@ public class MainActivityPerfil extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.mnBorrarCuenta) {
-            //Pasar de una Activity a otra
-            //Intent intent = new Intent(this, MainActivity.class);
-            //startActivity(intent);
-            //Finalizar Activity
-            //finish();
+
+            usuario.setAuxSeleccion(3);
+            Thread borrarUsuario;
+            borrarUsuario = new SocketCliente(usuario);
+            borrarUsuario.start();
+
         }
         if (id == R.id.mnLogOut) {
 
@@ -93,7 +112,7 @@ public class MainActivityPerfil extends AppCompatActivity {
 
         dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_paypremium);
-        Button btnpago = findViewById(R.id.btnPayment);
+        //Button btnpago = findViewById(R.id.btnPayment);
         dialog.show();
 
     }
@@ -101,5 +120,11 @@ public class MainActivityPerfil extends AppCompatActivity {
     public void payment(View view){
         Toast.makeText(this, "Pago Realizado", Toast.LENGTH_LONG).show();
         dialog.dismiss();
+        usuario.setAds("N");
+        /*
+        Thread modificarPremiumUsuario;
+        modificarPremiumUsuario = new SocketCliente(usuario);
+        modificarPremiumUsuario.start();
+         */
     }
 }

@@ -124,7 +124,7 @@ public class MainActivityYoNunca extends AppCompatActivity {
                 String frase = fila.getString(0);
                 frases.add(frase);
                 carga = true;
-                Toast.makeText(this, frase, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, frase, Toast.LENGTH_SHORT).show();
             } while (fila.moveToNext());
 
         }
@@ -150,7 +150,8 @@ public class MainActivityYoNunca extends AppCompatActivity {
 
     private void fraseAletoria(){
 
-        int fraseRandom = (int)(Math.random()*numero);
+        //int fraseRandom = (int)(Math.random()*numero);
+        int fraseRandom = (int)(Math.random()*frases.size());
         mTTS.speak(frases.get(fraseRandom), TextToSpeech.QUEUE_FLUSH, null);
         tvFrase.setText(frases.get(fraseRandom));
 

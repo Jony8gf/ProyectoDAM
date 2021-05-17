@@ -1,6 +1,7 @@
 package com.app.myapplication;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
@@ -11,6 +12,14 @@ public class SocketCliente extends Thread {
         public Usuario usuario;
 
         public SocketCliente(Usuario usuario) {
+            this.usuario = usuario;
+        }
+
+        public Usuario getUsuario() {
+            return this.usuario;
+        }
+
+        public void setUsuario(Usuario usuario) {
             this.usuario = usuario;
         }
 
@@ -42,16 +51,20 @@ public class SocketCliente extends Thread {
 
             try {
 
-                //ObjectOutputStream ods = new ObjectOutputStream(socketCliente.getOutputStream());
-                //ods.writeObject(num);
-
                 ObjectOutputStream oos = new ObjectOutputStream(socketCliente.getOutputStream());
                 oos.writeObject(usuario);
-
-                //ods.close();
                 oos.close();
 
-            } catch (IOException  ex) {
+                /*
+                if (usuario.getAuxSeleccion().equals(4)){
+                    ObjectInputStream ois = new ObjectInputStream(socketCliente.getInputStream());
+                    usuario = (Usuario) ois.readObject();
+                    ois.close();
+                }
+
+                 */
+
+            } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }
         }

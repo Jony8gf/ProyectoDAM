@@ -5,48 +5,213 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
+import java.util.ArrayList;
+import java.util.Locale;
 
 import herramientas.Usuario;
 
 public class MainActivityMasProbable extends AppCompatActivity {
+
+    int numero = 0;
+    boolean carga = false;
+    String idioma = "";
+    ArrayList<String> frases = new ArrayList<>();
+    private TextToSpeech mTTS;
+    private TextView tvFrase, tvTragos;
+
+    //Creacion de Objeto Adview
+    private AdView mAdView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_mas_probable);
 
-        Integer eleccion = 4;
+        //Recoger Objeto Usuario
+        Usuario usuario = new Usuario(1,"Lucy", "luu69@yopmail.com", 0, "S", 0, 4);
 
-        Usuario usuario = new Usuario(1,"Lucy", "Sara@yopmail.com", 10, "S", 5, eleccion);
-        //Usuario usuario;
-        /*Thread ele;
-        ele = new SocketEleccion(eleccion);
-        ele.start();*/
+        //Asignacion de TextView
+        tvFrase = findViewById(R.id.textViewMasProbableFrase);
+        tvTragos = findViewById(R.id.textViewMasProbableTragps);
 
-        /* EJERMPLO 100 REAL ONE LINK
+        // Cargar IDIOMA
+        idioma = getString(R.string.idioma);
 
-        Thread cliente;
-        cliente = new SocketCliente(usuario);
-        //cliente = new SocketCliente("Pepe");
-        cliente.start();
+        switch (getString(R.string.idioma)){
 
-         */
+            case "Español": Toast.makeText(this, "Español", Toast.LENGTH_SHORT).show();
+                mTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+                    @Override
+                    public void onInit(int status) {
+                        Locale spanish = new Locale("es", "ES");
+                        if (status == TextToSpeech.SUCCESS) {
+                            int result = mTTS.setLanguage(spanish);
+                            if (result == TextToSpeech.LANG_MISSING_DATA
+                                    || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                                Log.e("TTS", "Language not supported");
+                            }
+                        } else {
+                            Log.e("TTS", "Initialization failed");
+                        }
+                    }
+                });
+                break;
+            case "English": Toast.makeText(this, "English", Toast.LENGTH_SHORT).show();
+                mTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+                    @Override
+                    public void onInit(int status) {
+                        if (status == TextToSpeech.SUCCESS) {
+                            int result = mTTS.setLanguage(Locale.ENGLISH);
+                            if (result == TextToSpeech.LANG_MISSING_DATA
+                                    || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                                Log.e("TTS", "Language not supported");
+                            }
+                        } else {
+                            Log.e("TTS", "Initialization failed");
+                        }
+                    }
+                });
+                break;
+            default: Toast.makeText(this, "English", Toast.LENGTH_SHORT).show();
+        }
 
-        Thread cliente;
-        cliente = new SocketCliente(usuario);
-        cliente.start();
+        //Preparacion de y asignacion de id
+        //Asignacion de Id a Ads y Asignacion a InterstitialAd
+        MobileAds.initialize(this,
+                "ca-app-pub-8043381776244583~1959966580");
+
+        //Preparacion Adview y asignacion de id
+        mAdView = findViewById(R.id.adViewMP);
+        AdView adView = new AdView(this);
+
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId("ca-app-pub-8043381776244583/9362786215");
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
 
 
-        Thread select;
-        select = new SocketEleccion(usuario);
-        select.start();
 
 
+
+        if (usuario.getAds().equals("S")){
+
+        }
 
     }
+
+
+    //Método para sacar una frase en pantalla
+    public void fraseMasProbable(View view){
+
+        if(!carga){
+            //contadorFrases();
+
+            //cargarFrases(idioma);
+            cargarFrases();
+
+            fraseAletoria();
+
+            tragosAletorios();
+        }else{
+            fraseAletoria();
+
+            tragosAletorios();
+        }
+    }
+
+    private void  cargarFrases(){
+
+        ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this, "administracion", null, 1);
+        SQLiteDatabase basedatos = admin.getWritableDatabase();
+
+        //Consultamos los datos
+        Cursor fila = null;
+
+        switch (getString(R.string.idioma)){
+
+            case "Español": fila = basedatos.rawQuery ("select nombre from frase where tipo = 'MP' and idioma = 'Español' ;", null);
+                break;
+            case "English": fila = basedatos.rawQuery ("select nombre from frase where tipo = 'MP' and idioma = 'English' ;", null);
+                break;
+            default: fila = basedatos.rawQuery ("select nombre from frase where tipo = 'MP' and idioma = 'English' ;", null);
+        }
+
+        if (fila != null) {
+            fila.moveToFirst();
+            do {
+                //Asignamos el arraylist los elementos
+                String frase = fila.getString(0);
+                frases.add(frase);
+                carga = true;
+                //Toast.makeText(this, frase, Toast.LENGTH_SHORT).show();
+            } while (fila.moveToNext());
+
+        }
+
+        //Cerramos el cursor y la conexion con la base de datos
+        fila.close();
+        basedatos.close();
+
+    }
+
+    private void contadorFrases(){
+
+        ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this, "administracion", null, 1);
+        SQLiteDatabase basedatos = admin.getWritableDatabase();
+
+        Cursor num = basedatos.rawQuery ("select count() from frase where tipo = 'MP' and idioma = '"+idioma+"'", null);
+        if(num.moveToFirst()){
+            String count = num.getString(0);
+            numero = Integer.parseInt(count);
+            basedatos.close();
+        }
+    }
+
+    private void fraseAletoria(){
+
+        //int fraseRandom = (int)(Math.random()*numero);
+        int fraseRandom = (int)(Math.random()*frases.size());
+        mTTS.speak(frases.get(fraseRandom), TextToSpeech.QUEUE_FLUSH, null);
+        tvFrase.setText(frases.get(fraseRandom));
+
+    }
+
+    private  void tragosAletorios(){
+        int tragos = (int)(Math.random()*3+1);
+        String tragosAux = ""+tragos;
+        tvTragos.setText(tragosAux);
+    }
+
+
+
+
+
 
     //Metodo mostrar boton volver
     public boolean onCreateOptionsMenu(Menu menu) {
