@@ -84,6 +84,8 @@ public class MainActivityLogin extends AppCompatActivity {
 
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("nombre", invitado);
+        intent.putExtra("correo", "invidado@correo.com");
+        intent.putExtra("dado", "99");
         startActivity(intent);
         //Finalizar Activity
         finish();

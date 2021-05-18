@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textViewChoseInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="128dp"
+        android:background="@color/azul"
+        android:gravity="center"
+        android:text="@string/chose_avatar"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="24sp" />
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="370dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="161dp">
+
+        <TableRow
+            android:id="@+id/linea1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/avatar_1x1"
+                android:layout_width="150dp"
+                android:layout_height="130dp"
+                android:layout_weight="90"
+                android:background="@drawable/avatar_cero"
+                android:contentDescription="@string/avatar"
+                android:onClick="seleccionarAvatar" />
+
+            <ImageButton
+                android:id="@+id/avatar_1x2"
+                android:layout_width="150dp"
+                android:layout_height="130dp"
+                android:layout_weight="90"
+                android:background="@drawable/avatar_uno"
+                android:contentDescription="@string/avatar"
+                android:onClick="seleccionarAvatar" />
+
+            <ImageButton
+                android:id="@+id/avatar_1x3"
+                android:layout_width="150dp"
+                android:layout_height="130dp"
+                android:layout_weight="90"
+                android:background="@drawable/avatar_dos"
+                android:contentDescription="@string/avatar"
+                android:onClick="seleccionarAvatar" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/linea2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/avatar_2x1"
+                android:layout_width="150dp"
+                android:layout_height="130dp"
+                android:layout_weight="90"
+                android:background="@drawable/avatar_tres"
+                android:contentDescription="@string/avatar"
+                android:onClick="seleccionarAvatar" />
+
+            <ImageButton
+                android:id="@+id/avatar_2x2"
+                android:layout_width="150dp"
+                android:layout_height="130dp"
+                android:layout_weight="90"
+                android:background="@drawable/avatar_cuatro"
+                android:contentDescription="@string/avatar"
+                android:onClick="seleccionarAvatar" />
+
+            <ImageButton
+                android:id="@+id/avatar_2x3"
+                android:layout_width="150dp"
+                android:layout_height="130dp"
+                android:layout_weight="90"
+                android:background="@drawable/avatar_cinco"
+                android:contentDescription="@string/avatar"
+                android:onClick="seleccionarAvatar" />
+
+        </TableRow>
+
+    </TableLayout>
+
+</RelativeLayout>

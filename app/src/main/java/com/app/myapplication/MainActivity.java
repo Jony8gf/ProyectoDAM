@@ -1,10 +1,12 @@
 package com.app.myapplication;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -50,9 +52,12 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
 
         dadoAux =  getIntent().getStringExtra("dado");
 
-        if (dadoAux.isEmpty()) dadoAux = "99";
+        if (dadoAux.isEmpty()) {
+            dadoMinijuego = 99;
+        }else{
+            dadoMinijuego = Integer.parseInt(dadoAux);
+        }
 
-        dadoMinijuego = Integer.parseInt(dadoAux);
         //dadoMinijuego = (int)(Math.random()*6+1);
         bonus(dadoMinijuego);
 
@@ -217,6 +222,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 //Mimica
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityMimica.class);
+                intent.putExtra("correo", email);
                 startActivity(intent);
                 finish();
                 break;
@@ -225,6 +231,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 //Patata Caliente
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityPatataCaliente.class);
+                intent.putExtra("correo", email);
                 startActivity(intent);
                 finish();
                 break;
@@ -233,6 +240,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 //Yo Nunca
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityYoNunca.class);
+                intent.putExtra("correo", email);
                 intent.putExtra("nombre", nombre);
                 startActivity(intent);
                 finish();
@@ -240,7 +248,8 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
             case 3: mpMusic.pause();
                 //Cara o Cruz
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
-                 intent = new Intent(this, MainActivityCaraCruz.class);
+                intent = new Intent(this, MainActivityCaraCruz.class);
+                intent.putExtra("correo", email);
                 startActivity(intent);
                 finish();
                 break;
@@ -248,6 +257,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 //Setas Venenosas
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivitySetasVenenosas.class);
+                intent.putExtra("correo", email);
                 startActivity(intent);
                 finish();
                 break;
@@ -256,6 +266,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 //Ruleta Rusa
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityRuletaRusa.class);
+                intent.putExtra("correo", email);
                 startActivity(intent);
                 finish();
                 break;
@@ -265,6 +276,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 //intent = new Intent(this, MainActivityRuletaSuerte.class);
                 intent = new Intent(this, MainActivityLobbyRuletaSuerte.class);
+                intent.putExtra("correo", email);
                 startActivity(intent);
                 finish();
                 break;
@@ -273,6 +285,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 //Mayor o menor
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityMayorMenor.class);
+                intent.putExtra("correo", email);
                 startActivity(intent);
                 finish();
                 break;
@@ -281,6 +294,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 //5 cosas
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityCincoCosas.class);
+                intent.putExtra("correo", email);
                 startActivity(intent);
                 finish();
                 break;
@@ -288,6 +302,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 //SlotMachine
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivitySlotMachine.class);
+                intent.putExtra("correo", email);
                 startActivity(intent);
                 finish();
                 break;
@@ -297,6 +312,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityMasProbable.class);
                 intent.putExtra("nombre", nombre);
+                intent.putExtra("correo", email);
                 startActivity(intent);
                 finish();
                 break;
@@ -305,6 +321,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 //Mas probable
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityBotella.class);
+                intent.putExtra("correo", email);
                 startActivity(intent);
                 finish();
                 break;
@@ -335,6 +352,23 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.salir)
+                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        finish();
+                    }
+                })
+                .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User cancelled the dialog
+                    }
+                });
+        builder.show();
+    }
 
     @Override
     protected void onStart() {

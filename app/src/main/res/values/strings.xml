@@ -183,17 +183,17 @@
                     but at any moment when the pistol SHOOTING has the cartridge loaded and it is your turn to drink.
     </string>
 
-    <string name="cervezas">Cervezas</string>
-    <string name="ganado_cervezas">Cervezas ganadas: </string>
+    <string name="cervezas">Beers</string>
+    <string name="ganado_cervezas">Beers won: </string>
     <string name="avatar">Avatar</string>
     <string name="premium">Premium</string>
-    <string name="ver_video">Ver Video</string>
+    <string name="ver_video">Watch video</string>
     <string name="edit">Edit</string>
-    <string name="borrar_cuenta">Borrar Cuenta</string>
+    <string name="borrar_cuenta">Delete Account</string>
     <string name="log_out">Log Out</string>
-    <string name="perfil">Perfil</string>
-    <string name="hacerse_premium">Hacerse Premium</string>
-    <string name="payment">Aceptar Pago</string>
+    <string name="perfil">Profile</string>
+    <string name="hacerse_premium">Go Premium</string>
+    <string name="payment">Accept Payment</string>
     <string name="precio">0,99€</string>
     <string name="ventajas_premium">
         Ventajas Premium:
@@ -202,6 +202,9 @@
         -Recibe 100 Cervezas (Bonus)
 
     </string>
+    <string name="no">No</string>
+    <string name="salir">¿Quieres salir de la aplicación?</string>
+    <string name="chose_avatar">Choose Avatar</string>
 
 
 </resources>

@@ -1,5 +1,7 @@
 package com.app.myapplication;
 
+import android.widget.Toast;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -53,18 +55,18 @@ public class SocketCliente extends Thread {
 
                 ObjectOutputStream oos = new ObjectOutputStream(socketCliente.getOutputStream());
                 oos.writeObject(usuario);
-                oos.close();
 
-                /*
+
+
                 if (usuario.getAuxSeleccion().equals(4)){
                     ObjectInputStream ois = new ObjectInputStream(socketCliente.getInputStream());
                     usuario = (Usuario) ois.readObject();
+                    System.out.println(usuario.toString());
                     ois.close();
                 }
 
-                 */
-
-            } catch (IOException ex) {
+                oos.close();
+            } catch (IOException | ClassNotFoundException ex) {
                 System.out.println(ex.getMessage());
             }
         }

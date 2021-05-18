@@ -189,11 +189,14 @@
     <string name="ver_video">Ver Video</string>
     <string name="edit">Edit</string>
     <string name="borrar_cuenta">Borrar Cuenta</string>
-    <string name="log_out">Log Out</string>
+    <string name="log_out">Cerrar Sesión</string>
     <string name="perfil">Perfil</string>
     <string name="hacerse_premium">Hacerse Premium</string>
     <string name="payment">Aceptar Pago</string>
     <string name="precio">0,99€</string>
     <string name="ventajas_premium">Ventajas Premium</string>
+    <string name="no">No</string>
+    <string name="salir">¿Quieres salir de la aplicación?</string>
+    <string name="chose_avatar">Choose Avatar</string>
 
 </resources>

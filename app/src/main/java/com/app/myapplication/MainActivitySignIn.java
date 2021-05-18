@@ -122,6 +122,7 @@ public class MainActivitySignIn extends AppCompatActivity {
 
                 Intent intent = new Intent(this, MainActivity.class);
                 intent.putExtra("correo", email);
+                intent.putExtra("dado", "99");
                 startActivity(intent);
                 Toast.makeText(this, R.string.registrado, Toast.LENGTH_LONG).show();
                 finish();
