@@ -36,7 +36,7 @@ public class MainActivityRuletaRusa extends AppCompatActivity {
     private int reinicio = 1;
     private int contador =0;
     private int validar=1;
-    private String auxiliar, correo;
+    private String auxiliar, correo, ads;
     //Creacion de Objeto Adview
     private AdView mAdView;
     private MediaPlayer mpDisparo, mpRecarga, mpCasquillar;
@@ -47,12 +47,12 @@ public class MainActivityRuletaRusa extends AppCompatActivity {
         setContentView(R.layout.activity_main_ruleta_rusa);
 
         correo = getIntent().getStringExtra("correo");
+        ads = getIntent().getStringExtra("ads");
 
         //Recoger Objeto Usuario
-        Usuario usuario = new Usuario(1,"Lucy", "lucy69@yopmail.com", 0, "S", 0, 4);
-        String aux = "S";
+        Usuario usuario = new Usuario(1,"Usuario", correo, 0, "S", 0, 4);
 
-        if (usuario.getAds().equals(aux)){
+        if (ads.equals("S")){
             MobileAds.initialize(this, new OnInitializationCompleteListener() {
                 @Override
                 public void onInitializationComplete(InitializationStatus initializationStatus) {

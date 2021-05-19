@@ -32,7 +32,7 @@ public class MainActivityMayorMenor extends AppCompatActivity {
     private int tragos, random, auxRandom, id;
     private boolean checkMenor, checkMayor, checkIgual;
     private MediaPlayer mpCorrecto, mpIncorrecto, mpJoker;
-    private String auxiliar, correo;
+    private String auxiliar, correo, ads;
     //Creacion de Objeto Adview
     private AdView mAdView;
     private String cartas[] =  new String[]{
@@ -45,12 +45,12 @@ public class MainActivityMayorMenor extends AppCompatActivity {
         setContentView(R.layout.activity_main_mayor_menor);
 
         correo = getIntent().getStringExtra("correo");
+        ads = getIntent().getStringExtra("ads");
 
         //Recoger Objeto Usuario
-        Usuario usuario = new Usuario(1,"Lucy", "lucy69@yopmail.com", 0, "S", 0, 4);
-        String aux = "S";
+        Usuario usuario = new Usuario(1,"Usuario", correo, 0, "S", 0, 4);
 
-        if (usuario.getAds().equals(aux)){
+        if (ads.equals("S")){
             MobileAds.initialize(this, new OnInitializationCompleteListener() {
                 @Override
                 public void onInitializationComplete(InitializationStatus initializationStatus) {

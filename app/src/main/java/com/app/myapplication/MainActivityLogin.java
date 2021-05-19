@@ -107,10 +107,12 @@ public class MainActivityLogin extends AppCompatActivity {
         email = etEmail.getText().toString();
         passwd = etPasswd.getText().toString();
 
+
         if (!email.isEmpty() && !passwd.isEmpty()){
 
             mpMusica.stop();
             mpMusica.release();
+            email = email.toLowerCase();
             comprobacionUsuario();
 
         }else{
@@ -125,6 +127,7 @@ public class MainActivityLogin extends AppCompatActivity {
                 if(task.isSuccessful()){
                     Intent intent = new Intent(MainActivityLogin.this, MainActivity.class);
                     intent.putExtra("correo", email);
+                    intent.putExtra("dado", "99");
                     startActivity(intent);
 
                     //Finalizar Activity
@@ -230,6 +233,5 @@ public class MainActivityLogin extends AppCompatActivity {
         super.onDestroy();
         // La actividad está a punto de ser destruida.
     }
-
 
 }

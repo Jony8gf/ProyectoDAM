@@ -30,7 +30,7 @@ public class MainActivitySetasVenenosas extends AppCompatActivity {
 
     private int buttonID;
     private ImageButton boton;
-    private String auxiliar, correo;
+    private String auxiliar, correo, ads;
     private TextView tvContadorTragos;
     private ImageButton btnSeta1x1, btnSeta1x2, btnSeta1x3, btnSeta1x4;
     private ImageButton btnSeta2x1, btnSeta2x2, btnSeta2x3, btnSeta2x4;
@@ -60,12 +60,12 @@ public class MainActivitySetasVenenosas extends AppCompatActivity {
         setContentView(R.layout.activity_main_setas_venenosas);
 
         correo = getIntent().getStringExtra("correo");
+        ads = getIntent().getStringExtra("ads");
 
         //Recoger Objeto Usuario
-        Usuario usuario = new Usuario(1,"Lucy", "lucy69@yopmail.com", 0, "S", 0, 4);
-        String aux = "S";
+        Usuario usuario = new Usuario(1,"Usuario", correo, 0, "S", 0, 4);
 
-        if (usuario.getAds().equals(aux)){
+        if (ads.equals("S")){
             MobileAds.initialize(this, new OnInitializationCompleteListener() {
                 @Override
                 public void onInitializationComplete(InitializationStatus initializationStatus) {

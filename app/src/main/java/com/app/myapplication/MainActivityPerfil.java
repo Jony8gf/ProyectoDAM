@@ -1,15 +1,21 @@
 package com.app.myapplication;
 
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,11 +26,25 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.OnPaidEventListener;
+import com.google.android.gms.ads.OnUserEarnedRewardListener;
+import com.google.android.gms.ads.ResponseInfo;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.rewarded.OnAdMetadataChangedListener;
+import com.google.android.gms.ads.rewarded.RewardItem;
+import com.google.android.gms.ads.rewarded.RewardedAd;
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
+import com.google.android.gms.ads.rewarded.ServerSideVerificationOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 import herramientas.Usuario;
@@ -40,6 +60,7 @@ public class MainActivityPerfil extends AppCompatActivity {
     private Dialog dialog;
     private Usuario usuario, userAux;
     private InterstitialAd mInterstitialAd;
+    private RewardedAd rewardedAd;
     //private RewardedVideoAd mRewardedVideoAd;
 
 
@@ -54,7 +75,7 @@ public class MainActivityPerfil extends AppCompatActivity {
 
 
         //Instancia Usuario
-        usuario = new Usuario(1,"Lupita", "Sara@yopmail.com", 0, "S", 0, 4);
+        usuario = new Usuario(1,"Usuario", correo, 0, "S", 0, 4);
 
 
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
@@ -62,13 +83,6 @@ public class MainActivityPerfil extends AppCompatActivity {
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });
-
-        /*
-        // Use an activity context to get the rewarded video instance.
-        mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(this);
-        mRewardedVideoAd.setRewardedVideoAdListener(this);
-
-         */
 
 
         //Recibir Objeto Usuario
@@ -90,6 +104,23 @@ public class MainActivityPerfil extends AppCompatActivity {
         Toast.makeText(this, userAux.toString(), Toast.LENGTH_LONG).show();
 
 
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        rewardedAd.load(this, "ca-app-pub-3940256099942544/5224354917",
+                adRequest, new RewardedAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull RewardedAd rewardedAd) {
+                        super.onAdLoaded(rewardedAd);
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        super.onAdFailedToLoad(loadAdError);
+                    }
+                });
+
+
+
 
         //Instancia Firebase Auth
         firebaseAuth = FirebaseAuth.getInstance();
@@ -105,7 +136,7 @@ public class MainActivityPerfil extends AppCompatActivity {
 
         //EditText
         etNombre = findViewById(R.id.editTextNombreProfile);
-        etNombre.setFocusable(false);
+        //etNombre.setFocusable(false);
         etNombre.setEnabled(false);
 
 
@@ -136,6 +167,9 @@ public class MainActivityPerfil extends AppCompatActivity {
             ivPremium.setImageResource(R.drawable.crown);
         }
 
+
+
+
     }
 
 
@@ -163,10 +197,7 @@ public class MainActivityPerfil extends AppCompatActivity {
 
         if (id == R.id.mnBorrarCuenta) {
 
-            usuario.setAuxSeleccion(3);
-            Thread borrarUsuario;
-            borrarUsuario = new SocketCliente(usuario);
-            borrarUsuario.start();
+            onCreateDialog();
 
         }
         if (id == R.id.mnLogOut) {
@@ -200,15 +231,25 @@ public class MainActivityPerfil extends AppCompatActivity {
 
     public void payment(View view){
 
-        Toast.makeText(this, "Pago Realizado", Toast.LENGTH_LONG).show();
-        dialog.dismiss();
-        usuario.setAds("N");
 
-        /*
+        dialog.dismiss();
+
+        userAux.setAds("N");
+        userAux.setAuxSeleccion(2);
+
         Thread modificarPremiumUsuario;
-        modificarPremiumUsuario = new SocketCliente(usuario);
+        modificarPremiumUsuario = new SocketCliente(userAux);
         modificarPremiumUsuario.start();
-         */
+
+        try {
+
+            Thread.sleep(1000);
+
+        } catch (InterruptedException e) {
+
+        }
+        Toast.makeText(this, "Pago Realizado", Toast.LENGTH_LONG).show();
+
     }
 
 
@@ -216,7 +257,7 @@ public class MainActivityPerfil extends AppCompatActivity {
 
         if (!edAvatar){
 
-            etNombre.setFocusable(true);
+            //etNombre.setFocusable(true);
             etNombre.setEnabled(true);
             ivEditNombre.setBackgroundColor(Color.GREEN);
             edAvatar = true;
@@ -227,6 +268,12 @@ public class MainActivityPerfil extends AppCompatActivity {
             etNombre.setEnabled(false);
             ivEditNombre.setBackgroundColor(Color.GRAY);
             edAvatar = false;
+
+            userAux.setAuxSeleccion(2);
+            userAux.setNombre(etNombre.getText().toString());
+            Thread modificarUsuarioNombre;
+            modificarUsuarioNombre = new SocketCliente(userAux);
+            modificarUsuarioNombre.start();
 
         }
     }
@@ -277,17 +324,103 @@ public class MainActivityPerfil extends AppCompatActivity {
         }
 
         ivEditAvatar.setBackgroundColor(Color.GRAY);
+        userAux.setAuxSeleccion(2);
+        Thread modificarUsuarioAvatar;
+        modificarUsuarioAvatar = new SocketCliente(userAux);
+        modificarUsuarioAvatar.start();
+
         dialog.dismiss();
         Toast.makeText(this, ""+userAux.getAvatar(), Toast.LENGTH_LONG).show();
 
     }
 
 
-    private void recargarAd(){
+    private void deleteAccount(){
+
+        final FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+        currentUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+
+                    usuario.setAuxSeleccion(3);
+                    Thread borrarUsuario;
+                    borrarUsuario = new SocketCliente(usuario);
+                    borrarUsuario.start();
+
+                } else {
+                    Toast.makeText(MainActivityPerfil.this, R.string.correo_no, Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
     }
 
-    private void verVideoBonus() {
+    public void onCreateDialog() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // Get the layout inflater
+        LayoutInflater inflater = this.getLayoutInflater();
+
+        // Inflate and set the layout for the dialog
+        // Pass null as the parent view because its going in the dialog layout
+        builder.setView(inflater.inflate(R.layout.dialog_signin, null))
+                // Add action buttons
+                .setPositiveButton(R.string.eliminar_cuenta, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        deleteAccount();
+
+                    }
+                })
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                }).show();
+    }
+
+
+    public void rewAds(){
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        RewardedAd.load(this, "ca-app-pub-3940256099942544/5224354917",
+                adRequest, new RewardedAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull RewardedAd rewardedAd) {
+                        super.onAdLoaded(rewardedAd);
+
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        super.onAdFailedToLoad(loadAdError);
+                        //rewardedAd = null;
+                    }
+                });
+
+
+    }
+
+
+    public void anuncio(View view) {
+
+
+        if (rewardedAd != null){
+            rewardedAd.show(this, new OnUserEarnedRewardListener() {
+                @Override
+                public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
+
+                }
+            });
+
+
+        }else{
+            Toast.makeText(this, "Anuncio no disponible", Toast.LENGTH_LONG).show();
+            rewAds();
+        }
 
     }
 

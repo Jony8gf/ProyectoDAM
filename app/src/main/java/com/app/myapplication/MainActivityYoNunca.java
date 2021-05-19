@@ -34,7 +34,7 @@ public class MainActivityYoNunca extends AppCompatActivity {
     int numero = 0;
     boolean carga = false;
     String idioma = "";
-    String correo;
+    String correo, ads;
     ArrayList<String> frases = new ArrayList<>();
     private TextToSpeech mTTS;
     //Creacion de Objeto Adview
@@ -47,12 +47,12 @@ public class MainActivityYoNunca extends AppCompatActivity {
         setContentView(R.layout.activity_main_yo_nunca);
 
         correo = getIntent().getStringExtra("correo");
+        ads = getIntent().getStringExtra("ads");
 
         //Recoger Objeto Usuario
-        Usuario usuario = new Usuario(1,"Lucy", "lucy69@yopmail.com", 0, "S", 0, 4);
-        String aux = "S";
+        Usuario usuario = new Usuario(1,"Usuario", correo, 0, "S", 0, 4);
 
-        if (usuario.getAds().equals(aux)){
+        if (ads.equals("S")){
             MobileAds.initialize(this, new OnInitializationCompleteListener() {
                 @Override
                 public void onInitializationComplete(InitializationStatus initializationStatus) {

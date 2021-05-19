@@ -41,7 +41,7 @@ public class MainActivityCincoCosas extends AppCompatActivity {
     private Button btComenzar;
     private boolean ocultar  = true;
     private String contadorAux;
-    private String idioma, correo;
+    private String idioma, correo, ads;
     private String auxiliar;
     ArrayList<String> frases = new ArrayList<>();
     int numero = 0;
@@ -57,12 +57,12 @@ public class MainActivityCincoCosas extends AppCompatActivity {
         setContentView(R.layout.activity_main_cinco_cosas);
 
         correo = getIntent().getStringExtra("correo");
+        ads = getIntent().getStringExtra("ads");
 
         //Recoger Objeto Usuario
-        Usuario usuario = new Usuario(1,"Lucy", "lucy69@yopmail.com", 0, "S", 0, 4);
-        String aux = "S";
+        Usuario usuario = new Usuario(1,"Usuario", correo, 0, "S", 0, 4);
 
-        if (usuario.getAds().equals(aux)){
+        if (ads.equals("S")){
             MobileAds.initialize(this, new OnInitializationCompleteListener() {
                 @Override
                 public void onInitializationComplete(InitializationStatus initializationStatus) {

@@ -35,7 +35,7 @@ public class MainActivityCaraCruz extends AppCompatActivity {
     private Button btnLanzarMoneda;
     private int suerte = 0;
     private int tragos = 0;
-    private String auxiliar;
+    private String auxiliar, ads;
     private WheelCoin wc;
     private boolean isStarted;
     public static final Random random = new Random();
@@ -52,12 +52,12 @@ public class MainActivityCaraCruz extends AppCompatActivity {
         setContentView(R.layout.activity_main_cara_cruz);
 
         correo = getIntent().getStringExtra("correo");
+        ads = getIntent().getStringExtra("ads");
 
         //Recoger Objeto Usuario
-        Usuario usuario = new Usuario(1,"Lucy", "lucy69@yopmail.com", 0, "S", 0, 4);
-        String aux = "S";
+        Usuario usuario = new Usuario(1,"Usuario", correo, 0, "S", 0, 4);
 
-        if (usuario.getAds().equals(aux)){
+        if (ads.equals("S")){
             MobileAds.initialize(this, new OnInitializationCompleteListener() {
                 @Override
                 public void onInitializationComplete(InitializationStatus initializationStatus) {

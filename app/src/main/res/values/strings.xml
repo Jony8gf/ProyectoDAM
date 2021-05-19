@@ -205,6 +205,9 @@
     <string name="no">No</string>
     <string name="salir">¿Quieres salir de la aplicación?</string>
     <string name="chose_avatar">Choose Avatar</string>
+    <string name="cancel">Cancel</string>
+    <string name="eliminar_cuenta">Eliminar Cuenta</string>
+    <string name="acceso_denegado_invitado">No se puede acceder mediante INVITADO</string>
 
 
 </resources>

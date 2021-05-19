@@ -38,7 +38,7 @@ public class MainActivityMasProbable extends AppCompatActivity {
     ArrayList<String> frases = new ArrayList<>();
     private TextToSpeech mTTS;
     private TextView tvFrase, tvTragos;
-    String correo;
+    String correo, ads;
     //Creacion de Objeto Adview
     private AdView mAdView;
 
@@ -49,12 +49,12 @@ public class MainActivityMasProbable extends AppCompatActivity {
         setContentView(R.layout.activity_main_mas_probable);
 
         correo = getIntent().getStringExtra("correo");
+        ads = getIntent().getStringExtra("ads");
 
         //Recoger Objeto Usuario
-        Usuario usuario = new Usuario(1,"Lucy", "lucy69@yopmail.com", 0, "S", 0, 4);
-        String aux = "S";
+        Usuario usuario = new Usuario(1,"Usuario", correo, 0, "S", 0, 4);
 
-        if (usuario.getAds().equals(aux)){
+        if (ads.equals("S")){
             MobileAds.initialize(this, new OnInitializationCompleteListener() {
                 @Override
                 public void onInitializationComplete(InitializationStatus initializationStatus) {

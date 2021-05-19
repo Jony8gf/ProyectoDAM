@@ -120,6 +120,7 @@
         android:layout_marginStart="141dp"
         android:layout_marginTop="569dp"
         android:background="@color/amarillo"
+        android:onClick="anuncio"
         android:text="@string/ver_video"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.852"

@@ -46,7 +46,7 @@ public class MainActivityPatataCaliente extends AppCompatActivity {
     private MediaPlayer mpTictak, mpBocina;
     private long animationDuracion =  48000 ;//Milisegundos
     private int angulo;
-    private String auxiliar, correo;
+    private String auxiliar, correo, ads;
     private  boolean carga = false;
     int numero = 0;
     ArrayList<String> frases = new ArrayList<>();
@@ -59,12 +59,12 @@ public class MainActivityPatataCaliente extends AppCompatActivity {
         setContentView(R.layout.activity_main_patata_caliente);
 
         correo = getIntent().getStringExtra("correo");
+        ads = getIntent().getStringExtra("ads");
 
         //Recoger Objeto Usuario
-        Usuario usuario = new Usuario(1,"Lucy", "lucy69@yopmail.com", 0, "S", 0, 4);
-        String aux = "S";
+        Usuario usuario = new Usuario(1,"Usuario", correo, 0, "S", 0, 4);
 
-        if (usuario.getAds().equals(aux)){
+        if (ads.equals("S")){
             MobileAds.initialize(this, new OnInitializationCompleteListener() {
                 @Override
                 public void onInitializationComplete(InitializationStatus initializationStatus) {

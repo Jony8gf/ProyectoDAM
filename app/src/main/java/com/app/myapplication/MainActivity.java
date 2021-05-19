@@ -44,12 +44,17 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
     String email;
     int dadoMinijuego = 0;
     String dadoAux = "";
+    Usuario usuario, userAux;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        email = getIntent().getStringExtra("correo");
+        Toast.makeText(this, email, Toast.LENGTH_LONG).show();
+        nombre =  getIntent().getStringExtra("nombre");
         dadoAux =  getIntent().getStringExtra("dado");
 
         if (dadoAux.isEmpty()) {
@@ -59,18 +64,31 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
         }
 
         //dadoMinijuego = (int)(Math.random()*6+1);
-        bonus(dadoMinijuego);
-
-        email = getIntent().getStringExtra("correo");
-        Toast.makeText(this, email, Toast.LENGTH_LONG).show();
-        nombre =  getIntent().getStringExtra("nombre");
 
 
         //Recoger Objeto Usuario
-        Usuario usuario = new Usuario(1,"Lucy", "lucy69@yopmail.com", 0, "S", 0, 4);
-        String aux = "S";
+        usuario = new Usuario(1,"Usuario", email, 0, "S", 0, 4);
 
-        if (usuario.getAds().equals(aux)){
+        //Recibir Objeto Usuario
+        //Asignar Valores
+        SocketCliente cliente;
+        cliente = new SocketCliente(usuario);
+        cliente.start();
+
+
+        try {
+
+            Thread.sleep(2700);
+
+        } catch (InterruptedException e) {
+
+        }
+
+        userAux = cliente.getUsuario();
+        email = userAux.getCorreo();
+        Toast.makeText(this, userAux.toString(), Toast.LENGTH_LONG).show();
+
+        if (userAux.getAds().equals("S")){
             MobileAds.initialize(this, new OnInitializationCompleteListener() {
                 @Override
                 public void onInitializationComplete(InitializationStatus initializationStatus) {
@@ -155,6 +173,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
             default: //Toast.makeText(this, "English", Toast.LENGTH_SHORT).show();
         }
 
+        bonus(dadoMinijuego);
         init();
     }
 
@@ -169,12 +188,21 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
         int id = item.getItemId();
 
         if (id == R.id.mnPerfil) {
-            //Pasar de una Activity a otra
-            Intent intent = new Intent(this, MainActivityPerfil.class);
-            intent.putExtra("correo", email);
-            startActivity(intent);
-            //Finalizar Activity
-            finish();
+
+            if(email.equals("invidado@correo.com")){
+
+                String infoDenegado = getString(R.string.acceso_denegado_invitado);
+                Toast.makeText(this, infoDenegado, Toast.LENGTH_LONG).show();
+
+            }else{
+                //Pasar de una Activity a otra
+                Intent intent = new Intent(this, MainActivityPerfil.class);
+                intent.putExtra("correo", email);
+                startActivity(intent);
+                //Finalizar Activity
+                finish();
+            }
+
         }
 
         return true;
@@ -223,6 +251,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityMimica.class);
                 intent.putExtra("correo", email);
+                intent.putExtra("ads", userAux.getAds());
                 startActivity(intent);
                 finish();
                 break;
@@ -232,6 +261,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityPatataCaliente.class);
                 intent.putExtra("correo", email);
+                intent.putExtra("ads", userAux.getAds());
                 startActivity(intent);
                 finish();
                 break;
@@ -242,6 +272,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 intent = new Intent(this, MainActivityYoNunca.class);
                 intent.putExtra("correo", email);
                 intent.putExtra("nombre", nombre);
+                intent.putExtra("ads", userAux.getAds());
                 startActivity(intent);
                 finish();
                 break;
@@ -250,6 +281,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityCaraCruz.class);
                 intent.putExtra("correo", email);
+                intent.putExtra("ads", userAux.getAds());
                 startActivity(intent);
                 finish();
                 break;
@@ -258,6 +290,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivitySetasVenenosas.class);
                 intent.putExtra("correo", email);
+                intent.putExtra("ads", userAux.getAds());
                 startActivity(intent);
                 finish();
                 break;
@@ -267,6 +300,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityRuletaRusa.class);
                 intent.putExtra("correo", email);
+                intent.putExtra("ads", userAux.getAds());
                 startActivity(intent);
                 finish();
                 break;
@@ -277,6 +311,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 //intent = new Intent(this, MainActivityRuletaSuerte.class);
                 intent = new Intent(this, MainActivityLobbyRuletaSuerte.class);
                 intent.putExtra("correo", email);
+                intent.putExtra("ads", userAux.getAds());
                 startActivity(intent);
                 finish();
                 break;
@@ -286,6 +321,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityMayorMenor.class);
                 intent.putExtra("correo", email);
+                intent.putExtra("ads", userAux.getAds());
                 startActivity(intent);
                 finish();
                 break;
@@ -295,6 +331,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityCincoCosas.class);
                 intent.putExtra("correo", email);
+                intent.putExtra("ads", userAux.getAds());
                 startActivity(intent);
                 finish();
                 break;
@@ -303,6 +340,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivitySlotMachine.class);
                 intent.putExtra("correo", email);
+                intent.putExtra("ads", userAux.getAds());
                 startActivity(intent);
                 finish();
                 break;
@@ -313,6 +351,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 intent = new Intent(this, MainActivityMasProbable.class);
                 intent.putExtra("nombre", nombre);
                 intent.putExtra("correo", email);
+                intent.putExtra("ads", userAux.getAds());
                 startActivity(intent);
                 finish();
                 break;
@@ -322,6 +361,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityBotella.class);
                 intent.putExtra("correo", email);
+                intent.putExtra("ads", userAux.getAds());
                 startActivity(intent);
                 finish();
                 break;
@@ -346,7 +386,16 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
             beerBonus.setText(auxiliarTexto + " "+ dadoMenu);
 
 
+
+
+            Integer total = userAux.getCervezas() + dadoMenu;
             //HILO MODIFICAR.....
+            userAux.setCervezas(total);
+            userAux.setAuxSeleccion(2);
+
+            Thread modificarCervezasUsuario;
+            modificarCervezasUsuario = new SocketCliente(userAux);
+            modificarCervezasUsuario.start();
 
             dialog.show();
         }

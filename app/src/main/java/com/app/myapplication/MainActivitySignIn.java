@@ -54,6 +54,7 @@ public class MainActivitySignIn extends AppCompatActivity {
         passwd1 = etPasswd1.getText().toString();
         passwd2 = etPasswd2.getText().toString();
         email = etEmail.getText().toString();
+        email = email.toLowerCase();
 
         if(nombre.equals("")){
 
@@ -89,24 +90,6 @@ public class MainActivitySignIn extends AppCompatActivity {
                 usuario.setCervezas(3);
                 usuario.setAvatar(1);
                 usuario.setAuxSeleccion(1);
-                //usuario.setUid(UUID.randomUUID().toString());
-
-                /*
-                //Pasar al Socket Eleccion
-                Thread eleccion;
-                eleccion = new SocketEleccion("1");
-                eleccion.start();
-
-                try {
-
-                    Thread.sleep(2000);
-
-                } catch (InterruptedException e) {
-
-                    e.printStackTrace();
-
-                }
-                */
 
 
                 //Pasar al Soket Objeto para cree el Usuario

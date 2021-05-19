@@ -36,6 +36,7 @@ public class MainActivitySlotMachine extends AppCompatActivity {
     private Button btnTirar;
     private String correo;
     private String auxiliar;
+    private String ads;
     private int tragos;
 
     private boolean isStarted;
@@ -59,12 +60,12 @@ public class MainActivitySlotMachine extends AppCompatActivity {
         setContentView(R.layout.activity_main_slot_machine);
 
         correo = getIntent().getStringExtra("correo");
+        ads = getIntent().getStringExtra("ads");
 
         //Recoger Objeto Usuario
-         usuario = new Usuario(1,"Lucy", "lucy69@yopmail.com", 0, "S", 0, 4);
-        String aux = "S";
+        usuario = new Usuario(1,"Usuario", correo, 0, "S", 0, 4);
 
-        if (usuario.getAds().equals(aux)){
+        if (ads.equals("S")){
             MobileAds.initialize(this, new OnInitializationCompleteListener() {
                 @Override
                 public void onInitializationComplete(InitializationStatus initializationStatus) {
