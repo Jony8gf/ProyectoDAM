@@ -7,12 +7,14 @@ public class ListElement implements Serializable {
     public int color;
     public String nombre;
     public String jugadores;
+    public int typeGame;
 
 
-    public ListElement(int color, String nombre, String jugadores) {
+    public ListElement(int color, String nombre, String jugadores, int typeGame) {
         this.color = color;
         this.nombre = nombre;
         this.jugadores = jugadores;
+        this.typeGame = typeGame;
     }
 
     public int getColor() {
@@ -39,4 +41,11 @@ public class ListElement implements Serializable {
         this.jugadores = jugadores;
     }
 
+    public int getTypeGame() {
+        return typeGame;
+    }
+
+    public void setTypeGame(int typeGame) {
+        this.typeGame = typeGame;
+    }
 }

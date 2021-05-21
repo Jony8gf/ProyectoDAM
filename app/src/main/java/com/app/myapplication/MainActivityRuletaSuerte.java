@@ -37,6 +37,7 @@ public class MainActivityRuletaSuerte extends AppCompatActivity  implements Anim
 
     private String auxContador, auxiliar;
     private String calculo;
+    private String ads;
     private TextView tvFrase, tvTragos;
     private ImageView imgRuleta;
     private Button btnGirar;
@@ -59,12 +60,12 @@ public class MainActivityRuletaSuerte extends AppCompatActivity  implements Anim
         setContentView(R.layout.activity_main_ruleta_suerte);
 
         correo = getIntent().getStringExtra("correo");
+        ads = getIntent().getStringExtra("ads");
 
         //Recoger Objeto Usuario
-        Usuario usuario = new Usuario(1,"Lucy", "lucy69@yopmail.com", 0, "S", 0, 4);
-        String aux = "S";
+        Usuario usuario = new Usuario(1,"Lucy", "lucy69@yopmail.com", 0, ads, 0, 4);
 
-        if (usuario.getAds().equals(aux)){
+        if (usuario.getAds().equals("S")){
             MobileAds.initialize(this, new OnInitializationCompleteListener() {
                 @Override
                 public void onInitializationComplete(InitializationStatus initializationStatus) {

@@ -50,6 +50,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         public View containerLayout;
         public View txtNumber;
         ImageView iconImage;
+        ImageView typeGameImage;
         TextView name, personas;
 
         ViewHolder(View itemView, final ItemListener itemListener){
@@ -57,6 +58,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             iconImage = itemView.findViewById(R.id.iconImageView);
             name = itemView.findViewById(R.id.minijuego);
             personas = itemView.findViewById(R.id.personas);
+            typeGameImage = itemView.findViewById(R.id.typeGameImageView);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -69,6 +71,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             iconImage.setBackgroundResource(item.getColor());
             name.setText(item.getNombre());
             personas.setText(item.getJugadores());
+            typeGameImage.setBackgroundResource(item.getTypeGame());
         }
 
     }

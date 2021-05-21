@@ -52,6 +52,7 @@
     <string name="mayor_menor">Mayor o Menor</string>
     <string name="setas_venenosas">Setas Venenosas</string>
     <string name="botella">Botella</string>
+    <string name="palillos">Palillos</string>
 
     <string name="bebes">Bebes</string>
     <string name="mandas_bebes">Mandas Bebes</string>
@@ -182,6 +183,14 @@
                     once this is done, each user who plays must hit the FIRE button,
                     but at any moment when the pistol SHOOTING has the cartridge loaded and it is your turn to drink.
     </string>
+    <string name="ayuda_palillos">AYUDA AL USUARIO: SLOT MACHINE
+
+                    To start the game, you have to press the LOAD REVOLVER button,
+                    this will cause you to store a cartridge in the gun,
+                    once this is done, each user who plays must hit the FIRE button,
+                    but at any moment when the pistol SHOOTING has the cartridge loaded and it is your turn to drink.
+    </string>
+
     <string name="cervezas">Cervezas</string>
     <string name="ganado_cervezas">Cervezas ganadas: </string>
     <string name="avatar">Avatar</string>
@@ -194,12 +203,19 @@
     <string name="hacerse_premium">Hacerse Premium</string>
     <string name="payment">Aceptar Pago</string>
     <string name="precio">0,99€</string>
-    <string name="ventajas_premium">Ventajas Premium</string>
+    <string name="ventajas_premium"><u>Ventajas Premium:</u></string>
+    <string name="ventajas_premium2"> +  No recibe publicidad dentro de la aplicación</string>
+    <string name="ventajas_premium3"> +  Recibe 100 Cervezas (Bonus)</string>
     <string name="no">No</string>
     <string name="salir">¿Quieres salir de la aplicación?</string>
     <string name="chose_avatar">Choose Avatar</string>
     <string name="cancel">Cancel</string>
     <string name="eliminar_cuenta">Eliminar Cuenta</string>
     <string name="acceso_denegado_invitado">No se puede acceder mediante INVITADO</string>
+    <string name="pensar">Pensar</string>
+    <string name="secret">Secret</string>
+    <string name="suerte">Suerte</string>
+    <string name="exclusivo">Exclusivo</string>
+    <string name="turno">Turno de :</string>
 
 </resources>

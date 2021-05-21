@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
     int dadoMinijuego = 0;
     String dadoAux = "";
     Usuario usuario, userAux;
+    private  Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -203,6 +204,14 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 finish();
             }
 
+            dialogAyudaTypesGames();
+
+        }
+
+        if (id == R.id.mnInfoGames) {
+
+            dialogAyudaTypesGames();
+
         }
 
         return true;
@@ -216,18 +225,19 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         elements = new ArrayList<ListElement>();
-        elements.add(new ListElement(R.drawable.menu_mimica, getString(R.string.mimica), "+2 Jugadores"));
-        elements.add(new ListElement(R.drawable.menu_patata_caliente, getString(R.string.patata_caliente), "+2 Jugadores"));
-        elements.add(new ListElement(R.drawable.menu_yonunca, getString(R.string.yo_nunca), "+2 Jugadores"));
-        elements.add(new ListElement(R.drawable.menu_caracruz, getString(R.string.cara_cruz), "+2 Jugadores"));
-        elements.add(new ListElement(R.drawable.menu_setasvenenosas, getString(R.string.setas_venenosas), "+2 Jugadores"));
-        elements.add(new ListElement(R.drawable.menu_ruletarusa, getString(R.string.ruleta_rusa), "+2 Jugadores"));
-        elements.add(new ListElement(R.drawable.menu_ruleta, getString(R.string.ruleta_suerte), "+2 Jugadores"));
-        elements.add(new ListElement(R.drawable.menu_mayormenor, getString(R.string.mayor_menor), "+2 Jugadores"));
-        elements.add(new ListElement(R.drawable.menu_cincocosas, getString(R.string.cinco_cosas), "+2 Jugadores"));
-        elements.add(new ListElement(R.drawable.menu_slotmachine, getString(R.string.slotmachine), "+2 Jugadores"));
-        elements.add(new ListElement(R.drawable.menu_masprobable, getString(R.string.masprobable), "+2 Jugadores"));
-        elements.add(new ListElement(R.drawable.menu_botella, getString(R.string.botella), "+2 Jugadores"));
+        elements.add(new ListElement(R.drawable.menu_mimica, getString(R.string.mimica), "+2 Jugadores", R.drawable.pensar));
+        elements.add(new ListElement(R.drawable.menu_patata_caliente, getString(R.string.patata_caliente), "+2 Jugadores", R.drawable.pensar));
+        elements.add(new ListElement(R.drawable.menu_yonunca, getString(R.string.yo_nunca), "+2 Jugadores", R.drawable.secret));
+        elements.add(new ListElement(R.drawable.menu_caracruz, getString(R.string.cara_cruz), "+2 Jugadores", R.drawable.suerte));
+        elements.add(new ListElement(R.drawable.menu_setasvenenosas, getString(R.string.setas_venenosas), "+2 Jugadores", R.drawable.suerte));
+        elements.add(new ListElement(R.drawable.menu_ruletarusa, getString(R.string.ruleta_rusa), "+2 Jugadores", R.drawable.suerte));
+        elements.add(new ListElement(R.drawable.menu_ruleta, getString(R.string.ruleta_suerte), "+2 Jugadores", R.drawable.suerte));
+        elements.add(new ListElement(R.drawable.menu_mayormenor, getString(R.string.mayor_menor), "+2 Jugadores", R.drawable.suerte));
+        elements.add(new ListElement(R.drawable.menu_cincocosas, getString(R.string.cinco_cosas), "+2 Jugadores", R.drawable.pensar));
+        elements.add(new ListElement(R.drawable.menu_slotmachine, getString(R.string.slotmachine), "+2 Jugadores", R.drawable.suerte));
+        elements.add(new ListElement(R.drawable.menu_masprobable, getString(R.string.masprobable), "+2 Jugadores", R.drawable.secret));
+        elements.add(new ListElement(R.drawable.menu_botella, getString(R.string.botella), "+2 Jugadores", R.drawable.suerte));
+        elements.add(new ListElement(R.drawable.menu_mimica, getString(R.string.palillos), "+2 Jugadores", R.drawable.exclusivo));
         //Los Palillos
 
         ListAdapter listAdapter = new ListAdapter(elements,
@@ -366,8 +376,28 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 finish();
                 break;
 
+            case 12: mpMusic.pause();
+                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                //Mas probable
+                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                intent = new Intent(this, MainActivityLobbyPalillos.class);
+                intent.putExtra("correo", email);
+                intent.putExtra("ads", userAux.getAds());
+                startActivity(intent);
+                finish();
+                break;
+
             default: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
         }
+    }
+
+
+    public void dialogAyudaTypesGames (){
+
+        dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_help_types_games);
+        dialog.show();
+
     }
 
     @Override

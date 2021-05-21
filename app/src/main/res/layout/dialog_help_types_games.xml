@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/imageViewPensar"
+        android:layout_width="111dp"
+        android:layout_height="94dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="106dp"
+        android:layout_marginEnd="50dp"
+        android:contentDescription="@string/pensar"
+        app:srcCompat="@drawable/pensar" />
+
+    <TextView
+        android:id="@+id/textViewInfoPensar"
+        android:layout_width="123dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="134dp"
+        android:text="@string/pensar"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="24sp" />
+
+    <ImageView
+        android:id="@+id/imageViewSecret"
+        android:layout_width="109dp"
+        android:layout_height="88dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="267dp"
+        android:layout_marginEnd="50dp"
+        android:contentDescription="@string/secret"
+        app:srcCompat="@drawable/secret" />
+
+
+    <TextView
+        android:id="@+id/textViewInfoSecret"
+        android:layout_width="129dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="290dp"
+        android:text="@string/secret"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="24sp" />
+
+    <ImageView
+        android:id="@+id/imageViewSuerte"
+        android:layout_width="105dp"
+        android:layout_height="85dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="402dp"
+        android:layout_marginEnd="50dp"
+        android:contentDescription="@string/suerte"
+        app:srcCompat="@drawable/suerte_verde" />
+
+    <TextView
+        android:id="@+id/textViewInfoSuerte"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="420dp"
+        android:text="@string/suerte"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="24sp" />
+
+    <ImageView
+        android:id="@+id/imageViewExclusivo"
+        android:layout_width="98dp"
+        android:layout_height="64dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="572dp"
+        android:layout_marginEnd="49dp"
+        android:contentDescription="@string/exclusivo"
+        app:srcCompat="@drawable/exclusivo" />
+
+    <TextView
+        android:id="@+id/textViewInfoExclusivo"
+        android:layout_width="141dp"
+        android:layout_height="54dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="570dp"
+        android:text="@string/exclusivo"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="24sp" />
+</RelativeLayout>
