@@ -14,6 +14,7 @@ import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
 
 
         //Recoger Objeto Usuario
-        usuario = new Usuario(1,"Usuario", email, 0, "S", 0, 4);
+        usuario = new Usuario(1,"Usuario", email, 100, "S", 0, 4);
 
         //Recibir Objeto Usuario
         //Asignar Valores
@@ -378,13 +379,43 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
 
             case 12: mpMusic.pause();
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
-                //Mas probable
-                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
-                intent = new Intent(this, MainActivityLobbyPalillos.class);
-                intent.putExtra("correo", email);
-                intent.putExtra("ads", userAux.getAds());
-                startActivity(intent);
-                finish();
+                //Palillos
+                if (userAux.getCervezas()>=10){
+
+                    //se prepara la alerta creando nueva instancia
+                    AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+                    //seleccionamos la cadena a mostrar
+                    alertbox.setMessage(R.string.gastar_cervezas);
+                    //elegimos un positivo SI y creamos un Listener
+                    alertbox.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                        //Funcion llamada cuando se pulsa el boton Si
+                        public void onClick(DialogInterface arg0, int arg1) {
+
+
+                            userAux.setCervezas(userAux.getCervezas()-10);
+                            //Recibir Objeto Usuario
+                            //Asignar Valores
+                            SocketCliente cliente;
+                            cliente = new SocketCliente(userAux);
+                            cliente.start();
+
+                            Intent intemt = new Intent(MainActivity.this, MainActivityLobbyPalillos.class);
+                            intemt.putExtra("correo", email);
+                            intemt.putExtra("ads", userAux.getAds());
+                            startActivity(intemt);
+                            finish();
+                        }
+                    });
+
+                    //mostramos el alertbox
+                    alertbox.show();
+
+
+
+                }else{
+                    dialogNotCervezasEnable();
+                }
+
                 break;
 
             default: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
@@ -399,6 +430,16 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
         dialog.show();
 
     }
+
+    public void dialogNotCervezasEnable (){
+
+        dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_not_beers);
+        dialog.show();
+
+    }
+
+
 
     @Override
     public void bonus(int dadoMinijuego) {

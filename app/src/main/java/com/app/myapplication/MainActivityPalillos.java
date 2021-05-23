@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.app.myapplication.SQLite.ConexionSQLiteHelper;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -32,7 +33,7 @@ public class MainActivityPalillos extends AppCompatActivity {
     private String correo;
     private String auxContador;
     private TextView tvTragos, tvInfo;
-    private int contador = 0;
+    private int contador = 1;
     private int number = 0;
     private int palilloRandom=  0;
     private int id=  0;
@@ -65,7 +66,7 @@ public class MainActivityPalillos extends AppCompatActivity {
         imgTaparPalillo.setEnabled(false);
 
         //Recoger Objeto Usuario
-        Usuario usuario = new Usuario(1,"Lucy", "lucy69@yopmail.com", 0, ads, 0, 4);
+        Usuario usuario = new Usuario(1,"Usuario", "usuario@yopmail.com", 0, ads, 0, 4);
         Toast.makeText(this, usuario.getAds(), Toast.LENGTH_LONG).show();
 
         if (usuario.getAds().equals("S")){
@@ -144,8 +145,6 @@ public class MainActivityPalillos extends AppCompatActivity {
 
         tvInfo.setText(getString(R.string.turno)+""+jugadores.get(0));
 
-        contador = 1;
-
     }
 
     public void escogerPalillo (View view){
@@ -157,7 +156,7 @@ public class MainActivityPalillos extends AppCompatActivity {
         imgAux.setVisibility(View.INVISIBLE);
         Toast.makeText(this, "Number"+number, Toast.LENGTH_LONG ).show();
 
-        if(contador<number){
+        if(contador<=number){
 
             tvInfo.setText(getString(R.string.turno)+""+jugadores.get(contador));
             contador++;
@@ -183,6 +182,7 @@ public class MainActivityPalillos extends AppCompatActivity {
             imgPalillo2.setVisibility(View.VISIBLE);
             imgPalillo3.setVisibility(View.VISIBLE);
             imgPalillo4.setVisibility(View.VISIBLE);
+            //Imagen palillo normal
             imgTaparPalillo.setVisibility(View.INVISIBLE);
             contador = 0;
             tvInfo.setText(getString(R.string.turno)+""+jugadores.get(0));
@@ -196,9 +196,7 @@ public class MainActivityPalillos extends AppCompatActivity {
 
 
     public void numeroAleatorio (){
-
         palilloRandom = (int)(Math.random()*number+1);
-
     }
 
     public void seleccionarPalillos(){

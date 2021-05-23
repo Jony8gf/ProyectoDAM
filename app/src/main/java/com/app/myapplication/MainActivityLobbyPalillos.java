@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.app.myapplication.SQLite.ConexionSQLiteHelper;
+
 import java.util.ArrayList;
 
 public class MainActivityLobbyPalillos extends AppCompatActivity {
@@ -76,7 +78,7 @@ public class MainActivityLobbyPalillos extends AppCompatActivity {
 
         }
 
-        //Asingar FFFFrase a editTexts
+        //Asingar FraseSQLite a editTexts
         edt1.setText(frases.get(0));
         edt2.setText(frases.get(1));
         edt3.setText(frases.get(2));

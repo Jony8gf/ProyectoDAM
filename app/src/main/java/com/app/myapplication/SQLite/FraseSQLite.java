@@ -1,16 +1,16 @@
-package com.app.myapplication;
+package com.app.myapplication.SQLite;
 
-public class FFFFrase {
+public class FraseSQLite {
 
     public Integer id;
     public String nombre;
     public String tipo;
     public String idioma;
 
-    public FFFFrase() {
+    public FraseSQLite() {
     }
 
-    public FFFFrase(Integer id, String nombre, String tipo, String idioma) {
+    public FraseSQLite(Integer id, String nombre, String tipo, String idioma) {
         this.id = id;
         this.nombre = nombre;
         this.tipo = tipo;

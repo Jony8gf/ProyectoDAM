@@ -13,12 +13,10 @@ import android.os.CountDownTimer;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.app.myapplication.SQLite.ConexionSQLiteHelper;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
