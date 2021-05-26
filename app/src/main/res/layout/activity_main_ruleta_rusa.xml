@@ -47,7 +47,7 @@
         android:layout_centerInParent="true"
         android:layout_marginStart="121dp"
         android:layout_marginEnd="124dp"
-        android:layout_marginBottom="257dp"
+        android:layout_marginBottom="226dp"
         android:contentDescription="@string/ruleta_rusa"
         app:srcCompat="@drawable/revolver_fake" />
 
@@ -61,7 +61,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="104dp"
         android:layout_marginEnd="110dp"
-        android:layout_marginBottom="-163dp"
+        android:layout_marginBottom="-150dp"
         android:backgroundTint="#FFEB3B"
         android:onClick="disparar"
         android:text="@string/disparar" />

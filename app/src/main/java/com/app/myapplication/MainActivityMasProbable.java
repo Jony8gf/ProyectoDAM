@@ -34,6 +34,7 @@ public class MainActivityMasProbable extends AppCompatActivity {
     int numero = 0;
     boolean carga = false;
     String idioma = "";
+    String auxiliar = "";
     ArrayList<String> frases = new ArrayList<>();
     private TextToSpeech mTTS;
     private TextView tvFrase, tvTragos;
@@ -224,7 +225,8 @@ public class MainActivityMasProbable extends AppCompatActivity {
     private  void tragosAletorios(){
         int tragos = (int)(Math.random()*3+1);
         String tragosAux = ""+tragos;
-        tvTragos.setText(tragosAux);
+        auxiliar = (String)getText(R.string.tragos);
+        tvTragos.setText(tragos + " "+ auxiliar);
     }
 
 

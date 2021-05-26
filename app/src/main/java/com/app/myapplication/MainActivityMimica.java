@@ -201,7 +201,8 @@ public class MainActivityMimica extends AppCompatActivity {
     private  void tragosAletorios(){
         int tragos = (int)(Math.random()*3+1);
         String tragosAux = ""+tragos;
-        tvTragos.setText(tragosAux);
+        auxiliar = (String)getText(R.string.tragos);
+        tvTragos.setText(tragos + " "+ auxiliar);
     }
 
     //ocultar Palabra

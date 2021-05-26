@@ -169,12 +169,8 @@ public class MainActivityPatataCaliente extends AppCompatActivity {
             cargarFrases();
 
             fraseAletoria();
-
-            tragosAletorios();
         }else{
             fraseAletoria();
-
-            tragosAletorios();
         }
     }
 
@@ -202,7 +198,7 @@ public class MainActivityPatataCaliente extends AppCompatActivity {
                 String frase = fila.getString(0);
                 frases.add(frase);
                 carga = true;
-                Toast.makeText(this, frase, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, frase, Toast.LENGTH_SHORT).show();
             } while (fila.moveToNext());
 
         }
@@ -228,6 +224,7 @@ public class MainActivityPatataCaliente extends AppCompatActivity {
 
     private void fraseAletoria(){
 
+        tvTragos.setText("");
         //Animación patata rotar 360 Grados
         angulo = angulo %360;
         RotateAnimation rotar = new RotateAnimation(angulo, 360, RotateAnimation.RELATIVE_TO_SELF, 0.5f, RotateAnimation.RELATIVE_TO_SELF, 0.5f);
@@ -266,8 +263,7 @@ public class MainActivityPatataCaliente extends AppCompatActivity {
                         auxiliar = (String) getText(R.string.tragos);
                         tvPalabraCaliente.setText(auxiliar);
                         ivPatata.setImageResource(R.drawable.patata_rip);
-                        auxiliar = (String) getText(R.string.bebes);
-                        tvTragos.setText(auxiliar+" "+tragos);
+                        tragosAletorios();
                         auxiliar = (String) getText(R.string.nueva_palabra);
                         btnPalabra.setText(auxiliar);
                         btnPalabra.setEnabled(true);
@@ -283,7 +279,8 @@ public class MainActivityPatataCaliente extends AppCompatActivity {
     private  void tragosAletorios(){
         int tragos = (int)(Math.random()*3+1);
         String tragosAux = ""+tragos;
-        tvTragos.setText(tragosAux);
+        auxiliar = (String)getText(R.string.tragos);
+        tvTragos.setText(tragos + " "+ auxiliar);
     }
 
 

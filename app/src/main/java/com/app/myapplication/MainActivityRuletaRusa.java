@@ -133,8 +133,8 @@ public class MainActivityRuletaRusa extends AppCompatActivity {
             btDisparar.setText(auxiliar);
             auxiliar = (String) getText(R.string.recargar);
             tvTiro.setText(auxiliar);
-            auxiliar = (String) getText(R.string.bebes);
-            tvTragos.setText(auxiliar +" "+tragos);
+            //auxiliar = (String) getText(R.string.bebes);
+            //tvTragos.setText(auxiliar +" "+tragos);
         }
         if(reinicio == 2){
 

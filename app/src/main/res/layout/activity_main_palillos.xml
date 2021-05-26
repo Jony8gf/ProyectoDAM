@@ -50,56 +50,56 @@
         ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
     </com.google.android.gms.ads.AdView>
 
+
     <ImageView
         android:id="@+id/imageViewPalillo1"
-        android:layout_width="129dp"
-        android:layout_height="499dp"
+        android:layout_width="100dp"
+        android:layout_height="565dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerVertical="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="149dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="78dp"
         android:contentDescription="@string/palillos"
         android:onClick="escogerPalillo"
         app:srcCompat="@drawable/palillo_entero" />
 
-
     <ImageView
         android:id="@+id/imageViewPalillo2"
-        android:layout_width="129dp"
-        android:layout_height="499dp"
+        android:layout_width="98dp"
+        android:layout_height="562dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="102dp"
-        android:layout_marginTop="151dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="80dp"
         android:contentDescription="@string/palillos"
         android:onClick="escogerPalillo"
         app:srcCompat="@drawable/palillo_entero" />
 
     <ImageView
         android:id="@+id/imageViewPalillo3"
-        android:layout_width="129dp"
-        android:layout_height="499dp"
+        android:layout_width="92dp"
+        android:layout_height="565dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerVertical="true"
-        android:layout_marginStart="204dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginStart="214dp"
+        android:layout_marginTop="75dp"
         android:contentDescription="@string/palillos"
         android:onClick="escogerPalillo"
         app:srcCompat="@drawable/palillo_entero" />
 
     <ImageView
         android:id="@+id/imageViewPalillo4"
-        android:layout_width="122dp"
-        android:layout_height="503dp"
+        android:layout_width="wrap_content"
+        android:layout_height="586dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginStart="289dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginStart="308dp"
+        android:layout_marginTop="71dp"
         android:layout_marginEnd="0dp"
         android:contentDescription="@string/palillos"
         android:onClick="escogerPalillo"
@@ -107,16 +107,17 @@
 
     <ImageView
         android:id="@+id/imageViewTaparPalillos"
-        android:layout_width="409dp"
-        android:layout_height="179dp"
+        android:layout_width="wrap_content"
+        android:layout_height="176dp"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="3dp"
-        android:layout_marginEnd="-1dp"
-        android:layout_marginBottom="169dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="370dp"
+        android:layout_marginEnd="3dp"
         android:contentDescription="@string/palillos"
+        android:minWidth="300dp"
         app:srcCompat="@drawable/tapar_palillos" />
 
 </RelativeLayout>

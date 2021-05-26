@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
 
         try {
 
-            Thread.sleep(2700);
+            Thread.sleep(3300);
 
         } catch (InterruptedException e) {
 
@@ -205,8 +205,6 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 finish();
             }
 
-            dialogAyudaTypesGames();
-
         }
 
         if (id == R.id.mnInfoGames) {
@@ -238,7 +236,9 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
         elements.add(new ListElement(R.drawable.menu_slotmachine, getString(R.string.slotmachine), "+2 Jugadores", R.drawable.suerte));
         elements.add(new ListElement(R.drawable.menu_masprobable, getString(R.string.masprobable), "+2 Jugadores", R.drawable.secret));
         elements.add(new ListElement(R.drawable.menu_botella, getString(R.string.botella), "+2 Jugadores", R.drawable.suerte));
-        elements.add(new ListElement(R.drawable.menu_mimica, getString(R.string.palillos), "+2 Jugadores", R.drawable.exclusivo));
+        elements.add(new ListElement(R.drawable.palillo_entero, getString(R.string.palillos), "+2 Jugadores", R.drawable.exclusivo));
+        elements.add(new ListElement(R.drawable.menu_yonunca,
+                "Yo nunca prueba", "+2 Jugadores", R.drawable.exclusivo));
         //Los Palillos
 
         ListAdapter listAdapter = new ListAdapter(elements,
@@ -416,6 +416,17 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                     dialogNotCervezasEnable();
                 }
 
+                break;
+
+            case 13: mpMusic.pause();
+                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                //Mas probable
+                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                intent = new Intent(this, MainActivityLobbyYoNunca.class);
+                intent.putExtra("correo", email);
+                intent.putExtra("ads", userAux.getAds());
+                startActivity(intent);
+                finish();
                 break;
 
             default: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);

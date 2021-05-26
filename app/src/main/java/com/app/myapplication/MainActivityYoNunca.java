@@ -35,6 +35,7 @@ public class MainActivityYoNunca extends AppCompatActivity {
     int numero = 0;
     boolean carga = false;
     String idioma = "";
+    String auxiliar = "";
     String correo, ads;
     ArrayList<String> frases = new ArrayList<>();
     private TextToSpeech mTTS;
@@ -221,7 +222,8 @@ public class MainActivityYoNunca extends AppCompatActivity {
     private  void tragosAletorios(){
         int tragos = (int)(Math.random()*3+1);
         String tragosAux = ""+tragos;
-        tvTragos.setText(tragosAux);
+        auxiliar = (String)getText(R.string.tragos);
+        tvTragos.setText(tragos + " "+ auxiliar);
     }
 
 

@@ -94,7 +94,7 @@ public class MainActivityPerfil extends AppCompatActivity {
 
         try {
 
-            Thread.sleep(2700);
+            Thread.sleep(3200);
 
         } catch (InterruptedException e) {
 

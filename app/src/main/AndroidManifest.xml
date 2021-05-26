@@ -14,6 +14,7 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoDAM">
+        <activity android:name=".MainActivityLobbyYoNunca"></activity>
         <!-- ca-app-pub-8043381776244583/9930395917   ca-app-pub-8043381776244583/9362786215       ca-app-pub-8043381776244583~1004200499 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
@@ -23,7 +24,7 @@
         <activity android:name=".MainActivityMimica" />
         <activity android:name=".MainActivityPatataCaliente" />
         <activity android:name=".MainActivityPalillos" />
-        <activity android:name=".MainActivityLobbyPalillos"/>
+        <activity android:name=".MainActivityLobbyPalillos" />
         <activity android:name=".MainActivityRuletaSuerte" />
         <activity android:name=".MainActivityMayorMenor" />
         <activity android:name=".MainActivityPerfil" />

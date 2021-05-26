@@ -42,12 +42,12 @@
         android:layout_width="199dp"
         android:layout_height="80dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="109dp"
-        android:layout_marginTop="550dp"
         android:layout_marginEnd="102dp"
+        android:layout_marginBottom="89dp"
         android:backgroundTint="#FFEB3B"
         android:onClick="Buscar"
         android:text="@string/comenzar" />
@@ -61,7 +61,7 @@
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
         android:layout_marginStart="101dp"
-        android:layout_marginTop="251dp"
+        android:layout_marginTop="247dp"
         android:layout_marginEnd="99dp"
         android:contentDescription="@string/app_name"
         app:srcCompat="@drawable/icono" />

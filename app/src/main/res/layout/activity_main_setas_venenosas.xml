@@ -26,14 +26,13 @@
     <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="485dp"
+        android:layout_below="@+id/textViewContadorTragosSetas"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="21dp"
-        android:layout_marginBottom="114dp">
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="25dp">
 
         <TableRow
             android:id="@+id/linea1"

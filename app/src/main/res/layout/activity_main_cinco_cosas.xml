@@ -62,7 +62,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="113dp"
         android:layout_marginEnd="109dp"
-        android:layout_marginBottom="99dp"
+        android:layout_marginBottom="85dp"
         android:backgroundTint="#FFEB3B"
         android:onClick="siguienteFrase"
         android:text="@string/comenzar" />

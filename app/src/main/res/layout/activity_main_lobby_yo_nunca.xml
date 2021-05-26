@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivityLobbyYoNunca"
+    android:background="@color/black">
+
+
+    <TextView
+        android:id="@+id/textViewYoNuncaLobby"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="@color/azul"
+        android:gravity="center"
+        android:text="@string/yo_nunca"
+        android:textColor="#FFFDFD"
+        android:textSize="24sp" />
+
+
+    <ScrollView
+        android:layout_width="393dp"
+        android:layout_height="518dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="71dp"
+        android:layout_marginEnd="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/editTextYN1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/yo_nunca"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/editTextYN2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/yo_nunca"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/editTextYN3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/yo_nunca"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/editTextYN4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/yo_nunca"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/editTextYN5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/yo_nunca"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/editTextYN6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/yo_nunca"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/editTextYN7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/yo_nunca"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/editTextYN8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/yo_nunca"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/editTextYN9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/yo_nunca"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/editTextYN10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/yo_nunca"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/editTextYN11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/yo_nunca"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/editTextYN12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/yo_nunca"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/editTextYN13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/yo_nunca"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/editTextYN14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/yo_nunca"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/editTextYN15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/yo_nunca"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/editTextYN16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/yo_nunca"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/editTextYN17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/yo_nunca"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/editTextYN18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/yo_nunca"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/editTextYN19"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/yo_nunca"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/editTextYN20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:contentDescription="@string/ruleta_rusa"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/yo_nunca"
+                android:textColor="#FBF9F9"
+                android:textColorHint="@color/white"
+                android:textSize="22sp" />
+        </LinearLayout>
+    </ScrollView>
+
+
+    <Button
+        android:id="@+id/buttonYoNuncaAceptar"
+        android:layout_width="181dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="663dp"
+        android:text="@string/acpetar"
+        android:textSize="24sp" />
+
+</RelativeLayout>

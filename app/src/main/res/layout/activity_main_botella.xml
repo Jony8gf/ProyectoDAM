@@ -46,9 +46,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="110dp"
-        android:layout_marginEnd="106dp"
-        android:layout_marginBottom="215dp"
+        android:layout_marginStart="109dp"
+        android:layout_marginEnd="107dp"
+        android:layout_marginBottom="201dp"
         android:contentDescription="@string/minijuegos"
         app:srcCompat="@drawable/botella" />
 
@@ -62,7 +62,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="107dp"
         android:layout_marginEnd="107dp"
-        android:layout_marginBottom="-117dp"
+        android:layout_marginBottom="-118dp"
         android:backgroundTint="#FFEB3B"
         android:onClick="girarBotella"
         android:text="@string/girar_botella" />

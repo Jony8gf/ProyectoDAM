@@ -183,7 +183,7 @@ public class MainActivityCaraCruz extends AppCompatActivity {
                     auxiliar = (String) getText(R.string.bebes);
                     tvTragos.setText(auxiliar +" "+tragos);
                     //Activar Button
-                    btnLanzarMoneda.setEnabled(false);
+                    btnLanzarMoneda.setEnabled(true);
                 }
 
             }.start();

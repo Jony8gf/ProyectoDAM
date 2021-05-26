@@ -56,8 +56,7 @@ public class SocketCliente extends Thread {
                 ObjectOutputStream oos = new ObjectOutputStream(socketCliente.getOutputStream());
                 oos.writeObject(usuario);
 
-
-
+                
                 if (usuario.getAuxSeleccion().equals(4)){
                     ObjectInputStream ois = new ObjectInputStream(socketCliente.getInputStream());
                     usuario = (Usuario) ois.readObject();

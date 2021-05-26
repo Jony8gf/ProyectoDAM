@@ -23,6 +23,7 @@ import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import herramientas.Usuario;
 
@@ -40,6 +41,7 @@ public class MainActivityPalillos extends AppCompatActivity {
     private ImageView imgPalillo1, imgPalillo2, imgPalillo3, imgPalillo4, imgTaparPalillo, imgAux;
     private AdView mAdView;
     ArrayList<String> jugadores = new ArrayList<>();
+    ArrayList <Integer> map = new ArrayList<>();
     private boolean carga = false;
 
 
@@ -152,6 +154,7 @@ public class MainActivityPalillos extends AppCompatActivity {
         numeroAleatorio();
 
         id = view.getId();
+        map.add(id);
         imgAux = view.findViewById(id);
         imgAux.setVisibility(View.INVISIBLE);
         Toast.makeText(this, "Number"+number, Toast.LENGTH_LONG ).show();
@@ -168,15 +171,28 @@ public class MainActivityPalillos extends AppCompatActivity {
 
             switch (palilloRandom){
 
-                case 1:imgPalillo1.setBackgroundResource(R.drawable.palillo_pequeno);
+                case 1:imgPalillo1.setImageResource(R.drawable.palillo_pequeno);
+                    if(map.get(0) == imgPalillo1.getId()){
+                        Toast.makeText(this, jugadores.get(0), Toast.LENGTH_LONG).show();
+                    }
                     break;
-                case 2:imgPalillo2.setBackgroundResource(R.drawable.palillo_pequeno);
+                case 2:imgPalillo2.setImageResource(R.drawable.palillo_pequeno);
+                    if(map.get(1) == imgPalillo2.getId()){
+                        Toast.makeText(this, jugadores.get(1), Toast.LENGTH_LONG).show();
+                    }
                     break;
-                case 3:imgPalillo3.setBackgroundResource(R.drawable.palillo_pequeno);
+                case 3:imgPalillo3.setImageResource(R.drawable.palillo_pequeno);
+                    if(map.get(2) == imgPalillo3.getId()){
+                        Toast.makeText(this, jugadores.get(2), Toast.LENGTH_LONG).show();
+                    }
                     break;
-                case 4:imgPalillo4.setBackgroundResource(R.drawable.palillo_pequeno);
+                case 4:imgPalillo4.setImageResource(R.drawable.palillo_pequeno);
+                    if(map.get(3) == imgPalillo4.getId()){
+                        Toast.makeText(this, jugadores.get(3), Toast.LENGTH_LONG).show();
+                    }
                     break;
             }
+
 
             imgPalillo1.setVisibility(View.VISIBLE);
             imgPalillo2.setVisibility(View.VISIBLE);
@@ -226,6 +242,13 @@ public class MainActivityPalillos extends AppCompatActivity {
                 seleccionarPalillos();
                 imgTaparPalillo.setVisibility(View.VISIBLE);
                 contador = 0;
+                imgPalillo1.setImageResource(R.drawable.palillo_entero);
+                imgPalillo2.setImageResource(R.drawable.palillo_entero);
+                imgPalillo3.setImageResource(R.drawable.palillo_entero);
+                imgPalillo4.setImageResource(R.drawable.palillo_entero);
+
+
+                map = new ArrayList<>();
             }
         });
 
