@@ -54,12 +54,16 @@ public class MainActivityCincoCosas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_cinco_cosas);
 
+        //Coger datos del Intent anterior
         correo = getIntent().getStringExtra("correo");
         ads = getIntent().getStringExtra("ads");
 
         //Recoger Objeto Usuario
         Usuario usuario = new Usuario(1,"Usuario", correo, 0, "S", 0, 4);
 
+        //Comprobacion para saber si el usuario tiene el premium
+        //En caso de si tenerlo ("N") [NO ADS] cargar el Mobile AdMob
+        // Y cargar anuncio en el banner
         if (ads.equals("S")){
             MobileAds.initialize(this, new OnInitializationCompleteListener() {
                 @Override
@@ -137,6 +141,8 @@ public class MainActivityCincoCosas extends AppCompatActivity {
         }
     }
 
+
+    //Metodo para cargar Frases del SQLite y almacenarlas en un ArrayList
     private void  cargarFrases(){
 
         ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this, "administracion", null, 1);
@@ -172,6 +178,7 @@ public class MainActivityCincoCosas extends AppCompatActivity {
 
     }
 
+    //Metodo para saber cuantas frases están disponibles desde el SQLite
     private void contadorFrases(){
 
         ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this, "administracion", null, 1);
@@ -185,8 +192,9 @@ public class MainActivityCincoCosas extends AppCompatActivity {
         }
     }
 
-    private void fraseAletoria(){
 
+    //Metodo para mostrar una frase anteriormente cargada en el arraylist
+    private void fraseAletoria(){
 
         int fraseRandom = (int)(Math.random()*frases.size());
         tvFrase.setText(frases.get(fraseRandom));
@@ -198,6 +206,8 @@ public class MainActivityCincoCosas extends AppCompatActivity {
         mpTicTac.start();
         mpTicTac.setLooping(true);
 
+
+        //Contador (Cuenta atrás 15 segundos)
         CountDownTimer ct1 = new CountDownTimer(15000, 1000) {
 
             public void onTick(long millisUntilFinished) {
@@ -224,10 +234,11 @@ public class MainActivityCincoCosas extends AppCompatActivity {
     }
 
 
+
+
+    //Metodo para generar tragos de forma aleatoria
     private  void tragosAletorios(){
         tragos = (int)(Math.random()*3+1);
-        String tragosAux = ""+tragos;
-        //tvTragos.setText(tragosAux);
     }
 
 

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import herramientas.Frase;
 import herramientas.Usuario;
 
-public class MainActivityLobbyYoNunca extends AppCompatActivity {
+public class MainActivityLobbyMasProbable extends AppCompatActivity {
 
     private EditText edt1, edt2, edt3, edt4, edt5, edt6, edt7, edt8, edt9, edt10, edt11, edt12, edt13, edt14, edt15, edt16, edt17, edt18, edt19, edt20;
     ArrayList<Frase> frases = new ArrayList<>();
@@ -31,8 +31,7 @@ public class MainActivityLobbyYoNunca extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_lobby_yo_nunca);
-
+        setContentView(R.layout.activity_main_lobby_mas_probable);
 
         //Coger datos del Intent anterior
         correo = getIntent().getStringExtra("correo");
@@ -41,27 +40,26 @@ public class MainActivityLobbyYoNunca extends AppCompatActivity {
         idioma = getString(R.string.idioma);
 
         //EditTexts
-        edt1 = findViewById(R.id.editTextYN1);
-        edt2 = findViewById(R.id.editTextYN2);
-        edt3 = findViewById(R.id.editTextYN3);
-        edt4 = findViewById(R.id.editTextYN4);
-        edt5 = findViewById(R.id.editTextYN5);
-        edt6 = findViewById(R.id.editTextYN6);
-        edt7 = findViewById(R.id.editTextYN7);
-        edt8 = findViewById(R.id.editTextYN8);
-        edt9 = findViewById(R.id.editTextYN9);
-        edt10 = findViewById(R.id.editTextYN10);
-        edt11 = findViewById(R.id.editTextYN11);
-        edt12 = findViewById(R.id.editTextYN12);
-        edt13 = findViewById(R.id.editTextYN13);
-        edt14 = findViewById(R.id.editTextYN14);
-        edt15 = findViewById(R.id.editTextYN15);
-        edt16 = findViewById(R.id.editTextYN16);
-        edt17 = findViewById(R.id.editTextYN17);
-        edt18 = findViewById(R.id.editTextYN18);
-        edt19 = findViewById(R.id.editTextYN19);
-        edt20 = findViewById(R.id.editTextYN20);
-
+        edt1 = findViewById(R.id.editTextMP1);
+        edt2 = findViewById(R.id.editTextMP2);
+        edt3 = findViewById(R.id.editTextMP3);
+        edt4 = findViewById(R.id.editTextMP4);
+        edt5 = findViewById(R.id.editTextMP5);
+        edt6 = findViewById(R.id.editTextMP6);
+        edt7 = findViewById(R.id.editTextMP7);
+        edt8 = findViewById(R.id.editTextMP8);
+        edt9 = findViewById(R.id.editTextMP9);
+        edt10 = findViewById(R.id.editTextMP10);
+        edt11 = findViewById(R.id.editTextMP11);
+        edt12 = findViewById(R.id.editTextMP12);
+        edt13 = findViewById(R.id.editTextMP13);
+        edt14 = findViewById(R.id.editTextMP14);
+        edt15 = findViewById(R.id.editTextMP15);
+        edt16 = findViewById(R.id.editTextMP16);
+        edt17 = findViewById(R.id.editTextMP17);
+        edt18 = findViewById(R.id.editTextMP18);
+        edt19 = findViewById(R.id.editTextMP19);
+        edt20 = findViewById(R.id.editTextMP20);
 
         //Recoger Objeto Usuario
         usuario = new Usuario(1,"Usuario", correo, 100, "S", 0, 4);
@@ -87,33 +85,31 @@ public class MainActivityLobbyYoNunca extends AppCompatActivity {
 
         frases = userAux.getFrases();
 
-
         //Poner las frases del usuario en los distintos EditTexts
-        edt1.setText(frases.get(20).getDescripcion());
-        edt2.setText(frases.get(21).getDescripcion());
-        edt3.setText(frases.get(22).getDescripcion());
-        edt4.setText(frases.get(23).getDescripcion());
-        edt5.setText(frases.get(24).getDescripcion());
-        edt6.setText(frases.get(25).getDescripcion());
-        edt7.setText(frases.get(26).getDescripcion());
-        edt8.setText(frases.get(27).getDescripcion());
-        edt9.setText(frases.get(28).getDescripcion());
-        edt10.setText(frases.get(29).getDescripcion());
-        edt11.setText(frases.get(30).getDescripcion());
-        edt12.setText(frases.get(31).getDescripcion());
-        edt13.setText(frases.get(32).getDescripcion());
-        edt14.setText(frases.get(33).getDescripcion());
-        edt15.setText(frases.get(34).getDescripcion());
-        edt16.setText(frases.get(35).getDescripcion());
-        edt17.setText(frases.get(36).getDescripcion());
-        edt18.setText(frases.get(37).getDescripcion());
-        edt19.setText(frases.get(38).getDescripcion());
-        edt20.setText(frases.get(39).getDescripcion());
+        edt1.setText(frases.get(0).getDescripcion());
+        edt2.setText(frases.get(1).getDescripcion());
+        edt3.setText(frases.get(2).getDescripcion());
+        edt4.setText(frases.get(3).getDescripcion());
+        edt5.setText(frases.get(4).getDescripcion());
+        edt6.setText(frases.get(5).getDescripcion());
+        edt7.setText(frases.get(6).getDescripcion());
+        edt8.setText(frases.get(7).getDescripcion());
+        edt9.setText(frases.get(8).getDescripcion());
+        edt10.setText(frases.get(9).getDescripcion());
+        edt11.setText(frases.get(10).getDescripcion());
+        edt12.setText(frases.get(11).getDescripcion());
+        edt13.setText(frases.get(12).getDescripcion());
+        edt14.setText(frases.get(13).getDescripcion());
+        edt15.setText(frases.get(14).getDescripcion());
+        edt16.setText(frases.get(145).getDescripcion());
+        edt17.setText(frases.get(16).getDescripcion());
+        edt18.setText(frases.get(17).getDescripcion());
+        edt19.setText(frases.get(18).getDescripcion());
+        edt20.setText(frases.get(19).getDescripcion());
 
     }
 
-
-    public void accederYoNunca(View view){
+    public void accederMasProbable(View view){
 
         modificarFrases();
 
@@ -129,26 +125,26 @@ public class MainActivityLobbyYoNunca extends AppCompatActivity {
 
     public void modificarFrases(){
 
-        frases.get(20).setDescripcion(edt1.getText().toString());
-        frases.get(21).setDescripcion(edt2.getText().toString());
-        frases.get(22).setDescripcion(edt3.getText().toString());
-        frases.get(23).setDescripcion(edt4.getText().toString());
-        frases.get(24).setDescripcion(edt5.getText().toString());
-        frases.get(25).setDescripcion(edt6.getText().toString());
-        frases.get(26).setDescripcion(edt7.getText().toString());
-        frases.get(27).setDescripcion(edt8.getText().toString());
-        frases.get(28).setDescripcion(edt9.getText().toString());
-        frases.get(29).setDescripcion(edt10.getText().toString());
-        frases.get(30).setDescripcion(edt11.getText().toString());
-        frases.get(31).setDescripcion(edt12.getText().toString());
-        frases.get(32).setDescripcion(edt13.getText().toString());
-        frases.get(33).setDescripcion(edt14.getText().toString());
-        frases.get(34).setDescripcion(edt15.getText().toString());
-        frases.get(35).setDescripcion(edt16.getText().toString());
-        frases.get(36).setDescripcion(edt17.getText().toString());
-        frases.get(37).setDescripcion(edt18.getText().toString());
-        frases.get(38).setDescripcion(edt19.getText().toString());
-        frases.get(39).setDescripcion(edt20.getText().toString());
+        frases.get(0).setDescripcion(edt1.getText().toString());
+        frases.get(1).setDescripcion(edt2.getText().toString());
+        frases.get(2).setDescripcion(edt3.getText().toString());
+        frases.get(3).setDescripcion(edt4.getText().toString());
+        frases.get(4).setDescripcion(edt5.getText().toString());
+        frases.get(5).setDescripcion(edt6.getText().toString());
+        frases.get(6).setDescripcion(edt7.getText().toString());
+        frases.get(7).setDescripcion(edt8.getText().toString());
+        frases.get(8).setDescripcion(edt9.getText().toString());
+        frases.get(9).setDescripcion(edt10.getText().toString());
+        frases.get(10).setDescripcion(edt11.getText().toString());
+        frases.get(11).setDescripcion(edt12.getText().toString());
+        frases.get(12).setDescripcion(edt13.getText().toString());
+        frases.get(13).setDescripcion(edt14.getText().toString());
+        frases.get(14).setDescripcion(edt15.getText().toString());
+        frases.get(15).setDescripcion(edt16.getText().toString());
+        frases.get(16).setDescripcion(edt17.getText().toString());
+        frases.get(17).setDescripcion(edt18.getText().toString());
+        frases.get(18).setDescripcion(edt19.getText().toString());
+        frases.get(19).setDescripcion(edt20.getText().toString());
 
 
         userAux.setFrases(frases);
@@ -188,7 +184,7 @@ public class MainActivityLobbyYoNunca extends AppCompatActivity {
             //se prepara la alerta creando nueva instancia
             AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
             //seleccionamos la cadena a mostrar
-            alertbox.setMessage(getString(R.string.ayuda_yonunca));
+            alertbox.setMessage(getString(R.string.ayuda_masprobable));
             //elegimos un positivo SI y creamos un Listener
             alertbox.setPositiveButton(getString(R.string.entendido), new DialogInterface.OnClickListener() {
                 //Funcion llamada cuando se pulsa el boton Si

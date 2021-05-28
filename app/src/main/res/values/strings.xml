@@ -183,7 +183,7 @@
                     once this is done, each user who plays must hit the FIRE button,
                     but at any moment when the pistol SHOOTING has the cartridge loaded and it is your turn to drink.
     </string>
-    <string name="ayuda_palillos">AYUDA AL USUARIO: SLOT MACHINE
+    <string name="ayuda_palillos">AYUDA AL USUARIO: PALILLOS
 
                     To start the game, you have to press the LOAD REVOLVER button,
                     this will cause you to store a cartridge in the gun,
@@ -203,23 +203,25 @@
     <string name="hacerse_premium">Go Premium</string>
     <string name="payment">Accept Payment</string>
     <string name="precio">0,99€</string>
-    <string name="ventajas_premium"><u>Ventajas Premium:</u></string>
-    <string name="ventajas_premium2"> +  No recibe publicidad dentro de la aplicación</string>
-    <string name="ventajas_premium3"> +  Recibe 100 Cervezas (Bonus)</string>
-    <string name="no">No</string>
-    <string name="salir">¿Quieres salir de la aplicación?</string>
+    <string name="ventajas_premium"><u>Premium Advantages:</u></string>
+    <string name="ventajas_premium2"> + Does not receive advertising within the application</string>
+    <string name="ventajas_premium3"> + Receive 100 Beers (Bonus)</string>
+    <string name="no">NOT</string>
+    <string name="salir">Do you want to exit the application?</string>
     <string name="chose_avatar">Choose Avatar</string>
     <string name="cancel">Cancel</string>
-    <string name="eliminar_cuenta">Eliminar Cuenta</string>
-    <string name="acceso_denegado_invitado">No se puede acceder mediante INVITADO</string>
-    <string name="pensar">Pensar</string>
+    <string name="eliminar_cuenta">Delete account</string>
+    <string name="acceso_denegado_invitado">It cannot be accessed by GUEST</string>
+    <string name="pensar">Think</string>
     <string name="secret">Secret</string>
-    <string name="suerte">Suerte</string>
-    <string name="exclusivo">Exclusivo</string>
-    <string name="turno">Turno de :</string>
-    <string name="not_beers">No dispones de cervezas suficientes para jugar a este minijuego.</string>
-    <string name="min_cervezas">(10 Cervezas)</string>
-    <string name="gastar_cervezas">¿Desea gastar 10 cervezas para jugar a este minijuego?</string>
+    <string name="suerte">Lucky</string>
+    <string name="exclusivo">Exclusive</string>
+    <string name="turno">Shift of:</string>
+    <string name="not_beers">You dont have enough beers to play this minigame.</string>
+    <string name="min_cervezas">(10 Beers)</string>
+    <string name="gastar_cervezas">Do you want to spend 10 beers to play this minigame?</string>
+    <string name="frases_predeterminadas">Frases Predeterminadas</string>
+    <string name="frases_propias">Frases Propias</string>
 
 
 </resources>

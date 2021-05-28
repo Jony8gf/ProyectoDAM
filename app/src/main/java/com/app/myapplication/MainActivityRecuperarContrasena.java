@@ -53,13 +53,14 @@ public class MainActivityRecuperarContrasena extends AppCompatActivity {
         auxInfo = tvCorreoInvisible.getText().toString();
 
     }
+
+    //Método para filtrar el email y llamar al metodo del reiniciarPassword();
     public void restablecerPassword(View view){
 
         email = etEmailReset.getText().toString();
 
         if(!email.isEmpty()){
 
-            //String msg = String.valueOf(R.string.esperar);
             mDialog.setMessage(getString(R.string.esperar));
             mDialog.setCanceledOnTouchOutside(false);
             mDialog.show();
@@ -71,6 +72,8 @@ public class MainActivityRecuperarContrasena extends AppCompatActivity {
 
     }
 
+
+    //Método para reiniciar la contraseña del usuario autenticado mediante un email a su correo
     private void reiniciarPassword() {
 
         mAuth.setLanguageCode("es");
@@ -122,18 +125,6 @@ public class MainActivityRecuperarContrasena extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         // La actividad se ha vuelto visible (ahora se "reanuda").
-
-        /*
-        if (UtilsNetwork.isOnline(this)){
-
-
-
-        }else{
-            Intent intent = new Intent(this,  MainActivity_NoConexionInternet.class);
-            startActivity(intent);
-            finish();
-        }
-         */
     }
 
     @Override

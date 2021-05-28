@@ -58,12 +58,16 @@ public class MainActivityPatataCaliente extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_patata_caliente);
 
+        //Coger datos del Intent anterior
         correo = getIntent().getStringExtra("correo");
         ads = getIntent().getStringExtra("ads");
 
         //Recoger Objeto Usuario
         Usuario usuario = new Usuario(1,"Usuario", correo, 0, "S", 0, 4);
 
+        //Comprobacion para saber si el usuario tiene el premium
+        //En caso de si tenerlo ("N") [NO ADS] cargar el Mobile AdMob
+        // Y cargar anuncio en el banner
         if (ads.equals("S")){
             MobileAds.initialize(this, new OnInitializationCompleteListener() {
                 @Override
@@ -174,6 +178,7 @@ public class MainActivityPatataCaliente extends AppCompatActivity {
         }
     }
 
+    //Metodo para cargar Frases del SQLite y almacenarlas en un ArrayList
     private void  cargarFrases(){
 
         ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this, "administracion", null, 1);
@@ -209,6 +214,7 @@ public class MainActivityPatataCaliente extends AppCompatActivity {
 
     }
 
+    //Metodo para saber cuantas frases están disponibles desde el SQLite
     private void contadorFrases(){
 
         ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this, "administracion", null, 1);
@@ -222,6 +228,7 @@ public class MainActivityPatataCaliente extends AppCompatActivity {
         }
     }
 
+    //Metodo para mostrar una frase anteriormente cargada en el arraylist
     private void fraseAletoria(){
 
         tvTragos.setText("");
@@ -244,6 +251,8 @@ public class MainActivityPatataCaliente extends AppCompatActivity {
         mpTictak.start();
         mpTictak.setLooping(true);
 
+
+        //Contador de 35 segundos (Patata Semi Quemada)
         CountDownTimer ct1 = new CountDownTimer(35000, 1000) {
 
             public void onTick(long millisUntilFinished) {
@@ -252,6 +261,8 @@ public class MainActivityPatataCaliente extends AppCompatActivity {
 
             public void onFinish() {
                 ivPatata.setImageResource(R.drawable.patata_wtf);
+
+                //Contador de 15 segundos (Patata Quemada)
                 CountDownTimer ct2 = new CountDownTimer(15000, 1000) {
 
                     public void onTick(long millisUntilFinished) {
@@ -276,9 +287,9 @@ public class MainActivityPatataCaliente extends AppCompatActivity {
     }
 
 
+    //Metodo para generar tragos de forma aleatoria
     private  void tragosAletorios(){
         int tragos = (int)(Math.random()*3+1);
-        String tragosAux = ""+tragos;
         auxiliar = (String)getText(R.string.tragos);
         tvTragos.setText(tragos + " "+ auxiliar);
     }

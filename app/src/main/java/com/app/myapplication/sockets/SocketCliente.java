@@ -1,4 +1,4 @@
-package com.app.myapplication;
+package com.app.myapplication.sockets;
 
 import android.widget.Toast;
 

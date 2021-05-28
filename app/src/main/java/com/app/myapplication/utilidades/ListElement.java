@@ -1,4 +1,4 @@
-package com.app.myapplication;
+package com.app.myapplication.utilidades;
 
 import java.io.Serializable;
 

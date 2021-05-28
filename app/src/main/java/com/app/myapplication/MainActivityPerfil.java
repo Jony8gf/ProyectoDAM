@@ -2,45 +2,37 @@ package com.app.myapplication;
 
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.app.myapplication.sockets.SocketCliente;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.OnPaidEventListener;
 import com.google.android.gms.ads.OnUserEarnedRewardListener;
-import com.google.android.gms.ads.ResponseInfo;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
-import com.google.android.gms.ads.rewarded.OnAdMetadataChangedListener;
 import com.google.android.gms.ads.rewarded.RewardItem;
 import com.google.android.gms.ads.rewarded.RewardedAd;
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
-import com.google.android.gms.ads.rewarded.ServerSideVerificationOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -78,6 +70,7 @@ public class MainActivityPerfil extends AppCompatActivity {
         usuario = new Usuario(1,"Usuario", correo, 0, "S", 0, 4);
 
 
+        //Inicializacion de MobileAds(Admod)
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
@@ -140,10 +133,18 @@ public class MainActivityPerfil extends AppCompatActivity {
         etNombre.setEnabled(false);
 
 
+        //Modificacion de componentes con datos del usuario
         etNombre.setText(userAux.getNombre());
         txNumeroCervezas.setText(""+userAux.getCervezas());
 
+        if (userAux.getAds().equals("S")){
+            ivPremium.setImageResource(R.drawable.no_crown);
+        }else{
+            ivPremium.setImageResource(R.drawable.crown);
+        }
 
+
+        //Switch avatar del usuario
         switch (userAux.getAvatar()){
             case 0: ivAvatar.setImageResource(R.drawable.avatar_cero);
                 break;
@@ -160,15 +161,6 @@ public class MainActivityPerfil extends AppCompatActivity {
             default: ivAvatar.setImageResource(R.drawable.avatar_cero);
                 break;
         }
-
-        if (userAux.getAds().equals("S")){
-            ivPremium.setImageResource(R.drawable.no_crown);
-        }else{
-            ivPremium.setImageResource(R.drawable.crown);
-        }
-
-
-
 
     }
 
@@ -218,6 +210,7 @@ public class MainActivityPerfil extends AppCompatActivity {
     }
 
 
+    //Dialog Ayuda para pagar el Premium
     public void dialogTips(){
 
         dialog = new Dialog(this);
@@ -229,6 +222,7 @@ public class MainActivityPerfil extends AppCompatActivity {
 
 
 
+    //Metodo para modificar el Usuario cuando pague el Premium
     public void payment(View view){
 
 
@@ -253,6 +247,7 @@ public class MainActivityPerfil extends AppCompatActivity {
     }
 
 
+    //Metodo editar el nombre del Usuario (Perfil)
     public void editarNombre(View view){
 
         if (!edAvatar){
@@ -278,6 +273,7 @@ public class MainActivityPerfil extends AppCompatActivity {
         }
     }
 
+   //Metodo para mostrar un Dialog con diferentes avatares a seleccionar
     public void seleccionarAvatarDialog(View view){
 
         ivEditAvatar.setBackgroundColor(Color.GREEN);
@@ -287,6 +283,8 @@ public class MainActivityPerfil extends AppCompatActivity {
 
     }
 
+    //Metodo editar el avatar del Usuario (Perfil)
+    //Mostrando un Dialog para poder elegir uno
     @SuppressLint("NonConstantResourceId")
     public void seleccionarAvatar(View view){
 
@@ -335,6 +333,7 @@ public class MainActivityPerfil extends AppCompatActivity {
     }
 
 
+    //Metodo para borrar la cuenta de usuario
     private void deleteAccount(){
 
         final FirebaseUser currentUser = firebaseAuth.getCurrentUser();
@@ -356,6 +355,8 @@ public class MainActivityPerfil extends AppCompatActivity {
 
     }
 
+    //Dialogo para introducir los datos antes de borrar la cuenta
+    //Para evitar borrar un usuario por error
     public void onCreateDialog() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -382,6 +383,8 @@ public class MainActivityPerfil extends AppCompatActivity {
     }
 
 
+
+
     public void rewAds(){
 
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -400,13 +403,10 @@ public class MainActivityPerfil extends AppCompatActivity {
                         //rewardedAd = null;
                     }
                 });
-
-
     }
 
 
     public void anuncio(View view) {
-
 
         if (rewardedAd != null){
             rewardedAd.show(this, new OnUserEarnedRewardListener() {

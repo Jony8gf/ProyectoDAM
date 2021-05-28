@@ -46,12 +46,17 @@ public class MainActivityRuletaRusa extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_ruleta_rusa);
 
+        //Coger datos del Intent anterior
         correo = getIntent().getStringExtra("correo");
         ads = getIntent().getStringExtra("ads");
 
         //Recoger Objeto Usuario
         Usuario usuario = new Usuario(1,"Usuario", correo, 0, "S", 0, 4);
 
+
+        //Comprobacion para saber si el usuario tiene el premium
+        //En caso de si tenerlo ("N") [NO ADS] cargar el Mobile AdMob
+        // Y cargar anuncio en el banner
         if (ads.equals("S")){
             MobileAds.initialize(this, new OnInitializationCompleteListener() {
                 @Override
@@ -112,7 +117,7 @@ public class MainActivityRuletaRusa extends AppCompatActivity {
     }
 
 
-    //Metodo Disparar
+    //Metodo Disparar la pistola
     public void disparar(View view){
         auxiliar = (String) getText(R.string.tiro);
         tvTiro.setText(auxiliar);

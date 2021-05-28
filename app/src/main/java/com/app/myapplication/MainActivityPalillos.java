@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -50,6 +52,7 @@ public class MainActivityPalillos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_palillos);
 
+        //Coger datos del Intent anterior
         correo = getIntent().getStringExtra("correo");
         ads = getIntent().getStringExtra("ads");
         auxContador = getIntent().getStringExtra("numero");
@@ -71,6 +74,10 @@ public class MainActivityPalillos extends AppCompatActivity {
         Usuario usuario = new Usuario(1,"Usuario", "usuario@yopmail.com", 0, ads, 0, 4);
         Toast.makeText(this, usuario.getAds(), Toast.LENGTH_LONG).show();
 
+
+        //Comprobacion para saber si el usuario tiene el premium
+        //En caso de si tenerlo ("N") [NO ADS] cargar el Mobile AdMob
+        // Y cargar anuncio en el banner
         if (usuario.getAds().equals("S")){
             MobileAds.initialize(this, new OnInitializationCompleteListener() {
                 @Override
@@ -116,7 +123,6 @@ public class MainActivityPalillos extends AppCompatActivity {
         number = Integer.parseInt(auxContador);
 
         seleccionarPalillos();
-
 
         //Conexion con bd
         ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this, "administracion", null, 1);
@@ -256,6 +262,45 @@ public class MainActivityPalillos extends AppCompatActivity {
         alertbox.show();
     }
 
+
+    //Metodo mostrar boton volver
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_ayuda, menu);
+        return true;
+    }
+
+    //Metodo agregar acciones a nuestros botones
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id =item.getItemId();
+
+        if(id == R.id.volver){
+            //Pasar de una Activity a otra
+            Intent intent = new Intent(this, MainActivity.class);
+            int dado = (int)(Math.random()*6+1);
+            String dadoAux  = ""+dado;
+            intent.putExtra("correo", correo);
+            intent.putExtra("dado", dadoAux);
+            startActivity(intent);
+            finish();
+        }
+        if(id == R.id.infoboton){
+            //se prepara la alerta creando nueva instancia
+            AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+            //seleccionamos la cadena a mostrar
+            alertbox.setMessage(getString(R.string.ayuda_palillos));
+            //elegimos un positivo SI y creamos un Listener
+            alertbox.setPositiveButton(getString(R.string.entendido), new DialogInterface.OnClickListener() {
+                //Funcion llamada cuando se pulsa el boton Si
+                public void onClick(DialogInterface arg0, int arg1) {
+
+                }
+            });
+            //mostramos el alertbox
+            alertbox.show();
+        }
+
+        return true;
+    }
 
     @Override
     public void onBackPressed() {

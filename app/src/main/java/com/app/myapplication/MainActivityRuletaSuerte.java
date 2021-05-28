@@ -60,12 +60,18 @@ public class MainActivityRuletaSuerte extends AppCompatActivity  implements Anim
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_ruleta_suerte);
 
+        //Coger datos del Intent anterior
         correo = getIntent().getStringExtra("correo");
         ads = getIntent().getStringExtra("ads");
+        auxContador = getIntent().getStringExtra("numero");
 
         //Recoger Objeto Usuario
         Usuario usuario = new Usuario(1,"Lucy", "lucy69@yopmail.com", 0, ads, 0, 4);
 
+
+        //Comprobacion para saber si el usuario tiene el premium
+        //En caso de si tenerlo ("N") [NO ADS] cargar el Mobile AdMob
+        // Y cargar anuncio en el banner
         if (usuario.getAds().equals("S")){
             MobileAds.initialize(this, new OnInitializationCompleteListener() {
                 @Override
@@ -108,8 +114,8 @@ public class MainActivityRuletaSuerte extends AppCompatActivity  implements Anim
             });
         }
 
-        auxContador = getIntent().getStringExtra("numero");
-        Toast.makeText(this, auxContador, Toast.LENGTH_LONG).show();
+
+
 
         //Mediaplayer
         mpRuletaGirando = MediaPlayer.create(this, R.raw.ruleta);
@@ -126,6 +132,7 @@ public class MainActivityRuletaSuerte extends AppCompatActivity  implements Anim
 
         number = Integer.parseInt(auxContador);
 
+        //Switch para mostrar el tipo de ruleta (Celdas)
         switch (auxContador){
 
             case "2": imgRuleta.setImageResource(R.drawable.roulette_2);
@@ -172,7 +179,7 @@ public class MainActivityRuletaSuerte extends AppCompatActivity  implements Anim
                 String frase = fila.getString(0);
                 frases.add(frase);
                 carga = true;
-                Toast.makeText(this, frase, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, frase, Toast.LENGTH_SHORT).show();
             } while (fila.moveToNext());
         }
 

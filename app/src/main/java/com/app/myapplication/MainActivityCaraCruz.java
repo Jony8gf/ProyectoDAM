@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.app.myapplication.hilos.WheelCoin;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -51,12 +52,17 @@ public class MainActivityCaraCruz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_cara_cruz);
 
+        //Coger datos del Intent anterior
         correo = getIntent().getStringExtra("correo");
         ads = getIntent().getStringExtra("ads");
 
         //Recoger Objeto Usuario
         Usuario usuario = new Usuario(1,"Usuario", correo, 0, "S", 0, 4);
 
+
+        //Comprobacion para saber si el usuario tiene el premium
+        //En caso de si tenerlo ("N") [NO ADS] cargar el Mobile AdMob
+        // Y cargar anuncio en el banner
         if (ads.equals("S")){
             MobileAds.initialize(this, new OnInitializationCompleteListener() {
                 @Override
@@ -150,27 +156,32 @@ public class MainActivityCaraCruz extends AppCompatActivity {
         return true;
     }
 
+
+    //Método para mostrar el resultado de lanzar la moneda
     public void lanzarMoneda(View view){
 
         //Desactivar Button
         btnLanzarMoneda.setEnabled(false);
 
-        //Sonido Lanzar Moneda
-        //Iniciar musica/sonidos
-        mpMoneda.start();
 
+
+        //Generar tragos aleatorios
         tragos = (int)(Math.random()*4);
 
         if(tragos == 0){
             tragos=2;
         }
 
+        //Inciar Hilo
         runWheel();
+
         tvTragos.setText("");
         tvMoneda.setText("");
 
         if (isStarted) {
 
+
+            //Cuenta atrás de 7 segundos para que el hilo este en ejecución
             CountDownTimer ct1 = new CountDownTimer(7000, 1000) {
 
                 public void onTick(long millisUntilFinished) {
@@ -179,17 +190,23 @@ public class MainActivityCaraCruz extends AppCompatActivity {
 
                 public void onFinish() {
 
+                    //Parar Hilo
                     stopWheells();
                     auxiliar = (String) getText(R.string.bebes);
                     tvTragos.setText(auxiliar +" "+tragos);
                     //Activar Button
                     btnLanzarMoneda.setEnabled(true);
+                    //Sonido Lanzar Moneda
+                    //Iniciar musica/sonidos
+                    mpMoneda.start();
                 }
 
             }.start();
         }
     }
 
+
+    //Metodo para Lanzar un hilo (Moneda)
     public void runWheel(){
 
         wc = new WheelCoin(new WheelCoin.WheelListener() {
@@ -208,6 +225,7 @@ public class MainActivityCaraCruz extends AppCompatActivity {
         isStarted = true;
     }
 
+    //Método para parar el Hilo (Moneda)
     public void stopWheells(){
         wc.stopWheel();
 
@@ -226,6 +244,7 @@ public class MainActivityCaraCruz extends AppCompatActivity {
         isStarted = false;
     }
 
+    //Metodo estatico para indicar de forma aleatoria el lowe y upper de duración
     public static long randomLong(long lower, long upper){
         return lower + (long) (random.nextDouble() * (upper - lower));
     }

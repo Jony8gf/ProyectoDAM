@@ -61,21 +61,25 @@ public class MainActivityLogin extends AppCompatActivity {
         dialogTips();
     }
 
+
+    //Método para acceder a la activity de Recuparar Contraseña
     public void pasarRecuperarContrasena(View view){
 
+        //Parar musica
         mpMusica.stop();
         mpMusica.release();
 
         Intent intent = new Intent(this, MainActivityRecuperarContrasena.class);
-        //Intent intent = new Intent(this, MainActivitySetasVenenosas.class);
-        //Intent intent = new Intent(this, MainActivityYoNunca.class);
         startActivity(intent);
         //Finalizar Activity
         finish();
     }
 
+
+    //Método para acceder al menu de minijuegos desde un usuario Invitado
     public void pasarInvitado(View view){
 
+        //Parar musica
         mpMusica.stop();
         mpMusica.release();
 
@@ -91,8 +95,10 @@ public class MainActivityLogin extends AppCompatActivity {
         finish();
     }
 
+    //Método para acceder a la activity de registrarse en el sistema
     public void pasarSigIn(View view){
 
+        //Parar musica
         mpMusica.stop();
         mpMusica.release();
 
@@ -102,6 +108,8 @@ public class MainActivityLogin extends AppCompatActivity {
         finish();
     }
 
+
+    //Método para filtrar los valores de iniciar sesion introducidos por el usuario
     public void login(View view){
 
         email = etEmail.getText().toString();
@@ -120,6 +128,8 @@ public class MainActivityLogin extends AppCompatActivity {
         }
     }
 
+
+    //Método para validar la authentificación del usuario
     private void comprobacionUsuario() {
         mAuth.signInWithEmailAndPassword(email, passwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -140,20 +150,21 @@ public class MainActivityLogin extends AppCompatActivity {
         });
     }
 
+
+    //Método para mostrar un Dialog de Ayuda ante los daños del alcohol
     public void dialogTips(){
 
         Dialog dialog= new Dialog(this);
         if (numRand == 0 || numRand == 1) {
             dialog.setContentView(R.layout.dialog_notcar);
-            Button btnSaberMas = findViewById(R.id.btnSaberCar);
         }else{
             dialog.setContentView(R.layout.dialog_notdrink);
-            Button btnSaberMas = findViewById(R.id.btnSaberDrink);
         }
 
         dialog.setTitle("Drink tips");
         dialog.show();
 
+        //Contador de 4 segundos para cerrar el Dialog de Ayuda
         CountDownTimer countDownTimer = new CountDownTimer(4000, 1000) {
             public void onTick(long millisUntilFinished) {
 
@@ -166,6 +177,8 @@ public class MainActivityLogin extends AppCompatActivity {
 
     }
 
+
+    //Método para saber mas sobre los problemas que conlleva el alcohol (Enlaces a navegador)
     public void saberMas(View view){
         Intent intent = new Intent(Intent.ACTION_VIEW);
         if (numRand == 1) {
@@ -196,17 +209,7 @@ public class MainActivityLogin extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         // La actividad se ha vuelto visible (ahora se "reanuda").
-        //View view = new View(getApplicationContext());
         mpMusica.start();
-
-        /*if (UtilsNetwork.isOnline(this))
-
-
-        }else{
-            Intent intent = new Intent(this,  MainActivity_NoConexionInternet.class);
-            startActivity(intent);
-            finish();
-        }*/
     }
 
     @Override

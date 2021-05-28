@@ -220,5 +220,7 @@
     <string name="not_beers">No dispones de cervezas suficientes para jugar a este minijuego.</string>
     <string name="min_cervezas">(10 Cervezas)</string>
     <string name="gastar_cervezas">¿Desea gastar 10 cervezas para jugar a este minijuego?</string>
+    <string name="frases_predeterminadas">Frases Predeterminadas</string>
+    <string name="frases_propias">Frases Propias</string>
 
 </resources>

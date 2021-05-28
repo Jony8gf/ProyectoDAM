@@ -48,7 +48,9 @@ public class MainActivityBotella extends AppCompatActivity {
         //Recoger Objeto Usuario
         Usuario usuario = new Usuario(1,"Usuario", correo, 0, "S", 0, 4);
 
-
+        //Comprobacion para saber si el usuario tiene el premium
+        //En caso de si tenerlo ("N") [NO ADS] cargar el Mobile AdMob
+        // Y cargar anuncio en el banner
         if (ads.equals("S")){
             MobileAds.initialize(this, new OnInitializationCompleteListener() {
                 @Override

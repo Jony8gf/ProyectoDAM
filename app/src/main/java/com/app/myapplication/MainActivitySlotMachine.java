@@ -3,7 +3,6 @@ package com.app.myapplication;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -16,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.app.myapplication.hilos.WheelSlot;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -59,12 +59,17 @@ public class MainActivitySlotMachine extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_slot_machine);
 
+        //Coger datos del Intent anterior
         correo = getIntent().getStringExtra("correo");
         ads = getIntent().getStringExtra("ads");
 
         //Recoger Objeto Usuario
         usuario = new Usuario(1,"Usuario", correo, 0, "S", 0, 4);
 
+
+        //Comprobacion para saber si el usuario tiene el premium
+        //En caso de si tenerlo ("N") [NO ADS] cargar el Mobile AdMob
+        // Y cargar anuncio en el banner
         if (ads.equals("S")){
             MobileAds.initialize(this, new OnInitializationCompleteListener() {
                 @Override
@@ -122,6 +127,8 @@ public class MainActivitySlotMachine extends AppCompatActivity {
         btnTirar = findViewById(R.id.btnSlotTirar);
     }
 
+
+    //Método para mostrar el resultado de los slots de la maquina tragaperras
     public void tiradaSlot(View v){
 
         //Activar Button
@@ -139,6 +146,7 @@ public class MainActivitySlotMachine extends AppCompatActivity {
 
         if (isStarted) {
 
+            //Contador de 8 segundos (Tiempo de ejecucion de los hilos)
             CountDownTimer ct1 = new CountDownTimer(8000, 1000) {
 
                 public void onTick(long millisUntilFinished) {
@@ -158,6 +166,7 @@ public class MainActivitySlotMachine extends AppCompatActivity {
         }
     }
 
+    //Metodo para Lanzar un hilos (SLOTS)
     public void runWheells(){
 
 
@@ -206,6 +215,8 @@ public class MainActivitySlotMachine extends AppCompatActivity {
         isStarted = true;
     }
 
+
+    //Método para parar el Hilo (SLOTS)
     public void stopWheells(){
 
         wheel1.stopWheel();

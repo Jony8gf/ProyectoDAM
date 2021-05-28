@@ -28,6 +28,7 @@ import com.google.android.gms.ads.initialization.OnInitializationCompleteListene
 import java.util.ArrayList;
 import java.util.Locale;
 
+import herramientas.Frase;
 import herramientas.Usuario;
 
 public class MainActivityYoNunca extends AppCompatActivity {
@@ -36,8 +37,9 @@ public class MainActivityYoNunca extends AppCompatActivity {
     boolean carga = false;
     String idioma = "";
     String auxiliar = "";
-    String correo, ads;
-    ArrayList<String> frases = new ArrayList<>();
+    String correo, ads, eleccion;
+    ArrayList<String> frasesSQLite = new ArrayList<>();
+    ArrayList<Frase> frasesOracle = new ArrayList<>();
     private TextToSpeech mTTS;
     //Creacion de Objeto Adview
     private AdView mAdView;
@@ -48,12 +50,18 @@ public class MainActivityYoNunca extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_yo_nunca);
 
+        //Coger datos del Intent anterior
         correo = getIntent().getStringExtra("correo");
         ads = getIntent().getStringExtra("ads");
+        eleccion = getIntent().getStringExtra("eleccion");
+        Toast.makeText(this, eleccion, Toast.LENGTH_LONG).show();
 
         //Recoger Objeto Usuario
         Usuario usuario = new Usuario(1,"Usuario", correo, 0, "S", 0, 4);
 
+        //Comprobacion para saber si el usuario tiene el premium
+        //En caso de si tenerlo ("N") [NO ADS] cargar el Mobile AdMob
+        // Y cargar anuncio en el banner
         if (ads.equals("S")){
             MobileAds.initialize(this, new OnInitializationCompleteListener() {
                 @Override
@@ -146,11 +154,11 @@ public class MainActivityYoNunca extends AppCompatActivity {
     //Método para sacar una frase en pantalla
     public void Buscar(View view){
 
+        //If --> Pred
         if(!carga){
             contadorFrases();
 
-            //cargarFrases(idioma);
-            cargarFrases();
+            cargarFrasesSQLite();
 
             fraseAletoria();
 
@@ -160,9 +168,12 @@ public class MainActivityYoNunca extends AppCompatActivity {
 
             tragosAletorios();
         }
+
+        //if --> Prop
     }
 
-    private void  cargarFrases(){
+    //Metodo para cargar Frases del SQLite y almacenarlas en un ArrayList
+    private void  cargarFrasesSQLite(){
 
         ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this, "administracion", null, 1);
         SQLiteDatabase basedatos = admin.getWritableDatabase();
@@ -184,7 +195,7 @@ public class MainActivityYoNunca extends AppCompatActivity {
             do {
                 //Asignamos el arraylist los elementos
                 String frase = fila.getString(0);
-                frases.add(frase);
+                frasesSQLite.add(frase);
                 carga = true;
                 //Toast.makeText(this, frase, Toast.LENGTH_SHORT).show();
             } while (fila.moveToNext());
@@ -197,6 +208,7 @@ public class MainActivityYoNunca extends AppCompatActivity {
 
     }
 
+    //Metodo para saber cuantas frases están disponibles desde el SQLite
     private void contadorFrases(){
 
         ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this, "administracion", null, 1);
@@ -210,15 +222,17 @@ public class MainActivityYoNunca extends AppCompatActivity {
         }
     }
 
+    //Metodo para mostrar y leer una frase anteriormente cargada en el arraylist
     private void fraseAletoria(){
 
-        //int fraseRandom = (int)(Math.random()*numero);
-        int fraseRandom = (int)(Math.random()*frases.size());
-        mTTS.speak(frases.get(fraseRandom), TextToSpeech.QUEUE_FLUSH, null);
-        tvFrase.setText(frases.get(fraseRandom));
+        int fraseRandom = (int)(Math.random()*frasesSQLite.size());
+        mTTS.speak(frasesSQLite.get(fraseRandom), TextToSpeech.QUEUE_FLUSH, null);
+        tvFrase.setText(frasesSQLite.get(fraseRandom));
 
     }
 
+
+    //Metodo para generar tragos de forma aleatoria
     private  void tragosAletorios(){
         int tragos = (int)(Math.random()*3+1);
         String tragosAux = ""+tragos;

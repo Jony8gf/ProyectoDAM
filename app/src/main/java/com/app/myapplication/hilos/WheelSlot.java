@@ -1,8 +1,10 @@
-package com.app.myapplication;
+package com.app.myapplication.hilos;
+
+import com.app.myapplication.R;
 
 public class WheelSlot extends Thread {
 
-    interface WheelListener {
+    public interface WheelListener {
         void newImage(int img);
     }
 

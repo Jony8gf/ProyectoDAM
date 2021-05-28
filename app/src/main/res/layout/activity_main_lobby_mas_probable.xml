@@ -4,12 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivityLobbyYoNunca"
-    android:background="@color/black">
+    tools:context=".MainActivityLobbyMasProbable" android:background="@color/black">
 
 
     <TextView
-        android:id="@+id/textViewYoNuncaLobby"
+        android:id="@+id/textViewMasProbableLobby"
         android:layout_width="match_parent"
         android:layout_height="69dp"
         android:layout_alignParentStart="true"
@@ -20,7 +19,7 @@
         android:layout_marginEnd="0dp"
         android:background="@color/azul"
         android:gravity="center"
-        android:text="@string/yo_nunca"
+        android:text="@string/masprobable"
         android:textColor="#FFFDFD"
         android:textSize="24sp" />
 
@@ -41,261 +40,261 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/editTextYN1"
+                android:id="@+id/editTextMP1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
-                android:contentDescription="@string/yo_nunca"
+                android:contentDescription="@string/masprobable"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@string/yo_nunca"
+                android:text="@string/masprobable"
                 android:textColor="#FBF9F9"
                 android:textColorHint="@color/white"
                 android:textSize="22sp" />
 
             <EditText
-                android:id="@+id/editTextYN2"
+                android:id="@+id/editTextMP2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
-                android:contentDescription="@string/yo_nunca"
+                android:contentDescription="@string/masprobable"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@string/yo_nunca"
+                android:text="@string/masprobable"
                 android:textColor="#FBF9F9"
                 android:textColorHint="@color/white"
                 android:textSize="22sp" />
 
             <EditText
-                android:id="@+id/editTextYN3"
+                android:id="@+id/editTextMP3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
-                android:contentDescription="@string/yo_nunca"
+                android:contentDescription="@string/masprobable"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@string/yo_nunca"
+                android:text="@string/masprobable"
                 android:textColor="#FBF9F9"
                 android:textColorHint="@color/white"
                 android:textSize="22sp" />
 
             <EditText
-                android:id="@+id/editTextYN4"
+                android:id="@+id/editTextMP4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
-                android:contentDescription="@string/yo_nunca"
+                android:contentDescription="@string/masprobable"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@string/yo_nunca"
+                android:text="@string/masprobable"
                 android:textColor="#FBF9F9"
                 android:textColorHint="@color/white"
                 android:textSize="22sp" />
 
             <EditText
-                android:id="@+id/editTextYN5"
+                android:id="@+id/editTextMP5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
-                android:contentDescription="@string/yo_nunca"
+                android:contentDescription="@string/masprobable"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@string/yo_nunca"
+                android:text="@string/masprobable"
                 android:textColor="#FBF9F9"
                 android:textColorHint="@color/white"
                 android:textSize="22sp" />
 
             <EditText
-                android:id="@+id/editTextYN6"
+                android:id="@+id/editTextMP6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
-                android:contentDescription="@string/yo_nunca"
+                android:contentDescription="@string/masprobable"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@string/yo_nunca"
+                android:text="@string/masprobable"
                 android:textColor="#FBF9F9"
                 android:textColorHint="@color/white"
                 android:textSize="22sp" />
 
             <EditText
-                android:id="@+id/editTextYN7"
+                android:id="@+id/editTextMP7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
-                android:contentDescription="@string/yo_nunca"
+                android:contentDescription="@string/masprobable"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@string/yo_nunca"
+                android:text="@string/masprobable"
                 android:textColor="#FBF9F9"
                 android:textColorHint="@color/white"
                 android:textSize="22sp" />
 
             <EditText
-                android:id="@+id/editTextYN8"
+                android:id="@+id/editTextMP8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
-                android:contentDescription="@string/yo_nunca"
+                android:contentDescription="@string/masprobable"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@string/yo_nunca"
+                android:text="@string/masprobable"
                 android:textColor="#FBF9F9"
                 android:textColorHint="@color/white"
                 android:textSize="22sp" />
 
             <EditText
-                android:id="@+id/editTextYN9"
+                android:id="@+id/editTextMP9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
-                android:contentDescription="@string/yo_nunca"
+                android:contentDescription="@string/masprobable"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@string/yo_nunca"
+                android:text="@string/masprobable"
                 android:textColor="#FBF9F9"
                 android:textColorHint="@color/white"
                 android:textSize="22sp" />
 
             <EditText
-                android:id="@+id/editTextYN10"
+                android:id="@+id/editTextMP10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
-                android:contentDescription="@string/yo_nunca"
+                android:contentDescription="@string/masprobable"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@string/yo_nunca"
+                android:text="@string/masprobable"
                 android:textColor="#FBF9F9"
                 android:textColorHint="@color/white"
                 android:textSize="22sp" />
 
             <EditText
-                android:id="@+id/editTextYN11"
+                android:id="@+id/editTextMP11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
-                android:contentDescription="@string/yo_nunca"
+                android:contentDescription="@string/masprobable"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@string/yo_nunca"
+                android:text="@string/masprobable"
                 android:textColor="#FBF9F9"
                 android:textColorHint="@color/white"
                 android:textSize="22sp" />
 
             <EditText
-                android:id="@+id/editTextYN12"
+                android:id="@+id/editTextMP12"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
-                android:contentDescription="@string/yo_nunca"
+                android:contentDescription="@string/masprobable"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@string/yo_nunca"
+                android:text="@string/masprobable"
                 android:textColor="#FBF9F9"
                 android:textColorHint="@color/white"
                 android:textSize="22sp" />
 
             <EditText
-                android:id="@+id/editTextYN13"
+                android:id="@+id/editTextMP13"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
-                android:contentDescription="@string/yo_nunca"
+                android:contentDescription="@string/masprobable"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@string/yo_nunca"
+                android:text="@string/masprobable"
                 android:textColor="#FBF9F9"
                 android:textColorHint="@color/white"
                 android:textSize="22sp" />
 
             <EditText
-                android:id="@+id/editTextYN14"
+                android:id="@+id/editTextMP14"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
-                android:contentDescription="@string/yo_nunca"
+                android:contentDescription="@string/masprobable"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@string/yo_nunca"
+                android:text="@string/masprobable"
                 android:textColor="#FBF9F9"
                 android:textColorHint="@color/white"
                 android:textSize="22sp" />
 
             <EditText
-                android:id="@+id/editTextYN15"
+                android:id="@+id/editTextMP15"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
-                android:contentDescription="@string/yo_nunca"
+                android:contentDescription="@string/masprobable"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@string/yo_nunca"
+                android:text="@string/masprobable"
                 android:textColor="#FBF9F9"
                 android:textColorHint="@color/white"
                 android:textSize="22sp" />
 
             <EditText
-                android:id="@+id/editTextYN16"
+                android:id="@+id/editTextMP16"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
-                android:contentDescription="@string/yo_nunca"
+                android:contentDescription="@string/masprobable"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@string/yo_nunca"
+                android:text="@string/masprobable"
                 android:textColor="#FBF9F9"
                 android:textColorHint="@color/white"
                 android:textSize="22sp" />
 
             <EditText
-                android:id="@+id/editTextYN17"
+                android:id="@+id/editTextMP17"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
-                android:contentDescription="@string/yo_nunca"
+                android:contentDescription="@string/masprobable"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@string/yo_nunca"
+                android:text="@string/masprobable"
                 android:textColor="#FBF9F9"
                 android:textColorHint="@color/white"
                 android:textSize="22sp" />
 
             <EditText
-                android:id="@+id/editTextYN18"
+                android:id="@+id/editTextMP18"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
-                android:contentDescription="@string/yo_nunca"
+                android:contentDescription="@string/masprobable"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@string/yo_nunca"
+                android:text="@string/masprobable"
                 android:textColor="#FBF9F9"
                 android:textColorHint="@color/white"
                 android:textSize="22sp" />
 
             <EditText
-                android:id="@+id/editTextYN19"
+                android:id="@+id/editTextMP19"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
-                android:contentDescription="@string/yo_nunca"
+                android:contentDescription="@string/masprobable"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@string/yo_nunca"
+                android:text="@string/masprobable"
                 android:textColor="#FBF9F9"
                 android:textColorHint="@color/white"
                 android:textSize="22sp" />
 
             <EditText
-                android:id="@+id/editTextYN20"
+                android:id="@+id/editTextMP20"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
-                android:contentDescription="@string/yo_nunca"
+                android:contentDescription="@string/masprobable"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@string/yo_nunca"
+                android:text="@string/masprobable"
                 android:textColor="#FBF9F9"
                 android:textColorHint="@color/white"
                 android:textSize="22sp" />
@@ -304,13 +303,13 @@
 
 
     <Button
-        android:id="@+id/buttonYoNuncaAceptar"
+        android:id="@+id/buttonMasProbableAceptar"
         android:layout_width="181dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="663dp"
-        android:onClick="accederYoNunca"
+        android:onClick="accederMasProbable"
         android:text="@string/acpetar"
         android:textSize="24sp" />
 
