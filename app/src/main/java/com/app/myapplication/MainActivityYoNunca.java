@@ -16,7 +16,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.app.myapplication.SQLite.ConexionSQLiteHelper;
+import com.app.myapplication.sqlite.ConexionSQLiteHelper;
+import com.app.myapplication.sockets.SocketCliente;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -34,16 +35,19 @@ import herramientas.Usuario;
 public class MainActivityYoNunca extends AppCompatActivity {
 
     int numero = 0;
-    boolean carga = false;
+    boolean cargaSQLite = false;
+    boolean cargaOracle = false;
     String idioma = "";
     String auxiliar = "";
     String correo, ads, eleccion;
+    Usuario usuario;
     ArrayList<String> frasesSQLite = new ArrayList<>();
     ArrayList<Frase> frasesOracle = new ArrayList<>();
     private TextToSpeech mTTS;
+    private TextView tvFrase, tvTragos;
     //Creacion de Objeto Adview
     private AdView mAdView;
-    private TextView tvFrase, tvTragos;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +58,9 @@ public class MainActivityYoNunca extends AppCompatActivity {
         correo = getIntent().getStringExtra("correo");
         ads = getIntent().getStringExtra("ads");
         eleccion = getIntent().getStringExtra("eleccion");
-        Toast.makeText(this, eleccion, Toast.LENGTH_LONG).show();
 
         //Recoger Objeto Usuario
-        Usuario usuario = new Usuario(1,"Usuario", correo, 0, "S", 0, 4);
+       usuario = new Usuario(1,"Usuario", correo, 0, "S", 0, 4);
 
         //Comprobacion para saber si el usuario tiene el premium
         //En caso de si tenerlo ("N") [NO ADS] cargar el Mobile AdMob
@@ -152,24 +155,65 @@ public class MainActivityYoNunca extends AppCompatActivity {
 
 
     //Método para sacar una frase en pantalla
-    public void Buscar(View view){
+    public void fraseYoNunca(View view){
 
         //If --> Pred
-        if(!carga){
-            contadorFrases();
+        if(eleccion.equals("pred")){
+            if(!cargaSQLite){
+                contadorFrases();
 
-            cargarFrasesSQLite();
+                cargarFrasesSQLite();
 
-            fraseAletoria();
+                fraseAletoriaSQLite();
 
-            tragosAletorios();
-        }else{
-            fraseAletoria();
+                tragosAletorios();
+            }else{
+                fraseAletoriaSQLite();
 
-            tragosAletorios();
+                tragosAletorios();
+            }
         }
 
-        //if --> Prop
+        if(eleccion.equals("prop")){
+            if(!cargaOracle){
+
+                cargarFrasesOracle();
+
+                fraseAletoriaOracle();
+
+                tragosAletorios();
+
+            }else{
+                fraseAletoriaOracle();
+
+                tragosAletorios();
+            }
+        }
+
+    }
+
+    private void cargarFrasesOracle() {
+
+        //Recibir Objeto Usuario
+        //Asignar Valores
+        SocketCliente cliente;
+        cliente = new SocketCliente(usuario);
+        cliente.start();
+
+        try {
+
+            Thread.sleep(3000);
+
+        } catch (InterruptedException e) {
+
+            e.printStackTrace();
+
+        }
+
+        usuario = cliente.getUsuario();
+        //Toast.makeText(this, usuario.toString(), Toast.LENGTH_LONG).show();
+        cargaOracle = true;
+
     }
 
     //Metodo para cargar Frases del SQLite y almacenarlas en un ArrayList
@@ -196,7 +240,7 @@ public class MainActivityYoNunca extends AppCompatActivity {
                 //Asignamos el arraylist los elementos
                 String frase = fila.getString(0);
                 frasesSQLite.add(frase);
-                carga = true;
+                cargaSQLite = true;
                 //Toast.makeText(this, frase, Toast.LENGTH_SHORT).show();
             } while (fila.moveToNext());
 
@@ -223,7 +267,7 @@ public class MainActivityYoNunca extends AppCompatActivity {
     }
 
     //Metodo para mostrar y leer una frase anteriormente cargada en el arraylist
-    private void fraseAletoria(){
+    private void fraseAletoriaSQLite(){
 
         int fraseRandom = (int)(Math.random()*frasesSQLite.size());
         mTTS.speak(frasesSQLite.get(fraseRandom), TextToSpeech.QUEUE_FLUSH, null);
@@ -231,11 +275,19 @@ public class MainActivityYoNunca extends AppCompatActivity {
 
     }
 
+    //Metodo para mostrar y leer una frase anteriormente cargada en el arraylist
+    private void fraseAletoriaOracle(){
+
+        int fraseRandom = (int)(Math.random()*usuario.frases.size()); //- + 19
+        mTTS.speak(usuario.frases.get(fraseRandom).getDescripcion(), TextToSpeech.QUEUE_FLUSH, null);
+        tvFrase.setText(usuario.frases.get(fraseRandom).getDescripcion());
+
+    }
+
 
     //Metodo para generar tragos de forma aleatoria
     private  void tragosAletorios(){
         int tragos = (int)(Math.random()*3+1);
-        String tragosAux = ""+tragos;
         auxiliar = (String)getText(R.string.tragos);
         tvTragos.setText(tragos + " "+ auxiliar);
     }

@@ -434,20 +434,6 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
 
                 break;
 
-                /*
-            case 13: mpMusic.pause();
-                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
-                //Mas probable
-                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
-                intent = new Intent(this, MainActivityLobbyYoNunca.class);
-                intent.putExtra("correo", email);
-                intent.putExtra("ads", userAux.getAds());
-                startActivity(intent);
-                finish();
-                break;
-
-                 */
-
             default: mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
         }
     }

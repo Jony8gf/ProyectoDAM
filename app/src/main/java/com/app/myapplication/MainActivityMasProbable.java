@@ -14,9 +14,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.app.myapplication.SQLite.ConexionSQLiteHelper;
+import com.app.myapplication.sockets.SocketCliente;
+import com.app.myapplication.sqlite.ConexionSQLiteHelper;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -34,7 +34,8 @@ import herramientas.Usuario;
 public class MainActivityMasProbable extends AppCompatActivity {
 
     int numero = 0;
-    boolean carga = false;
+    boolean cargaSQLite = false;
+    boolean cargaOracle = false;
     String idioma = "";
     String auxiliar = "";
     ArrayList<String> frasesSQLite = new ArrayList<>();
@@ -42,6 +43,7 @@ public class MainActivityMasProbable extends AppCompatActivity {
     private TextToSpeech mTTS;
     private TextView tvFrase, tvTragos;
     String correo, ads, eleccion;
+    Usuario usuario;
     //Creacion de Objeto Adview
     private AdView mAdView;
 
@@ -55,10 +57,9 @@ public class MainActivityMasProbable extends AppCompatActivity {
         correo = getIntent().getStringExtra("correo");
         ads = getIntent().getStringExtra("ads");
         eleccion = getIntent().getStringExtra("eleccion");
-        Toast.makeText(this, eleccion, Toast.LENGTH_LONG).show();
 
         //Recoger Objeto Usuario
-        Usuario usuario = new Usuario(1,"Usuario", correo, 0, "S", 0, 4);
+        usuario = new Usuario(1,"Usuario", correo, 0, "S", 0, 4);
 
 
         //Comprobacion para saber si el usuario tiene el premium
@@ -159,25 +160,67 @@ public class MainActivityMasProbable extends AppCompatActivity {
     //Método para sacar una frase en pantalla
     public void fraseMasProbable(View view){
 
-        if(!carga){
-            //contadorFrases();
+        if(eleccion.equals("pred")){
 
-            //cargarFrases(idioma);
-            cargarFrases();
+            if(!cargaSQLite){
 
-            fraseAletoria();
+                cargarFrasesSQLite();
 
-            tragosAletorios();
-        }else{
-            fraseAletoria();
+                fraseAletoriaSQLite();
 
-            tragosAletorios();
+                tragosAletorios();
+            }else{
+                fraseAletoriaSQLite();
+
+                tragosAletorios();
+            }
         }
+
+        if(eleccion.equals("prop")){
+
+            if(!cargaOracle){
+
+                cargarFrasesOracle();
+
+                fraseAletoriaSQLite();
+
+                tragosAletorios();
+            }else{
+
+                fraseAleatoriaOracle();
+
+                tragosAletorios();
+            }
+        }
+
+    }
+
+    private void cargarFrasesOracle() {
+
+        //Recibir Objeto Usuario
+        //Asignar Valores
+        SocketCliente cliente;
+        cliente = new SocketCliente(usuario);
+        cliente.start();
+
+        try {
+
+            Thread.sleep(3000);
+
+        } catch (InterruptedException e) {
+
+            e.printStackTrace();
+        }
+
+        usuario = cliente.getUsuario();
+        //Toast.makeText(this, usuario.toString(), Toast.LENGTH_LONG).show();
+        cargaOracle = true;
+
     }
 
 
     //Metodo para cargar Frases del SQLite y almacenarlas en un ArrayList
-    private void  cargarFrases(){
+    private void cargarFrasesSQLite(){
 
         ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this, "administracion", null, 1);
         SQLiteDatabase basedatos = admin.getWritableDatabase();
@@ -200,7 +243,7 @@ public class MainActivityMasProbable extends AppCompatActivity {
                 //Asignamos el arraylist los elementos
                 String frase = fila.getString(0);
                 frasesSQLite.add(frase);
-                carga = true;
+                cargaSQLite = true;
                 //Toast.makeText(this, frase, Toast.LENGTH_SHORT).show();
             } while (fila.moveToNext());
 
@@ -228,12 +271,19 @@ public class MainActivityMasProbable extends AppCompatActivity {
     }
 
     //Metodo para mostrar y leer una frase anteriormente cargada en el arraylist
-    private void fraseAletoria(){
+    private void fraseAletoriaSQLite(){
 
-        //int fraseRandom = (int)(Math.random()*numero);
         int fraseRandom = (int)(Math.random()* frasesSQLite.size());
         mTTS.speak(frasesSQLite.get(fraseRandom), TextToSpeech.QUEUE_FLUSH, null);
         tvFrase.setText(frasesSQLite.get(fraseRandom));
+
+    }
+
+    private void fraseAleatoriaOracle(){
+
+        int fraseRandom = (int)(Math.random()* frasesSQLite.size());
+        mTTS.speak(usuario.frases.get(fraseRandom).getDescripcion(), TextToSpeech.QUEUE_FLUSH, null);
+        tvFrase.setText(usuario.frases.get(fraseRandom).getDescripcion());
 
     }
 

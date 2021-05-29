@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import com.app.myapplication.SQLite.ConexionSQLiteHelper;
+import com.app.myapplication.sqlite.ConexionSQLiteHelper;
 
 import java.util.ArrayList;
 

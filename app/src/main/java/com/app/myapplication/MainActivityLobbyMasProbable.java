@@ -77,6 +77,8 @@ public class MainActivityLobbyMasProbable extends AppCompatActivity {
 
         } catch (InterruptedException e) {
 
+            e.printStackTrace();
+
         }
 
         userAux = cliente.getUsuario();
