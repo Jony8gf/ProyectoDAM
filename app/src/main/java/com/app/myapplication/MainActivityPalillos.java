@@ -33,6 +33,7 @@ public class MainActivityPalillos extends AppCompatActivity {
     private String idioma = "";
     private String ads = "";
     private String correo;
+    private String perdedor = "";
     private String auxContador;
     private TextView tvTragos, tvInfo;
     private int contador = 1;
@@ -55,6 +56,9 @@ public class MainActivityPalillos extends AppCompatActivity {
         correo = getIntent().getStringExtra("correo");
         ads = getIntent().getStringExtra("ads");
         auxContador = getIntent().getStringExtra("numero");
+
+        // Cargar IDIOMA
+        idioma = getString(R.string.idioma);
 
         //TextViews
         tvInfo = findViewById(R.id.textViewPalillosInfo);
@@ -179,21 +183,25 @@ public class MainActivityPalillos extends AppCompatActivity {
                 case 1:imgPalillo1.setImageResource(R.drawable.palillo_pequeno);
                     if(map.get(0) == imgPalillo1.getId()){
                         Toast.makeText(this, jugadores.get(0), Toast.LENGTH_LONG).show();
+                        perdedor = jugadores.get(0);
                     }
                     break;
                 case 2:imgPalillo2.setImageResource(R.drawable.palillo_pequeno);
                     if(map.get(1) == imgPalillo2.getId()){
                         Toast.makeText(this, jugadores.get(1), Toast.LENGTH_LONG).show();
+                        perdedor = jugadores.get(1);
                     }
                     break;
                 case 3:imgPalillo3.setImageResource(R.drawable.palillo_pequeno);
                     if(map.get(2) == imgPalillo3.getId()){
                         Toast.makeText(this, jugadores.get(2), Toast.LENGTH_LONG).show();
+                        perdedor = jugadores.get(2);
                     }
                     break;
                 case 4:imgPalillo4.setImageResource(R.drawable.palillo_pequeno);
                     if(map.get(3) == imgPalillo4.getId()){
                         Toast.makeText(this, jugadores.get(3), Toast.LENGTH_LONG).show();
+                        perdedor = jugadores.get(3);
                     }
                     break;
             }
@@ -208,7 +216,8 @@ public class MainActivityPalillos extends AppCompatActivity {
             contador = 0;
             tvInfo.setText(getString(R.string.turno)+""+jugadores.get(0));
             mostrarDialog();
-            tvTragos.setText("Bebes 2");
+            int tragos = (int)(Math.random()*3+1);
+            tvTragos.setText(perdedor+" "+getString(R.string.bebes)+" "+tragos);
 
 
 

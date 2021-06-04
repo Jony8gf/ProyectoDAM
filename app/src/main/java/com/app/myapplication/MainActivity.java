@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
 
     List<ListElement> elements;
     private String posicionElemento;
-    private int posiciomiento;
+    private int posicionAux;
     private TextToSpeech mTTS;
     private MediaPlayer mpMusic;
     //Creacion de Objeto Adview
@@ -89,11 +89,12 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
 
         } catch (InterruptedException e) {
 
+            e.printStackTrace();
         }
 
         userAux = cliente.getUsuario();
         email = userAux.getCorreo();
-        Toast.makeText(this, userAux.toString(), Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, userAux.toString(), Toast.LENGTH_LONG).show();
 
 
         //Comprobacion para saber si el usuario tiene el premium
@@ -267,11 +268,12 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
         Toast.makeText(this, posicionElemento, Toast.LENGTH_SHORT).show();
         Intent intent;
 
+        posicionAux = position;
+
         switch (position){
             case 0: mpMusic.pause();
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 //Mimica
-                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityMimica.class);
                 intent.putExtra("correo", email);
                 intent.putExtra("ads", userAux.getAds());
@@ -281,7 +283,6 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
             case 1: mpMusic.pause();
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 //Patata Caliente
-                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityPatataCaliente.class);
                 intent.putExtra("correo", email);
                 intent.putExtra("ads", userAux.getAds());
@@ -291,7 +292,6 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
             case 2: mpMusic.pause();
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 //Yo Nunca
-                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
 
                 //Llamada al dialig de eleccion de tipo de frases
                 dialog = new Dialog(this);
@@ -320,7 +320,6 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
             case 5: mpMusic.pause();
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 //Ruleta Rusa
-                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityRuletaRusa.class);
                 intent.putExtra("correo", email);
                 intent.putExtra("ads", userAux.getAds());
@@ -330,7 +329,6 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
             case 6: mpMusic.pause();
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 //Ruleta de la suerte
-                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 //intent = new Intent(this, MainActivityRuletaSuerte.class);
                 intent = new Intent(this, MainActivityLobbyRuletaSuerte.class);
                 intent.putExtra("correo", email);
@@ -341,7 +339,6 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
             case 7: mpMusic.pause();
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 //Mayor o menor
-                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityMayorMenor.class);
                 intent.putExtra("correo", email);
                 intent.putExtra("ads", userAux.getAds());
@@ -351,7 +348,6 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
             case 8: mpMusic.pause();
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 //5 cosas
-                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityCincoCosas.class);
                 intent.putExtra("correo", email);
                 intent.putExtra("ads", userAux.getAds());
@@ -370,18 +366,16 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
             case 10: mpMusic.pause();
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 //Mas probable
-                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
-                intent = new Intent(this, MainActivityMasProbable.class);
-                intent.putExtra("nombre", nombre);
-                intent.putExtra("correo", email);
-                intent.putExtra("ads", userAux.getAds());
-                startActivity(intent);
-                finish();
+
+                //Llamada al dialig de eleccion de tipo de frases
+                dialog = new Dialog(this);
+                dialog.setContentView(R.layout.dialog_eleccion);
+                dialog.show();
+
                 break;
             case 11: mpMusic.pause();
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
-                //Mas probable
-                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+                //Botella
                 intent = new Intent(this, MainActivityBotella.class);
                 intent.putExtra("correo", email);
                 intent.putExtra("ads", userAux.getAds());
@@ -498,22 +492,62 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
         switch (id){
             case R.id.buttonEleccionFrasesPredeterminadas:
 
-                intent = new Intent(this, MainActivityYoNunca.class);
-                intent.putExtra("correo", email);
-                intent.putExtra("nombre", nombre);
-                intent.putExtra("ads", userAux.getAds());
-                intent.putExtra("eleccion", "pred");
-                startActivity(intent);
-                finish();
+
+                    if(posicionAux == 2){
+
+                        intent = new Intent(this, MainActivityYoNunca.class);
+                        intent.putExtra("correo", email);
+                        intent.putExtra("nombre", nombre);
+                        intent.putExtra("ads", userAux.getAds());
+                        intent.putExtra("eleccion", "pred");
+                        startActivity(intent);
+                        finish();
+                    }
+
+                    if(posicionAux == 10){
+
+                        intent = new Intent(this, MainActivityMasProbable.class);
+                        intent.putExtra("correo", email);
+                        intent.putExtra("nombre", nombre);
+                        intent.putExtra("ads", userAux.getAds());
+                        intent.putExtra("eleccion", "pred");
+                        startActivity(intent);
+                        finish();
+                    }
+
 
                 break;
             case R.id.buttonEleccionFrasesPropias:
 
-                intent = new Intent(this, MainActivityLobbyYoNunca.class);
-                intent.putExtra("correo", email);
-                intent.putExtra("nombre", nombre);
-                intent.putExtra("ads", userAux.getAds());
-                startActivity(intent);
+                if(email.equals("invidado@correo.com")){
+
+                    String infoDenegado = getString(R.string.acceso_denegado_invitado);
+                    Toast.makeText(this, infoDenegado, Toast.LENGTH_LONG).show();
+
+                }else{
+                    if(posicionAux == 2){
+
+                        intent = new Intent(this, MainActivityLobbyYoNunca.class);
+                        intent.putExtra("correo", email);
+                        intent.putExtra("nombre", nombre);
+                        intent.putExtra("ads", userAux.getAds());
+                        intent.putExtra("eleccion", "prop");
+                        startActivity(intent);
+                        finish();
+                    }
+
+                    if(posicionAux == 10){
+
+                        intent = new Intent(this, MainActivityLobbyMasProbable.class);
+                        intent.putExtra("correo", email);
+                        intent.putExtra("nombre", nombre);
+                        intent.putExtra("ads", userAux.getAds());
+                        intent.putExtra("eleccion", "prop");
+                        startActivity(intent);
+                        finish();
+                    }
+                }
+
 
                 break;
 

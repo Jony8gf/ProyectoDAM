@@ -97,6 +97,15 @@ public class MainActivitySignIn extends AppCompatActivity {
                 cliente = new SocketCliente(usuario);
                 cliente.start();
 
+                try {
+
+                    Thread.sleep(2000);
+
+                } catch (InterruptedException e) {
+
+                    e.printStackTrace();
+                }
+
 
                 //Incorporamos datos a la base de datos
                 //databaseReference.child("Persona").child(usuario.getUid()).setValue(usuario);

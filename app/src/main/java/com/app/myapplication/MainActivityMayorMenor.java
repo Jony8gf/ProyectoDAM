@@ -164,7 +164,7 @@ public class MainActivityMayorMenor extends AppCompatActivity {
                 id = getResources().getIdentifier(cartas[random], "drawable", getPackageName());
                 ivCarta.setImageResource(id);
                 auxiliar = (String) getText(R.string.mandas_bebes);
-                tvTragos.setText(auxiliar+""+tragos);
+                tvTragos.setText(auxiliar+" "+tragos);
                 auxiliar = (String) getText(R.string.joker);
                 tvGuia.setText(auxiliar);
                 tragos = 0;
@@ -204,7 +204,7 @@ public class MainActivityMayorMenor extends AppCompatActivity {
                 id = getResources().getIdentifier(cartas[random], "drawable", getPackageName());
                 ivCarta.setImageResource(id);
                 auxiliar = (String) getText(R.string.mandas_bebes);
-                tvTragos.setText(auxiliar+""+tragos);
+                tvTragos.setText(auxiliar+" "+tragos);
                 auxiliar = (String) getText(R.string.joker);
                 tvGuia.setText(auxiliar);
                 mpJoker.start();
@@ -245,7 +245,7 @@ public class MainActivityMayorMenor extends AppCompatActivity {
                 id = getResources().getIdentifier(cartas[random], "drawable", getPackageName());
                 ivCarta.setImageResource(id);
                 auxiliar = (String) getText(R.string.mandas_bebes);
-                tvTragos.setText(auxiliar+""+tragos);
+                tvTragos.setText(auxiliar+" "+tragos);
                 auxiliar = (String) getText(R.string.joker);
                 tvGuia.setText(auxiliar);
                 mpJoker.start();

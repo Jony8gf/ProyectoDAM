@@ -118,8 +118,6 @@ public class MainActivityLogin extends AppCompatActivity {
 
         if (!email.isEmpty() && !passwd.isEmpty()){
 
-            mpMusica.stop();
-            mpMusica.release();
             email = email.toLowerCase();
             comprobacionUsuario();
 

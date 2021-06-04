@@ -63,7 +63,6 @@ public class MainActivityPerfil extends AppCompatActivity {
 
         //Coger datos del Intent anterior
         correo = getIntent().getStringExtra("correo");
-        Toast.makeText(this, correo, Toast.LENGTH_LONG).show();
 
 
         //Instancia Usuario
@@ -94,7 +93,7 @@ public class MainActivityPerfil extends AppCompatActivity {
         }
 
         userAux = cliente.getUsuario();
-        Toast.makeText(this, userAux.toString(), Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, userAux.toString(), Toast.LENGTH_LONG).show();
 
 
         AdRequest adRequest = new AdRequest.Builder().build();

@@ -51,11 +51,11 @@
     <string name="slotmachine">SlotMachine</string>
     <string name="mayor_menor">Higher or Less</string>
     <string name="setas_venenosas">Poisonous Mushrooms</string>
-    <string name="botella">Botella</string>
-    <string name="palillos">Palillos</string>
+    <string name="botella">Bottle</string>
+    <string name="palillos">Wooden chopsticks</string>
 
     <string name="bebes">Drink</string>
-    <string name="mandas_bebes">send drink</string>
+    <string name="mandas_bebes">Send drink</string>
     <string name="bebes_or_mandas">You drink or order a drink</string>
     <string name="tragos">Shots</string>
     <string name="tragos_acumulados">Accumulated Drinks</string>
@@ -95,7 +95,7 @@
     <string name="play_gamme">Play again?</string>
 
     <string name="entendido">Agreed</string>
-    <string name="ayuda_masprobable">USER HELP: WHO IS MORE LIKELY THAN…
+    <string name="ayuda_masprobable">USER HELP: WHO IS MORE LIKELY THAN… \n \n
 
                     To start the game, you have to press the <u> START </u> button,
                     this will display a phrase on the screen,
@@ -103,7 +103,7 @@
                     He will drink the drinks that appear on the screen.
                     To change the phrase, press the button <u> NEXT PHRESE</u>
     </string>
-    <string name="ayuda_yonunca">HELP THE USER: I NEVER…
+    <string name="ayuda_yonunca">HELP THE USER: I NEVER… \n \n
 
                     To start the game, you have to press the <u> START </u> button
                     this will display a phrase on the screen,
@@ -112,7 +112,7 @@
 
                     To change the phrase, press the button <u> NEXT PHRESE</u>
     </string>
-    <string name="ayuda_mimica">USER HELP: MIME
+    <string name="ayuda_mimica">USER HELP: MIME \n \n
 
                     To start the game, you have to press the START button,
                     this will show a word that the user must gesture for the group members to guess,
@@ -120,7 +120,7 @@
                     otherwise, users who have not got the word right will drink those drinks.
                     For another user to execute another word, they must click the NEXT WORD button to repeat the process with a different word.
     </string>
-    <string name="ayuda_caracruz">USER HELP: FACE OR CROSS
+    <string name="ayuda_caracruz">USER HELP: FACE OR CROSS \n \n
 
                     To start the game, users must say out loud that they are going to choose, if heads or tails, on the contrary,
                     then you have to press the THROW COIN button,
@@ -129,7 +129,7 @@
                     in case you lose you will have to drink the drinks indicated.
                     To flip the coin again, press the THROW COIN button.
     </string>
-    <string name="ayuda_botella">USER HELP: BOTTLE
+    <string name="ayuda_botella">USER HELP: BOTTLE \n \n
 
                     To start the game, the players must get in a circle with the device in the middle of them,
                     then you have to press the button ROTATE TANK,
@@ -137,58 +137,56 @@
                     the player who is indicated with the tuto of the bottle will have to drink the drinks that are indicated.
                     To turn the bottle again, press the ROTATE BOTTLE button.
     </string>
-    <string name="ayuda_patatacaliente">USER HELP: HOT POTATO
+    <string name="ayuda_patatacaliente">USER HELP: HOT POTATO \n \n
 
                     To start the game, you have to press the START button
                     Taking turns, he will say a word related to the theme displayed on the screen and passing through the players of the game until the time is up.
                     The player who has the turn when the time is up must drink.
                     To choose another word, NEW WORD will be given
     </string>
-    <string name="ayuda_ruletarusa">USER HELP: RUSSIAN ROULETTE
+    <string name="ayuda_ruletarusa">USER HELP: RUSSIAN ROULETTE \n \n
 
                     To start the game, you have to press the LOAD REVOLVER button,
                     this will cause you to store a cartridge in the gun,
                     once this is done, each user who plays must hit the FIRE button,
                     but at any moment when the pistol SHOOTING has the cartridge loaded and it is your turn to drink.
     </string>
-    <string name="ayuda_setas">USER HELP: POISONOUS MUSHROOMS
+    <string name="ayuda_setas">USER HELP: POISONOUS MUSHROOMS \n \n
 
                     Each player will press a square in turn.
                     Every time a box is uncovered, the drinks will be added to the top counter.
                     When the player picks up a poisonous mushroom, he must perform the action indicated, as many times as the top counter marks it.
     </string>
-    <string name="ayuda_mayormenor">HELP TO THE USER: MAJOR OR MINOR
+    <string name="ayuda_mayormenor">HELP TO THE USER: MAJOR OR MINOR \n \n
 
                     To begin, a main card will come out, the players will press one of the HIGHER, LESS or EQUAL buttons in turns.
                     If they hit the next card, a drink will be added to the accumulator but if you fail, you will drink all the accumulated drinks.
                     Be careful that the JOKER can come out at any moment.
     </string>
-    <string name="ayuda_cincocosas">USER HELP: FIVE THINGS
+    <string name="ayuda_cincocosas">USER HELP: FIVE THINGS \n \n
 
                     To start the game press the START button,
                     A topic will then appear on the screen and players in rounds on each topic will have to say 5 things related to the topic in question in 15 seconds.
                     If the player completes the challenge, he commands the drinks on the screen to be drunk. Otherwise, you must drink those drinks on the screen when you do not meet the objective.
     </string>
-    <string name="ayuda_ruletasuerte">USER HELP: RUSSIAN ROULETTE
+    <string name="ayuda_ruletasuerte">USER HELP: RUSSIAN ROULETTE \n \n
 
                     To start the game, you have to press the LOAD REVOLVER button,
                     this will cause you to store a cartridge in the gun,
                     once this is done, each user who plays must hit the FIRE button,
                     but at any moment when the pistol SHOOTING has the cartridge loaded and it is your turn to drink.
     </string>
-    <string name="ayuda_slotmachine">USER HELP: SLOT MACHINE
+    <string name="ayuda_slotmachine">USER HELP: SLOT MACHINE \n \n
 
-                    To start the game, you have to press the LOAD REVOLVER button,
-                    this will cause you to store a cartridge in the gun,
-                    once this is done, each user who plays must hit the FIRE button,
-                    but at any moment when the pistol SHOOTING has the cartridge loaded and it is your turn to drink.
+                   To start the game, you must press the PULL button,
+                    then all three slots will start spinning to a stop,
+                    depending on the combination, you will win the game or you will have to drink because you have lost.
     </string>
-    <string name="ayuda_palillos">AYUDA AL USUARIO: PALILLOS
+    <string name="ayuda_palillos">HELP THE USER: THE CHOPSTICKS \n \n
 
-                    To start the game, you have to press the LOAD REVOLVER button,
-                    this will cause you to store a cartridge in the gun,
-                    once this is done, each user who plays must hit the FIRE button,
-                    but at any moment when the pistol SHOOTING has the cartridge loaded and it is your turn to drink.
+                   In turns indicated on the screen, users will choose the toothpick they prefer by clicking on it,
+                    Once all the chopsticks have been chosen, the tablecloth that hides them will be revealed by bringing out the chopsticks and thus showing the smallest toothpick that is the bad toothpick
+                    and therefore the user who chose said toothpick will lose the game.
     </string>
 
     <string name="cervezas">Beers</string>
@@ -204,8 +202,8 @@
     <string name="payment">Accept Payment</string>
     <string name="precio">0,99€</string>
     <string name="ventajas_premium"><u>Premium Advantages:</u></string>
-    <string name="ventajas_premium2"> + Does not receive advertising within the application</string>
-    <string name="ventajas_premium3"> + Receive 100 Beers (Bonus)</string>
+    <string name="ventajas_premium2"> \u0009 + Does not receive advertising within the application</string>
+    <string name="ventajas_premium3"> \u0009 + Receive 100 Beers (Bonus)</string>
     <string name="no">NOT</string>
     <string name="salir">Do you want to exit the application?</string>
     <string name="chose_avatar">Choose Avatar</string>
@@ -220,8 +218,8 @@
     <string name="not_beers">You dont have enough beers to play this minigame.</string>
     <string name="min_cervezas">(10 Beers)</string>
     <string name="gastar_cervezas">Do you want to spend 10 beers to play this minigame?</string>
-    <string name="frases_predeterminadas">Frases Predeterminadas</string>
-    <string name="frases_propias">Frases Propias</string>
+    <string name="frases_predeterminadas">Default phrases</string>
+    <string name="frases_propias">Own phrases</string>
 
 
 </resources>

@@ -42,7 +42,6 @@ public class MainActivityYoNunca extends AppCompatActivity {
     String correo, ads, eleccion;
     Usuario usuario;
     ArrayList<String> frasesSQLite = new ArrayList<>();
-    ArrayList<Frase> frasesOracle = new ArrayList<>();
     private TextToSpeech mTTS;
     private TextView tvFrase, tvTragos;
     //Creacion de Objeto Adview
@@ -149,7 +148,7 @@ public class MainActivityYoNunca extends AppCompatActivity {
                     }
                 });
                 break;
-            default: Toast.makeText(this, "English", Toast.LENGTH_SHORT).show();
+            default: //Toast.makeText(this, "English", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -157,7 +156,6 @@ public class MainActivityYoNunca extends AppCompatActivity {
     //Método para sacar una frase en pantalla
     public void fraseYoNunca(View view){
 
-        //If --> Pred
         if(eleccion.equals("pred")){
             if(!cargaSQLite){
                 contadorFrases();
@@ -278,7 +276,7 @@ public class MainActivityYoNunca extends AppCompatActivity {
     //Metodo para mostrar y leer una frase anteriormente cargada en el arraylist
     private void fraseAletoriaOracle(){
 
-        int fraseRandom = (int)(Math.random()*usuario.frases.size()); //- + 19
+        int fraseRandom = (int)(Math.random()*20 + 19);
         mTTS.speak(usuario.frases.get(fraseRandom).getDescripcion(), TextToSpeech.QUEUE_FLUSH, null);
         tvFrase.setText(usuario.frases.get(fraseRandom).getDescripcion());
 

@@ -39,7 +39,6 @@ public class MainActivityMasProbable extends AppCompatActivity {
     String idioma = "";
     String auxiliar = "";
     ArrayList<String> frasesSQLite = new ArrayList<>();
-    ArrayList<Frase> frasesOracle = new ArrayList<>();
     private TextToSpeech mTTS;
     private TextView tvFrase, tvTragos;
     String correo, ads, eleccion;
@@ -182,7 +181,7 @@ public class MainActivityMasProbable extends AppCompatActivity {
 
                 cargarFrasesOracle();
 
-                fraseAletoriaSQLite();
+                fraseAleatoriaOracle();
 
                 tragosAletorios();
             }else{
@@ -281,7 +280,7 @@ public class MainActivityMasProbable extends AppCompatActivity {
 
     private void fraseAleatoriaOracle(){
 
-        int fraseRandom = (int)(Math.random()* frasesSQLite.size());
+        int fraseRandom = (int)(Math.random()* 20);
         mTTS.speak(usuario.frases.get(fraseRandom).getDescripcion(), TextToSpeech.QUEUE_FLUSH, null);
         tvFrase.setText(usuario.frases.get(fraseRandom).getDescripcion());
 

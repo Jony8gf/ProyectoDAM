@@ -24,6 +24,7 @@ public class MainActivityLobbyYoNunca extends AppCompatActivity {
     ArrayList<Frase> frases = new ArrayList<>();
     private boolean carga = false;
     private String idioma = "";
+    private String eleccion = "";
     private String correo;
     private String ads;
     private Usuario usuario, userAux;
@@ -37,6 +38,7 @@ public class MainActivityLobbyYoNunca extends AppCompatActivity {
         //Coger datos del Intent anterior
         correo = getIntent().getStringExtra("correo");
         ads = getIntent().getStringExtra("ads");
+        eleccion = getIntent().getStringExtra("eleccion");
 
         idioma = getString(R.string.idioma);
 

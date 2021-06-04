@@ -52,7 +52,9 @@ public class MainActivitySetasVenenosas extends AppCompatActivity {
     private int tragos = 0;
     //Creacion de Objeto Adview
     private AdView mAdView;
-    private MediaPlayer mpSetaMusica;
+    private MediaPlayer mpSetaMusicaBuena;
+    private MediaPlayer mpSetaMusicaPocha;
+    private MediaPlayer mpSetaMusicaRadiactiva;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -160,9 +162,9 @@ public class MainActivitySetasVenenosas extends AppCompatActivity {
         if(tragos == 0 || contador == 0){
 
             //Asignacion de Sonido
-            mpSetaMusica = MediaPlayer.create(this, R.raw.seta_buena);
+            mpSetaMusicaBuena = MediaPlayer.create(this, R.raw.seta_buena);
             //Iniciar musica/sonidos
-            mpSetaMusica.start();
+            mpSetaMusicaBuena.start();
 
             //Creación de algoritmo matematico para establecer la primera casilla
             aleatorio = (int)(Math.random()*2);
@@ -201,9 +203,9 @@ public class MainActivitySetasVenenosas extends AppCompatActivity {
             if(aleatorio <= 5){
 
                 //Asignacion de Sonido
-                mpSetaMusica = MediaPlayer.create(this, R.raw.seta_buena);
+                mpSetaMusicaBuena = MediaPlayer.create(this, R.raw.seta_buena);
                 //Iniciar musica/sonidos
-                mpSetaMusica.start();
+                mpSetaMusicaBuena.start();
 
                 //Creación de algoritmo matematico para extablecer la casilla y numero de tragos
                 aleatorio = (int)(Math.random()*2);
@@ -235,9 +237,9 @@ public class MainActivitySetasVenenosas extends AppCompatActivity {
             if(aleatorio == 6){
 
                 //Asignacion de Sonido
-                mpSetaMusica = MediaPlayer.create(this, R.raw.seta_radioactiva);
+                mpSetaMusicaRadiactiva = MediaPlayer.create(this, R.raw.seta_radioactiva);
                 //Iniciar musica/sonidos
-                mpSetaMusica.start();
+                mpSetaMusicaRadiactiva.start();
 
                 //Cambio de Imagen según numero aleatorio & denegar acceso a botón
                 id = getResources().getIdentifier(setasRadiactivas[0], "drawable", getPackageName());
@@ -254,9 +256,9 @@ public class MainActivitySetasVenenosas extends AppCompatActivity {
             if (aleatorio > 6){
 
                 //Asignacion de Sonido
-                mpSetaMusica = MediaPlayer.create(this, R.raw.seta_pocha);
+                mpSetaMusicaPocha = MediaPlayer.create(this, R.raw.seta_pocha);
                 //Iniciar musica/sonidos
-                mpSetaMusica.start();
+                mpSetaMusicaPocha.start();
 
                 aleatorio = (int)(Math.random()*3);
                 id = getResources().getIdentifier(setasPochas[aleatorio], "drawable", getPackageName());
@@ -271,9 +273,9 @@ public class MainActivitySetasVenenosas extends AppCompatActivity {
         if(contador == 20){
 
             //Asignacion de Sonido
-            mpSetaMusica = MediaPlayer.create(this, R.raw.seta_pocha);
+            mpSetaMusicaPocha = MediaPlayer.create(this, R.raw.seta_pocha);
             //Iniciar musica/sonidos
-            mpSetaMusica.start();
+            mpSetaMusicaPocha.start();
 
             //Creación de algoritmo matematico para extablecer la casilla y numero de tragos
             aleatorio = (int)(Math.random()*3);

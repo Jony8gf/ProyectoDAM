@@ -201,7 +201,7 @@ public class MainActivityMimica extends AppCompatActivity {
     //Metodo para mostrar una frase anteriormente cargada en el arraylist
     private void fraseAletoria(){
 
-        int fraseRandom = (int)(Math.random()*numero);
+        int fraseRandom = (int)(Math.random()*frases.size());
         tvFrase.setText(frases.get(fraseRandom));
 
     }

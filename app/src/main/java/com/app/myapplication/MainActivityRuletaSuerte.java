@@ -198,10 +198,10 @@ public class MainActivityRuletaSuerte extends AppCompatActivity  implements Anim
     @Override
     public void onAnimationEnd(Animation animation) {
         calculo = String.valueOf((int)(((double)this.number) - Math.floor(((double)this.lngDegrees) / (360.0d / ((double)this.number)))) - 1);
-        Toast toast = Toast.makeText(this, " " + calculo + " ", Toast.LENGTH_LONG);
+        //Toast toast = Toast.makeText(this, " " + calculo + " ", Toast.LENGTH_LONG);
+        //toast.show();
         tvFrase.setText(calculo);
         //toast.setGravity(149,0,0);
-        toast.show();
         tvFrase.setText(frases.get(Integer.parseInt(String.valueOf(calculo))));
 
         //Generador de Tragos NumeroTragos

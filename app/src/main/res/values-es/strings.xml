@@ -178,17 +178,15 @@
     </string>
     <string name="ayuda_slotmachine">AYUDA AL USUARIO: SLOT MACHINE
 
-                    To start the game, you have to press the LOAD REVOLVER button,
-                    this will cause you to store a cartridge in the gun,
-                    once this is done, each user who plays must hit the FIRE button,
-                    but at any moment when the pistol SHOOTING has the cartridge loaded and it is your turn to drink.
+                   Para iniciar el juego, debes presionar el botón TIRAR,
+                    entonces los tres slots comenzarán a girar hasta detenerse,
+                    según sea la combinación ganaras la partida o te tocará beber por haber perdido.
     </string>
-    <string name="ayuda_palillos">AYUDA AL USUARIO: SLOT MACHINE
+    <string name="ayuda_palillos">AYUDA AL USUARIO: LOS PALILLOS
 
-                    To start the game, you have to press the LOAD REVOLVER button,
-                    this will cause you to store a cartridge in the gun,
-                    once this is done, each user who plays must hit the FIRE button,
-                    but at any moment when the pistol SHOOTING has the cartridge loaded and it is your turn to drink.
+                   Por turnos indicados en pantalla, los usuarios elegirán el palillo que prefieran pulsando sobre él,
+                    una vez escogidos todos los palillos se descubrirá el mantel que los oculta sacando a la vista los palillos y así mostrando el palillo más pequeño que es el palillo malo
+                    y por ende el usuario que elegio dicho palillo perderá la partida.
     </string>
 
     <string name="cervezas">Cervezas</string>

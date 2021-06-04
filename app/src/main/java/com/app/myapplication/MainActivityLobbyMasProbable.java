@@ -24,6 +24,7 @@ public class MainActivityLobbyMasProbable extends AppCompatActivity {
     ArrayList<Frase> frases = new ArrayList<>();
     private boolean carga = false;
     private String idioma = "";
+    private String eleccion = "";
     private String correo;
     private String ads;
     private Usuario usuario, userAux;
@@ -36,6 +37,7 @@ public class MainActivityLobbyMasProbable extends AppCompatActivity {
         //Coger datos del Intent anterior
         correo = getIntent().getStringExtra("correo");
         ads = getIntent().getStringExtra("ads");
+        eleccion = getIntent().getStringExtra("eleccion");
 
         idioma = getString(R.string.idioma);
 
@@ -103,7 +105,7 @@ public class MainActivityLobbyMasProbable extends AppCompatActivity {
         edt13.setText(frases.get(12).getDescripcion());
         edt14.setText(frases.get(13).getDescripcion());
         edt15.setText(frases.get(14).getDescripcion());
-        edt16.setText(frases.get(145).getDescripcion());
+        edt16.setText(frases.get(15).getDescripcion());
         edt17.setText(frases.get(16).getDescripcion());
         edt18.setText(frases.get(17).getDescripcion());
         edt19.setText(frases.get(18).getDescripcion());

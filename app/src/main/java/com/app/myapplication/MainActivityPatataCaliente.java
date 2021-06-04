@@ -164,7 +164,7 @@ public class MainActivityPatataCaliente extends AppCompatActivity {
     }
 
     //Método para sacar una frase en pantalla
-    public void Buscar(View view){
+    public void palabraCaliente(View view){
 
         if(!carga){
             contadorFrases();
