@@ -75,7 +75,7 @@ public class MainActivityLobbyMasProbable extends AppCompatActivity {
 
         try {
 
-            Thread.sleep(3200);
+            Thread.sleep(3500);
 
         } catch (InterruptedException e) {
 
@@ -117,7 +117,7 @@ public class MainActivityLobbyMasProbable extends AppCompatActivity {
 
         modificarFrases();
 
-        Intent intent = new Intent(this, MainActivityYoNunca.class);
+        Intent intent = new Intent(this, MainActivityMasProbable.class);
         intent.putExtra("correo", correo);
         String eleccion = "prop";
         intent.putExtra("eleccion", eleccion);

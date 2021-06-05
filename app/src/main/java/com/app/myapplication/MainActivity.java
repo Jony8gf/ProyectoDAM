@@ -402,11 +402,21 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
 
 
                             userAux.setCervezas(userAux.getCervezas()-10);
+                            userAux.setAuxSeleccion(2);
                             //Recibir Objeto Usuario
                             //Asignar Valores
                             SocketCliente cliente;
                             cliente = new SocketCliente(userAux);
                             cliente.start();
+
+                            try {
+
+                                Thread.sleep(2000);
+
+                            } catch (InterruptedException e) {
+
+                                e.printStackTrace();
+                            }
 
                             Intent intemt = new Intent(MainActivity.this, MainActivityLobbyPalillos.class);
                             intemt.putExtra("correo", email);

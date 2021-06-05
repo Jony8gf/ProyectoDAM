@@ -12,6 +12,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,6 +31,7 @@ import com.google.android.gms.ads.OnUserEarnedRewardListener;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.gms.ads.rewarded.RewardItem;
 import com.google.android.gms.ads.rewarded.RewardedAd;
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
@@ -52,7 +54,7 @@ public class MainActivityPerfil extends AppCompatActivity {
     private Dialog dialog;
     private Usuario usuario, userAux;
     private InterstitialAd mInterstitialAd;
-    private RewardedAd rewardedAd;
+    //private RewardedVideoAd mRewardedVideoAd;
     //private RewardedVideoAd mRewardedVideoAd;
 
 
@@ -69,14 +71,6 @@ public class MainActivityPerfil extends AppCompatActivity {
         usuario = new Usuario(1,"Usuario", correo, 0, "S", 0, 4);
 
 
-        //Inicializacion de MobileAds(Admod)
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
-
-
         //Recibir Objeto Usuario
         //Asignar Valores
         SocketCliente cliente;
@@ -86,31 +80,36 @@ public class MainActivityPerfil extends AppCompatActivity {
 
         try {
 
-            Thread.sleep(3200);
+            Thread.sleep(3500);
 
         } catch (InterruptedException e) {
-
+            e.printStackTrace();
         }
 
         userAux = cliente.getUsuario();
-        //Toast.makeText(this, userAux.toString(), Toast.LENGTH_LONG).show();
 
-
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {}
+        });
         AdRequest adRequest = new AdRequest.Builder().build();
 
-        rewardedAd.load(this, "ca-app-pub-3940256099942544/5224354917",
-                adRequest, new RewardedAdLoadCallback() {
-                    @Override
-                    public void onAdLoaded(@NonNull RewardedAd rewardedAd) {
-                        super.onAdLoaded(rewardedAd);
-                    }
+        InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest, new InterstitialAdLoadCallback() {
+            @Override
+            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                // The mInterstitialAd reference will be null until
+                // an ad is loaded.
+                mInterstitialAd = interstitialAd;
+                //Log.i(TAG, "onAdLoaded");
+            }
 
-                    @Override
-                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                        super.onAdFailedToLoad(loadAdError);
-                    }
-                });
-
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                // Handle the error
+                //Log.i(TAG, loadAdError.getMessage());
+                mInterstitialAd = null;
+            }
+        });
 
 
 
@@ -384,39 +383,36 @@ public class MainActivityPerfil extends AppCompatActivity {
 
 
 
+    //Metodo que sirve para cargar un anuncio en la varible mIntersititialAd
     public void rewAds(){
 
         AdRequest adRequest = new AdRequest.Builder().build();
 
-        RewardedAd.load(this, "ca-app-pub-3940256099942544/5224354917",
-                adRequest, new RewardedAdLoadCallback() {
-                    @Override
-                    public void onAdLoaded(@NonNull RewardedAd rewardedAd) {
-                        super.onAdLoaded(rewardedAd);
+        InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest, new InterstitialAdLoadCallback() {
+            @Override
+            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                // The mInterstitialAd reference will be null until
+                // an ad is loaded.
+                mInterstitialAd = interstitialAd;
+                //Log.i(TAG, "onAdLoaded");
+            }
 
-                    }
-
-                    @Override
-                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                        super.onAdFailedToLoad(loadAdError);
-                        //rewardedAd = null;
-                    }
-                });
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                // Handle the error
+                //Log.i(TAG, loadAdError.getMessage());
+                mInterstitialAd = null;
+            }
+        });
     }
 
 
+    //Este metodo sirve para mostrar un anuncio
     public void anuncio(View view) {
 
-        if (rewardedAd != null){
-            rewardedAd.show(this, new OnUserEarnedRewardListener() {
-                @Override
-                public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
-
-                }
-            });
-
-
-        }else{
+        if (mInterstitialAd != null) {
+            mInterstitialAd.show(MainActivityPerfil.this);
+        } else {
             Toast.makeText(this, "Anuncio no disponible", Toast.LENGTH_LONG).show();
             rewAds();
         }

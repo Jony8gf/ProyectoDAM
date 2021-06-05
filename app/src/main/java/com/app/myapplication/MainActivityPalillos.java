@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,11 +37,13 @@ public class MainActivityPalillos extends AppCompatActivity {
     private String perdedor = "";
     private String auxContador;
     private TextView tvTragos, tvInfo;
-    private int contador = 1;
+    private int contador = 0;
     private int number = 0;
     private int palilloRandom=  0;
     private int id=  0;
+    private boolean empezar = false;
     private ImageView imgPalillo1, imgPalillo2, imgPalillo3, imgPalillo4, imgTaparPalillo, imgAux;
+    private Button btnComenzarPalillos;
     private AdView mAdView;
     ArrayList<String> jugadores = new ArrayList<>();
     ArrayList <Integer> map = new ArrayList<>();
@@ -73,9 +76,11 @@ public class MainActivityPalillos extends AppCompatActivity {
 
         imgTaparPalillo.setEnabled(false);
 
+        //Button
+        btnComenzarPalillos = findViewById(R.id.buttonEmpezarRonda);
+
         //Recoger Objeto Usuario
         Usuario usuario = new Usuario(1,"Usuario", "usuario@yopmail.com", 0, ads, 0, 4);
-        Toast.makeText(this, usuario.getAds(), Toast.LENGTH_LONG).show();
 
 
         //Comprobacion para saber si el usuario tiene el premium
@@ -125,6 +130,7 @@ public class MainActivityPalillos extends AppCompatActivity {
 
         number = Integer.parseInt(auxContador);
 
+        //Lamada al metodo seleccionarPalillos();
         seleccionarPalillos();
 
         //Conexion con bd
@@ -154,81 +160,116 @@ public class MainActivityPalillos extends AppCompatActivity {
         fila.close();
         basedatos.close();
 
-        tvInfo.setText(getString(R.string.turno)+""+jugadores.get(0));
+        //tvInfo.setText(getString(R.string.turno)+""+jugadores.get(0));
+        contador =0;
 
     }
 
+
+    //Este metodo sirve para inicializar el minijuego
+    public void comenzarPalillos(View view){
+
+        btnComenzarPalillos.setVisibility(View.INVISIBLE);
+        empezar = true;
+        contador=0;
+        tvInfo.setText(getString(R.string.turno)+""+jugadores.get(contador));
+        //Toast.makeText(this, ""+contador, Toast.LENGTH_LONG ).show();
+
+
+    }
+
+    //Este método sirve para coger un palillo por rondas de usuarios
     public void escogerPalillo (View view){
 
-        numeroAleatorio();
+        if(empezar){
+            numeroAleatorio();
+            tvTragos.setText(" ");
+            id = view.getId();
+            map.add(id);
+            imgAux = view.findViewById(id);
+            imgAux.setVisibility(View.INVISIBLE);
+            //Toast.makeText(this, "Number"+number, Toast.LENGTH_LONG ).show();
 
-        id = view.getId();
-        map.add(id);
-        imgAux = view.findViewById(id);
-        imgAux.setVisibility(View.INVISIBLE);
-        Toast.makeText(this, "Number"+number, Toast.LENGTH_LONG ).show();
+            if(contador<number){
 
-        if(contador<=number){
 
-            tvInfo.setText(getString(R.string.turno)+""+jugadores.get(contador));
-            contador++;
-            Toast.makeText(this, ""+contador, Toast.LENGTH_LONG ).show();
+                //Toast.makeText(this, ""+jugadores.size(), Toast.LENGTH_LONG ).show();
+                String nombreAuxiliar = ""+jugadores.get(number-1);
+                //Toast.makeText(this, ""+nombreAuxiliar, Toast.LENGTH_LONG ).show();
 
-        }
+                if(jugadores.get(contador).equals(nombreAuxiliar)){
 
-        if(contador == number){
+                    contador = 5;
+                }
 
-            switch (palilloRandom){
+                else {
 
-                case 1:imgPalillo1.setImageResource(R.drawable.palillo_pequeno);
-                    if(map.get(0) == imgPalillo1.getId()){
-                        Toast.makeText(this, jugadores.get(0), Toast.LENGTH_LONG).show();
-                        perdedor = jugadores.get(0);
-                    }
-                    break;
-                case 2:imgPalillo2.setImageResource(R.drawable.palillo_pequeno);
-                    if(map.get(1) == imgPalillo2.getId()){
-                        Toast.makeText(this, jugadores.get(1), Toast.LENGTH_LONG).show();
-                        perdedor = jugadores.get(1);
-                    }
-                    break;
-                case 3:imgPalillo3.setImageResource(R.drawable.palillo_pequeno);
-                    if(map.get(2) == imgPalillo3.getId()){
-                        Toast.makeText(this, jugadores.get(2), Toast.LENGTH_LONG).show();
-                        perdedor = jugadores.get(2);
-                    }
-                    break;
-                case 4:imgPalillo4.setImageResource(R.drawable.palillo_pequeno);
-                    if(map.get(3) == imgPalillo4.getId()){
-                        Toast.makeText(this, jugadores.get(3), Toast.LENGTH_LONG).show();
-                        perdedor = jugadores.get(3);
-                    }
-                    break;
+                    contador++;
+                    tvInfo.setText(getString(R.string.turno)+""+jugadores.get(contador));
+                    //Toast.makeText(this, ""+contador, Toast.LENGTH_LONG ).show();
+
+                }
+
             }
 
+            if(contador == 5){
 
-            imgPalillo1.setVisibility(View.VISIBLE);
-            imgPalillo2.setVisibility(View.VISIBLE);
-            imgPalillo3.setVisibility(View.VISIBLE);
-            imgPalillo4.setVisibility(View.VISIBLE);
-            //Imagen palillo normal
-            imgTaparPalillo.setVisibility(View.INVISIBLE);
-            contador = 0;
-            tvInfo.setText(getString(R.string.turno)+""+jugadores.get(0));
-            mostrarDialog();
-            int tragos = (int)(Math.random()*3+1);
-            tvTragos.setText(perdedor+" "+getString(R.string.bebes)+" "+tragos);
+                switch (palilloRandom){
+
+                    case 1:imgPalillo1.setImageResource(R.drawable.palillo_pequeno);
+                        if(map.get(0) == imgPalillo1.getId()){
+                            //Toast.makeText(this, jugadores.get(0), Toast.LENGTH_LONG).show();
+                            perdedor = jugadores.get(0);
+                        }
+                        break;
+                    case 2:imgPalillo2.setImageResource(R.drawable.palillo_pequeno);
+                        if(map.get(1) == imgPalillo2.getId()){
+                            //Toast.makeText(this, jugadores.get(1), Toast.LENGTH_LONG).show();
+                            perdedor = jugadores.get(1);
+                        }
+                        break;
+                    case 3:imgPalillo3.setImageResource(R.drawable.palillo_pequeno);
+                        if(map.get(2) == imgPalillo3.getId()){
+                            //Toast.makeText(this, jugadores.get(2), Toast.LENGTH_LONG).show();
+                            perdedor = jugadores.get(2);
+                        }
+                        break;
+                    case 4:imgPalillo4.setImageResource(R.drawable.palillo_pequeno);
+                        if(map.get(3) == imgPalillo4.getId()){
+                            //Toast.makeText(this, jugadores.get(3), Toast.LENGTH_LONG).show();
+                            perdedor = jugadores.get(3);
+                        }
+                        break;
+                }
 
 
+                imgPalillo1.setVisibility(View.VISIBLE);
+                imgPalillo2.setVisibility(View.VISIBLE);
+                imgPalillo3.setVisibility(View.VISIBLE);
+                imgPalillo4.setVisibility(View.VISIBLE);
+
+                //Imagen palillo normal
+                imgTaparPalillo.setVisibility(View.INVISIBLE);
+                contador = 0;
+                empezar = true;
+                //tvInfo.setText(getString(R.string.turno)+""+jugadores.get(0));
+                mostrarDialog();
+                int tragos = (int)(Math.random()*3+1);
+                tvTragos.setText(perdedor+" "+getString(R.string.bebes)+" "+tragos);
+
+            }
 
         }
+
     }
 
 
+    //Este método sirve para generar un numero aleatorio
     public void numeroAleatorio (){
         palilloRandom = (int)(Math.random()*number+1);
     }
 
+    //Este metodo sirve para indicar cuantos palillos se van a mostrar en el minijuego según los jugadores en la lobby
     public void seleccionarPalillos(){
 
         switch (number){
@@ -242,6 +283,8 @@ public class MainActivityPalillos extends AppCompatActivity {
         }
     }
 
+
+    //Este método sirve para mostrar un dialog para volver a jugar de nuevo otra ronda
     public void mostrarDialog(){
         //se prepara la alerta creando nueva instancia
         AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
@@ -256,13 +299,32 @@ public class MainActivityPalillos extends AppCompatActivity {
                 seleccionarPalillos();
                 imgTaparPalillo.setVisibility(View.VISIBLE);
                 contador = 0;
+                Toast.makeText(MainActivityPalillos.this, ""+contador, Toast.LENGTH_LONG ).show();
                 imgPalillo1.setImageResource(R.drawable.palillo_entero);
                 imgPalillo2.setImageResource(R.drawable.palillo_entero);
                 imgPalillo3.setImageResource(R.drawable.palillo_entero);
                 imgPalillo4.setImageResource(R.drawable.palillo_entero);
 
 
+                btnComenzarPalillos.setVisibility(View.VISIBLE);
+                empezar = false;
+
                 map = new ArrayList<>();
+            }
+        });
+
+        alertbox.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+            //Funcion llamada cuando se pulsa el boton no
+            public void onClick(DialogInterface arg0, int arg1) {
+
+
+                Intent intent = new Intent(MainActivityPalillos.this, MainActivity.class);
+                int dado = (int)(Math.random()*6+1);
+                String dadoAux  = ""+dado;
+                intent.putExtra("correo", correo);
+                intent.putExtra("dado", dadoAux);
+                startActivity(intent);
+                finish();
             }
         });
 

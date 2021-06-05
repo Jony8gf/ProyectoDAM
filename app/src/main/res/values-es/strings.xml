@@ -94,7 +94,7 @@
     <string name="play_gamme">¿Jugar de nuevo?</string>
 
     <string name="entendido">Entendido</string>
-    <string name="ayuda_masprobable">AYUDA AL USUARIO: QUIÉN ES MÁS PROBABLE QUE …
+    <string name="ayuda_masprobable">AYUDA AL USUARIO: QUIÉN ES MÁS PROBABLE QUE … \n \n
 
                     Para comenzar el juego, hay que darle al botón <u>Comenzar</u>,
                     esto hará que se muestre una frase en pantalla,
@@ -103,7 +103,7 @@
 
                     Para cambiar de frase se presionara el botón <u>Siguiente Frase</u>
     </string>
-    <string name="ayuda_yonunca">AYUDA AL USUARIO: YO NUNCA …
+    <string name="ayuda_yonunca">AYUDA AL USUARIO: YO NUNCA … \n \n
 
                     Para comenzar el juego, hay que darle al botón <u>Comenzar</u>
                     esto hará que se muestre una frase en pantalla,
@@ -112,7 +112,7 @@
 
                     Para cambiar de frase se presionara el botón <u>Siguiente Frase</u>
     </string>
-    <string name="ayuda_mimica">AYUDA AL USUARIO: MÍMICA
+    <string name="ayuda_mimica">AYUDA AL USUARIO: MÍMICA \n \n
 
                     Para comenzar el juego, hay que darle al botón COMENZAR,
                     esto hará que se muestre un palabra que el usuario debe gestualizar para que los miembros del grupo la adivinen,
@@ -120,7 +120,7 @@
                     en caso contrario, los usuarios que no hayan acertado la palabra beberán dichos tragos. \n
                     Para que otro usuario ejecute otra palabra le deberá dar al botón SIGUIENTE PALABRA para repetir el proceso con una palabra diferente.
     </string>
-    <string name="ayuda_caracruz">AYUDA AL USUARIO: CARA O CRUZ
+    <string name="ayuda_caracruz">AYUDA AL USUARIO: CARA O CRUZ \n \n
 
                     Para comenzar el juego, los usuarios deben de decir en alto que van a elegir, si cara o por el contrario cruz,
                     a continuación hay que darle al botón LANZAR MONEDA ,
@@ -129,7 +129,7 @@
                     en caso de que pierdas tendrás que beber los tragos que se indican.
                     Para tirar otra vez la moneda se presionará el botón LANZAR MONEDA.
     </string>
-    <string name="ayuda_botella">AYUDA AL USUARIO: BOTELLA
+    <string name="ayuda_botella">AYUDA AL USUARIO: BOTELLA \n \n
 
                     Para comenzar el juego, los jugadores deben de ponerse en corro con el dispisitivo en medio de estos,
                     a continuación hay que darle al botón GIRAR BOTEELA,
@@ -137,52 +137,51 @@
                     el jugador que sea señalado con el tuto de la botella tendra que beber los tragos que se indican.
                     Para girar otra vez la boteela se presionará el botón GIRAR BOTEELA.
     </string>
-    <string name="ayuda_patatacaliente">AYUDA AL USUARIO: PATATA CALIENTE
+    <string name="ayuda_patatacaliente">AYUDA AL USUARIO: PATATA CALIENTE \n \n
 
                     Para comenzar el juego, hay que darle al botón COMENZAR
                     Por turnos, dirá una palabra relacionada con el tema expuesto en pantalla y pasando por los jugadores de la partidas hasta que se acabe el tiempo.
                     El jugador que tenga el turno cuando acabe el tiempo debe beber.
                     Para elegir otra palabra se dará a NUEVA PALABRA
     </string>
-    <string name="ayuda_ruletarusa">AYUDA AL USUARIO: RULETA RUSA
+    <string name="ayuda_ruletarusa">AYUDA AL USUARIO: RULETA RUSA \n \n
 
                     Para comenzar el juego, hay que darle al botón CARGAR REVOLVER,
                     esto hará que almacene un cartucho en la pistola,
                     una vez hecho esto, cada usuario que juege debe darle al botón DISPARAR,
                     pero en cualquier momento la pistola al DISPARAR tenga el cartucho cargado y te toque beber.
     </string>
-    <string name="ayuda_setas">AYUDA AL USUARIO: SETAS VENENOSAS
+    <string name="ayuda_setas">AYUDA AL USUARIO: SETAS VENENOSAS \n \n
 
                     Cada jugador pulsará una casilla por turnos.
                     Cada vez que se destape una casilla, los tragos se sumarán al contador superior.
                     Cuando el jugador recoge una seta venenosa debe realizar la acción que se indica, tantas veces como se lo marque el contador superior.
     </string>
-    <string name="ayuda_mayormenor">AYUDA AL USUARIO: MAYOR O MENOR
+    <string name="ayuda_mayormenor">AYUDA AL USUARIO: MAYOR O MENOR \n \n
 
                     Para comenzar saldrá una carta principal, los jugadores pulsarán una  de los botones MAYOR, MENOR o IGUAL por turnos.
                     Si aciertan la carta siguiente se sumará un trago al acumulador pero si fallas beberas todos los tragos acumulados.
                     Ten cuidado que en cualquir momento puede salir el JOKER.
     </string>
-    <string name="ayuda_cincocosas">AYUDA AL USUARIO: CINCO COSAS
+    <string name="ayuda_cincocosas">AYUDA AL USUARIO: CINCO COSAS \n \n
 
                     Para empezar el juego dar al botón COMENZAR,
                     A continuación saldrá un tema en pantalla y los jugadores por rondas en cada tema tendrán que decir 5 cosas relacionadas con el tema en cuestión en 15 segundos.
                     Si el jugador completa el desafio manda beber los  tragos en pantalla. En caso contrario debe beber dichos tragos en pantalla al no cumplir el objetivo.
     </string>
-    <string name="ayuda_ruletasuerte">AYUDA AL USUARIO: RULETA SUERTE
+    <string name="ayuda_ruletasuerte">AYUDA AL USUARIO: RULETA SUERTE \n \n
 
-                    Para iniciar el juego, debes presionar el botón LOAD REVOLVER,
-                    esto hará que guardes un cartucho en la pistola,
-                    Una vez hecho esto, cada usuario que juegue debe presionar el botón FUEGO,
-                    pero en cualquier momento cuando la pistola DISPARO tenga el cartucho cargado y sea tu turno de beber.
+                    Para iniciar el juego, debes girar la ruleta con el botón de abajo,
+                    esto hará que la rulete empize a girar hasta que pare en uno de los trozos de la ruleta,
+                    Una vez hecho esto, se debe acatar lo mencionado en pantalla.
     </string>
-    <string name="ayuda_slotmachine">AYUDA AL USUARIO: SLOT MACHINE
+    <string name="ayuda_slotmachine">AYUDA AL USUARIO: SLOT MACHINE \n \n
 
                    Para iniciar el juego, debes presionar el botón TIRAR,
                     entonces los tres slots comenzarán a girar hasta detenerse,
                     según sea la combinación ganaras la partida o te tocará beber por haber perdido.
     </string>
-    <string name="ayuda_palillos">AYUDA AL USUARIO: LOS PALILLOS
+    <string name="ayuda_palillos">AYUDA AL USUARIO: LOS PALILLOS \n \n
 
                    Por turnos indicados en pantalla, los usuarios elegirán el palillo que prefieran pulsando sobre él,
                     una vez escogidos todos los palillos se descubrirá el mantel que los oculta sacando a la vista los palillos y así mostrando el palillo más pequeño que es el palillo malo

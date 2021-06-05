@@ -169,12 +169,11 @@
                     A topic will then appear on the screen and players in rounds on each topic will have to say 5 things related to the topic in question in 15 seconds.
                     If the player completes the challenge, he commands the drinks on the screen to be drunk. Otherwise, you must drink those drinks on the screen when you do not meet the objective.
     </string>
-    <string name="ayuda_ruletasuerte">USER HELP: RUSSIAN ROULETTE \n \n
+    <string name="ayuda_ruletasuerte">USER HELP: LUCKY ROULETTE \n \n
 
-                    To start the game, you have to press the LOAD REVOLVER button,
-                    this will cause you to store a cartridge in the gun,
-                    once this is done, each user who plays must hit the FIRE button,
-                    but at any moment when the pistol SHOOTING has the cartridge loaded and it is your turn to drink.
+                    To start the game, you must spin the wheel with the button below,
+                    This will make the wheel start to spin until it stops on one of the pieces of the wheel,
+                    Once this is done, you must comply with what is mentioned on the screen.
     </string>
     <string name="ayuda_slotmachine">USER HELP: SLOT MACHINE \n \n
 
