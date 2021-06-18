@@ -1,10 +1,40 @@
 {
   "project_info": {
     "project_number": "667699426687",
+    "firebase_url": "https://drinkgames-6ab48-default-rtdb.firebaseio.com",
     "project_id": "drinkgames-6ab48",
     "storage_bucket": "drinkgames-6ab48.appspot.com"
   },
   "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:667699426687:android:58745f96b0acc0cfd4564a",
+        "android_client_info": {
+          "package_name": "com.app.drinkgames"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "667699426687-bu2olv5o61ljcf466seh72uhju6527m6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBWh47FIouj7WnEzKS-bz2fJPAXolXRGc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "667699426687-bu2olv5o61ljcf466seh72uhju6527m6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
     {
       "client_info": {
         "mobilesdk_app_id": "1:667699426687:android:8c385328150d39ddd4564a",
