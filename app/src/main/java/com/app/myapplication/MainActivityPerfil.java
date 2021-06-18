@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 
 import com.app.myapplication.sockets.SocketCliente;
+import com.app.myapplication.utilidades.Usuario;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
@@ -37,15 +38,23 @@ import com.google.android.gms.ads.rewarded.RewardedAd;
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
-import herramientas.Usuario;
+//import herramientas.Usuario;
 
 public class MainActivityPerfil extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
+    DatabaseReference bbdd;
+    FirebaseDatabase firebaseDatabase;
     private EditText etNombre;
     private ImageView ivEditAvatar,ivEditNombre, ivAvatar, ivPremium;
     private TextView txNumeroCervezas;
@@ -67,10 +76,86 @@ public class MainActivityPerfil extends AppCompatActivity {
         correo = getIntent().getStringExtra("correo");
 
 
+        FirebaseApp.initializeApp(this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        //firebaseDatabase.setPersistenceEnabled(true);
+        bbdd = firebaseDatabase.getReference();
+
+        //Instancia Firebase Auth
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        //TextView
+        txNumeroCervezas = findViewById(R.id.textViewNumeroCervezas);
+
+        //ImageView
+        ivEditAvatar = findViewById(R.id.imageViewEditAvatar);
+        ivEditNombre = findViewById(R.id.imageViewEditName);
+        ivAvatar = findViewById(R.id.imageViewAvatarProfile);
+        ivPremium = findViewById(R.id.imageViewPremiumDisponible);
+
+        //EditText
+        etNombre = findViewById(R.id.editTextNombreProfile);
+        //etNombre.setFocusable(false);
+        etNombre.setEnabled(false);
+
         //Instancia Usuario
-        usuario = new Usuario(1,"Usuario", correo, 0, "S", 0, 4);
+        usuario = new Usuario("9","Usuario", correo, 0, "S", 0);
+
+        bbdd.child("Persona").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot datasnapshot : snapshot.getChildren()) {
+
+                    userAux = datasnapshot.getValue(Usuario.class);
+                    //assert userAux != null;
+
+                    if (correo.equals(userAux.getCorreo())) {
+
+                        usuario = userAux;
+
+                        //Modificacion de componentes con datos del usuario
+                        etNombre.setText(usuario.getNombre());
+                        txNumeroCervezas.setText(""+usuario.getCervezas());
+
+                        if (usuario.getAds().equals("S")){
+                            ivPremium.setImageResource(R.drawable.no_crown);
+                        }else{
+                            ivPremium.setImageResource(R.drawable.crown);
+                        }
 
 
+                        //Switch avatar del usuario
+                        switch (usuario.getAvatar()){
+                            case 0: ivAvatar.setImageResource(R.drawable.avatar_cero);
+                                break;
+                            case 1: ivAvatar.setImageResource(R.drawable.avatar_uno);
+                                break;
+                            case 2: ivAvatar.setImageResource(R.drawable.avatar_dos);
+                                break;
+                            case 3: ivAvatar.setImageResource(R.drawable.avatar_tres);
+                                break;
+                            case 4: ivAvatar.setImageResource(R.drawable.avatar_cuatro);
+                                break;
+                            case 5: ivAvatar.setImageResource(R.drawable.avatar_cinco);
+                                break;
+                            default: ivAvatar.setImageResource(R.drawable.avatar_cero);
+                                break;
+                        }
+
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        //Toast.makeText(MainActivityPerfil.this, usuario.toString(), Toast.LENGTH_LONG).show();
+
+        /*
         //Recibir Objeto Usuario
         //Asignar Valores
         SocketCliente cliente;
@@ -87,6 +172,8 @@ public class MainActivityPerfil extends AppCompatActivity {
         }
 
         userAux = cliente.getUsuario();
+
+         */
 
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
@@ -110,55 +197,6 @@ public class MainActivityPerfil extends AppCompatActivity {
                 mInterstitialAd = null;
             }
         });
-
-
-
-        //Instancia Firebase Auth
-        firebaseAuth = FirebaseAuth.getInstance();
-
-        //TextView
-        txNumeroCervezas = findViewById(R.id.textViewNumeroCervezas);
-
-        //ImageView
-        ivEditAvatar = findViewById(R.id.imageViewEditAvatar);
-        ivEditNombre = findViewById(R.id.imageViewEditName);
-        ivAvatar = findViewById(R.id.imageViewAvatarProfile);
-        ivPremium = findViewById(R.id.imageViewPremiumDisponible);
-
-        //EditText
-        etNombre = findViewById(R.id.editTextNombreProfile);
-        //etNombre.setFocusable(false);
-        etNombre.setEnabled(false);
-
-
-        //Modificacion de componentes con datos del usuario
-        etNombre.setText(userAux.getNombre());
-        txNumeroCervezas.setText(""+userAux.getCervezas());
-
-        if (userAux.getAds().equals("S")){
-            ivPremium.setImageResource(R.drawable.no_crown);
-        }else{
-            ivPremium.setImageResource(R.drawable.crown);
-        }
-
-
-        //Switch avatar del usuario
-        switch (userAux.getAvatar()){
-            case 0: ivAvatar.setImageResource(R.drawable.avatar_cero);
-                break;
-            case 1: ivAvatar.setImageResource(R.drawable.avatar_uno);
-                break;
-            case 2: ivAvatar.setImageResource(R.drawable.avatar_dos);
-                break;
-            case 3: ivAvatar.setImageResource(R.drawable.avatar_tres);
-                break;
-            case 4: ivAvatar.setImageResource(R.drawable.avatar_cuatro);
-                break;
-            case 5: ivAvatar.setImageResource(R.drawable.avatar_cinco);
-                break;
-            default: ivAvatar.setImageResource(R.drawable.avatar_cero);
-                break;
-        }
 
     }
 
@@ -201,7 +239,8 @@ public class MainActivityPerfil extends AppCompatActivity {
 
         if (id == R.id.mnPremium) {
 
-            dialogTips();
+            Toast.makeText(this, "Aún no diponible",Toast.LENGTH_LONG).show();
+            //dialogTips();
         }
 
         return true;
@@ -226,9 +265,12 @@ public class MainActivityPerfil extends AppCompatActivity {
 
         dialog.dismiss();
 
-        userAux.setAds("N");
-        userAux.setAuxSeleccion(2);
+        usuario.setAds("N");
 
+        actualizar(usuario);
+       // userAux.setAuxSeleccion(2);
+
+        /*
         Thread modificarPremiumUsuario;
         modificarPremiumUsuario = new SocketCliente(userAux);
         modificarPremiumUsuario.start();
@@ -238,9 +280,11 @@ public class MainActivityPerfil extends AppCompatActivity {
             Thread.sleep(1000);
 
         } catch (InterruptedException e) {
-
+            e.printStackTrace();
         }
         Toast.makeText(this, "Pago Realizado", Toast.LENGTH_LONG).show();
+
+         */
 
     }
 
@@ -262,11 +306,17 @@ public class MainActivityPerfil extends AppCompatActivity {
             ivEditNombre.setBackgroundColor(Color.GRAY);
             edAvatar = false;
 
-            userAux.setAuxSeleccion(2);
-            userAux.setNombre(etNombre.getText().toString());
+            //userAux.setAuxSeleccion(2);
+            usuario.setNombre(etNombre.getText().toString());
+
+            actualizar(usuario);
+
+            /*
             Thread modificarUsuarioNombre;
             modificarUsuarioNombre = new SocketCliente(userAux);
             modificarUsuarioNombre.start();
+
+             */
 
         }
     }
@@ -291,42 +341,48 @@ public class MainActivityPerfil extends AppCompatActivity {
         switch (id){
             case R.id.avatar_1x1:
                     ivAvatar.setImageResource(R.drawable.avatar_cero);
-                    userAux.setAvatar(0);
+                    usuario.setAvatar(0);
                 break;
             case R.id.avatar_1x2:
                     ivAvatar.setImageResource(R.drawable.avatar_uno);
-                    userAux.setAvatar(1);
+                    usuario.setAvatar(1);
                 break;
             case R.id.avatar_1x3:
                     ivAvatar.setImageResource(R.drawable.avatar_dos);
-                    userAux.setAvatar(2);
+                    usuario.setAvatar(2);
                 break;
             case R.id.avatar_2x1:
                     ivAvatar.setImageResource(R.drawable.avatar_tres);
-                    userAux.setAvatar(3);
+                    usuario.setAvatar(3);
                 break;
             case R.id.avatar_2x2:
                     ivAvatar.setImageResource(R.drawable.avatar_cuatro);
-                    userAux.setAvatar(4);
+                    usuario.setAvatar(4);
                 break;
             case R.id.avatar_2x3:
                     ivAvatar.setImageResource(R.drawable.avatar_cinco);
-                    userAux.setAvatar(5);
+                    usuario.setAvatar(5);
                 break;
             default:
                     ivAvatar.setImageResource(R.drawable.avatar_cero);
-                    userAux.setAvatar(0);
+                    usuario.setAvatar(0);
                 break;
         }
 
         ivEditAvatar.setBackgroundColor(Color.GRAY);
-        userAux.setAuxSeleccion(2);
-        Thread modificarUsuarioAvatar;
-        modificarUsuarioAvatar = new SocketCliente(userAux);
-        modificarUsuarioAvatar.start();
+        //userAux.setAuxSeleccion(2);
+
+        actualizar(usuario);
+
+            /*
+            Thread modificarUsuarioAvatar;
+            modificarUsuarioAvatar = new SocketCliente(userAux);
+            modificarUsuarioAvatar.start();
+
+             */
 
         dialog.dismiss();
-        Toast.makeText(this, ""+userAux.getAvatar(), Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, ""+userAux.getAvatar(), Toast.LENGTH_LONG).show();
 
     }
 
@@ -340,10 +396,15 @@ public class MainActivityPerfil extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
 
+                    /*
                     usuario.setAuxSeleccion(3);
                     Thread borrarUsuario;
                     borrarUsuario = new SocketCliente(usuario);
                     borrarUsuario.start();
+
+                     */
+
+                    Toast.makeText(MainActivityPerfil.this, "Cuenta borrada correctamente", Toast.LENGTH_LONG).show();
 
                 } else {
                     Toast.makeText(MainActivityPerfil.this, R.string.correo_no, Toast.LENGTH_LONG).show();
@@ -370,6 +431,8 @@ public class MainActivityPerfil extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int id) {
 
                         deleteAccount();
+                        bbdd.child("Persona").child(usuario.getUid()).setValue(null);
+                        finish();
 
                     }
                 })
@@ -417,6 +480,11 @@ public class MainActivityPerfil extends AppCompatActivity {
             rewAds();
         }
 
+    }
+
+    public void actualizar(Usuario user){
+        bbdd.child("Persona").child(user.getUid()).setValue(null);
+        bbdd.child("Persona").child(user.getUid()).setValue(user);
     }
 
     @Override

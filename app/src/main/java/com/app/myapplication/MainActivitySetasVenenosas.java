@@ -41,7 +41,7 @@ public class MainActivitySetasVenenosas extends AppCompatActivity {
             "seta_reto","seta_bebes","seta_mandas"
     };
     private String setasRadiactivas[] =  new String[]{
-            "seta_x2"
+            "seta_xdos"
     };
     private String setasBuenas[] =  new String[]{
             "seta_uno","seta_dos"

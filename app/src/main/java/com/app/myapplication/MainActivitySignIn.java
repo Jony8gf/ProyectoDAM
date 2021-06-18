@@ -10,12 +10,17 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.app.myapplication.sockets.SocketCliente;
+import com.app.myapplication.utilidades.Usuario;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
-import herramientas.Usuario;
+import java.util.UUID;
+
+//import herramientas.Usuario;
 
 public class MainActivitySignIn extends AppCompatActivity {
 
@@ -24,11 +29,17 @@ public class MainActivitySignIn extends AppCompatActivity {
     private CheckBox ckbPoliticas;
     private String nombre, passwd1, passwd2, email, requerido;
     private DatabaseReference databaseReference;
+    FirebaseStorage firebaseStorage;
+    StorageReference storageReference;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_sign_in);
+
+        firebaseStorage = FirebaseStorage.getInstance();
+        storageReference = firebaseStorage.getReference();
 
         //Instancia de Firebase Analytics (Control de Usuarios)
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
@@ -89,10 +100,12 @@ public class MainActivitySignIn extends AppCompatActivity {
                 usuario.setAds("S");
                 usuario.setCervezas(3);
                 usuario.setAvatar(1);
-                usuario.setAuxSeleccion(1);
+                usuario.setUid(UUID.randomUUID().toString());
+                //usuario.setAuxSeleccion(1);
 
 
                 //Pasar al Soket Objeto para cree el Usuario
+                /*
                 Thread cliente;
                 cliente = new SocketCliente(usuario);
                 cliente.start();
@@ -106,9 +119,11 @@ public class MainActivitySignIn extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
+                 */
+
 
                 //Incorporamos datos a la base de datos
-                //databaseReference.child("Persona").child(usuario.getUid()).setValue(usuario);
+                databaseReference.child("Persona").child(usuario.getUid()).setValue(usuario);
 
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, passwd1);
 
@@ -134,6 +149,8 @@ public class MainActivitySignIn extends AppCompatActivity {
 
         }
     }
+
+
 
     
 

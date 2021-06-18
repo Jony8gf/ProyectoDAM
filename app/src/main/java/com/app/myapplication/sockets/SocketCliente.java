@@ -33,7 +33,7 @@ public class SocketCliente extends Thread {
             try {
                 System.out.println("\t Cliente.Consola " + usuario + " - Se abre un socket en el cliente, y dicho socket establece "
                         + "una conexión con el socket del servidor situado en el puerto 30500 de la 127.0.0.1");
-                String equipoServidor = "192.168.1.135";
+                String equipoServidor = "172.16.3.12";
                 int puertoServidor = 30500;
                 Socket socketCliente = new Socket(equipoServidor, puertoServidor);
                 gestionarComunicacion(socketCliente);

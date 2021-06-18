@@ -122,6 +122,7 @@
         android:background="@color/amarillo"
         android:onClick="anuncio"
         android:text="@string/ver_video"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.852"
         app:layout_constraintStart_toStartOf="parent" />

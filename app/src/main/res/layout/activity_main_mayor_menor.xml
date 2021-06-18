@@ -39,45 +39,48 @@
     <Button
         android:id="@+id/buttonMayor"
         android:layout_width="wrap_content"
-        android:layout_height="78dp"
+        android:layout_height="89dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="9dp"
+        android:layout_marginStart="0dp"
         android:layout_marginEnd="279dp"
-        android:layout_marginBottom="75dp"
+        android:layout_marginBottom="72dp"
         android:backgroundTint="#FFEB3B"
         android:onClick="mayorQue"
-        android:text="@string/mayor" />
+        android:text="@string/mayor"
+        android:textSize="12sp" />
 
     <Button
         android:id="@+id/buttonMenor"
         android:layout_width="wrap_content"
-        android:layout_height="78dp"
+        android:layout_height="89dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="280dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="75dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="72dp"
         android:backgroundTint="#FFEB3B"
         android:onClick="menorQue"
-        android:text="@string/menor" />
+        android:text="@string/menor"
+        android:textSize="12sp" />
 
     <Button
         android:id="@+id/buttonIgual"
         android:layout_width="wrap_content"
-        android:layout_height="78dp"
+        android:layout_height="95dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="143dp"
         android:layout_marginEnd="142dp"
-        android:layout_marginBottom="75dp"
+        android:layout_marginBottom="68dp"
         android:backgroundTint="#FFEB3B"
         android:onClick="igualQue"
-        android:text="@string/igual" />
+        android:text="@string/igual"
+        android:textSize="12sp" />
 
     <ImageView
         android:id="@+id/imageViewCartaMayorMenor"
@@ -101,7 +104,7 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+        ads:adUnitId="ca-app-pub-8043381776244583/9602704188">
     </com.google.android.gms.ads.AdView>
 
 </RelativeLayout>

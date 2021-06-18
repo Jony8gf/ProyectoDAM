@@ -18,7 +18,6 @@ import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.app.myapplication.sqlite.ConexionSQLiteHelper;
 import com.google.android.gms.ads.AdListener;
@@ -135,23 +134,23 @@ public class MainActivityRuletaSuerte extends AppCompatActivity  implements Anim
         //Switch para mostrar el tipo de ruleta (Celdas)
         switch (auxContador){
 
-            case "2": imgRuleta.setImageResource(R.drawable.roulette_2);
+            case "2": imgRuleta.setImageResource(R.drawable.roulette_dos);
                 break;
-            case "3": imgRuleta.setImageResource(R.drawable.roulette_3);
+            case "3": imgRuleta.setImageResource(R.drawable.roulette_tres);
                 break;
-            case "4": imgRuleta.setImageResource(R.drawable.roulette_4);
+            case "4": imgRuleta.setImageResource(R.drawable.roulette_cuatro);
                 break;
-            case "5": imgRuleta.setImageResource(R.drawable.roulette_5);
+            case "5": imgRuleta.setImageResource(R.drawable.roulette_cinco);
                 break;
-            case "6": imgRuleta.setImageResource(R.drawable.roulette_6);
+            case "6": imgRuleta.setImageResource(R.drawable.roulette_seis);
                 break;
-            case "7": imgRuleta.setImageResource(R.drawable.roulette_7);
+            case "7": imgRuleta.setImageResource(R.drawable.roulette_siete);
                 break;
-            case "8": imgRuleta.setImageResource(R.drawable.roulette_8);
+            case "8": imgRuleta.setImageResource(R.drawable.roulette_ocho);
                 break;
-            case "9": imgRuleta.setImageResource(R.drawable.roulette_9);
+            case "9": imgRuleta.setImageResource(R.drawable.roulette_nueve);
                 break;
-            case "10": imgRuleta.setImageResource(R.drawable.roulette_10);
+            case "10": imgRuleta.setImageResource(R.drawable.roulette_diez);
                 break;
         }
 

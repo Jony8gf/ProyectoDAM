@@ -10,7 +10,7 @@
     <TextView
         android:id="@+id/textViewRuletaSuerteFrase"
         android:layout_width="match_parent"
-        android:layout_height="89dp"
+        android:layout_height="74dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -48,26 +48,27 @@
         android:layout_marginBottom="130dp"
         android:adjustViewBounds="true"
         android:contentDescription="@string/ruleta_suerte"
-        android:src="@drawable/roulette_8" />
+        android:src="@drawable/roulette_ocho" />
 
     <Button
         android:id="@+id/buttonGirarRuletaSuerte"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="76dp"
+        android:layout_height="58dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="56dp"
         android:background="@drawable/start"
         android:onClick="girarRuleta" />
 
-    <ImageView android:id="@+id/imageViewRuletaSuerteSelected"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="-30dp"
-        android:src="@drawable/selected"
+    <ImageView
+        android:id="@+id/imageViewRuletaSuerteSelected"
+        android:layout_width="56dp"
+        android:layout_height="58dp"
         android:layout_above="@+id/imageViewRuletaSuerte"
         android:layout_centerHorizontal="true"
-        android:contentDescription="@string/ruleta_suerte"/>
+        android:layout_marginBottom="-30dp"
+        android:contentDescription="@string/ruleta_suerte"
+        android:src="@drawable/selected" />
 
     <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"
@@ -77,7 +78,7 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+        ads:adUnitId="ca-app-pub-8043381776244583/9602704188">
     </com.google.android.gms.ads.AdView>
 
 

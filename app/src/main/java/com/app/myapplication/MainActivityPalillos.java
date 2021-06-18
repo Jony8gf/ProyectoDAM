@@ -299,7 +299,7 @@ public class MainActivityPalillos extends AppCompatActivity {
                 seleccionarPalillos();
                 imgTaparPalillo.setVisibility(View.VISIBLE);
                 contador = 0;
-                Toast.makeText(MainActivityPalillos.this, ""+contador, Toast.LENGTH_LONG ).show();
+                //Toast.makeText(MainActivityPalillos.this, ""+contador, Toast.LENGTH_LONG ).show();
                 imgPalillo1.setImageResource(R.drawable.palillo_entero);
                 imgPalillo2.setImageResource(R.drawable.palillo_entero);
                 imgPalillo3.setImageResource(R.drawable.palillo_entero);

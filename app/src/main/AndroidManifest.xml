@@ -15,10 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoDAM">
 
-         <!-- ca-app-pub-8043381776244583/9930395917   ca-app-pub-8043381776244583/9362786215       ca-app-pub-8043381776244583~1004200499 -->
+         <!-- ca-app-pub-8043381776244583/9930395917   ca-app-pub-8043381776244583/9362786215       ca-app-pub-8043381776244583~1004200499  ca-app-pub-3940256099942544~3347511713  -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713" />
+            android:value="ca-app-pub-8043381776244583~4897172417" />
 
         <activity android:name=".MainActivityLobbyRuletaSuerte" />
         <activity android:name=".MainActivityMimica" />

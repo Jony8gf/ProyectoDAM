@@ -47,7 +47,7 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+        ads:adUnitId="ca-app-pub-8043381776244583/9602704188">
     </com.google.android.gms.ads.AdView>
 
 
@@ -122,12 +122,14 @@
 
     <Button
         android:id="@+id/buttonEmpezarRonda"
-        android:layout_width="332dp"
-        android:layout_height="222dp"
+        android:layout_width="353dp"
+        android:layout_height="217dp"
         android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="46dp"
-        android:layout_marginBottom="201dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="205dp"
         android:onClick="comenzarPalillos"
         android:text="@string/comenzar"
         android:textSize="30sp" />

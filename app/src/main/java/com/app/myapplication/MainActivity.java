@@ -1,5 +1,7 @@
 package com.app.myapplication;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,7 +12,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.Menu;
@@ -24,6 +29,7 @@ import com.app.myapplication.utilidades.CervezaBonus;
 import com.app.myapplication.utilidades.ItemListener;
 import com.app.myapplication.utilidades.ListAdapter;
 import com.app.myapplication.utilidades.ListElement;
+import com.app.myapplication.utilidades.Usuario;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -31,15 +37,24 @@ import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import herramientas.Usuario;
+//import herramientas.Usuario;
 
 public class MainActivity extends AppCompatActivity implements ItemListener, CervezaBonus {
 
+    private final static String urlDGT = "https://www.dgt.es/es/la-dgt/campanas/1985/Si-bebes-no-conduzcas.shtml";
+    private final static String urlPH = "https://proyectohombre.es/alcohol/";
     List<ListElement> elements;
     private String posicionElemento;
     private int posicionAux;
@@ -51,13 +66,26 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
     String email;
     int dadoMinijuego = 0;
     String dadoAux = "";
-    Usuario usuario, userAux;
+    Usuario usuario;
     private  Dialog dialog;
+    DatabaseReference bbdd;
+    FirebaseDatabase firebaseDatabase;
+    FirebaseAuth firebaseAuth;
+    boolean checkCervezas = false;
+    int numRand = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        FirebaseApp.initializeApp(this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        //firebaseDatabase.setPersistenceEnabled(true);
+        bbdd = firebaseDatabase.getReference();
+
+        //Instancia Firebase Auth
+        firebaseAuth = FirebaseAuth.getInstance();
 
         //Coger datos del Intent anterior
         email = getIntent().getStringExtra("correo");
@@ -70,14 +98,17 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
         }else{
             dadoMinijuego = Integer.parseInt(dadoAux);
         }
+
+        numRand = (int) (Math.random()*2);
         //dadoMinijuego = (int)(Math.random()*6+1);
 
 
         //Recoger Objeto Usuario
-        usuario = new Usuario(1,"Usuario", email, 100, "S", 0, 4);
+        usuario = new Usuario("0","Usuario", email, 1, "S", 1);
 
         //Recibir Objeto Usuario
         //Asignar Valores
+        /*
         SocketCliente cliente;
         cliente = new SocketCliente(usuario);
         cliente.start();
@@ -93,14 +124,55 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
         }
 
         userAux = cliente.getUsuario();
-        email = userAux.getCorreo();
-        //Toast.makeText(this, userAux.toString(), Toast.LENGTH_LONG).show();
+
+         */
+
+        bbdd.child("Persona").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot datasnapshot : snapshot.getChildren()) {
+
+                    Usuario userAux = datasnapshot.getValue(Usuario.class);
+
+
+                    assert userAux != null;
+                    if (email.equals(userAux.getCorreo())) {
+
+                        usuario = userAux;
+
+                        usuario.setUid(userAux.getUid());
+                        usuario.setNombre(userAux.getNombre());
+                        usuario.setAds(userAux.getAds());
+                        usuario.setAvatar(userAux.getAvatar());
+                        usuario.setCorreo(userAux.getCorreo());
+                        usuario.setCervezas(userAux.getCervezas());
+
+                        if(!checkCervezas){
+                            bonus(dadoMinijuego);
+                            checkCervezas = true;
+                        }
+
+
+                    }
+
+
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+        //email = usuario.getCorreo();
+
 
 
         //Comprobacion para saber si el usuario tiene el premium
         //En caso de si tenerlo ("N") [NO ADS] cargar el Mobile AdMob
         // Y cargar anuncio en el banner
-        if (userAux.getAds().equals("S")){
+        if (usuario.getAds().equals("S")){
             MobileAds.initialize(this, new OnInitializationCompleteListener() {
                 @Override
                 public void onInitializationComplete(InitializationStatus initializationStatus) {
@@ -187,8 +259,8 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
             default: //Toast.makeText(this, "English", Toast.LENGTH_SHORT).show();
         }
 
+        //Toast.makeText(MainActivity.this, usuario.toString(), Toast.LENGTH_LONG).show();
 
-        bonus(dadoMinijuego);
         init();
     }
 
@@ -276,7 +348,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 //Mimica
                 intent = new Intent(this, MainActivityMimica.class);
                 intent.putExtra("correo", email);
-                intent.putExtra("ads", userAux.getAds());
+                intent.putExtra("ads", usuario.getAds());
                 startActivity(intent);
                 finish();
                 break;
@@ -285,18 +357,27 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 //Patata Caliente
                 intent = new Intent(this, MainActivityPatataCaliente.class);
                 intent.putExtra("correo", email);
-                intent.putExtra("ads", userAux.getAds());
+                intent.putExtra("ads", usuario.getAds());
                 startActivity(intent);
                 finish();
                 break;
             case 2: mpMusic.pause();
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 //Yo Nunca
+                intent = new Intent(this, MainActivityYoNunca.class);
+                intent.putExtra("correo", email);
+                intent.putExtra("ads", usuario.getAds());
+                intent.putExtra("eleccion", "pred");
+                startActivity(intent);
+                finish();
 
                 //Llamada al dialig de eleccion de tipo de frases
+                /*
                 dialog = new Dialog(this);
                 dialog.setContentView(R.layout.dialog_eleccion);
                 dialog.show();
+                 */
+
 
                 break;
             case 3: mpMusic.pause();
@@ -304,7 +385,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivityCaraCruz.class);
                 intent.putExtra("correo", email);
-                intent.putExtra("ads", userAux.getAds());
+                intent.putExtra("ads", usuario.getAds());
                 startActivity(intent);
                 finish();
                 break;
@@ -313,7 +394,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivitySetasVenenosas.class);
                 intent.putExtra("correo", email);
-                intent.putExtra("ads", userAux.getAds());
+                intent.putExtra("ads", usuario.getAds());
                 startActivity(intent);
                 finish();
                 break;
@@ -322,7 +403,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 //Ruleta Rusa
                 intent = new Intent(this, MainActivityRuletaRusa.class);
                 intent.putExtra("correo", email);
-                intent.putExtra("ads", userAux.getAds());
+                intent.putExtra("ads", usuario.getAds());
                 startActivity(intent);
                 finish();
                 break;
@@ -332,7 +413,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 //intent = new Intent(this, MainActivityRuletaSuerte.class);
                 intent = new Intent(this, MainActivityLobbyRuletaSuerte.class);
                 intent.putExtra("correo", email);
-                intent.putExtra("ads", userAux.getAds());
+                intent.putExtra("ads", usuario.getAds());
                 startActivity(intent);
                 finish();
                 break;
@@ -341,7 +422,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 //Mayor o menor
                 intent = new Intent(this, MainActivityMayorMenor.class);
                 intent.putExtra("correo", email);
-                intent.putExtra("ads", userAux.getAds());
+                intent.putExtra("ads", usuario.getAds());
                 startActivity(intent);
                 finish();
                 break;
@@ -350,7 +431,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 //5 cosas
                 intent = new Intent(this, MainActivityCincoCosas.class);
                 intent.putExtra("correo", email);
-                intent.putExtra("ads", userAux.getAds());
+                intent.putExtra("ads", usuario.getAds());
                 startActivity(intent);
                 finish();
                 break;
@@ -359,7 +440,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 intent = new Intent(this, MainActivitySlotMachine.class);
                 intent.putExtra("correo", email);
-                intent.putExtra("ads", userAux.getAds());
+                intent.putExtra("ads", usuario.getAds());
                 startActivity(intent);
                 finish();
                 break;
@@ -367,10 +448,20 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
                 //Mas probable
 
+                intent = new Intent(this, MainActivityMasProbable.class);
+                intent.putExtra("correo", email);
+                intent.putExtra("ads", usuario.getAds());
+                intent.putExtra("eleccion", "pred");
+                startActivity(intent);
+                finish();
+
+                /*
                 //Llamada al dialig de eleccion de tipo de frases
                 dialog = new Dialog(this);
                 dialog.setContentView(R.layout.dialog_eleccion);
                 dialog.show();
+
+                 */
 
                 break;
             case 11: mpMusic.pause();
@@ -378,7 +469,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                 //Botella
                 intent = new Intent(this, MainActivityBotella.class);
                 intent.putExtra("correo", email);
-                intent.putExtra("ads", userAux.getAds());
+                intent.putExtra("ads", usuario.getAds());
                 startActivity(intent);
                 finish();
                 break;
@@ -389,7 +480,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
 
                 //JUEGO EXCLUSIVO
                 //El usuario debe de tener al menos 10 cervezas para jugar
-                if (userAux.getCervezas()>=10){
+                if (usuario.getCervezas()>=10){
 
                     //se prepara la alerta creando nueva instancia
                     AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
@@ -401,7 +492,9 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                         public void onClick(DialogInterface arg0, int arg1) {
 
 
-                            userAux.setCervezas(userAux.getCervezas()-10);
+                            usuario.setCervezas(usuario.getCervezas()-10);
+
+                            /*
                             userAux.setAuxSeleccion(2);
                             //Recibir Objeto Usuario
                             //Asignar Valores
@@ -418,9 +511,13 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                                 e.printStackTrace();
                             }
 
+                             */
+
+                            //Toast.makeText(MainActivity.this, usuario.toString(), Toast.LENGTH_LONG).show();
+                            actualizar(usuario);
                             Intent intemt = new Intent(MainActivity.this, MainActivityLobbyPalillos.class);
                             intemt.putExtra("correo", email);
-                            intemt.putExtra("ads", userAux.getAds());
+                            intemt.putExtra("ads", usuario.getAds());
                             startActivity(intemt);
                             finish();
                         }
@@ -450,6 +547,17 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
         dialog.setContentView(R.layout.dialog_help_types_games);
         dialog.show();
 
+        //Contador de 4 segundos para cerrar el Dialog de Ayuda
+        CountDownTimer countDownTimer = new CountDownTimer(4000, 1000) {
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            public void onFinish() {
+                dialog.dismiss();
+            }
+        }.start();
+
     }
 
     //Método para mostrar un dialog que el usuario no dispone de cervezas suficientes
@@ -458,6 +566,17 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
         dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_not_beers);
         dialog.show();
+
+        //Contador de 4 segundos para cerrar el Dialog de Ayuda
+        CountDownTimer countDownTimer = new CountDownTimer(4000, 1000) {
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            public void onFinish() {
+                dialog.dismiss();
+            }
+        }.start();
 
     }
 
@@ -481,16 +600,24 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
             String auxiliarTexto = (String) getText(R.string.ganado_cervezas);
             beerBonus.setText(auxiliarTexto + " "+ dadoMenu);
 
-            Integer total = userAux.getCervezas() + dadoMenu;
+            Integer total = usuario.getCervezas() + dadoMenu;
             //HILO MODIFICAR.....
-            userAux.setCervezas(total);
-            userAux.setAuxSeleccion(2);
+            usuario.setCervezas(total);
+
+            actualizar(usuario);
+
+            /*
+            //userAux.setAuxSeleccion(2);
 
             Thread modificarCervezasUsuario;
             modificarCervezasUsuario = new SocketCliente(userAux);
             modificarCervezasUsuario.start();
 
+             */
+
             dialog.show();
+        }else{
+            dialogTips();
         }
     }
 
@@ -508,7 +635,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                         intent = new Intent(this, MainActivityYoNunca.class);
                         intent.putExtra("correo", email);
                         intent.putExtra("nombre", nombre);
-                        intent.putExtra("ads", userAux.getAds());
+                        intent.putExtra("ads", usuario.getAds());
                         intent.putExtra("eleccion", "pred");
                         startActivity(intent);
                         finish();
@@ -519,7 +646,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                         intent = new Intent(this, MainActivityMasProbable.class);
                         intent.putExtra("correo", email);
                         intent.putExtra("nombre", nombre);
-                        intent.putExtra("ads", userAux.getAds());
+                        intent.putExtra("ads", usuario.getAds());
                         intent.putExtra("eleccion", "pred");
                         startActivity(intent);
                         finish();
@@ -540,7 +667,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                         intent = new Intent(this, MainActivityLobbyYoNunca.class);
                         intent.putExtra("correo", email);
                         intent.putExtra("nombre", nombre);
-                        intent.putExtra("ads", userAux.getAds());
+                        intent.putExtra("ads", usuario.getAds());
                         intent.putExtra("eleccion", "prop");
                         startActivity(intent);
                         finish();
@@ -551,7 +678,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                         intent = new Intent(this, MainActivityLobbyMasProbable.class);
                         intent.putExtra("correo", email);
                         intent.putExtra("nombre", nombre);
-                        intent.putExtra("ads", userAux.getAds());
+                        intent.putExtra("ads", usuario.getAds());
                         intent.putExtra("eleccion", "prop");
                         startActivity(intent);
                         finish();
@@ -569,6 +696,48 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
 
         dialog.dismiss();
 
+    }
+
+    public void actualizar(Usuario user){
+        bbdd.child("Persona").child(user.getUid()).setValue(null);
+        bbdd.child("Persona").child(user.getUid()).setValue(user);
+    }
+
+    //Método para mostrar un Dialog de Ayuda ante los daños del alcohol
+    public void dialogTips(){
+
+        Dialog dialog= new Dialog(this);
+        if (numRand == 0 || numRand == 1) {
+            dialog.setContentView(R.layout.dialog_notcar);
+        }else{
+            dialog.setContentView(R.layout.dialog_notdrink);
+        }
+
+        dialog.setTitle("Drink tips");
+        dialog.show();
+
+        //Contador de 4 segundos para cerrar el Dialog de Ayuda
+        CountDownTimer countDownTimer = new CountDownTimer(4000, 1000) {
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            public void onFinish() {
+                dialog.dismiss();
+            }
+        }.start();
+
+    }
+
+    //Método para saber mas sobre los problemas que conlleva el alcohol (Enlaces a navegador)
+    public void saberMas(View view){
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        if (numRand == 1) {
+            intent.setData(Uri.parse(urlDGT));
+        }else{
+            intent.setData(Uri.parse(urlPH));
+        }
+        startActivity(intent);
     }
 
     @Override
