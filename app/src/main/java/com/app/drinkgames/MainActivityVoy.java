@@ -7,13 +7,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.app.drinkgames.sqlite.ConexionSQLiteHelper;
 import com.google.android.gms.ads.AdListener;
@@ -25,40 +26,37 @@ import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import herramientas.Usuario;
 
-public class MainActivityMimica extends AppCompatActivity {
+public class MainActivityVoy extends AppCompatActivity {
 
-    private MediaPlayer mpSiguiente, mpMimica;
-    private TextView tvFrase;
-    private TextView tvTragos;
-    private Button btnOcultar;
-    private Button btComenzar;
-    private boolean ocultar  = true;
-    private String guardarPalabara;
-    private String idioma;
-    private String auxiliar;
-    private String correo;
-    private String ads;
-    ArrayList<String> frases = new ArrayList<>();
     int numero = 0;
-    boolean carga = false;
+    boolean cargaSQLite = false;
+    boolean cargaOracle = false;
+    String idioma = "";
+    String auxiliar = "";
+    String correo, ads, eleccion;
+    Usuario usuario;
+    ArrayList<String> frasesSQLite = new ArrayList<>();
+    private TextToSpeech mTTS;
+    private TextView tvFrase, tvTragos;
     //Creacion de Objeto Adview
     private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_mimica);
+        setContentView(R.layout.activity_main_voy);
 
         //Coger datos del Intent anterior
         correo = getIntent().getStringExtra("correo");
         ads = getIntent().getStringExtra("ads");
+        eleccion = getIntent().getStringExtra("eleccion");
 
         //Recoger Objeto Usuario
-        Usuario usuario = new Usuario(1,"Usuario", correo, 0, "S", 0, 4);
-
+        usuario = new Usuario(1,"Usuario", correo, 0, "S", 0, 4);
 
         //Comprobacion para saber si el usuario tiene el premium
         //En caso de si tenerlo ("N") [NO ADS] cargar el Mobile AdMob
@@ -105,50 +103,74 @@ public class MainActivityMimica extends AppCompatActivity {
             });
         }
 
-
-        //Musica Siguiente && Mimica
-        mpSiguiente = MediaPlayer.create(this, R.raw.siguiente);
-        mpMimica = MediaPlayer.create(this, R.raw.mimica);
-        mpMimica.start();
-        mpMimica.setLooping(true);
-
-
-        //Asignacion a TextViews
-        tvFrase = findViewById(R.id.textViewMimicaFrase);
-        tvTragos = findViewById(R.id.textViewMimicaTragps);
-
-        //Asignacion de Buttons
-        btnOcultar = findViewById(R.id.buttonOcultarPalabraMimica);
-        btComenzar = findViewById(R.id.buttonMimica);
+        //Asignacion de TextView
+        tvFrase = findViewById(R.id.textViewVoyFrase);
+        tvTragos = findViewById(R.id.textViewVoyTragos);
 
         // Cargar IDIOMA
         idioma = getString(R.string.idioma);
 
-    }
+        switch (getString(R.string.idioma)){
 
-    //Método para sacar una palabra por pantalla
-    public void siguientePalabra(View view){
-
-        mpSiguiente.start();
-
-        if(!carga){
-            contadorFrases();
-
-            cargarFrases();
-
-            fraseAletoria();
-
-            tragosAletorios();
-        }else{
-            fraseAletoria();
-
-            tragosAletorios();
+            case "Español": Toast.makeText(this, "Español", Toast.LENGTH_SHORT).show();
+                mTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+                    @Override
+                    public void onInit(int status) {
+                        Locale spanish = new Locale("es", "ES");
+                        if (status == TextToSpeech.SUCCESS) {
+                            int result = mTTS.setLanguage(spanish);
+                            if (result == TextToSpeech.LANG_MISSING_DATA
+                                    || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                                Log.e("TTS", "Language not supported");
+                            }
+                        } else {
+                            Log.e("TTS", "Initialization failed");
+                        }
+                    }
+                });
+                break;
+            case "English": Toast.makeText(this, "English", Toast.LENGTH_SHORT).show();
+                mTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+                    @Override
+                    public void onInit(int status) {
+                        if (status == TextToSpeech.SUCCESS) {
+                            int result = mTTS.setLanguage(Locale.ENGLISH);
+                            if (result == TextToSpeech.LANG_MISSING_DATA
+                                    || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                                Log.e("TTS", "Language not supported");
+                            }
+                        } else {
+                            Log.e("TTS", "Initialization failed");
+                        }
+                    }
+                });
+                break;
+            default: //Toast.makeText(this, "English", Toast.LENGTH_SHORT).show();
         }
     }
 
 
+    //Método para sacar una frase en pantalla
+    public void fraseVoy(View view){
+
+            if(!cargaSQLite){
+                //contadorFrases();
+
+                cargarFrasesSQLite();
+
+                fraseAletoriaSQLite();
+
+                tragosAletorios();
+            }else{
+                fraseAletoriaSQLite();
+
+                tragosAletorios();
+            }
+    }
+
+
     //Metodo para cargar Frases del SQLite y almacenarlas en un ArrayList
-    private void  cargarFrases(){
+    private void  cargarFrasesSQLite(){
 
         ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this, "administracion", null, 1);
         SQLiteDatabase basedatos = admin.getWritableDatabase();
@@ -158,11 +180,11 @@ public class MainActivityMimica extends AppCompatActivity {
 
         switch (getString(R.string.idioma)){
 
-            case "Español": fila = basedatos.rawQuery ("select nombre from frase where tipo = 'MM' and idioma = 'Español' ;", null);
+            case "Español": fila = basedatos.rawQuery ("select nombre from frase where tipo = 'MV' and idioma = 'Español' ;", null);
                 break;
-            case "English": fila = basedatos.rawQuery ("select nombre from frase where tipo = 'MM' and idioma = 'English' ;", null);
+            case "English": fila = basedatos.rawQuery ("select nombre from frase where tipo = 'MV' and idioma = 'English' ;", null);
                 break;
-            default: fila = basedatos.rawQuery ("select nombre from frase where tipo = 'MM' and idioma = 'English' ;", null);
+            default: fila = basedatos.rawQuery ("select nombre from frase where tipo = 'MV' and idioma = 'English' ;", null);
         }
 
         if (fila != null) {
@@ -170,8 +192,8 @@ public class MainActivityMimica extends AppCompatActivity {
             do {
                 //Asignamos el arraylist los elementos
                 String frase = fila.getString(0);
-                frases.add(frase);
-                carga = true;
+                frasesSQLite.add(frase);
+                cargaSQLite = true;
                 //Toast.makeText(this, frase, Toast.LENGTH_SHORT).show();
             } while (fila.moveToNext());
 
@@ -183,14 +205,13 @@ public class MainActivityMimica extends AppCompatActivity {
 
     }
 
-
     //Metodo para saber cuantas frases están disponibles desde el SQLite
     private void contadorFrases(){
 
         ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this, "administracion", null, 1);
         SQLiteDatabase basedatos = admin.getWritableDatabase();
 
-        Cursor num = basedatos.rawQuery ("select count() from frase where tipo = 'YN';", null);
+        Cursor num = basedatos.rawQuery ("select count() from frase where tipo = 'MV' ", null);
         if(num.moveToFirst()){
             String count = num.getString(0);
             numero = Integer.parseInt(count);
@@ -198,14 +219,12 @@ public class MainActivityMimica extends AppCompatActivity {
         }
     }
 
-    //Metodo para mostrar una frase anteriormente cargada en el arraylist
-    private void fraseAletoria(){
+    //Metodo para mostrar y leer una frase anteriormente cargada en el arraylist
+    private void fraseAletoriaSQLite(){
 
-        int fraseRandom = (int)(Math.random()*frases.size());
-        tvFrase.setText(frases.get(fraseRandom));
-        ocultar = true;
-        auxiliar = (String) getText(R.string.ocultar);
-        btnOcultar.setText(auxiliar);
+        int fraseRandom = (int)(Math.random()*frasesSQLite.size());
+        mTTS.speak(frasesSQLite.get(fraseRandom), TextToSpeech.QUEUE_FLUSH, null);
+        tvFrase.setText(frasesSQLite.get(fraseRandom));
 
     }
 
@@ -214,24 +233,6 @@ public class MainActivityMimica extends AppCompatActivity {
         int tragos = (int)(Math.random()*3+1);
         auxiliar = (String)getText(R.string.tragos);
         tvTragos.setText(tragos + " "+ auxiliar);
-    }
-
-    //Ocultar palabra de TextView Principal
-    public void ocultarPalabra(View view){
-
-        if(ocultar) {
-            guardarPalabara = tvFrase.getText().toString();
-            tvFrase.setText("");
-            auxiliar = (String) getText(R.string.desocultar);
-            btnOcultar.setText(auxiliar);
-            ocultar = false;
-        }
-        else{
-            tvFrase.setText(guardarPalabara);
-            auxiliar = (String) getText(R.string.ocultar);
-            btnOcultar.setText(auxiliar);
-            ocultar = true;
-        }
     }
 
 
@@ -259,7 +260,7 @@ public class MainActivityMimica extends AppCompatActivity {
             //se prepara la alerta creando nueva instancia
             AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
             //seleccionamos la cadena a mostrar
-            alertbox.setMessage(getString(R.string.ayuda_mimica));
+            alertbox.setMessage(getString(R.string.ayuda_voy));
             //elegimos un positivo SI y creamos un Listener
             alertbox.setPositiveButton(getString(R.string.entendido), new DialogInterface.OnClickListener() {
                 //Funcion llamada cuando se pulsa el boton Si
@@ -270,12 +271,8 @@ public class MainActivityMimica extends AppCompatActivity {
             //mostramos el alertbox
             alertbox.show();
         }
-
         return true;
     }
-
-
-
 
     @Override
     public void onBackPressed() {
@@ -302,13 +299,6 @@ public class MainActivityMimica extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        try {
-            mpSiguiente.pause();
-            mpMimica.setLooping(false);
-            mpMimica.pause();
-        }catch (IllegalStateException e){
-            e.printStackTrace();
-        }
         // Enfocarse en otra actividad  (esta actividad está a punto de ser "detenida").
     }
     @Override
@@ -321,4 +311,6 @@ public class MainActivityMimica extends AppCompatActivity {
         super.onDestroy();
         // La actividad está a punto de ser destruida.
     }
+
+
 }

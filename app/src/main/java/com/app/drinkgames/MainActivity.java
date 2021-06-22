@@ -319,7 +319,7 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
         elements.add(new ListElement(R.drawable.menu_masprobable, getString(R.string.masprobable), "+2 Jugadores", R.drawable.secret));
         elements.add(new ListElement(R.drawable.menu_botella, getString(R.string.botella), "+2 Jugadores", R.drawable.suerte));
         elements.add(new ListElement(R.drawable.palillo_entero, getString(R.string.palillos), "+2 Jugadores", R.drawable.exclusivo));
-        //elements.add(new ListElement(R.drawable.menu_yonunca,"Yo nunca prueba", "+2 Jugadores", R.drawable.exclusivo));
+        elements.add(new ListElement(R.drawable.menu_voy, getString(R.string.voy), "+2 Jugadores", R.drawable.exclusivo));
 
         ListAdapter listAdapter = new ListAdapter(elements,
                 this, this);
@@ -515,6 +515,48 @@ public class MainActivity extends AppCompatActivity implements ItemListener, Cer
                             intemt.putExtra("correo", email);
                             intemt.putExtra("ads", usuario.getAds());
                             startActivity(intemt);
+                            finish();
+                        }
+                    });
+
+                    //mostramos el alertbox
+                    alertbox.show();
+
+
+
+                }else{
+
+                    dialogNotCervezasEnable();
+                }
+
+                break;
+
+            case 13: mpMusic.pause();
+                //Voy
+                mTTS.speak(posicionElemento, TextToSpeech.QUEUE_FLUSH, null);
+
+                //JUEGO EXCLUSIVO
+                //El usuario debe de tener al menos 10 cervezas para jugar
+                if (usuario.getCervezas()>=10){
+
+                    //se prepara la alerta creando nueva instancia
+                    AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+                    //seleccionamos la cadena a mostrar
+                    alertbox.setMessage(R.string.gastar_cervezas);
+                    //elegimos un positivo SI y creamos un Listener
+                    alertbox.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                        //Funcion llamada cuando se pulsa el boton Si
+                        public void onClick(DialogInterface arg0, int arg1) {
+
+
+                            usuario.setCervezas(usuario.getCervezas()-10);
+
+                            //Toast.makeText(MainActivity.this, usuario.toString(), Toast.LENGTH_LONG).show();
+                            actualizar(usuario);
+                            Intent intelt = new Intent(MainActivity.this, MainActivityVoy.class);
+                            intelt.putExtra("correo", email);
+                            intelt.putExtra("ads", usuario.getAds());
+                            startActivity(intelt);
                             finish();
                         }
                     });

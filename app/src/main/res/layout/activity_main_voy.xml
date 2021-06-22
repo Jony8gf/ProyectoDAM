@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        tools:context=".MainActivityVoy">
+
+    <TextView
+        android:id="@+id/textViewVoyFrase"
+        android:layout_width="412dp"
+        android:layout_height="93dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="@color/azul"
+        android:gravity="center"
+        android:text="@string/voy"
+        android:textColor="#FFFDFD" />
+
+    <TextView
+        android:id="@+id/textViewVoyTragos"
+        android:layout_width="412dp"
+        android:layout_height="61dp"
+        android:layout_below="@+id/textViewVoyFrase"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="-2dp"
+        android:layout_marginEnd="0dp"
+        android:background="@color/rosa"
+        android:gravity="center"
+        android:text="@string/bebes"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/buttonVoy"
+        android:layout_width="199dp"
+        android:layout_height="80dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="109dp"
+        android:layout_marginEnd="102dp"
+        android:layout_marginBottom="89dp"
+        android:backgroundTint="#FFEB3B"
+        android:onClick="fraseVoy"
+        android:text="@string/comenzar" />
+
+    <ImageView
+        android:id="@+id/imageViewVoyRelleno"
+        android:layout_width="210dp"
+        android:layout_height="218dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="101dp"
+        android:layout_marginTop="247dp"
+        android:layout_marginEnd="99dp"
+        android:contentDescription="@string/app_name"
+        app:srcCompat="@drawable/icono" />
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-8043381776244583/9602704188">
+    </com.google.android.gms.ads.AdView>
+
+
+</RelativeLayout>

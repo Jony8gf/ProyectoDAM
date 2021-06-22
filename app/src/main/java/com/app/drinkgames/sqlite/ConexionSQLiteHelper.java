@@ -890,6 +890,31 @@ public class ConexionSQLiteHelper  extends SQLiteOpenHelper {
         basedatos.execSQL("Insert into frase values (1052,'Usuario 3', 'PL', 'English')");
         basedatos.execSQL("Insert into frase values (1053,'Usuario 4', 'PL', 'English')");
 
+        //Me fui Español
+        basedatos.execSQL("Insert into frase values (1060,'Voy de picnic y llevo…', 'MV', 'Español')");
+        basedatos.execSQL("Insert into frase values (1061,'Voy al cine y compro…', 'MV', 'Español')");
+        basedatos.execSQL("Insert into frase values (1062,'Voy a un bar y pido…', 'MV', 'Español')");
+        basedatos.execSQL("Insert into frase values (1063,'Voy a una tienda de ropa y compro…', 'MV', 'Español')");
+        basedatos.execSQL("Insert into frase values (1064,'Voy a un supermercado y compró…', 'MV', 'Español')");
+        basedatos.execSQL("Insert into frase values (1065,'Voy de viaje y llevo…', 'MV', 'Español')");
+        basedatos.execSQL("Insert into frase values (1066,'Voy de acampada y llevo …', 'MV', 'Español')");
+        basedatos.execSQL("Insert into frase values (1067,'Voy a un restaurante y pido...', 'MV', 'Español')");
+        basedatos.execSQL("Insert into frase values (1068,'Voy a la playa y llevo…', 'MV', 'Español')");
+        basedatos.execSQL("Insert into frase values (1069,'Voy al gimnasio y llevo...', 'MV', 'Español')");
+
+        //Me fui English
+        basedatos.execSQL("Insert into frase values (1070,'I m going on a picnic and I have ...', 'MV', 'English')");
+        basedatos.execSQL("Insert into frase values (1071,'I go to the cinema and bought ...', 'MV', 'English')");
+        basedatos.execSQL("Insert into frase values (1072,'I go to a bar and ask ...', 'MV', 'English')");
+        basedatos.execSQL("Insert into frase values (1073,'I go to a clothing store and bought ...', 'MV', 'English')");
+        basedatos.execSQL("Insert into frase values (1074,'I go to a supermarket and bought ...', 'MV', 'English')");
+        basedatos.execSQL("Insert into frase values (1075,'I m going on a trip and I have ...', 'MV', 'English')");
+        basedatos.execSQL("Insert into frase values (1076,'I m going camping and it took ...', 'MV', 'English')");
+        basedatos.execSQL("Insert into frase values (1077,'I go to a restaurant and ask ...', 'MV', 'English')");
+        basedatos.execSQL("Insert into frase values (1078,'I go to the beach and I wear ...', 'MV', 'English')");
+        basedatos.execSQL("Insert into frase values (1079,'I go to the gym and wear ...', 'MV', 'English')");
+
+
         //Insertar Cinco Cosas en Español - 1100
         basedatos.execSQL("Insert into frase values (1100,'5 marcas de coches', 'CC', 'Español')");
         basedatos.execSQL("Insert into frase values (1101,'5 países europeos', 'CC', 'Español')");
@@ -1308,6 +1333,8 @@ public class ConexionSQLiteHelper  extends SQLiteOpenHelper {
         basedatos.execSQL("Insert into frase values (1629,'¿Quién es más probable que viva en una casa árbol?', 'MP', 'Español')");
         basedatos.execSQL("Insert into frase values (1630,'¿Quién es más probable que pida sal a su vecino/a?', 'MP', 'Español')");
         //Reservado 1699
+
+
 
 
     }

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.app.drinkgames"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="1.0">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -16,35 +16,35 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoDAM">
-
-         <!-- ca-app-pub-8043381776244583/9930395917   ca-app-pub-8043381776244583/9362786215       ca-app-pub-8043381776244583~1004200499  ca-app-pub-3940256099942544~3347511713  -->
+        <activity android:name=".MainActivityVoy"></activity>
+        <!-- ca-app-pub-8043381776244583/9930395917   ca-app-pub-8043381776244583/9362786215       ca-app-pub-8043381776244583~1004200499  ca-app-pub-3940256099942544~3347511713 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-8043381776244583~4897172417" />
 
-        <activity android:name="com.app.drinkgames.MainActivityLobbyRuletaSuerte" />
-        <activity android:name="com.app.drinkgames.MainActivityMimica" />
-        <activity android:name="com.app.drinkgames.MainActivityPatataCaliente" />
-        <activity android:name="com.app.drinkgames.MainActivityPalillos" />
-        <activity android:name="com.app.drinkgames.MainActivityLobbyPalillos" />
-        <activity android:name="com.app.drinkgames.MainActivityRuletaSuerte" />
-        <activity android:name="com.app.drinkgames.MainActivityMayorMenor" />
-        <activity android:name="com.app.drinkgames.MainActivityPerfil" />
-        <activity android:name="com.app.drinkgames.MainActivityCincoCosas" />
-        <activity android:name="com.app.drinkgames.MainActivityBotella" />
-        <activity android:name="com.app.drinkgames.MainActivityMasProbable" />
-        <activity android:name="com.app.drinkgames.MainActivityRuletaRusa" />
-        <activity android:name="com.app.drinkgames.MainActivitySetasVenenosas" />
-        <activity android:name="com.app.drinkgames.MainActivitySlotMachine" />
-        <activity android:name="com.app.drinkgames.MainActivityYoNunca" />
-        <activity android:name="com.app.drinkgames.MainActivityCaraCruz" />
-        <activity android:name="com.app.drinkgames.MainActivitySignIn" />
-        <activity android:name="com.app.drinkgames.MainActivity" />
-        <activity android:name="com.app.drinkgames.MainActivityLogin" />
-        <activity android:name="com.app.drinkgames.MainActivityRecuperarContrasena" />
-        <activity android:name="com.app.drinkgames.MainActivityLobbyYoNunca" />
-        <activity android:name="com.app.drinkgames.MainActivityLobbyMasProbable"/>
-        <activity android:name="com.app.drinkgames.SplashScreen">
+        <activity android:name=".MainActivityLobbyRuletaSuerte" />
+        <activity android:name=".MainActivityMimica" />
+        <activity android:name=".MainActivityPatataCaliente" />
+        <activity android:name=".MainActivityPalillos" />
+        <activity android:name=".MainActivityLobbyPalillos" />
+        <activity android:name=".MainActivityRuletaSuerte" />
+        <activity android:name=".MainActivityMayorMenor" />
+        <activity android:name=".MainActivityPerfil" />
+        <activity android:name=".MainActivityCincoCosas" />
+        <activity android:name=".MainActivityBotella" />
+        <activity android:name=".MainActivityMasProbable" />
+        <activity android:name=".MainActivityRuletaRusa" />
+        <activity android:name=".MainActivitySetasVenenosas" />
+        <activity android:name=".MainActivitySlotMachine" />
+        <activity android:name=".MainActivityYoNunca" />
+        <activity android:name=".MainActivityCaraCruz" />
+        <activity android:name=".MainActivitySignIn" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivityLogin" />
+        <activity android:name=".MainActivityRecuperarContrasena" />
+        <activity android:name=".MainActivityLobbyYoNunca" />
+        <activity android:name=".MainActivityLobbyMasProbable" />
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

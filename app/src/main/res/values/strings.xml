@@ -15,7 +15,7 @@
     <string name="nueva_palabra">New word</string>
 
 
-    <string name="version">Version Beta 1.0.0</string>
+    <string name="version">Version Beta 1.0.1</string>
     <string name="requerido">Requered</string>
     <string name="volver">Back</string>
     <string name="info">Help</string>
@@ -53,6 +53,7 @@
     <string name="setas_venenosas">Poisonous Mushrooms</string>
     <string name="botella">Bottle</string>
     <string name="palillos">Wooden chopsticks</string>
+    <string name="voy">I am going to …</string>
 
     <string name="bebes">Drink</string>
     <string name="mandas_bebes">Send drink</string>
@@ -186,6 +187,13 @@
                    In turns indicated on the screen, users will choose the toothpick they prefer by clicking on it,
                     Once all the chopsticks have been chosen, the tablecloth that hides them will be revealed by bringing out the chopsticks and thus showing the smallest toothpick that is the bad toothpick
                     and therefore the user who chose said toothpick will lose the game.
+    </string>
+
+    <string name="ayuda_voy">HELP THE USER: I GO TO THE… \ n \ n
+
+                  To begin, a person begins by saying, "I'm going on a picnic and I'm wearing …" followed by something you can bring.
+                    The second player repeats what the first person said, but adds a new word "I'm going on a picnic and I'm bringing apples and bananas."
+                    So until one of the players loses saying the phrase wrong.
     </string>
 
     <string name="cervezas">Beers</string>

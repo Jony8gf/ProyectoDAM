@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -50,6 +51,7 @@ public class MainActivityPerfil extends AppCompatActivity {
     DatabaseReference bbdd;
     FirebaseDatabase firebaseDatabase;
     private EditText etNombre;
+    private Button btnVideo;
     private ImageView ivEditAvatar,ivEditNombre, ivAvatar, ivPremium;
     private TextView txNumeroCervezas;
     private String correo;
@@ -91,6 +93,9 @@ public class MainActivityPerfil extends AppCompatActivity {
         etNombre = findViewById(R.id.editTextNombreProfile);
         //etNombre.setFocusable(false);
         etNombre.setEnabled(false);
+
+        //Button
+        btnVideo = findViewById(R.id.buttonVideoXCervezas);
 
         //Instancia Usuario
         usuario = new Usuario("9","Usuario", correo, 0, "S", 0);
@@ -175,7 +180,7 @@ public class MainActivityPerfil extends AppCompatActivity {
         });
         AdRequest adRequest = new AdRequest.Builder().build();
 
-        InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest, new InterstitialAdLoadCallback() {
+        InterstitialAd.load(this,"ca-app-pub-8043381776244583/2428767657", adRequest, new InterstitialAdLoadCallback() {
             @Override
             public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
                 // The mInterstitialAd reference will be null until
@@ -366,6 +371,7 @@ public class MainActivityPerfil extends AppCompatActivity {
         ivEditAvatar.setBackgroundColor(Color.GRAY);
         //userAux.setAuxSeleccion(2);
 
+
         actualizar(usuario);
 
             /*
@@ -469,6 +475,9 @@ public class MainActivityPerfil extends AppCompatActivity {
 
         if (mInterstitialAd != null) {
             mInterstitialAd.show(MainActivityPerfil.this);
+            usuario.setCervezas(usuario.getCervezas()+ 5);
+            actualizar(usuario);
+            btnVideo.setVisibility(View.INVISIBLE);
         } else {
             Toast.makeText(this, "Anuncio no disponible", Toast.LENGTH_LONG).show();
             rewAds();

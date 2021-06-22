@@ -15,7 +15,7 @@
     <string name="ejecucion">En ejecución…</string>
     <string name="nueva_palabra">Nueva Palabra</string>
 
-    <string name="version">Versión Beta 1.0.0</string>
+    <string name="version">Versión Beta 1.0.1</string>
     <string name="requerido">Requered</string>
     <string name="volver">Volver</string>
     <string name="info">Info</string>
@@ -53,6 +53,7 @@
     <string name="setas_venenosas">Setas Venenosas</string>
     <string name="botella">Botella</string>
     <string name="palillos">Palillos</string>
+    <string name="voy">Voy al ...</string>
 
     <string name="bebes">Bebes</string>
     <string name="mandas_bebes">Mandas Bebes</string>
@@ -186,6 +187,13 @@
                    Por turnos indicados en pantalla, los usuarios elegirán el palillo que prefieran pulsando sobre él,
                     una vez escogidos todos los palillos se descubrirá el mantel que los oculta sacando a la vista los palillos y así mostrando el palillo más pequeño que es el palillo malo
                     y por ende el usuario que elegio dicho palillo perderá la partida.
+    </string>
+
+    <string name="ayuda_voy">AYUDA AL USUARIO: VOY AL … \n \n
+
+                  Para comenzar, una persona comienza diciendo: «Voy de picnic y llevo …» seguido de algo que puedes llevar.
+                    El segundo jugador repite lo que dijo la primera persona, pero agrega una nueva palabra  «Voy de picnic y llevo manzanas y plátanos».
+                    Así hasta que uno de los jugadores pierda diciendo mal la frase.
     </string>
 
     <string name="cervezas">Cervezas</string>
