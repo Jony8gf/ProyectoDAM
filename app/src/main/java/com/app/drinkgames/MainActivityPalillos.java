@@ -216,27 +216,31 @@ public class MainActivityPalillos extends AppCompatActivity {
                 switch (palilloRandom){
 
                     case 1:imgPalillo1.setImageResource(R.drawable.palillo_pequeno);
+                        perdedor = jugadores.get(0);
                         if(map.get(0) == imgPalillo1.getId()){
                             //Toast.makeText(this, jugadores.get(0), Toast.LENGTH_LONG).show();
-                            perdedor = jugadores.get(0);
+
                         }
                         break;
                     case 2:imgPalillo2.setImageResource(R.drawable.palillo_pequeno);
+                        perdedor = jugadores.get(1);
                         if(map.get(1) == imgPalillo2.getId()){
                             //Toast.makeText(this, jugadores.get(1), Toast.LENGTH_LONG).show();
-                            perdedor = jugadores.get(1);
+
                         }
                         break;
                     case 3:imgPalillo3.setImageResource(R.drawable.palillo_pequeno);
+                        perdedor = jugadores.get(2);
                         if(map.get(2) == imgPalillo3.getId()){
                             //Toast.makeText(this, jugadores.get(2), Toast.LENGTH_LONG).show();
-                            perdedor = jugadores.get(2);
+
                         }
                         break;
                     case 4:imgPalillo4.setImageResource(R.drawable.palillo_pequeno);
+                        perdedor = jugadores.get(3);
                         if(map.get(3) == imgPalillo4.getId()){
                             //Toast.makeText(this, jugadores.get(3), Toast.LENGTH_LONG).show();
-                            perdedor = jugadores.get(3);
+
                         }
                         break;
                 }

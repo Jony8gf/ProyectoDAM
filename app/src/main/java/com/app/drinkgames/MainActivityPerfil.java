@@ -8,8 +8,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -59,6 +61,7 @@ public class MainActivityPerfil extends AppCompatActivity {
     private Dialog dialog;
     private Usuario usuario, userAux;
     private InterstitialAd mInterstitialAd;
+    private SharedPreferences preferences;
     //private RewardedVideoAd mRewardedVideoAd;
     //private RewardedVideoAd mRewardedVideoAd;
 
@@ -70,6 +73,9 @@ public class MainActivityPerfil extends AppCompatActivity {
 
         //Coger datos del Intent anterior
         correo = getIntent().getStringExtra("correo");
+
+        preferences = this.getSharedPreferences("Credenciales",
+                Context.MODE_PRIVATE);
 
 
         FirebaseApp.initializeApp(this);
@@ -224,12 +230,14 @@ public class MainActivityPerfil extends AppCompatActivity {
 
         if (id == R.id.mnBorrarCuenta) {
 
+            preferences.edit().clear().apply();
             onCreateDialog();
 
         }
         if (id == R.id.mnLogOut) {
 
             firebaseAuth.signOut();
+            preferences.edit().clear().apply();
             Intent intent = new Intent(this, MainActivityLogin.class);
             startActivity(intent);
             //Finalizar Activity

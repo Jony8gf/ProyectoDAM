@@ -7,15 +7,19 @@
     <string name="not_car">Do not drink and drive</string>
     <string name="not_drink">Control the amount of alcohol you drink.</string>
     <string name="sabermas">Know more</string>
+    <string name="actuliacion_disponible">An update is available.</string>
+    <string name="actualizar">Update</string>
 
     <string name="correo">Email</string>
     <string name="contrasena">Password</string>
+    <string name="guardar_sesion">Remember session</string>
     <string name="acpetar">Acept</string>
     <string name="ejecucion">In action…</string>
     <string name="nueva_palabra">New word</string>
 
 
-    <string name="version">Version Beta 1.0.1</string>
+    <string name="version">1.0.1</string>
+    <string name="beta">Version Beta</string>
     <string name="requerido">Requered</string>
     <string name="volver">Back</string>
     <string name="info">Help</string>
@@ -133,7 +137,7 @@
     <string name="ayuda_botella">USER HELP: BOTTLE \n \n
 
                     To start the game, the players must get in a circle with the device in the middle of them,
-                    then you have to press the button ROTATE TANK,
+                    then you have to press the button ROTATE BOTTLE,
                     This will make the bottle launch and rotate until it stops,
                     the player who is indicated with the tuto of the bottle will have to drink the drinks that are indicated.
                     To turn the bottle again, press the ROTATE BOTTLE button.
@@ -176,6 +180,13 @@
                     This will make the wheel start to spin until it stops on one of the pieces of the wheel,
                     Once this is done, you must comply with what is mentioned on the screen.
     </string>
+    <string name="ayuda_lobbyruletasuerte">USER HELP: LUCKY ROULETTE \n \n
+
+                    Add or Delete Slots using the "+" and "-" buttons up to a total of 10 slots and a minimum of 2 slots.
+                    Modify the phrases that appear to give a touch of yours to this Roulette of Luck.
+                    Click OK to start the minigame.
+
+    </string>
     <string name="ayuda_slotmachine">USER HELP: SLOT MACHINE \n \n
 
                    To start the game, you must press the PULL button,
@@ -187,6 +198,12 @@
                    In turns indicated on the screen, users will choose the toothpick they prefer by clicking on it,
                     Once all the chopsticks have been chosen, the tablecloth that hides them will be revealed by bringing out the chopsticks and thus showing the smallest toothpick that is the bad toothpick
                     and therefore the user who chose said toothpick will lose the game.
+    </string>
+    <string name="ayuda_lobbypalillos">HELP THE USER: THE CHOPSTICKS \n \n
+
+                   Add or Delete Users using the "+" and "-" buttons up to a maximum of 4 users and a minimum of 2 users.
+                    Modify the names of the users a personal touch to the minigame.
+                    Click OK to start the minigame.
     </string>
 
     <string name="ayuda_voy">HELP THE USER: I GO TO THE… \ n \ n

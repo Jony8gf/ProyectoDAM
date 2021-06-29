@@ -257,7 +257,7 @@ public class MainActivityLobbyRuletaSuerte extends AppCompatActivity {
             //se prepara la alerta creando nueva instancia
             AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
             //seleccionamos la cadena a mostrar
-            alertbox.setMessage(getString(R.string.ayuda_ruletasuerte));
+            alertbox.setMessage(getString(R.string.ayuda_lobbyruletasuerte));
             //elegimos un positivo SI y creamos un Listener
             alertbox.setPositiveButton(getString(R.string.entendido), new DialogInterface.OnClickListener() {
                 //Funcion llamada cuando se pulsa el boton Si

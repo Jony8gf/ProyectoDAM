@@ -16,8 +16,8 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoDAM">
-        <activity android:name=".MainActivityVoy"></activity>
-        <!-- ca-app-pub-8043381776244583/9930395917   ca-app-pub-8043381776244583/9362786215       ca-app-pub-8043381776244583~1004200499  ca-app-pub-3940256099942544~3347511713 -->
+        <activity android:name=".MainActivityUpdateApp"></activity>
+        <activity android:name=".MainActivityVoy" /> <!-- ca-app-pub-8043381776244583/9930395917   ca-app-pub-8043381776244583/9362786215       ca-app-pub-8043381776244583~1004200499  ca-app-pub-3940256099942544~3347511713 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-8043381776244583~4897172417" />

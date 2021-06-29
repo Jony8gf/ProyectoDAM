@@ -8,14 +8,18 @@
     <string name="not_car">Si bebes, No conduzcas</string>
     <string name="not_drink">Controla la cantidad de alchol que tomas.</string>
     <string name="sabermas">Saber más</string>
+    <string name="actuliacion_disponible">Hay una actualizacíon disponible.</string>
+    <string name="actualizar">Actualizar</string>
 
     <string name="correo">Correo Electrónico</string>
     <string name="contrasena">Contraseña</string>
+    <string name="guardar_sesion">Recordar sesión</string>
     <string name="acpetar">Aceptar</string>
     <string name="ejecucion">En ejecución…</string>
     <string name="nueva_palabra">Nueva Palabra</string>
 
-    <string name="version">Versión Beta 1.0.1</string>
+    <string name="version">1.0.1</string>
+    <string name="beta">Versión Beta</string>
     <string name="requerido">Requered</string>
     <string name="volver">Volver</string>
     <string name="info">Info</string>
@@ -53,7 +57,7 @@
     <string name="setas_venenosas">Setas Venenosas</string>
     <string name="botella">Botella</string>
     <string name="palillos">Palillos</string>
-    <string name="voy">Voy al ...</string>
+    <string name="voy">Voy al …</string>
 
     <string name="bebes">Bebes</string>
     <string name="mandas_bebes">Mandas Bebes</string>
@@ -133,10 +137,10 @@
     <string name="ayuda_botella">AYUDA AL USUARIO: BOTELLA \n \n
 
                     Para comenzar el juego, los jugadores deben de ponerse en corro con el dispisitivo en medio de estos,
-                    a continuación hay que darle al botón GIRAR BOTEELA,
+                    a continuación hay que darle al botón GIRAR BOTELLA,
                     esto hará que se lanze la botella y gira hasta llegar un momento en el que se pare,
                     el jugador que sea señalado con el tuto de la botella tendra que beber los tragos que se indican.
-                    Para girar otra vez la boteela se presionará el botón GIRAR BOTEELA.
+                    Para girar otra vez la boteela se presionará el botón GIRAR BOTELLA.
     </string>
     <string name="ayuda_patatacaliente">AYUDA AL USUARIO: PATATA CALIENTE \n \n
 
@@ -176,6 +180,13 @@
                     esto hará que la rulete empize a girar hasta que pare en uno de los trozos de la ruleta,
                     Una vez hecho esto, se debe acatar lo mencionado en pantalla.
     </string>
+    <string name="ayuda_lobbyruletasuerte">AYUDA AL USUARIO: RULETA SUERTE \n \n
+
+                    Añade o Elimina Slots mediante los botones de "+" y "-" hasta un total de 10 slots y mínimo 2 slots.
+                    Modifica las frases que te aparezcan para darle un toque tuyo a esta Ruleta de la Suerte.
+                    Dale ACEPTAR para comenzar con el minijuego.
+
+    </string>
     <string name="ayuda_slotmachine">AYUDA AL USUARIO: SLOT MACHINE \n \n
 
                    Para iniciar el juego, debes presionar el botón TIRAR,
@@ -187,6 +198,12 @@
                    Por turnos indicados en pantalla, los usuarios elegirán el palillo que prefieran pulsando sobre él,
                     una vez escogidos todos los palillos se descubrirá el mantel que los oculta sacando a la vista los palillos y así mostrando el palillo más pequeño que es el palillo malo
                     y por ende el usuario que elegio dicho palillo perderá la partida.
+    </string>
+    <string name="ayuda_lobbypalillos">AYUDA AL USUARIO: LOS PALILLOS \n \n
+
+                   Añade o Elimina Usuarios mediante los botones de "+" y "-" hasta un máximo de 4 usuarios y mínimo 2 usuarios.
+                    Modifica los nombres de los usuarios un toque personal al minijuego.
+                    Dale ACEPTAR para comenzar con el minijuego.
     </string>
 
     <string name="ayuda_voy">AYUDA AL USUARIO: VOY AL … \n \n

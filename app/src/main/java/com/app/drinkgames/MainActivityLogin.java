@@ -4,12 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -23,6 +26,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class MainActivityLogin extends AppCompatActivity {
 
     private EditText etEmail, etPasswd;
+    private CheckBox chkGuardar;
     private String email, passwd;
 
     int numRand;
@@ -41,6 +45,8 @@ public class MainActivityLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_login);
 
+
+
         //Instancia de Firebase Authentification
         mAuth = FirebaseAuth.getInstance();
 
@@ -57,7 +63,13 @@ public class MainActivityLogin extends AppCompatActivity {
         etEmail = findViewById(R.id.editTextUsuarioLogin);
         etPasswd = findViewById(R.id.editTextPasswordLogin);
 
+        //Instancia ChekBox
+        chkGuardar = findViewById(R.id.chkGuardarSesion);
+
+        cargarPreferencias();
+
         dialogTips();
+
     }
 
 
@@ -135,6 +147,15 @@ public class MainActivityLogin extends AppCompatActivity {
                     Intent intent = new Intent(MainActivityLogin.this, MainActivity.class);
                     intent.putExtra("correo", email);
                     intent.putExtra("dado", "99");
+
+                    if (chkGuardar.isChecked()){
+                        guardarPreferencia();
+                    }else{
+                        SharedPreferences preferences = getSharedPreferences("Credenciales",
+                                Context.MODE_PRIVATE);
+                        preferences.edit().clear().apply();
+                    }
+
                     startActivity(intent);
 
                     //Finalizar Activity
@@ -145,6 +166,35 @@ public class MainActivityLogin extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    //Método cargar Preferencias
+    private void cargarPreferencias(){
+
+        SharedPreferences preferences = this.getSharedPreferences("Credenciales",
+                Context.MODE_PRIVATE);
+
+        etEmail.setText(preferences.getString("email", ""));
+        etPasswd.setText(preferences.getString("passwd", ""));
+
+        String auxEmail = etEmail.getText().toString();
+
+        if(!auxEmail.isEmpty()){
+            chkGuardar.setChecked(true);
+        }
+    }
+
+    //Método para guardar los datos en Shared Preference;
+    private  void guardarPreferencia(){
+
+        SharedPreferences preferences = this.getSharedPreferences("Credenciales",
+                Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("email", email);
+        editor.putString("passwd", passwd);
+        editor.commit();
+
     }
 
 

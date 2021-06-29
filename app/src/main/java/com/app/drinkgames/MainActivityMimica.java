@@ -34,7 +34,7 @@ public class MainActivityMimica extends AppCompatActivity {
     private TextView tvFrase;
     private TextView tvTragos;
     private Button btnOcultar;
-    private Button btComenzar;
+    private Button btnFrase;
     private boolean ocultar  = true;
     private String guardarPalabara;
     private String idioma;
@@ -119,7 +119,7 @@ public class MainActivityMimica extends AppCompatActivity {
 
         //Asignacion de Buttons
         btnOcultar = findViewById(R.id.buttonOcultarPalabraMimica);
-        btComenzar = findViewById(R.id.buttonMimica);
+        btnFrase = findViewById(R.id.buttonMimica);
 
         // Cargar IDIOMA
         idioma = getString(R.string.idioma);
@@ -206,6 +206,7 @@ public class MainActivityMimica extends AppCompatActivity {
         ocultar = true;
         auxiliar = (String) getText(R.string.ocultar);
         btnOcultar.setText(auxiliar);
+        btnFrase.setText(getString(R.string.siguiente_frase));
 
     }
 

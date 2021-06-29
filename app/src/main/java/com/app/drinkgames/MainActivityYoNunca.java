@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +44,7 @@ public class MainActivityYoNunca extends AppCompatActivity {
     ArrayList<String> frasesSQLite = new ArrayList<>();
     private TextToSpeech mTTS;
     private TextView tvFrase, tvTragos;
+    private Button btnFrase;
     //Creacion de Objeto Adview
     private AdView mAdView;
 
@@ -108,6 +110,9 @@ public class MainActivityYoNunca extends AppCompatActivity {
         //Asignacion de TextView
         tvFrase = findViewById(R.id.textViewYoNuncaFrase);
         tvTragos = findViewById(R.id.textViewYoNuncaTragps);
+
+        //Asignacion de Button
+        btnFrase = findViewById(R.id.buttonYoNunca);
 
         // Cargar IDIOMA
         idioma = getString(R.string.idioma);
@@ -269,6 +274,7 @@ public class MainActivityYoNunca extends AppCompatActivity {
         int fraseRandom = (int)(Math.random()*frasesSQLite.size());
         mTTS.speak(frasesSQLite.get(fraseRandom), TextToSpeech.QUEUE_FLUSH, null);
         tvFrase.setText(frasesSQLite.get(fraseRandom));
+        btnFrase.setText(getString(R.string.siguiente_frase));
 
     }
 

@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.app.drinkgames.sockets.SocketCliente;
@@ -40,6 +41,7 @@ public class MainActivityMasProbable extends AppCompatActivity {
     ArrayList<String> frasesSQLite = new ArrayList<>();
     private TextToSpeech mTTS;
     private TextView tvFrase, tvTragos;
+    private Button btnFrase;
     String correo, ads, eleccion;
     Usuario usuario;
     //Creacion de Objeto Adview
@@ -110,6 +112,9 @@ public class MainActivityMasProbable extends AppCompatActivity {
         //Asignacion de TextView
         tvFrase = findViewById(R.id.textViewMasProbableFrase);
         tvTragos = findViewById(R.id.textViewMasProbableTragps);
+
+        //Asignacion de Button
+        btnFrase = findViewById(R.id.buttonMasProbable);
 
         // Cargar IDIOMA
         idioma = getString(R.string.idioma);
@@ -274,6 +279,7 @@ public class MainActivityMasProbable extends AppCompatActivity {
         int fraseRandom = (int)(Math.random()* frasesSQLite.size());
         mTTS.speak(frasesSQLite.get(fraseRandom), TextToSpeech.QUEUE_FLUSH, null);
         tvFrase.setText(frasesSQLite.get(fraseRandom));
+        btnFrase.setText(getString(R.string.siguiente_frase));
 
     }
 
@@ -282,6 +288,7 @@ public class MainActivityMasProbable extends AppCompatActivity {
         int fraseRandom = (int)(Math.random()* 20);
         mTTS.speak(usuario.frases.get(fraseRandom).getDescripcion(), TextToSpeech.QUEUE_FLUSH, null);
         tvFrase.setText(usuario.frases.get(fraseRandom).getDescripcion());
+        btnFrase.setText(getString(R.string.siguiente_frase));
 
     }
 
